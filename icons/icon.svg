@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1D2547"/>
+      <stop offset="1" stop-color="#0D1121"/>
+    </linearGradient>
+    <linearGradient id="hl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFEC7A"/>
+      <stop offset="1" stop-color="#FFD829"/>
+    </linearGradient>
+    <linearGradient id="hl2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFE04D"/>
+      <stop offset="1" stop-color="#F5C518"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <g transform="translate(256 272) scale(.9) translate(-256 -272)">
+    <!-- trazo corto, debajo: tinta un poco más intensa -->
+    <path d="M96 288 L 150 226 L 268 334 L 214 396 Z" fill="url(#hl2)"/>
+    <!-- trazo largo, encima, con punta biselada -->
+    <path d="M206 392 L 384 112 L 446 150 L 262 432 Z" fill="url(#hl)"/>
+  </g>
+  <path d="M138 98 C 143 126, 152 135, 180 140 C 152 145, 143 154, 138 182 C 133 154, 124 145, 96 140 C 124 135, 133 126, 138 98 Z" fill="#FF93C8"/>
+  <path d="M424 318 C 427 334, 432 339, 448 342 C 432 345, 427 350, 424 366 C 421 350, 416 345, 400 342 C 416 339, 421 334, 424 318 Z" fill="#86D3FF"/>
+</svg>

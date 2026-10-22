@@ -1,0 +1,37 @@
+{
+  "id": "/",
+  "name": "Pilas · entrenamiento DIAN 2676",
+  "short_name": "Pilas",
+  "description": "Misión diaria, casos gemelos, álbum de láminas y simulacros para la prueba de la DIAN 2676.",
+  "lang": "es-CO",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#EDF0F6",
+  "theme_color": "#EDF0F6",
+  "categories": [
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
