@@ -1,0 +1,50 @@
+# Avisos diarios de la app de entrenamiento de Laura y Juan David.
+# Hora de Colombia = UTC - 5. GitHub puede demorar unos minutos los envíos programados.
+name: Avisos diarios
+
+on:
+  schedule:
+    - cron: "17 11 * * *"   # mañana: hacia las 6:17 a. m. de Colombia
+    - cron: "47 0 * * *"    # noche: hacia las 7:47 p. m. de Colombia
+  push:
+    branches: [main]
+    paths: ["avisos/suscripciones.json"]   # celular recién registrado: aviso de bienvenida
+  workflow_dispatch:
+    inputs:
+      tipo:
+        description: "Tipo de aviso"
+        required: true
+        default: prueba
+        type: choice
+        options: [prueba, manana, noche, bienvenida]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: avisos
+  cancel-in-progress: false
+
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Instalar lo necesario
+        run: npm ci --prefix avisos --no-audit --no-fund
+      - name: Elegir el tipo de aviso
+        id: tipo
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then t=bienvenida
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then t="${{ inputs.tipo }}"
+          elif [ "${{ github.event.schedule }}" = "17 11 * * *" ]; then t=manana
+          else t=noche; fi
+          echo "tipo=$t" >> "$GITHUB_OUTPUT"
+      - name: Enviar
+        run: node avisos/enviar.js "${{ steps.tipo.outputs.tipo }}"
+        env:
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}

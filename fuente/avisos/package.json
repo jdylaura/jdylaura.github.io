@@ -1,0 +1,8 @@
+{
+  "name": "avisos",
+  "private": true,
+  "description": "Envío de los avisos diarios de la app de entrenamiento (GitHub Actions).",
+  "dependencies": {
+    "web-push": "3.6.7"
+  }
+}
