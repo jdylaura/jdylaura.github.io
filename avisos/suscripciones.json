@@ -1,4 +1,17 @@
 {
   "v": 1,
-  "suscripciones": []
+  "suscripciones": [
+    {
+      "quien": "juandavid",
+      "disp": "android",
+      "host": "fcm.googleapis.com",
+      "agregada": "2026-10-23T13:44:04.370Z",
+      "c": {
+        "epk": "BK4Lx4RGTxuVdJw9i7gWJUE0nPtXXZPftml-B6eCKYc1CGF2USsGH2wgP1GG6XHg1CPv6DJ-KcrQZFbL4qYLX3I",
+        "iv": "V1wk2G6Q0rM3TvNn",
+        "ct": "gRBRxs94V8XFMF9VtSqsdFbBWw89NWlHCCiazii3ikruyThw4CwuNgU_IK4EkTG15KAKPxDAArNfQknrRbpGtzXbCAWtYA15LQoMR3BhsWp2UmxCCzni3dkhOcrvDsi87Rs2Tnn5HR9r4mJvAjTGR1xsmLKWqDWT3iyPTZtVyRYd8fUCUPF24jg6RNx5fhwOPE4LspziKdVrIBlUvk64S3NdnDr6DvTpG_QIc3nP66kGuVd0CMREiYcykmjcwApY02nXIyEw5yYHvgZmdZYcGV2fB49QHcxhgJ0K0xVOAc3ctipgv_4_uykkRH7vPlWoayR8klxKncLs2ZG9WGz1KJ98PACXSeLHZWEWZYanfqVFMK0qH9HZtnE-fcTXS5CxOdbsYSi_TiTTNcc0V7ggqVFM_9m2OIl1hz87KXZRQalDT-y2pOd2rsQwnIaS2tBAmhsuTP4puA",
+        "tag": "HnmZASPjO5fjYJWiDTP9dQ"
+      }
+    }
+  ]
 }
