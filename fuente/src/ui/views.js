@@ -23,10 +23,15 @@ var APP = window.APP || (window.APP = {});
         '<p class="small muted">Todo se guarda en este celular. No necesita cuenta ni contraseña.</p></div>';
       if (pl.standalone || pr.aqui) {
         html += '<button class="btn cta block" data-act="n0">Empezar</button>';
+      } else if (movil && pl.samsung) {
+        html += '<div class="card stack" style="box-shadow:0 0 0 2px var(--bad)"><b>En el Samsung, instálala desde Chrome</b><p class="small">Desde este navegador (Samsung Internet), Google Play Protect bloquea la instalación. Toca el botón y te explico cómo abrirla en Chrome, paso a paso.</p>' +
+          '<button class="btn cta block" data-act="go" data-view="instalar">Cómo abrirla en Chrome</button>' +
+          "</div>" + '<button class="link" data-act="aqui">Probarla aquí sin instalar</button>';
       } else if (movil) {
         html += '<div class="card stack"><b>Primero, instálala en tu pantalla de inicio</b><p class="small">Así tendrás su ícono como cualquier app, funcionará sin internet y podrá enviarte los avisos diarios. Toma un minuto.</p>' +
           (pl.ios ? '<p class="small"><b>Importante en el iPhone:</b> lo que hagas aquí, en Safari, no pasa a la app instalada. Instálala antes de empezar.</p>' : "") +
-          '<button class="btn cta block" data-act="go" data-view="instalar">Cómo instalarla</button>' +
+          (pl.android && APP.installPrompt ? '<button class="btn cta block" data-act="inst">Instalar ahora</button><p class="tiny" style="text-align:center">Luego, en la ventanita que aparece abajo, toca «Instalar».</p>' : "") +
+          '<button class="btn ' + (pl.android && APP.installPrompt ? "soft" : "cta") + ' block" data-act="go" data-view="instalar">Cómo instalarla, paso a paso</button>' +
           (APP.cfg.nombreProvisional ? '<button class="btn soft block" data-act="go" data-view="nombre">Antes: elegir el nombre de la app</button>' : "") + "</div>" +
           '<button class="link" data-act="aqui">Probarla aquí sin instalar</button>';
       } else {
@@ -60,6 +65,7 @@ var APP = window.APP || (window.APP = {});
     return { tab: false, html: html, on: {
       n0: function () { APP.go("onb", { step: 1, draft: draft }, { replace: true }); },
       aqui: function () { APP.go("onb", { step: 0, draft: draft, aqui: true }, { replace: true }); },
+      inst: function () { var e = APP.installPrompt; if (!e) return; e.prompt(); e.userChoice.then(function (r) { if (r.outcome === "accepted") APP.toast("Instalada. Búscala en tu pantalla de inicio.", "check"); APP.installPrompt = null; APP.rerender(); }); },
       who: function (el) { draft.who = el.getAttribute("data-w"); APP.sfx("tap"); APP.go("onb", { step: 2, draft: draft }, { replace: true }); },
       n2: function () { APP.go("onb", { step: 3, draft: draft }, { replace: true }); },
       tAll: function () { var all = Object.keys(draft.temas).every(function (k) { return draft.temas[k]; }); Object.keys(draft.temas).forEach(function (k) { draft.temas[k] = !all; }); APP.go("onb", { step: 3, draft: draft }, { replace: true }); },
@@ -85,7 +91,7 @@ var APP = window.APP || (window.APP = {});
     var h = '<div class="scr">';
     h += '<div class="top"><div class="brand"><span class="brand-mark">' + esc(APP.cfg.nombre) + '</span></div>' +
       '<span class="stat-pill" title="Racha"><span class="flame" style="color:#FF8A1F;display:inline-flex">' + APP.ic("flame") + '</span><span class="num">' + p.racha.n + "</span></span>" +
-      '<button class="icon-btn" data-act="menu" aria-label="Más opciones">' + APP.ic("burger") + "</button></div>";
+      '<button class="menu-btn" data-act="menu" aria-label="Menú: más opciones">' + APP.ic("burger") + "<span>Menú</span></button></div>";
     h += '<div><p class="muted small">' + saludo + ", " + esc(u.nombre) + '</p><h2 style="font-size:24px">' + (hechos === total ? "Misión de hoy cumplida." : (hechos ? (total - hechos === 1 ? "Vas bien: te falta un paso." : "Vas bien: te faltan " + (total - hechos) + " pasos.") : "Tu misión de hoy te espera.")) + "</h2></div>";
 
     // Misión

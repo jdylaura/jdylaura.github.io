@@ -525,7 +525,11 @@ var APP = window.APP || (window.APP = {});
   /* =========================================================================
      INSTALAR
      ========================================================================= */
-  window.addEventListener("beforeinstallprompt", function (e) { e.preventDefault(); APP.installPrompt = e; });
+  window.addEventListener("beforeinstallprompt", function (e) {
+    e.preventDefault(); APP.installPrompt = e;
+    var c = APP.current && APP.current();
+    if (c && (c.name === "instalar" || c.name === "onb")) APP.rerender();
+  });
   APP.plataforma = function () {
     var ua = navigator.userAgent || "";
     var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
@@ -535,29 +539,54 @@ var APP = window.APP || (window.APP = {});
     return { ios: ios, android: android, samsung: samsung, standalone: standalone, safari: safari };
   };
   V.instalar = function () {
-    var pl = APP.plataforma(), url = location.origin + location.pathname.replace(/index\.html$/, "");
+    var pl = APP.plataforma(), url = location.origin + location.pathname.replace(/index\.html$/, ""), dir = url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+    var I = function (k) { return '<span class="ill">' + APP.ic(k) + "</span>"; };
+    var paso = function (t) { return "<li><span>" + t + "</span></li>"; };
     var h = '<div class="scr">' + APP.top("Instalar en el celular");
     if (pl.standalone) {
       h += '<div class="card stack"><h2>Ya está instalada</h2><p class="muted">La abriste desde el ícono de tu pantalla de inicio. No tienes que hacer nada más.</p></div>';
     } else if (pl.ios) {
-      h += '<p class="lede">En el iPhone se instala desde Safari. No pasa por la App Store, no ocupa casi espacio y se quita como cualquier ícono.</p>' + (pl.safari ? "" : '<div class="card"><b>Primero ábrela en Safari.</b><p class="small">Copia esta dirección y pégala en Safari: <b>' + esc(url) + "</b></p></div>") +
-        '<ol class="steps-guide"><li><span>Abajo en Safari toca el botón <b>Compartir</b> <span class="ill">' + APP.ic("share") + '</span>. Si no lo ves, toca primero el botón de los tres puntos <span class="ill">' + APP.ic("dots") + "</span> y ahí aparece <b>Compartir</b>.</span></li>" +
-        '<li><span>Desliza hacia abajo en la lista y toca <b>Agregar a inicio</b> <span class="ill">' + APP.ic("plusbox") + "</span>.</span></li>" +
-        '<li><span>Si aparece la opción <b>Abrir como app web</b>, déjala encendida. En el nombre deja <b>' + esc(APP.cfg.nombre) + "</b> y toca <b>Agregar</b> arriba a la derecha.</span></li>" +
-        "<li><span>Sal de Safari. En tu pantalla de inicio aparece el ícono. Ábrela siempre desde ahí: así funciona sin internet y puede mandarte avisos.</span></li></ol>" +
-        '<div class="card sunk small"><b>Para verlo más grande:</b> mantén el dedo sobre un espacio vacío de la pantalla de inicio, toca <b>Editar</b> arriba a la izquierda, luego <b>Personalizar</b> y elige el tamaño <b>Grande</b>. Agranda todos los íconos; el sistema no permite agrandar uno solo.</div>';
+      h += '<p class="lede">En el iPhone se instala desde Safari. No pasa por la App Store y se quita como cualquier ícono. Haz un paso a la vez.</p>';
+      if (!pl.safari) h += '<div class="card stack" style="box-shadow:0 0 0 2px var(--bad)"><b>Estás en otro navegador. Ábrela en Safari.</b><p class="small">Toca «Copiar la dirección», abre <b>Safari</b> (la brújula azul), toca la barra de la dirección, mantén el dedo y toca <b>Pegar y abrir</b>.</p><button class="btn soft block" data-act="copiarDir">Copiar la dirección</button></div>';
+      h += '<ol class="steps-guide">' +
+        paso("Mira la parte de <b>abajo</b> de Safari. Si no ves ninguna barra, toca una vez el borde de abajo de la pantalla y aparece.") +
+        paso("Si en esa barra ves un <b>cuadrado con una flecha hacia arriba</b> " + I("share") + ", tócalo y salta al paso 4.") +
+        paso("Si en cambio ves <b>tres puntitos</b> " + I("dots") + " (a la derecha de la barra donde está la dirección), tócalos. Se abre un menú: toca <b>Compartir</b> " + I("share") + ".") +
+        paso("Se abre una hoja con íconos de apps arriba y una lista de acciones abajo. Desliza esa lista hacia arriba con el dedo hasta ver <b>Agregar a inicio</b> " + I("plusbox") + " (puede decir <b>Agregar a pantalla de inicio</b>). Tócalo.") +
+        paso("Si no está en la lista: al final de la lista toca <b>Editar acciones</b>, busca <b>Agregar a inicio</b>, toca el <b>+</b> verde y luego <b>OK</b> arriba. Vuelve a la lista y tócalo.") +
+        paso("Aparece una ventanita con el ícono (un chulo amarillo) y el nombre <b>" + esc(APP.cfg.nombre) + "</b>. Si hay un interruptor <b>Abrir como app web</b>, déjalo encendido (en verde).") +
+        paso("Toca <b>Agregar</b>, arriba a la derecha de esa ventanita.") +
+        paso("Sal de Safari: desliza el dedo hacia arriba desde el borde inferior de la pantalla. Busca el ícono <b>" + esc(APP.cfg.nombre) + "</b>; si no lo ves, desliza las páginas de apps hacia la izquierda hasta la última.") +
+        paso("Toca el ícono para abrirla. <b>Desde ahora ábrela siempre desde ese ícono</b>, no desde Safari: lo que hagas en Safari no pasa a la app instalada.") + "</ol>" +
+        '<div class="card sunk small"><b>Para ver el ícono más grande:</b> mantén el dedo sobre un espacio vacío de la pantalla de inicio hasta que los íconos se muevan, toca <b>Editar</b> arriba a la izquierda, luego <b>Personalizar</b> y elige <b>Grande</b>.</div>';
+    } else if (pl.android && pl.samsung) {
+      h += '<div class="card stack" style="box-shadow:0 0 0 2px var(--bad)"><b>En el Samsung, instálala desde Chrome, no desde este navegador.</b><p class="small">Si la instalas desde <b>Samsung Internet</b>, Google Play Protect la bloquea con el aviso «Se bloqueó la app no segura». Si te aparece, toca <b>Entendido</b> y <b>no</b> toques «Instalar de todas formas».</p></div>' +
+        '<ol class="steps-guide">' +
+        paso("Toca el botón amarillo <b>Copiar la dirección</b> que está aquí abajo.") +
+        paso("Sal de este navegador: desliza el dedo hacia arriba desde el borde inferior de la pantalla.") +
+        paso("Abre <b>Chrome</b>: es un círculo rojo, amarillo y verde con el centro azul. Si no lo ves, desliza hacia arriba en la pantalla de inicio para ver todas las apps y escribe <b>Chrome</b> en la barra de búsqueda de arriba.") +
+        paso("En Chrome, toca la barra de arriba que dice <b>Buscar o escribir dirección web</b>, mantén el dedo en ella y toca <b>Pegar</b>. Luego toca la tecla azul de la flecha del teclado.") +
+        paso("Se abre Mérito dentro de Chrome. Toca <b>Cómo instalarla</b> y sigue los pasos que te muestra ahí.") + "</ol>" +
+        '<button class="btn cta block" data-act="copiarDir">Copiar la dirección</button>';
     } else if (pl.android) {
-      h += '<p class="lede">En el Samsung se instala desde el navegador. No pasa por Play Store ni pide permisos especiales, y se quita como cualquier app.</p>';
-      if (APP.installPrompt) h += '<button class="btn cta block" data-act="inst">Instalar ahora</button><p class="tiny" style="text-align:center">Toca el botón y luego «Instalar» en la ventana que aparece.</p>';
-      h += '<h3>' + (APP.installPrompt ? "Si el botón no aparece o no funciona" : "Paso a paso") + "</h3>" +
-        (pl.samsung ? '<ol class="steps-guide"><li><span>En Samsung Internet toca el botón de menú <span class="ill">' + APP.ic("burger") + "</span> abajo a la derecha.</span></li><li><span>Toca <b>Agregar página a</b> y luego <b>Pantalla de inicio</b>. Si ves el ícono de descarga en la barra de la dirección, también sirve: tócalo.</span></li><li><span>Confirma con <b>Agregar</b>. El ícono aparece en tu pantalla de inicio.</span></li></ol>"
-          : '<ol class="steps-guide"><li><span>En Chrome toca los tres puntos <span class="ill">' + APP.ic("menuv") + "</span> arriba a la derecha.</span></li><li><span>Toca <b>Instalar app</b> (en algunos celulares dice <b>Agregar a la pantalla principal</b>).</span></li><li><span>Confirma con <b>Instalar</b>. En unos segundos aparece el ícono en tu pantalla de inicio y en el cajón de aplicaciones.</span></li></ol>") +
-        '<div class="card sunk small"><b>Para verlo más grande:</b> mantén el dedo sobre un espacio vacío de la pantalla de inicio, toca <b>Ajustes</b> y en <b>Cuadrícula de la pantalla de inicio</b> elige una con menos íconos (por ejemplo 4 × 5). Todos los íconos se agrandan.</div>';
+      h += '<p class="lede">En el Samsung se instala desde <b>Chrome</b>. No pasa por Play Store y se quita como cualquier app. Haz un paso a la vez.</p>';
+      if (APP.installPrompt) h += '<div class="card stack"><b>La forma más fácil</b><ol class="steps-guide">' + paso("Toca el botón amarillo <b>Instalar ahora</b>.") + paso("Abajo aparece una ventanita con el ícono y el nombre <b>" + esc(APP.cfg.nombre) + "</b>. Toca <b>Instalar</b>.") + '</ol><button class="btn cta block" data-act="inst">Instalar ahora</button></div><h3>Si el botón no funciona</h3>';
+      h += '<ol class="steps-guide">' +
+        paso("Arriba a la derecha de Chrome, al lado de la barra de la dirección, toca los <b>tres puntos en columna</b> " + I("menuv") + ".") +
+        paso("Se abre una lista. Toca <b>Instalar app</b> " + I("phone") + ". Si no aparece, toca <b>Agregar a la pantalla principal</b>: es lo mismo.") +
+        paso("Aparece una ventanita con el ícono (un chulo amarillo) y el nombre <b>" + esc(APP.cfg.nombre) + "</b>. Toca <b>Instalar</b>.") +
+        paso("Espera unos segundos. El ícono <b>" + esc(APP.cfg.nombre) + "</b> aparece en la pantalla de inicio; si no, desliza hacia arriba para ver todas las apps y búscalo ahí.") +
+        paso("Ábrela tocando ese ícono. Desde ahora, siempre desde ahí.") + "</ol>" +
+        '<div class="card stack small"><b>Si sale el aviso de Google Play Protect</b><p>Toca <b>Entendido</b> y <b>no</b> toques «Instalar de todas formas». Puedes usar la app aquí mismo en Chrome mientras tanto (los avisos también funcionan así) y escríbele a Claude lo que pasó.</p></div>' +
+        '<div class="card sunk small"><b>Para ver el ícono más grande:</b> mantén el dedo sobre un espacio vacío de la pantalla de inicio, toca <b>Ajustes</b> y en <b>Cuadrícula de la pantalla de inicio</b> elige una con menos íconos (por ejemplo 4 × 5). Todos los íconos se agrandan.</div>';
     } else {
-      h += '<p class="lede">Esta app está hecha para el celular. Ábrela desde el iPhone o el Samsung con esta dirección:</p><div class="card" style="text-align:center"><b style="font-size:22px">' + esc(url.replace(/^https?:\/\//, "").replace(/\/$/, "")) + '</b>' + (APP.qr ? '<div style="max-width:220px;margin:12px auto">' + APP.qr + "</div><p class=\"tiny\">O apunta la cámara del celular a este código.</p>" : "") + "</div>";
+      h += '<p class="lede">Esta app está hecha para el celular. Ábrela desde el iPhone o el Samsung con esta dirección:</p><div class="card" style="text-align:center"><b style="font-size:22px">' + esc(dir) + '</b>' + (APP.qr ? '<div style="max-width:220px;margin:12px auto">' + APP.qr + "</div><p class=\"tiny\">O apunta la cámara del celular a este código.</p>" : "") + "</div>";
     }
-    h += '<details class="card"><summary><b>¿Es seguro?</b></summary><div class="stack small" style="margin-top:10px"><p>Sí. No es un archivo que se descarga ni pasa por fuera de las tiendas: es una página web que el celular guarda como app. No puede leer tus fotos, contactos ni mensajes, y solo te pedirá un permiso si activas los avisos.</p><p>No afecta tus otras aplicaciones ni el funcionamiento del celular. Para quitarla, mantén el dedo sobre el ícono y elige eliminar.</p></div></details></div>';
-    return { tab: APP.perfil() ? "home" : false, html: h, on: { inst: function () { var e = APP.installPrompt; if (!e) return; e.prompt(); e.userChoice.then(function (r) { if (r.outcome === "accepted") APP.toast("Instalada. Búscala en tu pantalla de inicio.", "check"); APP.installPrompt = null; APP.rerender(); }); } } };
+    h += '<details class="card"><summary><b>¿Es seguro?</b></summary><div class="stack small" style="margin-top:10px"><p>Sí. Es una página web que el celular guarda como app: no puede leer tus fotos, contactos ni mensajes, y solo te pedirá un permiso si activas los avisos.</p><p>No afecta tus otras aplicaciones ni el funcionamiento del celular. Para quitarla, mantén el dedo sobre el ícono y elige eliminar.</p></div></details></div>';
+    return { tab: APP.perfil() ? "home" : false, html: h, on: {
+      inst: function () { var e = APP.installPrompt; if (!e) return; e.prompt(); e.userChoice.then(function (r) { if (r.outcome === "accepted") APP.toast("Instalada. Búscala en tu pantalla de inicio.", "check"); APP.installPrompt = null; APP.rerender(); }); },
+      copiarDir: function () { copiar(dir); }
+    } };
   };
 
   /* =========================================================================
@@ -724,7 +753,7 @@ var APP = window.APP || (window.APP = {});
     } };
   };
   APP.novedades = [
-    { v: "2026-10-22.3", t: "Correcciones de la revisión legal", d: ["Una revisión independiente confrontó el contenido funcional con el Estatuto Tributario y la doctrina DIAN: las 12 respuestas del simulacro funcional y las cifras quedaron confirmadas.", "Escena «Tres maneras de que una declaración no sirva»: la pregunta ahora dice cuánto se debe (30 millones), porque una deuda de hasta 10 UVT pagada dentro del año sí salva la declaración.", "Lámina «Salida 2»: la declaración sin pago sirve de título para el cobro mientras no se presente de nuevo con el pago (art. 580-1).", "Escena «Las pausas del reloj»: los 3 meses de la inspección de oficio se cuentan desde la notificación del auto.", "Mapa del reloj: la imputación del saldo a favor sigue la regla general (si declaró tarde, desde la presentación).", "Los 71 UVT del beneficio de auditoría medidos en el año anterior quedan señalados como doctrina DIAN (Concepto 404 de 2026).", "Las preguntas sobre la sanción por corrección piden el valor antes de cualquier reducción (la del art. 640 va aparte)."] },
+    { v: "2026-10-22.3", t: "Más fácil de instalar y correcciones de la revisión legal", d: ["El botón del menú, arriba a la derecha de «Hoy», ahora dice «Menú».", "En el Samsung, la app explica cómo instalarla desde Chrome, porque desde Samsung Internet Google Play Protect la bloquea. Los pasos de instalación ahora tienen una sola acción cada uno.", "Una revisión independiente confrontó el contenido funcional con el Estatuto Tributario y la doctrina DIAN: las 12 respuestas del simulacro funcional y las cifras quedaron confirmadas.", "Escena «Tres maneras de que una declaración no sirva»: la pregunta ahora dice cuánto se debe (30 millones), porque una deuda de hasta 10 UVT pagada dentro del año sí salva la declaración.", "Lámina «Salida 2»: la declaración sin pago sirve de título para el cobro mientras no se presente de nuevo con el pago (art. 580-1).", "Escena «Las pausas del reloj»: los 3 meses de la inspección de oficio se cuentan desde la notificación del auto.", "Mapa del reloj: la imputación del saldo a favor sigue la regla general (si declaró tarde, desde la presentación).", "Los 71 UVT del beneficio de auditoría medidos en el año anterior quedan señalados como doctrina DIAN (Concepto 404 de 2026).", "Las preguntas sobre la sanción por corrección piden el valor antes de cualquier reducción (la del art. 640 va aparte)."] },
     { v: "2026-10-22.2", t: "Ya se llama Mérito", d: ["Laura y Juan David eligieron el nombre: Mérito. Aparece en la app, en el ícono de los celulares Android y en los avisos.", "En el iPhone, el nombre debajo del ícono es el que se escribió al instalar.", "Ajustes menores en la pantalla de avisos y en las explicaciones de Mis estadísticas."] },
     { v: "2026-10-22.1", t: "Primera versión", d: ["Capítulos 1 a 3 del M06: tres mapas, quince escenas, 39 láminas funcionales y un generador de casos gemelos con 11 familias de reglas.", "Simulacro funcional con 12 casos inéditos en el formato DIAN 2676 (caso, enunciado y tres opciones), marcado extra y paseo del experto.", "Simulacros comportamental y de integridad en bloques separados: 70 afirmaciones inéditas (46 de simulacro y 24 de práctica diaria), con marcado de competencias o valores y colisiones.", "Misión diaria, racha, comodines, cofre, álbum de 62 láminas por persona, logros, duelo de pareja, avisos diarios y estadísticas con prioridades."] }
   ];

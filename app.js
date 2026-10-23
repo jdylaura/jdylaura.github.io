@@ -1,4 +1,4 @@
-/* Mérito · versión 2026-10-22.2 · entrenamiento DIAN 2676 de Laura y Juan David. Hecha con Claude. */
+/* Mérito · versión 2026-10-22.3 · entrenamiento DIAN 2676 de Laura y Juan David. Hecha con Claude. */
 var APP = window.APP || (window.APP = {});
 
 /* ===== src/data/proyecto.js ===== */
@@ -215,13 +215,13 @@ APP.data.laminas = [
     a: "Se tiene por no presentada. Pero si los servicios electrónicos de la DIAN no estuvieron disponibles, o hubo fuerza mayor, no hay sanción de extemporaneidad si se presenta a más tardar el día siguiente al restablecimiento. La fuerza mayor se prueba ante la DIAN.",
     por: "El canal obligatorio hace parte de la forma de declarar. La caída del sistema no es culpa del declarante: le dan un día.",
     trampa: "El día de gracia es «al día siguiente» del restablecimiento, no al día siguiente del vencimiento.",
-    src: "ET, art. 579-2 (incisos de la Ley 1607 de 2012, art. 136).", tri: "reconoce", num: ["1 día"] },
+    src: "ET, art. 579-2.", tri: "reconoce", num: ["1 día"] },
   { id: "f03", pag: "p1", sub: "s-nopres", t: "Sanear con el 2 %",
     q: "¿Cómo se sanea una declaración no presentada por lugar, identificación o firma (literales a, b y d)?",
     a: "Por el procedimiento de corrección del art. 588, liquidando el 2 % de la sanción de extemporaneidad del art. 641, sin pasar de 1.300 UVT. Solo mientras no se haya notificado sanción por no declarar. El literal c no está en esa lista.",
     por: "Lugar, identificación y firma son fallas de forma: se arreglan con una multa pequeña, el 2 % de lo que costaría haber declarado tarde.",
     trampa: "Si ya le notificaron la sanción por no declarar, esta puerta se cerró. Y si faltan las bases gravables (literal c), el 2 % no sirve.",
-    src: "ET, art. 588, parágrafo 2 (Ley 223 de 1995; cifras en UVT por la Ley 1111 de 2006).", tri: "domina", num: ["2 %", "1.300 UVT"] },
+    src: "ET, art. 588, parágrafo 2.", tri: "domina", num: ["2 %", "1.300 UVT"] },
   { id: "f04", pag: "p1", sub: "s-retsinpago", t: "Retención sin pago: ineficaz",
     q: "¿Qué efecto tiene una declaración de retención en la fuente presentada sin pago total?",
     a: "No produce efecto legal alguno, sin necesidad de acto administrativo que así lo declare. La ineficacia opera sola.",
@@ -236,7 +236,7 @@ APP.data.laminas = [
     src: "ET, art. 580-1, incisos 2 a 4 (inciso 2 modificado por la Ley 1819 de 2016, art. 270).", tri: "domina", num: ["2 veces", "6 meses"] },
   { id: "f06", pag: "p1", sub: "s-retsinpago", t: "Salida 2: dos meses de gracia",
     q: "¿Cuándo produce efectos la retención sin pago si el agente paga después?",
-    a: "Si la declaración se presentó antes del vencimiento del plazo y el pago total se hace a más tardar dentro de los dos meses siguientes al vencimiento, con intereses de mora. Mientras tanto, la declaración sirve de título para el cobro coactivo, aunque el sistema la marque como ineficaz.",
+    a: "Si la declaración se presentó antes del vencimiento del plazo y el pago total se hace a más tardar dentro de los dos meses siguientes al vencimiento, con intereses de mora. En todo caso, mientras no la presente de nuevo con el pago, la declaración inicial sirve de título para el cobro coactivo, aunque el sistema la marque como ineficaz.",
     por: "Es un premio a quien declaró a tiempo: dos meses para conseguir la plata.",
     trampa: "Si la declaración se presentó tarde, esta salida no existe. Los dos meses se cuentan desde el vencimiento, no desde la presentación.",
     src: "ET, art. 580-1, inciso 5 (Ley 2010 de 2019, art. 101).", tri: "domina", num: ["2 meses"] },
@@ -277,7 +277,7 @@ APP.data.laminas = [
     a: "Sí, si la corrección se hace dentro del término para responder un pliego de cargos o un emplazamiento para corregir: la ley la tiene por válida aunque el término del art. 588 esté vencido.",
     por: "Si la DIAN te invita a corregir, no puede cerrarte la puerta mientras corre el plazo para responderle.",
     trampa: "Cuidado con el 10 %: si corrige porque lo emplazaron, ya va en el 20 %.",
-    src: "ET, art. 588, parágrafo 1 (Ley 6 de 1992, art. 65).", tri: "domina", num: [] },
+    src: "ET, art. 588, parágrafo 1.", tri: "domina", num: [] },
   { id: "f13", pag: "p2", sub: "s-sinsancion", t: "Toda declaración nueva es corrección",
     q: "¿Qué es una declaración que se presenta después de la inicial? ¿Y si no cambia el valor?",
     a: "Es una corrección de la inicial o de la última corrección, aunque se titule de otra forma. Y la corrección cabe aunque no cambie el valor a pagar ni el saldo a favor: en ese caso no se liquida sanción.",
@@ -292,7 +292,7 @@ APP.data.laminas = [
     src: "ET, art. 589, inciso 1 (Ley 1819 de 2016, art. 274), y art. 644, parágrafo 4.", tri: "domina", num: ["1 año"] },
   { id: "f15", pag: "p2", sub: "s-bajar", t: "El procedimiento que ya no rige",
     q: "¿Hay que pedirle permiso a la DIAN para corregir a la baja?",
-    a: "No. El texto anterior exigía una solicitud previa y una liquidación oficial de corrección dentro de seis meses (Ley 223 de 1995). Desde la Ley 1819 de 2016 basta presentar la declaración dentro del año.",
+    a: "No. El texto anterior a la Ley 1819 de 2016 exigía una solicitud previa y una liquidación oficial de corrección dentro de seis meses. Desde esa ley basta presentar la declaración dentro del año.",
     por: "Hoy no se pide permiso: se presenta la declaración.",
     trampa: "Si una opción habla de «solicitud» y «liquidación oficial de corrección», describe un texto derogado.",
     src: "ET, art. 589, cuadro «Legislación anterior».", tri: "reconoce", num: ["6 meses (texto viejo)"] },
@@ -395,7 +395,7 @@ APP.data.laminas = [
     a: "Cinco años (Ley 2010 de 2019, art. 117). El texto del art. 714 todavía dice «el término para compensar» (pérdidas) y «seis años» (precios de transferencia), pero esa ley posterior y especial los fijó en cinco.",
     por: "Lo complejo se mira más tiempo: cinco años.",
     trampa: "Seis años es el texto del 714 para precios de transferencia; el Consejo de Estado (2021) lo aplicó mientras rigió. Para el examen, con la ley vigente: cinco.",
-    src: "Ley 2010 de 2019, art. 117 (C-384 de 2022, inhibida); ET, art. 714; CE, unificación 2021CE-SUJ-4-001.", tri: "domina", num: ["5 años", "6 años (texto del 714)"] },
+    src: "Ley 2010 de 2019, art. 117; ET, art. 714; CE, unificación 2021CE-SUJ-4-001.", tri: "domina", num: ["5 años", "6 años (texto del 714)"] },
   { id: "f31", pag: "p4", sub: "s-reloj", t: "El segundo reloj",
     q: "Además de los tres años sin requerimiento, ¿en qué otro caso queda en firme la declaración?",
     a: "Cuando, notificado el requerimiento especial, vence el término para practicar la liquidación de revisión y esta no se notifica. Ese segundo reloj se estudia en M07.",
@@ -438,8 +438,8 @@ APP.data.laminas = [
     q: "¿En qué casos no procede el beneficio de auditoría aunque el impuesto suba?",
     a: "Si el impuesto neto del año con el que se compara es inferior a 71 UVT; si el contribuyente goza de beneficios por su ubicación en una zona geográfica; si se demuestra que las retenciones declaradas son inexistentes. Si hay pérdida, la DIAN conserva la facultad de revisarla. Las correcciones antes de la firmeza especial no hacen perder el beneficio si se mantienen los requisitos, y el plazo para pedir la devolución del saldo a favor es el de esa firmeza.",
     por: "Subir el 35 % sobre casi nada no merece premio.",
-    trampa: "Los 71 UVT se miden en el año anterior, el de comparación, no en el año que se declara.",
-    src: "ET, art. 689-3, incisos 3, 4 y 6, y parágrafos 1, 2 y 3.", tri: "reconoce", num: ["71 UVT"] },
+    trampa: "Según la DIAN, los 71 UVT se miden en el impuesto del año anterior, el de comparación, no en el del año que se declara. Es doctrina oficial, no texto literal de la ley.",
+    src: "ET, art. 689-3, incisos 3, 4 y 6, y parágrafos 1, 2 y 3; DIAN, Concepto 404 de 2026 (sobre los 71 UVT).", tri: "reconoce", num: ["71 UVT"] },
   { id: "f38", pag: "p5", sub: "s-beneficio", t: "La UVT de 2026",
     q: "¿Cuánto vale la UVT de 2026 y cuánto suman 10, 71 y 1.300 UVT?",
     a: "52.374 pesos. 10 UVT = 523.740; 71 UVT = 3.718.554; 1.300 UVT = 68.086.200.",
@@ -593,7 +593,7 @@ APP.data.mapas = {
     peajeNota: "Si la declaración inicial fue tardía: + 5 % por cada mes o fracción de retardo, sin pasar del 100 %. Los intereses van aparte." },
   "m06-3": { nombre: "El reloj de la firmeza", preguntas: ["¿Desde cuándo?", "¿Cuánto dura?", "¿Hubo pausas?"],
     desde: [
-      { k: "V", t: "Vencimiento", d: "Si declaró a tiempo, o si imputó el saldo a favor.", lam: ["f24", "f27"] },
+      { k: "V", t: "Vencimiento", d: "Si declaró a tiempo. Si imputó el saldo a favor, rige esta misma regla (desde la presentación, si declaró tarde).", lam: ["f24", "f27"] },
       { k: "P", t: "Presentación", d: "Si declaró tarde.", lam: ["f25"] },
       { k: "S", t: "Solicitud de devolución o compensación", d: "Si pidió el saldo a favor.", lam: ["f26"] },
       { k: "C", t: "Corrección a la baja", d: "La revisión corre desde esa corrección (art. 589).", lam: ["f16"] }
@@ -621,8 +621,8 @@ APP.data.escenas = [
              "Sin efecto (art. 580-1): la retención presentada sin pago total no produce efecto alguno, y no hace falta que la DIAN lo diga.",
              "Sin efecto (art. 594-2): la declaración de quien no estaba obligado."],
     porque: "Sin lugar, sin quién, sin qué o sin firma no hay declaración. Sin plata, la retención no sirve. Sin deber, el papel no produce nada.",
-    check: { q: "Un agente de retención presentó a tiempo su declaración de retención, pero sin pagar. No tiene saldos a favor y ya pasaron cuatro meses. ¿Qué le pasa a la declaración?",
-      ops: [{ t: "No produce efecto legal alguno, sin necesidad de acto de la DIAN.", ok: true, por: "Art. 580-1: la ineficacia opera sola." },
+    check: { q: "Un agente de retención presentó a tiempo su declaración de retención, con 30 millones de pesos a cargo, pero sin pagar. No tiene saldos a favor y ya pasaron cuatro meses del vencimiento. ¿Qué le pasa a la declaración?",
+      ops: [{ t: "No produce efecto legal alguno, sin necesidad de acto de la DIAN.", ok: true, por: "Art. 580-1: la ineficacia opera sola. Ninguna salida aplica: no hay saldo a favor, pasaron los dos meses y debe más de 10 UVT." },
             { t: "Se tiene por no presentada, por el literal e del art. 580.", ok: false, por: "Ese literal fue derogado en 2010; hoy rige el art. 580-1." },
             { t: "Es válida mientras la DIAN no expida un acto que la declare ineficaz.", ok: false, por: "La ineficacia no necesita acto administrativo." }] } },
   { id: "e02", tema: "m06-1", mapa: "m06-1", foco: ["nopres", "bases", "papel"], lam: ["f02", "f03"],
@@ -705,7 +705,7 @@ APP.data.escenas = [
              "Si la declaración inicial fue tardía, se suma 5 % por cada mes o fracción de retardo, sin pasar del 100 %.",
              "Los intereses de mora van aparte y la sanción no entra en la base."],
     porque: "Corregir porque te tocaron la puerta cuesta el doble. Y la tardanza inicial te persigue con el mismo 5 % por mes de la extemporaneidad.",
-    check: { q: "La inicial salió un mes y tres días tarde. Corrige sin que la DIAN le haya escrito. ¿Cuánto paga de sanción?",
+    check: { q: "La inicial salió un mes y tres días tarde. Corrige sin que la DIAN le haya escrito. ¿Qué porcentaje de sanción por corrección le corresponde, antes de cualquier reducción?",
       ops: [{ t: "20 % del mayor valor.", ok: true, por: "10 % más 5 % por cada una de las dos fracciones." },
             { t: "15 % del mayor valor.", ok: false, por: "Un mes y tres días son dos fracciones, no una." },
             { t: "10 % del mayor valor.", ok: false, por: "Falta sumar el retardo de la inicial." }] } },
@@ -753,7 +753,7 @@ APP.data.escenas = [
             { t: "Tres años.", ok: false, por: "La regla general cede ante la especial." }] } },
   { id: "e14", tema: "m06-3", mapa: "m06-3", foco: ["of", "so", "em"], lam: ["f32", "f33", "f34"],
     titulo: "Las pausas del reloj",
-    cuerpo: ["Inspección tributaria de oficio: el término para notificar el requerimiento se suspende 3 meses desde el auto que la decreta.",
+    cuerpo: ["Inspección tributaria de oficio: el término para notificar el requerimiento se suspende 3 meses, contados desde la notificación del auto que la decreta.",
              "Inspección pedida por el contribuyente: mientras dure.",
              "Emplazamiento para corregir: el mes siguiente a su notificación, aunque no se responda.",
              "En la práctica, el último día se corre lo mismo que dure la pausa."],
@@ -766,7 +766,7 @@ APP.data.escenas = [
     titulo: "El atajo: beneficio de auditoría",
     cuerpo: ["Renta de los años 2022 a 2026: si el impuesto neto sube al menos 35 %, queda en firme a los 6 meses desde la presentación; si sube al menos 25 %, a los 12 meses.",
              "Requisitos que se acumulan: presentar a tiempo, pagar todo en los plazos y que en ese término no llegue emplazamiento, requerimiento especial, emplazamiento especial ni liquidación provisional.",
-             "No hay atajo si el impuesto del año anterior fue menor de 71 UVT, con beneficios por zona geográfica o con retenciones inexistentes."],
+             "No hay atajo con beneficios por zona geográfica, con retenciones inexistentes o si el impuesto de referencia es menor de 71 UVT (según la DIAN, el del año anterior)."],
     porque: "Más subes, más rápido quedas libre. Un solo incumplimiento quita el premio.",
     check: { q: "Subió el impuesto 40 %, presentó a tiempo, pero pagó la última cuota tarde. ¿En cuánto queda en firme?",
       ops: [{ t: "Tres años: faltó el pago total en los plazos.", ok: true, por: "Los requisitos se acumulan." },
@@ -957,14 +957,14 @@ APP.data.casos = [
   /* ===================== F07 · Dos glosas en un solo emplazamiento ===================== */
   { id: "F07", tema: "m06-2", sub: "s-sinsancion", tec: "T2", lam: ["f17", "f20", "f23"],
     caso: "En el emplazamiento que notificó a una empresa de vigilancia privada sobre su declaración de renta del año gravable 2024, la DIAN formuló dos glosas. En la primera cuestionó unos gastos sin soporte, que generarían un mayor impuesto de 18 millones de pesos. En la segunda sostuvo que unas indemnizaciones laborales no eran deducibles en el año en que se declararon, y aclaró que se trataba de una discrepancia de interpretación, porque los hechos declarados eran completos y verdaderos; esta glosa implicaba un mayor impuesto de 12 millones de pesos. Dentro del mes siguiente, la empresa aceptó ambas glosas y corrigió, con un aumento total del impuesto de 30 millones de pesos.",
-    enunciado: "La sanción por corrección que debe liquidar la empresa asciende a",
+    enunciado: "La sanción por corrección que debe liquidar la empresa, antes de cualquier reducción, asciende a",
     ops: [
       { t: "3,6 millones de pesos, que equivalen al veinte por ciento del mayor impuesto originado en la glosa por falta de soportes.", ok: true,
         por: "Es correcta. La corrección después del emplazamiento cuesta el 20 % (art. 644, num. 2). Pero el art. 685, inc. 2, permite corregir «sin sanción de corrección en lo que respecta a» las diferencias de criterio que la DIAN señale en el emplazamiento. La sanción recae solo sobre los 18 millones de la primera glosa: 3,6 millones." },
       { t: "6 millones de pesos, que equivalen al veinte por ciento de todo el mayor impuesto que liquidó la corrección.", ok: false, err: "requisito",
         por: "Aplica el 20 % a toda la corrección y olvida que la parte que la propia DIAN calificó como diferencia de criterio no lleva sanción." },
-      { t: "1,8 millones de pesos, porque la empresa corrigió por su voluntad y la tarifa aplicable es la del diez por ciento.", ok: false, err: "momento",
-        por: "El 10 % es para quien corrige antes del emplazamiento. Aquí corrigió después: la tarifa es del 20 %." }
+      { t: "3 millones de pesos, el diez por ciento de todo el mayor impuesto, porque la empresa corrigió por su voluntad.", ok: false, err: "momento",
+        por: "El 10 % es para quien corrige antes del emplazamiento. Aquí corrigió después: la tarifa es del 20 %. Además toma como base todo el mayor impuesto, sin descontar la diferencia de criterio." }
     ],
     paseo: [
       { t: "El acto y el momento", txt: "Hay un emplazamiento y la empresa corrige dentro del mes siguiente. La tarifa de partida es el 20 %.",
@@ -1920,7 +1920,7 @@ APP.gen = (function () {
         exp = "20 % por corregir después del emplazamiento o del auto de inspección, más 5 % por mes o fracción de retardo de la inicial, sin pasar del 100 % (art. 644).";
         linea = null;
       }
-      return finish({ ctx: ctx, q: "¿Qué sanción de corrección debe liquidar?", ops: ops, exp: exp, linea: linea }, r);
+      return finish({ ctx: ctx, q: "¿Qué sanción de corrección debe liquidar, antes de cualquier reducción?", ops: ops, exp: exp, linea: linea }, r);
     }
   };
 
@@ -1951,7 +1951,7 @@ APP.gen = (function () {
       var ops = [op("Ninguna sanción de corrección.", okIdx === 0, okIdx === 0 ? why : "Aquí sí hay sanción: " + (v.mode === "criterio" ? "omitir un ingreso no es una diferencia de criterio." : v.mode === "sincambio" ? "la corrección aumenta el impuesto." : "se corrigió después del vencimiento.")),
                  op("10 % del mayor valor a pagar.", okIdx === 1, okIdx === 1 ? why : "No hay sanción: " + (v.mode === "criterio" ? "es una diferencia de criterio con hechos completos y verdaderos." : v.mode === "sincambio" ? "la corrección no cambia el valor." : "se corrigió antes del vencimiento.")),
                  op("20 % del mayor valor a pagar.", false, "El 20 % exige un emplazamiento para corregir o un auto de inspección ya notificados, y aquí no hay ninguno.")];
-      return finish({ ctx: ctx, q: "¿Qué sanción de corrección debe liquidar?", ops: ops,
+      return finish({ ctx: ctx, q: "¿Qué sanción de corrección debe liquidar, antes de cualquier reducción?", ops: ops,
         exp: "Tres correcciones no llevan sanción: la que nace de una diferencia de criterio con hechos completos y verdaderos, la que no cambia el valor y la que se hace antes del vencimiento. Y la del art. 589.", linea: null }, r);
     }
   };
@@ -1972,7 +1972,7 @@ APP.gen = (function () {
                op("Ninguna: si no se responde, el emplazamiento no produce ningún efecto.", false, "Sí produce un efecto: suspende un mes el término de la DIAN para notificar el requerimiento (art. 706).")];
       } else {
         ctx = "La DIAN le notificó a " + e.n + " " + E + ", respecto de su declaración de renta del año gravable 2024. Dentro del mes siguiente, " + e.s + " corrige y aumenta el impuesto.";
-        q = "¿Qué sanción de corrección debe liquidar?";
+        q = "¿Qué sanción de corrección debe liquidar, antes de cualquier reducción?";
         ops = [op("20 % del mayor valor a pagar.", true, "Correcto: corrige después de notificado el emplazamiento y antes del requerimiento (art. 644, num. 2), dentro del mes que le da el art. 685."),
                op("10 % del mayor valor a pagar.", false, "El 10 % es para quien corrige antes de que la DIAN le notifique el emplazamiento."),
                op("Ninguna sanción, porque respondió dentro del mes que le dieron.", false, "Responder a tiempo no borra la sanción: el art. 685 dice que se corrige «liquidando la sanción de corrección respectiva de conformidad con el artículo 644».")];
@@ -2174,7 +2174,7 @@ APP.gen = (function () {
     b35: { ok: "m6", d: ["m12", "a3"], txt: function (e, r) { return cap(e.n) + " presentó y pagó a tiempo su declaración de renta del año gravable 2025, con un impuesto neto " + r.int(36, 48) + " % mayor que el del año anterior, que fue de 900 UVT. No tiene beneficios por ubicación geográfica y la DIAN no le ha notificado ningún acto."; }, por: "Aumento de al menos 35 % con todos los requisitos: firmeza a los seis meses desde la presentación (art. 689-3)." },
     b25: { ok: "m12", d: ["m6", "a3"], txt: function (e, r) { return cap(e.n) + " presentó y pagó a tiempo su declaración de renta del año gravable 2025, con un impuesto neto " + r.int(26, 33) + " % mayor que el del año anterior, que fue de 900 UVT. No tiene beneficios por ubicación geográfica y la DIAN no le ha notificado ningún acto."; }, por: "Aumento de al menos 25 % (pero menos de 35 %) con todos los requisitos: firmeza a los doce meses desde la presentación (art. 689-3)." },
     b35pago: { ok: "a3", d: ["m6", "m12"], txt: function (e, r) { return cap(e.n) + " presentó a tiempo su declaración de renta del año gravable 2025, con un impuesto neto " + r.int(36, 48) + " % mayor que el del año anterior, que fue de 900 UVT. Pagó la última cuota cuatro días después del plazo, con intereses. No tiene beneficios por ubicación geográfica."; }, por: "Falta un requisito del beneficio (el pago total en los plazos): vuelve la regla general de tres años." },
-    b35base: { ok: "a3", d: ["m6", "m12"], txt: function (e, r) { return cap(e.n) + " presentó y pagó a tiempo su declaración de renta del año gravable 2025, con un impuesto neto " + r.int(36, 48) + " % mayor que el del año anterior, que fue de 60 UVT. No tiene beneficios por ubicación geográfica."; }, por: "El impuesto neto del año de comparación fue inferior a 71 UVT: no procede el beneficio (art. 689-3, par. 2). Regla general: tres años." },
+    b35base: { ok: "a3", d: ["m6", "m12"], txt: function (e, r) { return cap(e.n) + " presentó y pagó a tiempo su declaración de renta del año gravable 2025, con un impuesto neto " + r.int(36, 48) + " % mayor que el del año anterior, que fue de 40 UVT. No tiene beneficios por ubicación geográfica."; }, por: "El impuesto neto no llega a 71 UVT, ni el del año anterior ni el del año que se declara: no procede el beneficio (art. 689-3, par. 2). Regla general: tres años." },
     b20: { ok: "a3", d: ["m12", "m6"], txt: function (e, r) { return cap(e.n) + " presentó y pagó a tiempo su declaración de renta del año gravable 2025, con un impuesto neto " + r.int(15, 23) + " % mayor que el del año anterior, que fue de 900 UVT."; }, por: "Un aumento menor al 25 % no da beneficio de auditoría: regla general de tres años." }
   };
   var DURPAIRS = [["b35", "b35pago"], ["b25", "b20"], ["pt", "normal"], ["b35", "b35base"], ["perdida", "normal"], ["b35", "b25"]];
@@ -2276,7 +2276,7 @@ APP.gen = (function () {
 
 
 /* ===== __cfg__ ===== */
-APP.cfg = {"nombre":"Mérito","nombreProvisional":false,"version":"2026-10-22.2","vapid":"BMHjDsDzqZzJwUuLUqKU-vnQ_pdJJ0uMfnUX0-ISuTzsraFRPXn5IZRL_aV2cvsOK0wXnxZbNuaxdYg4EFOsLqk","url":"https://jdylaura.github.io/"};
+APP.cfg = {"nombre":"Mérito","nombreProvisional":false,"version":"2026-10-22.3","vapid":"BMHjDsDzqZzJwUuLUqKU-vnQ_pdJJ0uMfnUX0-ISuTzsraFRPXn5IZRL_aV2cvsOK0wXnxZbNuaxdYg4EFOsLqk","url":"https://jdylaura.github.io/"};
 APP.qr = "<svg role=\"img\" aria-label=\"Código QR de la dirección de la app\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 31 31\" shape-rendering=\"crispEdges\"><path fill=\"#FFFFFF\" d=\"M0 0h31v31H0z\"/><path stroke=\"#13182B\" d=\"M1 1.5h7m4 0h1m2 0h1m3 0h2m2 0h7M1 2.5h1m5 0h1m2 0h1m1 0h2m3 0h1m3 0h1m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m3 0h3m1 0h2m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h1m2 0h1m2 0h2m1 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m2 0h4m4 0h2m3 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h2m5 0h6m1 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M10 8.5h2m2 0h1m1 0h3M1 9.5h1m2 0h1m1 0h2m1 0h1m3 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1M3 10.5h1m8 0h3m1 0h2m3 0h3m2 0h1m2 0h1M2 11.5h1m2 0h1m1 0h4m1 0h5m2 0h3m3 0h4M1 12.5h2m2 0h2m1 0h1m1 0h2m2 0h1m2 0h1m1 0h2m3 0h2m1 0h2M1 13.5h1m2 0h1m2 0h2m2 0h1m3 0h2m1 0h1m3 0h2m2 0h1m1 0h2M1 14.5h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h6m2 0h2M1 15.5h1m4 0h3m2 0h1m2 0h2m5 0h3m1 0h5M2 16.5h1m3 0h1m1 0h1m1 0h4m2 0h1m1 0h3m3 0h3m1 0h1M1 17.5h1m3 0h1m1 0h1m1 0h1m1 0h1m2 0h1m3 0h2m1 0h2m1 0h1m3 0h1M4 18.5h1m3 0h1m1 0h9m4 0h2m1 0h1m2 0h1M1 19.5h1m1 0h1m2 0h3m1 0h1m4 0h4m4 0h1m1 0h1m2 0h2M3 20.5h3m2 0h2m3 0h1m1 0h1m2 0h5m5 0h2M1 21.5h1m3 0h1m1 0h1m1 0h2m5 0h1m1 0h2m1 0h5m1 0h1M9 22.5h3m3 0h2m3 0h2m3 0h1m1 0h3M1 23.5h7m9 0h2m2 0h1m1 0h1m1 0h1m2 0h1M1 24.5h1m5 0h1m1 0h4m2 0h2m1 0h1m2 0h1m3 0h3m1 0h1M1 25.5h1m1 0h3m1 0h1m2 0h1m1 0h2m3 0h1m3 0h5M1 26.5h1m1 0h3m1 0h1m1 0h4m1 0h1m1 0h1m1 0h1m2 0h1m1 0h5m1 0h1M1 27.5h1m1 0h3m1 0h1m2 0h3m3 0h6m3 0h3m1 0h1M1 28.5h1m5 0h1m2 0h3m1 0h1m2 0h6m1 0h2m2 0h1M1 29.5h7m1 0h1m4 0h4m1 0h4m3 0h1m1 0h1\"/></svg>\n";
 
 
@@ -3030,10 +3030,15 @@ var APP = window.APP || (window.APP = {});
         '<p class="small muted">Todo se guarda en este celular. No necesita cuenta ni contraseña.</p></div>';
       if (pl.standalone || pr.aqui) {
         html += '<button class="btn cta block" data-act="n0">Empezar</button>';
+      } else if (movil && pl.samsung) {
+        html += '<div class="card stack" style="box-shadow:0 0 0 2px var(--bad)"><b>En el Samsung, instálala desde Chrome</b><p class="small">Desde este navegador (Samsung Internet), Google Play Protect bloquea la instalación. Toca el botón y te explico cómo abrirla en Chrome, paso a paso.</p>' +
+          '<button class="btn cta block" data-act="go" data-view="instalar">Cómo abrirla en Chrome</button>' +
+          "</div>" + '<button class="link" data-act="aqui">Probarla aquí sin instalar</button>';
       } else if (movil) {
         html += '<div class="card stack"><b>Primero, instálala en tu pantalla de inicio</b><p class="small">Así tendrás su ícono como cualquier app, funcionará sin internet y podrá enviarte los avisos diarios. Toma un minuto.</p>' +
           (pl.ios ? '<p class="small"><b>Importante en el iPhone:</b> lo que hagas aquí, en Safari, no pasa a la app instalada. Instálala antes de empezar.</p>' : "") +
-          '<button class="btn cta block" data-act="go" data-view="instalar">Cómo instalarla</button>' +
+          (pl.android && APP.installPrompt ? '<button class="btn cta block" data-act="inst">Instalar ahora</button><p class="tiny" style="text-align:center">Luego, en la ventanita que aparece abajo, toca «Instalar».</p>' : "") +
+          '<button class="btn ' + (pl.android && APP.installPrompt ? "soft" : "cta") + ' block" data-act="go" data-view="instalar">Cómo instalarla, paso a paso</button>' +
           (APP.cfg.nombreProvisional ? '<button class="btn soft block" data-act="go" data-view="nombre">Antes: elegir el nombre de la app</button>' : "") + "</div>" +
           '<button class="link" data-act="aqui">Probarla aquí sin instalar</button>';
       } else {
@@ -3067,6 +3072,7 @@ var APP = window.APP || (window.APP = {});
     return { tab: false, html: html, on: {
       n0: function () { APP.go("onb", { step: 1, draft: draft }, { replace: true }); },
       aqui: function () { APP.go("onb", { step: 0, draft: draft, aqui: true }, { replace: true }); },
+      inst: function () { var e = APP.installPrompt; if (!e) return; e.prompt(); e.userChoice.then(function (r) { if (r.outcome === "accepted") APP.toast("Instalada. Búscala en tu pantalla de inicio.", "check"); APP.installPrompt = null; APP.rerender(); }); },
       who: function (el) { draft.who = el.getAttribute("data-w"); APP.sfx("tap"); APP.go("onb", { step: 2, draft: draft }, { replace: true }); },
       n2: function () { APP.go("onb", { step: 3, draft: draft }, { replace: true }); },
       tAll: function () { var all = Object.keys(draft.temas).every(function (k) { return draft.temas[k]; }); Object.keys(draft.temas).forEach(function (k) { draft.temas[k] = !all; }); APP.go("onb", { step: 3, draft: draft }, { replace: true }); },
@@ -3092,7 +3098,7 @@ var APP = window.APP || (window.APP = {});
     var h = '<div class="scr">';
     h += '<div class="top"><div class="brand"><span class="brand-mark">' + esc(APP.cfg.nombre) + '</span></div>' +
       '<span class="stat-pill" title="Racha"><span class="flame" style="color:#FF8A1F;display:inline-flex">' + APP.ic("flame") + '</span><span class="num">' + p.racha.n + "</span></span>" +
-      '<button class="icon-btn" data-act="menu" aria-label="Más opciones">' + APP.ic("burger") + "</button></div>";
+      '<button class="menu-btn" data-act="menu" aria-label="Menú: más opciones">' + APP.ic("burger") + "<span>Menú</span></button></div>";
     h += '<div><p class="muted small">' + saludo + ", " + esc(u.nombre) + '</p><h2 style="font-size:24px">' + (hechos === total ? "Misión de hoy cumplida." : (hechos ? (total - hechos === 1 ? "Vas bien: te falta un paso." : "Vas bien: te faltan " + (total - hechos) + " pasos.") : "Tu misión de hoy te espera.")) + "</h2></div>";
 
     // Misión
@@ -3995,7 +4001,11 @@ var APP = window.APP || (window.APP = {});
   /* =========================================================================
      INSTALAR
      ========================================================================= */
-  window.addEventListener("beforeinstallprompt", function (e) { e.preventDefault(); APP.installPrompt = e; });
+  window.addEventListener("beforeinstallprompt", function (e) {
+    e.preventDefault(); APP.installPrompt = e;
+    var c = APP.current && APP.current();
+    if (c && (c.name === "instalar" || c.name === "onb")) APP.rerender();
+  });
   APP.plataforma = function () {
     var ua = navigator.userAgent || "";
     var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
@@ -4005,29 +4015,54 @@ var APP = window.APP || (window.APP = {});
     return { ios: ios, android: android, samsung: samsung, standalone: standalone, safari: safari };
   };
   V.instalar = function () {
-    var pl = APP.plataforma(), url = location.origin + location.pathname.replace(/index\.html$/, "");
+    var pl = APP.plataforma(), url = location.origin + location.pathname.replace(/index\.html$/, ""), dir = url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+    var I = function (k) { return '<span class="ill">' + APP.ic(k) + "</span>"; };
+    var paso = function (t) { return "<li><span>" + t + "</span></li>"; };
     var h = '<div class="scr">' + APP.top("Instalar en el celular");
     if (pl.standalone) {
       h += '<div class="card stack"><h2>Ya está instalada</h2><p class="muted">La abriste desde el ícono de tu pantalla de inicio. No tienes que hacer nada más.</p></div>';
     } else if (pl.ios) {
-      h += '<p class="lede">En el iPhone se instala desde Safari. No pasa por la App Store, no ocupa casi espacio y se quita como cualquier ícono.</p>' + (pl.safari ? "" : '<div class="card"><b>Primero ábrela en Safari.</b><p class="small">Copia esta dirección y pégala en Safari: <b>' + esc(url) + "</b></p></div>") +
-        '<ol class="steps-guide"><li><span>Abajo en Safari toca el botón <b>Compartir</b> <span class="ill">' + APP.ic("share") + '</span>. Si no lo ves, toca primero el botón de los tres puntos <span class="ill">' + APP.ic("dots") + "</span> y ahí aparece <b>Compartir</b>.</span></li>" +
-        '<li><span>Desliza hacia abajo en la lista y toca <b>Agregar a inicio</b> <span class="ill">' + APP.ic("plusbox") + "</span>.</span></li>" +
-        '<li><span>Si aparece la opción <b>Abrir como app web</b>, déjala encendida. En el nombre deja <b>' + esc(APP.cfg.nombre) + "</b> y toca <b>Agregar</b> arriba a la derecha.</span></li>" +
-        "<li><span>Sal de Safari. En tu pantalla de inicio aparece el ícono. Ábrela siempre desde ahí: así funciona sin internet y puede mandarte avisos.</span></li></ol>" +
-        '<div class="card sunk small"><b>Para verlo más grande:</b> mantén el dedo sobre un espacio vacío de la pantalla de inicio, toca <b>Editar</b> arriba a la izquierda, luego <b>Personalizar</b> y elige el tamaño <b>Grande</b>. Agranda todos los íconos; el sistema no permite agrandar uno solo.</div>';
+      h += '<p class="lede">En el iPhone se instala desde Safari. No pasa por la App Store y se quita como cualquier ícono. Haz un paso a la vez.</p>';
+      if (!pl.safari) h += '<div class="card stack" style="box-shadow:0 0 0 2px var(--bad)"><b>Estás en otro navegador. Ábrela en Safari.</b><p class="small">Toca «Copiar la dirección», abre <b>Safari</b> (la brújula azul), toca la barra de la dirección, mantén el dedo y toca <b>Pegar y abrir</b>.</p><button class="btn soft block" data-act="copiarDir">Copiar la dirección</button></div>';
+      h += '<ol class="steps-guide">' +
+        paso("Mira la parte de <b>abajo</b> de Safari. Si no ves ninguna barra, toca una vez el borde de abajo de la pantalla y aparece.") +
+        paso("Si en esa barra ves un <b>cuadrado con una flecha hacia arriba</b> " + I("share") + ", tócalo y salta al paso 4.") +
+        paso("Si en cambio ves <b>tres puntitos</b> " + I("dots") + " (a la derecha de la barra donde está la dirección), tócalos. Se abre un menú: toca <b>Compartir</b> " + I("share") + ".") +
+        paso("Se abre una hoja con íconos de apps arriba y una lista de acciones abajo. Desliza esa lista hacia arriba con el dedo hasta ver <b>Agregar a inicio</b> " + I("plusbox") + " (puede decir <b>Agregar a pantalla de inicio</b>). Tócalo.") +
+        paso("Si no está en la lista: al final de la lista toca <b>Editar acciones</b>, busca <b>Agregar a inicio</b>, toca el <b>+</b> verde y luego <b>OK</b> arriba. Vuelve a la lista y tócalo.") +
+        paso("Aparece una ventanita con el ícono (un chulo amarillo) y el nombre <b>" + esc(APP.cfg.nombre) + "</b>. Si hay un interruptor <b>Abrir como app web</b>, déjalo encendido (en verde).") +
+        paso("Toca <b>Agregar</b>, arriba a la derecha de esa ventanita.") +
+        paso("Sal de Safari: desliza el dedo hacia arriba desde el borde inferior de la pantalla. Busca el ícono <b>" + esc(APP.cfg.nombre) + "</b>; si no lo ves, desliza las páginas de apps hacia la izquierda hasta la última.") +
+        paso("Toca el ícono para abrirla. <b>Desde ahora ábrela siempre desde ese ícono</b>, no desde Safari: lo que hagas en Safari no pasa a la app instalada.") + "</ol>" +
+        '<div class="card sunk small"><b>Para ver el ícono más grande:</b> mantén el dedo sobre un espacio vacío de la pantalla de inicio hasta que los íconos se muevan, toca <b>Editar</b> arriba a la izquierda, luego <b>Personalizar</b> y elige <b>Grande</b>.</div>';
+    } else if (pl.android && pl.samsung) {
+      h += '<div class="card stack" style="box-shadow:0 0 0 2px var(--bad)"><b>En el Samsung, instálala desde Chrome, no desde este navegador.</b><p class="small">Si la instalas desde <b>Samsung Internet</b>, Google Play Protect la bloquea con el aviso «Se bloqueó la app no segura». Si te aparece, toca <b>Entendido</b> y <b>no</b> toques «Instalar de todas formas».</p></div>' +
+        '<ol class="steps-guide">' +
+        paso("Toca el botón amarillo <b>Copiar la dirección</b> que está aquí abajo.") +
+        paso("Sal de este navegador: desliza el dedo hacia arriba desde el borde inferior de la pantalla.") +
+        paso("Abre <b>Chrome</b>: es un círculo rojo, amarillo y verde con el centro azul. Si no lo ves, desliza hacia arriba en la pantalla de inicio para ver todas las apps y escribe <b>Chrome</b> en la barra de búsqueda de arriba.") +
+        paso("En Chrome, toca la barra de arriba que dice <b>Buscar o escribir dirección web</b>, mantén el dedo en ella y toca <b>Pegar</b>. Luego toca la tecla azul de la flecha del teclado.") +
+        paso("Se abre Mérito dentro de Chrome. Toca <b>Cómo instalarla</b> y sigue los pasos que te muestra ahí.") + "</ol>" +
+        '<button class="btn cta block" data-act="copiarDir">Copiar la dirección</button>';
     } else if (pl.android) {
-      h += '<p class="lede">En el Samsung se instala desde el navegador. No pasa por Play Store ni pide permisos especiales, y se quita como cualquier app.</p>';
-      if (APP.installPrompt) h += '<button class="btn cta block" data-act="inst">Instalar ahora</button><p class="tiny" style="text-align:center">Toca el botón y luego «Instalar» en la ventana que aparece.</p>';
-      h += '<h3>' + (APP.installPrompt ? "Si el botón no aparece o no funciona" : "Paso a paso") + "</h3>" +
-        (pl.samsung ? '<ol class="steps-guide"><li><span>En Samsung Internet toca el botón de menú <span class="ill">' + APP.ic("burger") + "</span> abajo a la derecha.</span></li><li><span>Toca <b>Agregar página a</b> y luego <b>Pantalla de inicio</b>. Si ves el ícono de descarga en la barra de la dirección, también sirve: tócalo.</span></li><li><span>Confirma con <b>Agregar</b>. El ícono aparece en tu pantalla de inicio.</span></li></ol>"
-          : '<ol class="steps-guide"><li><span>En Chrome toca los tres puntos <span class="ill">' + APP.ic("menuv") + "</span> arriba a la derecha.</span></li><li><span>Toca <b>Instalar app</b> (en algunos celulares dice <b>Agregar a la pantalla principal</b>).</span></li><li><span>Confirma con <b>Instalar</b>. En unos segundos aparece el ícono en tu pantalla de inicio y en el cajón de aplicaciones.</span></li></ol>") +
-        '<div class="card sunk small"><b>Para verlo más grande:</b> mantén el dedo sobre un espacio vacío de la pantalla de inicio, toca <b>Ajustes</b> y en <b>Cuadrícula de la pantalla de inicio</b> elige una con menos íconos (por ejemplo 4 × 5). Todos los íconos se agrandan.</div>';
+      h += '<p class="lede">En el Samsung se instala desde <b>Chrome</b>. No pasa por Play Store y se quita como cualquier app. Haz un paso a la vez.</p>';
+      if (APP.installPrompt) h += '<div class="card stack"><b>La forma más fácil</b><ol class="steps-guide">' + paso("Toca el botón amarillo <b>Instalar ahora</b>.") + paso("Abajo aparece una ventanita con el ícono y el nombre <b>" + esc(APP.cfg.nombre) + "</b>. Toca <b>Instalar</b>.") + '</ol><button class="btn cta block" data-act="inst">Instalar ahora</button></div><h3>Si el botón no funciona</h3>';
+      h += '<ol class="steps-guide">' +
+        paso("Arriba a la derecha de Chrome, al lado de la barra de la dirección, toca los <b>tres puntos en columna</b> " + I("menuv") + ".") +
+        paso("Se abre una lista. Toca <b>Instalar app</b> " + I("phone") + ". Si no aparece, toca <b>Agregar a la pantalla principal</b>: es lo mismo.") +
+        paso("Aparece una ventanita con el ícono (un chulo amarillo) y el nombre <b>" + esc(APP.cfg.nombre) + "</b>. Toca <b>Instalar</b>.") +
+        paso("Espera unos segundos. El ícono <b>" + esc(APP.cfg.nombre) + "</b> aparece en la pantalla de inicio; si no, desliza hacia arriba para ver todas las apps y búscalo ahí.") +
+        paso("Ábrela tocando ese ícono. Desde ahora, siempre desde ahí.") + "</ol>" +
+        '<div class="card stack small"><b>Si sale el aviso de Google Play Protect</b><p>Toca <b>Entendido</b> y <b>no</b> toques «Instalar de todas formas». Puedes usar la app aquí mismo en Chrome mientras tanto (los avisos también funcionan así) y escríbele a Claude lo que pasó.</p></div>' +
+        '<div class="card sunk small"><b>Para ver el ícono más grande:</b> mantén el dedo sobre un espacio vacío de la pantalla de inicio, toca <b>Ajustes</b> y en <b>Cuadrícula de la pantalla de inicio</b> elige una con menos íconos (por ejemplo 4 × 5). Todos los íconos se agrandan.</div>';
     } else {
-      h += '<p class="lede">Esta app está hecha para el celular. Ábrela desde el iPhone o el Samsung con esta dirección:</p><div class="card" style="text-align:center"><b style="font-size:22px">' + esc(url.replace(/^https?:\/\//, "").replace(/\/$/, "")) + '</b>' + (APP.qr ? '<div style="max-width:220px;margin:12px auto">' + APP.qr + "</div><p class=\"tiny\">O apunta la cámara del celular a este código.</p>" : "") + "</div>";
+      h += '<p class="lede">Esta app está hecha para el celular. Ábrela desde el iPhone o el Samsung con esta dirección:</p><div class="card" style="text-align:center"><b style="font-size:22px">' + esc(dir) + '</b>' + (APP.qr ? '<div style="max-width:220px;margin:12px auto">' + APP.qr + "</div><p class=\"tiny\">O apunta la cámara del celular a este código.</p>" : "") + "</div>";
     }
-    h += '<details class="card"><summary><b>¿Es seguro?</b></summary><div class="stack small" style="margin-top:10px"><p>Sí. No es un archivo que se descarga ni pasa por fuera de las tiendas: es una página web que el celular guarda como app. No puede leer tus fotos, contactos ni mensajes, y solo te pedirá un permiso si activas los avisos.</p><p>No afecta tus otras aplicaciones ni el funcionamiento del celular. Para quitarla, mantén el dedo sobre el ícono y elige eliminar.</p></div></details></div>';
-    return { tab: APP.perfil() ? "home" : false, html: h, on: { inst: function () { var e = APP.installPrompt; if (!e) return; e.prompt(); e.userChoice.then(function (r) { if (r.outcome === "accepted") APP.toast("Instalada. Búscala en tu pantalla de inicio.", "check"); APP.installPrompt = null; APP.rerender(); }); } } };
+    h += '<details class="card"><summary><b>¿Es seguro?</b></summary><div class="stack small" style="margin-top:10px"><p>Sí. Es una página web que el celular guarda como app: no puede leer tus fotos, contactos ni mensajes, y solo te pedirá un permiso si activas los avisos.</p><p>No afecta tus otras aplicaciones ni el funcionamiento del celular. Para quitarla, mantén el dedo sobre el ícono y elige eliminar.</p></div></details></div>';
+    return { tab: APP.perfil() ? "home" : false, html: h, on: {
+      inst: function () { var e = APP.installPrompt; if (!e) return; e.prompt(); e.userChoice.then(function (r) { if (r.outcome === "accepted") APP.toast("Instalada. Búscala en tu pantalla de inicio.", "check"); APP.installPrompt = null; APP.rerender(); }); },
+      copiarDir: function () { copiar(dir); }
+    } };
   };
 
   /* =========================================================================
@@ -4194,6 +4229,7 @@ var APP = window.APP || (window.APP = {});
     } };
   };
   APP.novedades = [
+    { v: "2026-10-22.3", t: "Más fácil de instalar y correcciones de la revisión legal", d: ["El botón del menú, arriba a la derecha de «Hoy», ahora dice «Menú».", "En el Samsung, la app explica cómo instalarla desde Chrome, porque desde Samsung Internet Google Play Protect la bloquea. Los pasos de instalación ahora tienen una sola acción cada uno.", "Una revisión independiente confrontó el contenido funcional con el Estatuto Tributario y la doctrina DIAN: las 12 respuestas del simulacro funcional y las cifras quedaron confirmadas.", "Escena «Tres maneras de que una declaración no sirva»: la pregunta ahora dice cuánto se debe (30 millones), porque una deuda de hasta 10 UVT pagada dentro del año sí salva la declaración.", "Lámina «Salida 2»: la declaración sin pago sirve de título para el cobro mientras no se presente de nuevo con el pago (art. 580-1).", "Escena «Las pausas del reloj»: los 3 meses de la inspección de oficio se cuentan desde la notificación del auto.", "Mapa del reloj: la imputación del saldo a favor sigue la regla general (si declaró tarde, desde la presentación).", "Los 71 UVT del beneficio de auditoría medidos en el año anterior quedan señalados como doctrina DIAN (Concepto 404 de 2026).", "Las preguntas sobre la sanción por corrección piden el valor antes de cualquier reducción (la del art. 640 va aparte)."] },
     { v: "2026-10-22.2", t: "Ya se llama Mérito", d: ["Laura y Juan David eligieron el nombre: Mérito. Aparece en la app, en el ícono de los celulares Android y en los avisos.", "En el iPhone, el nombre debajo del ícono es el que se escribió al instalar.", "Ajustes menores en la pantalla de avisos y en las explicaciones de Mis estadísticas."] },
     { v: "2026-10-22.1", t: "Primera versión", d: ["Capítulos 1 a 3 del M06: tres mapas, quince escenas, 39 láminas funcionales y un generador de casos gemelos con 11 familias de reglas.", "Simulacro funcional con 12 casos inéditos en el formato DIAN 2676 (caso, enunciado y tres opciones), marcado extra y paseo del experto.", "Simulacros comportamental y de integridad en bloques separados: 70 afirmaciones inéditas (46 de simulacro y 24 de práctica diaria), con marcado de competencias o valores y colisiones.", "Misión diaria, racha, comodines, cofre, álbum de 62 láminas por persona, logros, duelo de pareja, avisos diarios y estadísticas con prioridades."] }
   ];
@@ -4269,6 +4305,7 @@ var APP = window.APP || (window.APP = {});
     if (!("serviceWorker" in navigator)) return;
     navigator.serviceWorker.register("sw.js").then(function (r) {
       reg = r;
+      r.update().catch(function () {}); // revisa ya si hay versión nueva, sin esperar al navegador
       if (r.waiting && navigator.serviceWorker.controller) barra(r.waiting);
       r.addEventListener("updatefound", function () {
         var nw = r.installing; if (!nw) return;

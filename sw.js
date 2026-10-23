@@ -1,7 +1,7 @@
 /* Service worker de la app: la guarda en el celular para que funcione sin internet,
    detecta versiones nuevas y arma los avisos diarios con lo que la app sabe de cada uno. */
 "use strict";
-var VERSION = "2026-10-22.2";
+var VERSION = "2026-10-22.3";
 var CACHE = "app-" + VERSION;
 var ASSETS = ["./","index.html","app.js","styles.css","manifest.webmanifest","fonts/bricolage.woff2","fonts/literata.woff2","icons/icon-192.png","icons/icon-512.png","icons/apple-touch-icon.png","icons/badge-96.png","icons/favicon-32.png","icons/icon.svg"];
 
