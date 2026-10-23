@@ -1,11 +1,11 @@
 {
   "version": "2026-10-22.3",
-  "actualizada": "viernes 23 de octubre de 2026, 8:50 a. m.",
+  "actualizada": "viernes 23 de octubre de 2026, 6:25 p. m.",
   "estado": [
     "**Versión 2026-10-22.3 publicada** en https://jdylaura.github.io con el nombre elegido, **Mérito**. Incluye las correcciones de la auditoría legal independiente (sección 7), el botón «Menú» con texto y la instalación del Samsung por Chrome. Probada en iPhone y Samsung simulados: sin errores, funciona sin internet y se actualiza sola.",
     "**Juan David (Samsung S25 Ultra):** Samsung Internet fue bloqueado por Google Play Protect y no se forzó la instalación. El 23-oct, a las 8:43 a. m., instaló desde Chrome y envió su código de avisos. Quedó registrado (Android). GitHub envió la bienvenida a las 8:45 a. m. (ejecución #4, correcta), lo que confirma que la clave de avisos está bien puesta en GitHub.",
-    "**Laura (iPhone 16):** la instaló el 22-oct, pero la borró porque no encontró el botón del menú para activar los avisos. Los pasos lo nombraban («tres rayas») sin decir dónde estaba ni cómo se veía, y ellos buscaron «tres puntos». Reinstala desde las 7 p. m. del 23-oct con pasos detallados e imágenes.",
-    "**Avisos:** clave confirmada en GitHub; el archivo de la clave ya no está en la carpeta APP. Envíos programados diarios a las 6:17 a. m. y 7:47 p. m. (llegan hacia las 6:30 y las 8:00). Registrado: Juan David (Android). Falta: Laura (iPhone)."
+    "**Laura (iPhone 16):** el 22-oct la borró porque no encontró el botón del menú; los pasos lo nombraban sin mostrarlo. El 23-oct la reinstaló desde Safari con los pasos detallados y envió su código de avisos a las 6:19 p. m. Quedó registrado (iPhone, Apple). GitHub envió la bienvenida (ejecución #5, correcta).",
+    "**Avisos:** registrados Juan David (Android, 23-oct, 8:44 a. m.) y Laura (iPhone, 23-oct, 6:20 p. m.). Las dos bienvenidas salieron bien de GitHub; falta que ellos confirmen que les llegaron. Envíos diarios a las 6:17 a. m. y 7:47 p. m. de Colombia."
   ],
   "donde": [
     [
@@ -239,13 +239,13 @@
       "4",
       "Laura: reinstalar en el iPhone desde Safari y activar avisos, con pasos e imágenes.",
       "Laura",
-      "Desde las 7 p. m. del 23-oct"
+      "Hecho (23-oct, 6:19 p. m.); falta que confirme que le llegó la bienvenida"
     ],
     [
       "5",
       "Registrar los códigos AVISO- y confirmar el aviso de bienvenida.",
       "Claude",
-      "Juan David registrado (23-oct); falta Laura"
+      "Hecho: los dos registrados el 23-oct; falta su confirmación de que llegaron"
     ],
     [
       "6",
