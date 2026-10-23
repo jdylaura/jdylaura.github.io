@@ -1,0 +1,120 @@
+{
+  "version": "2026-10-22.1",
+  "actualizada": "22 de octubre de 2026, 10:30 p. m.",
+  "estado": [
+    "**Versión 2026-10-22.1 publicada** en https://jdylaura.github.io. Se probó en un iPhone y un Samsung simulados (claro y oscuro): recorrido completo de la misión, los tres simulacros y todas las pantallas, sin errores. Funciona sin internet y se actualizó sola en 3 segundos en la prueba.",
+    "**Avisos diarios montados** en GitHub: el servicio ya corre (primera ejecución correcta, todavía sin celulares registrados). Falta lo que solo ustedes pueden hacer: pegar la clave en GitHub, instalar la app, abrirla desde el ícono y enviarme el código de avisos de cada celular.",
+    "**Nombre provisional: «Pilas».** Lo eligen en la app (menú → Elegir el nombre de la app) y me lo escriben."
+  ],
+  "donde": [
+    ["La app (abrir e instalar)", "https://jdylaura.github.io"],
+    ["Código y contenido de la app", "GitHub, cuenta jdylaura, repositorio jdylaura.github.io, carpeta fuente/ (instrucciones en fuente/LEEME.md)"],
+    ["Servicio de avisos", "Mismo repositorio: carpeta avisos/ y archivo .github/workflows/avisos.yml. La llave privada vive solo como secreto de GitHub llamado VAPID_PRIVATE_KEY."],
+    ["Avance de cada uno (racha, álbum, resultados, notas)", "Solo en su celular. Copia de seguridad: menú → Copia de seguridad."],
+    ["Instrucciones originales", "Carpeta APP: «Instrucciones APP DE CELULAR PARA ENTRENAMIENTO.docx»"],
+    ["Esta bitácora y la guía", "Carpeta APP: «BITACORA APP.docx» y «GUIA DE INSTALACION Y USO.docx»"],
+    ["Clave de avisos (temporal)", "Carpeta APP: «CLAVE DE AVISOS - PEGAR EN GITHUB Y LUEGO BORRAR.txt». Se borra apenas se pegue en GitHub."]
+  ],
+  "decisiones": [
+    { "t": "3.1 Tipo de app: app web instalable", "p": [
+      "Se construyó como app web instalable (lo que en inglés llaman PWA): se abre en el navegador del celular y se agrega a la pantalla de inicio con su propio ícono. No pasa por App Store ni Play Store.",
+      ["Por qué: la App Store exige una cuenta de desarrollador de Apple de pago anual y una revisión de cada versión; Play Store, cuenta y revisión. Así, cada mejora tardaría días."],
+      ["Ventajas: se instala igual en el iPhone 16 y en el Samsung S25 Ultra, ocupa muy poco, no pide permisos especiales, no toca otras apps, funciona sin internet y se actualiza sola."],
+      ["Limitación: en el iPhone se instala desde Safari, y si se borra el ícono se borra el avance de ese celular. Por eso existe la copia de seguridad."]
+    ] },
+    { "t": "3.2 Recordatorios", "p": [
+      "WhatsApp quedó descartado: Meta solo permite mensajes automáticos desde la WhatsApp Business Platform (número aparte, plantillas aprobadas y cobro por cada mensaje entregado), y los servicios no oficiales convierten el WhatsApp personal en un robot, con riesgo de bloqueo y de que un tercero lea los chats.",
+      "Se eligieron los avisos del sistema (Web Push), los que bajan por la parte de arriba del celular. Los envía GitHub Actions, gratis, a las 6:17 a. m. y a las 7:47 p. m. de Colombia, para que lleguen hacia las 6:30 y las 8:00 aunque GitHub se demore unos minutos.",
+      ["En el iPhone solo funcionan si la app está en la pantalla de inicio y se abre desde el ícono (requisito de Apple desde iOS 16.4)."],
+      ["El texto del aviso lo arma el propio celular con su avance (racha, pasos que faltan, pregunta del día). Al servidor solo viaja el tipo de aviso y la fecha."],
+      ["Las direcciones de los celulares se guardan cifradas en el repositorio (ECIES con P-256, HKDF-SHA256 y AES-256-GCM) usando la llave pública; solo el secreto de GitHub las puede descifrar."],
+      ["Mañana: misión y pregunta del día. Noche: «racha asegurada» si ya cumplieron, o «tu racha está en peligro» si no. Sobre el ícono aparece el número de pasos que faltan."],
+      ["Respaldo si los avisos fallan: un evento diario en el calendario del celular."]
+    ] },
+    { "t": "3.3 Actualizaciones", "p": [
+      "Automáticas. Cada vez que abren la app con internet, ella revisa si hay versión nueva. Si la hay y no están en mitad de un ejercicio, se actualiza sola en segundos; si están en un ejercicio, aparece una franja verde «Hay una versión nueva» con el botón «Actualizar». Después muestra «Lo nuevo».",
+      "El contenido (casos, láminas, afirmaciones) viaja dentro de la app: se actualiza con ella. El avance no se borra al actualizar."
+    ] },
+    { "t": "3.4 Nombre e ícono", "p": [
+      "Nombre provisional «Pilas». En la app hay un selector con 30 nombres de 4 a 6 letras en 5 tandas: corazones para marcar favoritos, «Ver otros nombres», «Volver a los anteriores» y una vista previa de cómo se ve el ícono con cada nombre.",
+      "El ícono no lleva texto (un chulo de resaltador amarillo con dos chispas sobre azul noche) para que no haya que reinstalarlo si cambia el nombre. En el iPhone, el nombre que va debajo del ícono se escribe al instalar: si ya eligieron, lo escriben ahí."
+    ] },
+    { "t": "3.5 Diseño", "p": [
+      "Concepto «el escritorio del estudiante»: papel frío, tinta azul noche y cinco resaltadores que significan lo mismo en toda la app: amarillo = plazos y fechas; azul = actos y hechos; rosado = cifras y sanciones; naranja = trampas; verde = lo que decide.",
+      "Letra de la interfaz: Bricolage Grotesque. Letra de lectura (casos, escenas, explicaciones): Literata. Modo oscuro automático. Botones grandes para el pulgar."
+    ] },
+    { "t": "3.6 Cómo se aprenden los datos cruzados", "p": [
+      "No son coplas ni técnicas que haya que aprender aparte. Los capítulos 1 a 3 del M06 caben en tres mapas, y cada mapa responde tres preguntas que se recuerdan el día de la prueba:",
+      ["Capítulo 1, «¿Vale o no vale?»: ¿Qué defecto tiene? ¿Qué le pasa? ¿Hay salida?"],
+      ["Capítulo 2, «Las puertas para corregir»: ¿Sube o baja? ¿Está a tiempo? ¿Cuánto cuesta?"],
+      ["Capítulo 3, «El reloj de la firmeza»: ¿Desde cuándo? ¿Cuánto dura? ¿Hubo pausas?"],
+      "Cada pieza del mapa se gana en una escena de un minuto (15 escenas) que entrega láminas para el álbum. Los «gemelos» son parejas de casos donde cambia un solo dato y cambia la respuesta: entrenan exactamente la confusión entre plazos, porcentajes y excepciones.",
+      "El álbum aplica repaso espaciado sin que tengan que pensar en él: una lámina obtenida sube a brillante cuando la aciertan otro día y a dorada en un tercer día (intervalos de 1, 2 y 5 días); un error la baja un nivel.",
+      "Medición: dominio por subtema = 40 % el nivel de sus láminas + 60 % los aciertos recientes. Se ve en menú → Mis estadísticas."
+    ] },
+    { "t": "3.7 Lo que engancha", "p": [
+      "Misión diaria de 10, 15 o 20 minutos; racha con comodines (uno cada 5 días, máximo 2); puntos y niveles con la carrera DIAN (de Aspirante a Primer puesto de la lista); cofre diario con premio variable y un consejo para la prueba; combos; contrarreloj de 60 segundos con récord; 17 logros; duelo de pareja con código; sonidos y vibración; celebraciones que nunca interrumpen un ejercicio."
+    ] },
+    { "t": "3.8 Simulacros", "p": [
+      "Formato de la guía de orientación DIAN 2676 (FUAA): funcional con caso, enunciado y tres opciones (66 en la prueba; 65 % del puntaje; mínimo 70); comportamental con afirmaciones y escala de cuatro niveles (60; 15 %); integridad con el mismo formato y en bloque aparte (30; 10 %).",
+      "Marcado extra después de fijar la respuesta, con el reloj en pausa:",
+      ["Funcional: seguridad (Lo domino, Seguro, Dudé, Adiviné), cómo llegó a la respuesta (por descarte, dudé entre dos, me confundió la redacción, no recordaba el dato, me faltó tiempo, releí el caso) y nota libre."],
+      ["Comportamental e integridad: competencias o valores evaluados (selección múltiple, incluida «Ninguna: es de control»), seguridad y nota libre."],
+      "Retroalimentación: explicación de cada opción; paseo del experto con resaltado animado, sonido y un panel fijo que guía paso a paso (cómo lee, cómo traduce el rodeo, cómo ubica el caso en el tiempo, cómo calcula y cómo descarta); diagnóstico por tipo de error y por patrón, con calibración de la seguridad y tiempo por ítem.",
+      "Colisiones: cada afirmación tiene su competencia o valor real y, cuando aplica, un atractor que empuja al extremo contrario. El paseo explica cómo detectar la real y por qué la marcada no era."
+    ] },
+    { "t": "3.9 Estadísticas", "p": [
+      "Menú → Mis estadísticas: temas por reforzar ordenados por la probabilidad de que salgan en la prueba y por el dominio actual, con «cómo reforzarlo» y un botón directo. La probabilidad es criterio de Claude, no dato oficial, y la app lo dice."
+    ] },
+    { "t": "3.10 Mejoras traídas del Plan DIAN Exprés", "p": [
+      ["Comportamental e integridad en bloques separados."],
+      ["No repetir ítems salvo los fallados (botón «Mis errores»)."],
+      ["Redacción al nivel de la FUAA: paráfrasis y distractores con palabras verdaderas de normas vecinas."],
+      ["Técnicas variadas (T1, T2, T3, T5, T6, T7, T8) y enunciados que no terminan siempre igual."],
+      ["Afirmaciones de control que no siempre son cortas."],
+      ["Claves balanceadas en posición (4 A, 4 B, 4 C) y opciones de longitud pareja."]
+    ] },
+    { "t": "3.11 Lo que se dejó por fuera a propósito", "p": [
+      ["Las cuatro afirmaciones de integridad que ustedes inventaron: siguen reservadas para la frase «QUEREMOS EL SIMULACRO DE COMPORTAMENTALES Y DE INTEGRIDAD» del Plan DIAN Exprés."],
+      ["El «ESTRIBILLO FISCAL»: no se usó como base de nada."],
+      ["Las carpetas que no se deben revisar dentro de CONCURSOS Y EMPLEOS."]
+    ] }
+  ],
+  "contenido": [
+    ["Funcional, capítulos 1 a 3 del M06: 3 mapas, 15 escenas, 39 láminas, 11 familias de casos gemelos (bajar, subir, peaje, sin sanción, emplazamiento, vale, sanea, retención, desde, cuánto, pausa), probadas con 60.000 casos generados sin errores de regla, y 12 casos de simulacro inéditos (F01 a F12)."],
+    ["Comportamental: 43 afirmaciones (por cada indicador: 2 de simulacro y 1 de práctica diaria, más 4 de control). Integridad: 27 (por cada valor: 3 de simulacro y 2 de práctica, más 2 de control). Total 70: 46 de simulacro y 24 de práctica diaria."],
+    ["Indicadores de Laura (Gestor II): adaptabilidad 1 y 2; comportamiento ético 1 y 4; comunicación efectiva 1 y 3; orientación al logro 1; orientación al usuario 1; trabajo en equipo 1 y 2."],
+    ["Indicadores de Juan David (Gestor III): adaptabilidad 1; comportamiento ético 1 y 4; comunicación efectiva 1 y 2; orientación al logro 1 y 3; orientación al usuario 1 y 3; trabajo en equipo 1."],
+    ["Álbum: 62 láminas por persona (39 funcionales, 10 de sus competencias, 7 del método de los tres pasos y 6 de los valores)."],
+    "Fuentes verificadas el 22 de octubre de 2026 en la Secretaría del Senado, leyendo los cuadros de vigencia de cada artículo: Estatuto Tributario, artículos 6 (parágrafo), 579-2, 580, 580-1, 588, 589, 594-2, 641, 644, 685, 689-3, 705, 706 y 714 (incluida la Ley 2010 de 2019, art. 117: cinco años para pérdidas fiscales y precios de transferencia); Ley 962 de 2005, art. 43, y la sentencia de unificación 2022CE-SUJ-4-002 del Consejo de Estado; UVT 2026 = $52.374. También: guía de orientación DIAN 2676 (FUAA), Resolución DIAN 65 de 2024 (diccionario de competencias) y Código de Integridad de la DIAN, versión 3.",
+    "No repite: el banco de 122 afirmaciones del Centro DIAN Exprés, las lecciones, la Arena M06, «El reloj fiscal», las guías ni las 8 de ANLA.",
+    "Nota para el Plan DIAN Exprés: el banco de la APP (F01 a F12 y las 70 afirmaciones) no debería reutilizarse en simulacros futuros del Exprés, para no repetir. No lo anoté en la bitácora exprés porque la APP no debe tocar ese proyecto: queda pendiente su autorización."
+  ],
+  "pendientes": [
+    ["1", "Pegar la clave de avisos en GitHub (secreto VAPID_PRIVATE_KEY) y borrar el archivo de la clave de la carpeta APP.", "Laura o Juan David, en el computador", "Pendiente"],
+    ["2", "Instalar la app: Laura en el iPhone 16 (desde Safari); Juan David en el Samsung S25 Ultra (Samsung Internet o Chrome).", "Cada uno", "Pendiente"],
+    ["3", "Elegir el nombre en la app y escribírmelo: «Elegimos el nombre …».", "Los dos", "Pendiente"],
+    ["4", "Activar los avisos en cada celular y enviarme el código que empieza por AVISO-.", "Cada uno", "Pendiente"],
+    ["5", "Registrar los códigos y confirmar que llegue el aviso de bienvenida.", "Claude", "Cuando lleguen los códigos"],
+    ["6", "Aplicar el nombre elegido y publicar la versión.", "Claude", "Cuando lo elijan"],
+    ["7", "Auditoría legal independiente del contenido funcional (casos, láminas, escenas y generador).", "Claude", "__AUDITORIA__"],
+    ["8", "Versión 2: más afirmaciones de práctica diaria (las actuales alcanzan para unos 5 días sin repetir en comportamental y 10 en integridad); capítulos siguientes del M06 cuando el Plan los estudie; ajustes según los reportes.", "Claude", "Próxima versión"],
+    ["9", "Decidir si se anota en la bitácora exprés que el banco de la APP no se reutiliza en sus simulacros.", "Laura y Juan David", "Pendiente"]
+  ],
+  "tecnico": [
+    ["Agregar el repositorio jdylaura/jdylaura.github.io a la sesión, entrar a fuente/, ejecutar npm install, editar, subir la versión en config/app.json y agregar la novedad en src/ui/views2.js (APP.novedades)."],
+    ["Construir con node tools/build.js .. (escribe la app en la raíz del repositorio), probar con tools/smoke.py y tools/sw_test.py, y subir con git. GitHub Pages publica en uno o dos minutos; los celulares se actualizan solos."],
+    ["Registrar un celular: desde la raíz, node avisos/agregar.js \"AVISO-…\", y subir el cambio. GitHub Actions envía la bienvenida a los celulares registrados en las últimas tres horas."],
+    ["Aviso de prueba sin tocar código: en GitHub → pestaña Actions → «Avisos diarios» → botón «Run workflow» → tipo «prueba» → «Run workflow»."],
+    ["Nunca subir la llave privada al repositorio. Si se pierde, se crea una pareja de llaves nueva, se actualiza la pública (config/vapid-public.txt y avisos/vapid-public.txt), se cambia el secreto y hay que reactivar los avisos en ambos celulares."],
+    ["GitHub apaga los envíos programados si el repositorio pasa 60 días sin cambios; cada actualización lo mantiene activo."],
+    ["El repositorio es público (GitHub Pages gratuito lo exige) y la página tiene una etiqueta para que los buscadores no la indexen. No contiene datos personales más allá de sus nombres de pila y empleos; su avance nunca sale del celular."]
+  ],
+  "fallos": [
+    ["22-oct-2026", "Los pasos para crear el repositorio en GitHub no fueron suficientemente detallados: no sabían que debían usar el botón «+» y luego «New repository».", "Toda instrucción técnica nombra cada botón, dónde está y qué se ve después. Aplicado en la guía de instalación y en las pantallas de la app."]
+  ],
+  "versiones": [
+    ["2026-10-22.1", "22-oct-2026", "Primera versión: todo lo descrito en las secciones 3 y 4."]
+  ],
+  "reportes": []
+}
