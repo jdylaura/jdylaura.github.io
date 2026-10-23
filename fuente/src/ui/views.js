@@ -197,7 +197,7 @@ var APP = window.APP || (window.APP = {});
       it("mLogros", "trophy", "Logros", Object.keys(p.logros).length + " de " + APP.logrosDef.length) +
       it("mInstalar", "phone", "Instalar en el celular", "Ícono en la pantalla de inicio") +
       it("mAvisos", "bell", "Avisos diarios", "Recordatorio en la mañana y en la noche") +
-      it("mNombre", "pencil", "Elegir el nombre de la app", APP.cfg.nombreProvisional ? "Pendiente" : "Elegido: " + APP.cfg.nombre) +
+      it("mNombre", "pencil", APP.cfg.nombreProvisional ? "Elegir el nombre de la app" : "El nombre de la app", APP.cfg.nombreProvisional ? "Pendiente" : "Elegido: " + APP.cfg.nombre) +
       it("mReporte", "send", "Reporte para Claude", "Para que ajuste la app a lo que más fallas") +
       it("mRespaldo", "shield", "Copia de seguridad", "Guarda o pasa tu avance a otro celular") +
       it("mTemas", "gear", "Temas, tiempo y persona", "Cambiar lo que entrenas") +

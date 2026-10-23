@@ -8,8 +8,8 @@ var APP = window.APP || (window.APP = {});
 
   /* ---------------- Configuración ---------------- */
   APP.cfg = APP.cfg || {
-    nombre: "Pilas",            // provisional: lo eligen Laura y Juan David
-    nombreProvisional: true,
+    nombre: "Mérito",           // elegido por Laura y Juan David el 22-oct-2026
+    nombreProvisional: false,
     version: D.version,
     vapid: ""                   // llave pública de avisos; se carga cuando se activen
   };

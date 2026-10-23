@@ -1,4 +1,4 @@
-# Pilas
+# Mérito
 
 App de entrenamiento diario de Laura y Juan David para la prueba de la DIAN 2676 (CNSC). Hecha con Claude.
 

@@ -462,12 +462,12 @@ var APP = window.APP || (window.APP = {});
     });
     if (p.temas.comp) u.indicadores.forEach(function (ind) {
       var I = D.indicadores[ind], dom = APP.dominio("c:" + ind), nombre = D.competencias[I.comp].nombre + " · nivel " + I.nivel;
-      out.push({ k: "c:" + ind, tipo: "comp", nombre: nombre, prob: "segura", dom: dom, porque: "Está en tus ejes oficiales: con 60 afirmaciones y 10 indicadores, saldrán unas seis.", como: "repasar su lámina en el álbum y hacer el simulacro comportamental; en cada error, abre el paseo", sub: "c:" + ind,
+      out.push({ k: "c:" + ind, tipo: "comp", nombre: nombre, prob: "segura", dom: dom, porque: "Está en tus ejes oficiales. Son 60 afirmaciones para tus 10 indicadores: si se reparten parejo, unas seis por indicador (la guía no publica el reparto).", como: "repasar su lámina en el álbum y hacer el simulacro comportamental; en cada error, abre el paseo", sub: "c:" + ind,
         motivo: "Muy probable: está en tus ejes" + (dom == null ? "; aún sin práctica." : "; dominio " + Math.round(dom * 100) + " %.") });
     });
     if (p.temas.integ) Object.keys(D.valores).forEach(function (v) {
       var dom = APP.dominio("v:" + v);
-      out.push({ k: "v:" + v, tipo: "integ", nombre: "Integridad · " + D.valores[v].nombre, prob: "segura", dom: dom, porque: "Los cinco valores son los ejes de integridad: unas seis afirmaciones por valor.", como: "repasar la lámina del valor y hacer el simulacro de integridad", sub: "v:" + v,
+      out.push({ k: "v:" + v, tipo: "integ", nombre: "Integridad · " + D.valores[v].nombre, prob: "segura", dom: dom, porque: "Los cinco valores son los ejes de integridad. Son 30 afirmaciones: si se reparten parejo, unas seis por valor (la guía no publica el reparto).", como: "repasar la lámina del valor y hacer el simulacro de integridad", sub: "v:" + v,
         motivo: "Muy probable" + (dom == null ? "; aún sin práctica." : "; dominio " + Math.round(dom * 100) + " %.") });
     });
     var peso = { func: 1, comp: 0.45, integ: 0.4 };
@@ -501,7 +501,7 @@ var APP = window.APP || (window.APP = {});
       "<span>Tiempo promedio por afirmación</span><b>" + (lk.length ? U.mmss(lk.reduce(function (a, r) { return a + r.seg; }, 0) / lk.length) : "—") + "</b>" +
       "<span>Racha más larga</span><b>" + p.racha.max + (p.racha.max === 1 ? " día" : " días") + "</b>" +
       "<span>XP de los últimos 7 días</span><b>" + dias.reduce(function (a, d) { return a + p.dias[d].xp; }, 0) + "</b></div></div>";
-    h += '<details class="card"><summary><b>¿Cómo se calcula todo esto?</b></summary><div class="stack small" style="margin-top:10px"><p>El <b>dominio</b> mezcla el nivel de tus láminas de ese tema con tus aciertos más recientes en él.</p><p>La <b>probabilidad</b> es criterio de Claude: mira si el tema está en sus ejes oficiales, si se puede volver juicio situacional y si tiene cifras o excepciones que el operador suele usar. Comportamental e integridad son «muy alta» porque son ejes oficiales con unas seis afirmaciones por indicador, pero cada afirmación vale cerca de un cuarto de punto, mientras que un caso funcional vale cerca de un punto. Por eso la prioridad de hoy pondera las dos cosas.</p></div></details>';
+    h += '<details class="card"><summary><b>¿Cómo se calcula todo esto?</b></summary><div class="stack small" style="margin-top:10px"><p>El <b>dominio</b> mezcla el nivel de tus láminas de ese tema con tus aciertos más recientes en él.</p><p>La <b>probabilidad</b> es criterio de Claude: mira si el tema está en sus ejes oficiales, si se puede volver juicio situacional y si tiene cifras o excepciones que el operador suele usar. Comportamental e integridad son «muy alta» porque son ejes oficiales. Pero cada afirmación comportamental vale cerca de un cuarto de punto y cada una de integridad un tercio, mientras que un caso funcional vale cerca de un punto. Por eso la prioridad de hoy pondera las dos cosas.</p></div></details>';
     h += "</div>";
     return { tab: "home", html: h, on: {
       ref: function (el) { APP.go("rafaga", { mode: "refuerzo", n: 8, sub: el.getAttribute("data-s") }); },
@@ -687,7 +687,7 @@ var APP = window.APP || (window.APP = {});
     var s = APP.store.raw(); s.nombreVotos = s.nombreVotos || {};
     var tanda = pr.tanda || 0, fav = pr.fav;
     var lista = fav ? [].concat.apply([], APP.nombres).filter(function (n) { return s.nombreVotos[n[0]]; }) : APP.nombres[tanda];
-    var h = '<div class="scr">' + APP.top("El nombre de la app") + '<p class="lede">De 4 a 6 letras: es el nombre que aparece debajo del ícono, así como se ve a la izquierda. Marquen con el corazón los que les gusten; pueden ver más nombres y volver a los anteriores cuando quieran.</p>';
+    var h = '<div class="scr">' + APP.top("El nombre de la app") + '<p class="lede">' + (APP.cfg.nombreProvisional ? "De 4 a 6 letras: es el nombre que aparece debajo del ícono, así como se ve a la izquierda. Marquen con el corazón los que les gusten; pueden ver más nombres y volver a los anteriores cuando quieran." : "El nombre ya está elegido. Aquí siguen todas las opciones, por si algún día quieren cambiarlo.") + "</p>";
     if (!fav) h += '<div class="row spread"><span class="chip">Tanda ' + (tanda + 1) + " de " + APP.nombres.length + '</span><button class="link" data-act="favs">Ver nuestros favoritos (' + Object.keys(s.nombreVotos).filter(function (k) { return s.nombreVotos[k]; }).length + ")</button></div>";
     else h += '<div class="row spread"><span class="chip p">Sus favoritos</span><button class="link" data-act="tanda" data-t="0">Ver todas las tandas</button></div>';
     h += '<div class="stack">' + (lista.length ? lista.map(function (n) {
@@ -695,7 +695,8 @@ var APP = window.APP || (window.APP = {});
       return '<div class="namecard"><div class="hs" aria-hidden="true"><img src="icons/icon-192.png" alt=""><span>' + esc(nom) + '</span></div><div><b style="font-size:18px">' + esc(nom) + '</b><p class="small muted">' + esc(n[1]) + '</p></div><button class="heart' + (s.nombreVotos[n[0]] ? " on" : "") + '" data-act="heart" data-n="' + esc(n[0]) + '" aria-label="Me gusta ' + esc(nom) + '">' + APP.ic("heart", ' width="22" height="22"') + "</button></div>";
     }).join("") : '<div class="empty">Todavía no han marcado favoritos.</div>') + "</div>";
     if (!fav) h += '<div class="row"><button class="btn soft grow" data-act="tanda" data-t="' + Math.max(0, tanda - 1) + '"' + (tanda === 0 ? " disabled" : "") + '>Volver a los anteriores</button><button class="btn dark grow" data-act="tanda" data-t="' + Math.min(APP.nombres.length - 1, tanda + 1) + '"' + (tanda === APP.nombres.length - 1 ? " disabled" : "") + ">Ver otros nombres</button></div>";
-    h += '<div class="card stack"><b>¿Ya lo eligieron?</b><p class="small">Escríbanle a Claude en el chat: «Elegimos el nombre …». Si ninguno los convence, pídanle otra tanda con la idea que tengan.</p>' +
+    h += (APP.cfg.nombreProvisional ? '<div class="card stack"><b>¿Ya lo eligieron?</b><p class="small">Escríbanle a Claude en el chat: «Elegimos el nombre …». Si ninguno los convence, pídanle otra tanda con la idea que tengan.</p>'
+      : '<div class="card stack" style="box-shadow:0 0 0 2px var(--ok)"><b>' + APP.ic("check", ' width="18" height="18"') + ' Eligieron: ' + esc(APP.cfg.nombre) + '</b><p class="small">Si algún día quieren cambiarlo, escríbanle a Claude: «Cambiemos el nombre a …».</p>') +
       (Object.keys(s.nombreVotos).some(function (k) { return s.nombreVotos[k]; }) ? '<button class="btn soft block" data-act="copiarFav">Copiar nuestros favoritos para Claude</button>' : "") + "</div></div>";
     return { tab: APP.perfil() ? "home" : false, html: h, on: {
       heart: function (el) { var n = el.getAttribute("data-n"); s.nombreVotos[n] = !s.nombreVotos[n]; APP.store.save(); APP.sfx(s.nombreVotos[n] ? "ok" : "tap"); APP.rerender(); },
@@ -723,6 +724,7 @@ var APP = window.APP || (window.APP = {});
     } };
   };
   APP.novedades = [
+    { v: "2026-10-22.2", t: "Ya se llama Mérito", d: ["Laura y Juan David eligieron el nombre: Mérito. Aparece en la app, en el ícono de los celulares Android y en los avisos.", "En el iPhone, el nombre debajo del ícono es el que se escribió al instalar.", "Ajustes menores en la pantalla de avisos y en las explicaciones de Mis estadísticas."] },
     { v: "2026-10-22.1", t: "Primera versión", d: ["Capítulos 1 a 3 del M06: tres mapas, quince escenas, 39 láminas funcionales y un generador de casos gemelos con 11 familias de reglas.", "Simulacro funcional con 12 casos inéditos en el formato DIAN 2676 (caso, enunciado y tres opciones), marcado extra y paseo del experto.", "Simulacros comportamental y de integridad en bloques separados: 70 afirmaciones inéditas (46 de simulacro y 24 de práctica diaria), con marcado de competencias o valores y colisiones.", "Misión diaria, racha, comodines, cofre, álbum de 62 láminas por persona, logros, duelo de pareja, avisos diarios y estadísticas con prioridades."] }
   ];
   V.novedades = function () {
