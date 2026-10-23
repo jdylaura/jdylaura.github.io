@@ -267,7 +267,7 @@ APP.gen = (function () {
         exp = "20 % por corregir después del emplazamiento o del auto de inspección, más 5 % por mes o fracción de retardo de la inicial, sin pasar del 100 % (art. 644).";
         linea = null;
       }
-      return finish({ ctx: ctx, q: "¿Qué sanción de corrección debe liquidar?", ops: ops, exp: exp, linea: linea }, r);
+      return finish({ ctx: ctx, q: "¿Qué sanción de corrección debe liquidar, antes de cualquier reducción?", ops: ops, exp: exp, linea: linea }, r);
     }
   };
 
@@ -298,7 +298,7 @@ APP.gen = (function () {
       var ops = [op("Ninguna sanción de corrección.", okIdx === 0, okIdx === 0 ? why : "Aquí sí hay sanción: " + (v.mode === "criterio" ? "omitir un ingreso no es una diferencia de criterio." : v.mode === "sincambio" ? "la corrección aumenta el impuesto." : "se corrigió después del vencimiento.")),
                  op("10 % del mayor valor a pagar.", okIdx === 1, okIdx === 1 ? why : "No hay sanción: " + (v.mode === "criterio" ? "es una diferencia de criterio con hechos completos y verdaderos." : v.mode === "sincambio" ? "la corrección no cambia el valor." : "se corrigió antes del vencimiento.")),
                  op("20 % del mayor valor a pagar.", false, "El 20 % exige un emplazamiento para corregir o un auto de inspección ya notificados, y aquí no hay ninguno.")];
-      return finish({ ctx: ctx, q: "¿Qué sanción de corrección debe liquidar?", ops: ops,
+      return finish({ ctx: ctx, q: "¿Qué sanción de corrección debe liquidar, antes de cualquier reducción?", ops: ops,
         exp: "Tres correcciones no llevan sanción: la que nace de una diferencia de criterio con hechos completos y verdaderos, la que no cambia el valor y la que se hace antes del vencimiento. Y la del art. 589.", linea: null }, r);
     }
   };
@@ -319,7 +319,7 @@ APP.gen = (function () {
                op("Ninguna: si no se responde, el emplazamiento no produce ningún efecto.", false, "Sí produce un efecto: suspende un mes el término de la DIAN para notificar el requerimiento (art. 706).")];
       } else {
         ctx = "La DIAN le notificó a " + e.n + " " + E + ", respecto de su declaración de renta del año gravable 2024. Dentro del mes siguiente, " + e.s + " corrige y aumenta el impuesto.";
-        q = "¿Qué sanción de corrección debe liquidar?";
+        q = "¿Qué sanción de corrección debe liquidar, antes de cualquier reducción?";
         ops = [op("20 % del mayor valor a pagar.", true, "Correcto: corrige después de notificado el emplazamiento y antes del requerimiento (art. 644, num. 2), dentro del mes que le da el art. 685."),
                op("10 % del mayor valor a pagar.", false, "El 10 % es para quien corrige antes de que la DIAN le notifique el emplazamiento."),
                op("Ninguna sanción, porque respondió dentro del mes que le dieron.", false, "Responder a tiempo no borra la sanción: el art. 685 dice que se corrige «liquidando la sanción de corrección respectiva de conformidad con el artículo 644».")];
@@ -521,7 +521,7 @@ APP.gen = (function () {
     b35: { ok: "m6", d: ["m12", "a3"], txt: function (e, r) { return cap(e.n) + " presentó y pagó a tiempo su declaración de renta del año gravable 2025, con un impuesto neto " + r.int(36, 48) + " % mayor que el del año anterior, que fue de 900 UVT. No tiene beneficios por ubicación geográfica y la DIAN no le ha notificado ningún acto."; }, por: "Aumento de al menos 35 % con todos los requisitos: firmeza a los seis meses desde la presentación (art. 689-3)." },
     b25: { ok: "m12", d: ["m6", "a3"], txt: function (e, r) { return cap(e.n) + " presentó y pagó a tiempo su declaración de renta del año gravable 2025, con un impuesto neto " + r.int(26, 33) + " % mayor que el del año anterior, que fue de 900 UVT. No tiene beneficios por ubicación geográfica y la DIAN no le ha notificado ningún acto."; }, por: "Aumento de al menos 25 % (pero menos de 35 %) con todos los requisitos: firmeza a los doce meses desde la presentación (art. 689-3)." },
     b35pago: { ok: "a3", d: ["m6", "m12"], txt: function (e, r) { return cap(e.n) + " presentó a tiempo su declaración de renta del año gravable 2025, con un impuesto neto " + r.int(36, 48) + " % mayor que el del año anterior, que fue de 900 UVT. Pagó la última cuota cuatro días después del plazo, con intereses. No tiene beneficios por ubicación geográfica."; }, por: "Falta un requisito del beneficio (el pago total en los plazos): vuelve la regla general de tres años." },
-    b35base: { ok: "a3", d: ["m6", "m12"], txt: function (e, r) { return cap(e.n) + " presentó y pagó a tiempo su declaración de renta del año gravable 2025, con un impuesto neto " + r.int(36, 48) + " % mayor que el del año anterior, que fue de 60 UVT. No tiene beneficios por ubicación geográfica."; }, por: "El impuesto neto del año de comparación fue inferior a 71 UVT: no procede el beneficio (art. 689-3, par. 2). Regla general: tres años." },
+    b35base: { ok: "a3", d: ["m6", "m12"], txt: function (e, r) { return cap(e.n) + " presentó y pagó a tiempo su declaración de renta del año gravable 2025, con un impuesto neto " + r.int(36, 48) + " % mayor que el del año anterior, que fue de 40 UVT. No tiene beneficios por ubicación geográfica."; }, por: "El impuesto neto no llega a 71 UVT, ni el del año anterior ni el del año que se declara: no procede el beneficio (art. 689-3, par. 2). Regla general: tres años." },
     b20: { ok: "a3", d: ["m12", "m6"], txt: function (e, r) { return cap(e.n) + " presentó y pagó a tiempo su declaración de renta del año gravable 2025, con un impuesto neto " + r.int(15, 23) + " % mayor que el del año anterior, que fue de 900 UVT."; }, por: "Un aumento menor al 25 % no da beneficio de auditoría: regla general de tres años." }
   };
   var DURPAIRS = [["b35", "b35pago"], ["b25", "b20"], ["pt", "normal"], ["b35", "b35base"], ["perdida", "normal"], ["b35", "b25"]];

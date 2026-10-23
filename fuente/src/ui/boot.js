@@ -42,6 +42,7 @@ var APP = window.APP || (window.APP = {});
     if (!("serviceWorker" in navigator)) return;
     navigator.serviceWorker.register("sw.js").then(function (r) {
       reg = r;
+      r.update().catch(function () {}); // revisa ya si hay versión nueva, sin esperar al navegador
       if (r.waiting && navigator.serviceWorker.controller) barra(r.waiting);
       r.addEventListener("updatefound", function () {
         var nw = r.installing; if (!nw) return;

@@ -179,14 +179,14 @@ APP.data.casos = [
   /* ===================== F07 · Dos glosas en un solo emplazamiento ===================== */
   { id: "F07", tema: "m06-2", sub: "s-sinsancion", tec: "T2", lam: ["f17", "f20", "f23"],
     caso: "En el emplazamiento que notificó a una empresa de vigilancia privada sobre su declaración de renta del año gravable 2024, la DIAN formuló dos glosas. En la primera cuestionó unos gastos sin soporte, que generarían un mayor impuesto de 18 millones de pesos. En la segunda sostuvo que unas indemnizaciones laborales no eran deducibles en el año en que se declararon, y aclaró que se trataba de una discrepancia de interpretación, porque los hechos declarados eran completos y verdaderos; esta glosa implicaba un mayor impuesto de 12 millones de pesos. Dentro del mes siguiente, la empresa aceptó ambas glosas y corrigió, con un aumento total del impuesto de 30 millones de pesos.",
-    enunciado: "La sanción por corrección que debe liquidar la empresa asciende a",
+    enunciado: "La sanción por corrección que debe liquidar la empresa, antes de cualquier reducción, asciende a",
     ops: [
       { t: "3,6 millones de pesos, que equivalen al veinte por ciento del mayor impuesto originado en la glosa por falta de soportes.", ok: true,
         por: "Es correcta. La corrección después del emplazamiento cuesta el 20 % (art. 644, num. 2). Pero el art. 685, inc. 2, permite corregir «sin sanción de corrección en lo que respecta a» las diferencias de criterio que la DIAN señale en el emplazamiento. La sanción recae solo sobre los 18 millones de la primera glosa: 3,6 millones." },
       { t: "6 millones de pesos, que equivalen al veinte por ciento de todo el mayor impuesto que liquidó la corrección.", ok: false, err: "requisito",
         por: "Aplica el 20 % a toda la corrección y olvida que la parte que la propia DIAN calificó como diferencia de criterio no lleva sanción." },
-      { t: "1,8 millones de pesos, porque la empresa corrigió por su voluntad y la tarifa aplicable es la del diez por ciento.", ok: false, err: "momento",
-        por: "El 10 % es para quien corrige antes del emplazamiento. Aquí corrigió después: la tarifa es del 20 %." }
+      { t: "3 millones de pesos, el diez por ciento de todo el mayor impuesto, porque la empresa corrigió por su voluntad.", ok: false, err: "momento",
+        por: "El 10 % es para quien corrige antes del emplazamiento. Aquí corrigió después: la tarifa es del 20 %. Además toma como base todo el mayor impuesto, sin descontar la diferencia de criterio." }
     ],
     paseo: [
       { t: "El acto y el momento", txt: "Hay un emplazamiento y la empresa corrige dentro del mes siguiente. La tarifa de partida es el 20 %.",
