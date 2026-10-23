@@ -1,11 +1,11 @@
 {
   "version": "2026-10-22.3",
-  "actualizada": "viernes 23 de octubre de 2026, 9:30 a. m.",
+  "actualizada": "viernes 23 de octubre de 2026, 8:50 a. m.",
   "estado": [
     "**Versión 2026-10-22.3 publicada** en https://jdylaura.github.io con el nombre elegido, **Mérito**. Incluye las correcciones de la auditoría legal independiente (sección 7), el botón «Menú» con texto y la instalación del Samsung por Chrome. Probada en iPhone y Samsung simulados: sin errores, funciona sin internet y se actualiza sola.",
-    "**Juan David (Samsung S25 Ultra):** al instalar desde Samsung Internet, Google Play Protect la bloqueó («Se bloqueó la app no segura»). No se forzó la instalación. El 23-oct se le enviaron 28 pasos de una sola acción para instalarla desde Chrome y activar los avisos.",
+    "**Juan David (Samsung S25 Ultra):** Samsung Internet fue bloqueado por Google Play Protect y no se forzó la instalación. El 23-oct, a las 8:43 a. m., instaló desde Chrome y envió su código de avisos. Quedó registrado (Android). GitHub envió la bienvenida a las 8:45 a. m. (ejecución #4, correcta), lo que confirma que la clave de avisos está bien puesta en GitHub.",
     "**Laura (iPhone 16):** la instaló el 22-oct, pero la borró porque no encontró el botón del menú para activar los avisos. Los pasos lo nombraban («tres rayas») sin decir dónde estaba ni cómo se veía, y ellos buscaron «tres puntos». Reinstala desde las 7 p. m. del 23-oct con pasos detallados e imágenes.",
-    "**Avisos:** la clave quedó en GitHub, según ellos, y los envíos programados corren todos los días (6:17 a. m. y 7:47 p. m.). Aún no hay celulares registrados."
+    "**Avisos:** clave confirmada en GitHub; el archivo de la clave ya no está en la carpeta APP. Envíos programados diarios a las 6:17 a. m. y 7:47 p. m. (llegan hacia las 6:30 y las 8:00). Registrado: Juan David (Android). Falta: Laura (iPhone)."
   ],
   "donde": [
     [
@@ -33,8 +33,8 @@
       "Carpeta APP: «BITACORA APP.docx» y «GUIA DE INSTALACION Y USO.docx»"
     ],
     [
-      "Clave de avisos (temporal)",
-      "Carpeta APP: «CLAVE DE AVISOS - PEGAR EN GITHUB Y LUEGO BORRAR.txt». Ya pegada en GitHub, según ellos; el archivo se puede borrar."
+      "Clave de avisos",
+      "Solo como secreto de GitHub (VAPID_PRIVATE_KEY). El archivo temporal de la carpeta APP ya fue borrado."
     ]
   ],
   "decisiones": [
@@ -221,7 +221,7 @@
       "1",
       "Clave de avisos en GitHub (VAPID_PRIVATE_KEY) y borrar el archivo de la clave de la carpeta APP.",
       "Laura y Juan David",
-      "Hecho según ellos (22-oct); se confirma con el primer aviso de bienvenida"
+      "Hecho y confirmado (23-oct): la bienvenida salió bien y el archivo de la clave fue borrado"
     ],
     [
       "2",
@@ -233,7 +233,7 @@
       "3",
       "Juan David: instalar desde Chrome y activar avisos (pasos enviados el 23-oct, 8:45 a. m.).",
       "Juan David",
-      "En curso"
+      "Hecho (23-oct, 8:43 a. m.); falta que confirme que le llegó la bienvenida"
     ],
     [
       "4",
@@ -245,7 +245,7 @@
       "5",
       "Registrar los códigos AVISO- y confirmar el aviso de bienvenida.",
       "Claude",
-      "Cuando lleguen los códigos"
+      "Juan David registrado (23-oct); falta Laura"
     ],
     [
       "6",
