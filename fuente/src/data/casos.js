@@ -317,5 +317,122 @@ APP.data.casos = [
         m: [{ s: "adjuntó una copia del aviso de la DIAN que informaba la falla", c: "o", n: "Prueba la falla, no salva el plazo" }, { s: "por el canal electrónico", c: "b" }] },
       { t: "Descartar", txt: "La primera opción olvida la condición de tiempo. La segunda aplica la consecuencia de quien usa otro medio.", o: [0, 1] }
     ],
-    llevar: "Si falla el sistema de la DIAN: un solo día de gracia, el siguiente al restablecimiento. Después, extemporaneidad." }
+    llevar: "Si falla el sistema de la DIAN: un solo día de gracia, el siguiente al restablecimiento. Después, extemporaneidad." },
+  /* ============ Actualización M05 (capítulos 2 a 4) · 30-oct-2026 · casos inéditos ============
+     No repiten los casos de la lección M05, de la Arena M05 ni del ejercicio «¿Quién decide el recurso?» del Centro DIAN Exprés. */
+
+  /* ===================== F13 · El decomiso que parecía de tercer escalón ===================== */
+  { id: "F13", tema: "m05-3", sub: "s-excrec", tec: "T6", lam: ["f57", "f52", "f55"],
+    caso: "En un control posterior, funcionarios de la Dirección Seccional de Impuestos y Aduanas de Barrancabermeja aprehendieron cuatro tractocamiones que, según la investigación, ingresaron al país sin declaración de importación. Agotado el procedimiento, la División de Fiscalización y Liquidación Aduanera de esa seccional expidió el acto que definió la situación jurídica de los vehículos y ordenó su decomiso. El avalúo de los cuatro tractocamiones asciende a 26.000 UVT. El importador interpuso el recurso dentro del término.",
+    enunciado: "La competencia para decidir el recurso radica en",
+    ops: [
+      { t: "la Subdirección de Recursos Jurídicos, porque el valor de los bienes involucrados alcanza el tercer escalón de cuantía.", ok: false, err: "general",
+        por: "Es la regla general de cuantía (20.000 UVT o más), pero aquí no se aplica: cuando el acto define la situación jurídica de mercancía aprehendida, decide la jurídica de la seccional, cualquiera que sea el valor (Decreto 1742 de 2020, art. 69, par. 3)." },
+      { t: "la división jurídica de la Dirección Seccional de Impuestos y Aduanas de Bucaramanga, por ser la de la capital del departamento.", ok: false, err: "vecina",
+        por: "Bucaramanga decide el segundo escalón de Barrancabermeja, pero esa regla tampoco entra: la regla especial de la mercancía aprehendida desplaza tanto la cuantía como el lugar." },
+      { t: "la dependencia jurídica de la misma seccional de Barrancabermeja, sin consideración al avalúo de los vehículos.", ok: true,
+        por: "Es correcta. El acto define la situación jurídica de mercancía aprehendida: decide la división jurídica de la seccional de aduanas o de impuestos y aduanas, cualquiera que sea el valor (Decreto 1742 de 2020, art. 69, par. 3, y art. 74). Los 26.000 UVT no lo suben al nivel central." }
+    ],
+    paseo: [
+      { t: "Primero: ¿qué clase de acto es?", txt: "Antes de mirar cifras, el experto identifica el acto. No es una liquidación ni una multa: es el que define la situación jurídica de mercancía aprehendida. Eso activa una regla especial.",
+        m: [{ s: "aprehendieron cuatro tractocamiones", c: "b" }, { s: "definió la situación jurídica de los vehículos y ordenó su decomiso", c: "g", n: "Regla especial: art. 69, par. 3" }] },
+      { t: "El número que distrae", txt: "26.000 UVT empuja hacia el tercer escalón. Pero en la mercancía aprehendida la cuantía no cuenta: decide la jurídica de la seccional, cualquiera que sea el valor.",
+        m: [{ s: "26.000 UVT", c: "p", n: "Aquí no cuenta" }] },
+      { t: "El lugar que distrae", txt: "Barrancabermeja queda en Santander, y su segundo escalón lo decide Bucaramanga. Esa regla tampoco entra: la especial desplaza la cuantía y el lugar.",
+        m: [{ s: "Dirección Seccional de Impuestos y Aduanas de Barrancabermeja", c: "o" }] },
+      { t: "Descartar", txt: "La primera opción aplica la regla general de cuantía; la segunda, la del lugar. La tercera aplica la excepción.", o: [0, 1] }
+    ],
+    llevar: "Mercancía aprehendida: decide la jurídica de la seccional, cualquiera que sea el valor. Primero las excepciones, después la cuantía y el lugar." },
+
+  /* ===================== F14 · La sanción que cruza el umbral ===================== */
+  { id: "F14", tema: "m05-3", sub: "s-escalon", tec: "T7", lam: ["f52", "f53", "f55"],
+    caso: "La Dirección Seccional de Impuestos y Aduanas de Girardot profirió en julio de 2026 una liquidación oficial de revisión contra una clínica de la ciudad. El acto determinó un mayor impuesto de renta de 61.300.000 pesos y una sanción por inexactitud de 44.100.000 pesos. La clínica interpuso el recurso de reconsideración dentro del término. Ninguna dependencia del nivel central ha avocado el conocimiento del asunto.",
+    enunciado: "Teniendo en cuenta que la UVT de 2026 es de 52.374 pesos, el recurso debe decidirlo",
+    ops: [
+      { t: "la división jurídica de la Dirección Seccional de Impuestos y Aduanas de Girardot, porque el mayor impuesto determinado no alcanza las 2.000 UVT.", ok: false, err: "verdad",
+        por: "Es cierto que el mayor impuesto (61.300.000 pesos, unas 1.170 UVT) no llega a 2.000 UVT. Pero la cuantía comprende los mayores valores por impuestos y sanciones: 105.400.000 pesos, unas 2.012 UVT." },
+      { t: "la división jurídica de la Dirección Seccional de Impuestos de Bogotá, porque la suma de los valores en discusión supera las 2.000 UVT.", ok: true,
+        por: "Es correcta. Impuesto más sanción: 105.400.000 pesos, unas 2.012 UVT. Está en el segundo escalón (de 2.000 a menos de 20.000 UVT), y lo tributario de Girardot lo decide la seccional de Impuestos de Bogotá (Decreto 1742 de 2020, art. 69, num. 2)." },
+      { t: "la división jurídica de la Dirección Seccional de Aduanas de Bogotá, porque a ella le corresponde el segundo escalón de los actos de Girardot.", ok: false, err: "vecina",
+        por: "La seccional de Aduanas de Bogotá decide el segundo escalón de Girardot solo en lo aduanero y cambiario. Una liquidación de renta es tributaria." }
+    ],
+    paseo: [
+      { t: "Ubicar el acto", txt: "Es una liquidación oficial de revisión: determinación con sanción, sin mercancía ni garantía, y nadie avocó. Rige la regla de cuantía.",
+        m: [{ s: "liquidación oficial de revisión", c: "b" }, { s: "Ninguna dependencia del nivel central ha avocado", c: "b", n: "Sin excepción" }] },
+      { t: "Sumar antes de dividir", txt: "La cuantía suma impuestos y sanciones: 61.300.000 + 44.100.000 = 105.400.000 pesos. Dividido por 52.374, unas 2.012 UVT. Pasa el umbral de 2.000 por muy poco: 2.000 UVT son 104.748.000 pesos.",
+        m: [{ s: "61.300.000 pesos", c: "p" }, { s: "44.100.000 pesos", c: "p" }, { s: "52.374 pesos", c: "y", n: "2.000 UVT = 104.748.000" }] },
+      { t: "El lugar y la materia", txt: "Girardot queda en Cundinamarca: su segundo escalón lo decide Bogotá. Como es renta, decide la de Impuestos; la de Aduanas solo lo aduanero y cambiario.",
+        m: [{ s: "mayor impuesto de renta", c: "g", n: "Tributario" }] },
+      { t: "Descartar", txt: "La primera opción mira solo el impuesto y olvida la sanción. La tercera acierta el lugar, pero no la materia.", o: [0, 2] }
+    ],
+    llevar: "La cuantía suma impuesto y sanción. En Bogotá, Cali y Medellín: impuestos con impuestos, aduanas con aduanas." },
+
+  /* ===================== F15 · La delegación por memorando ===================== */
+  { id: "F15", tema: "m05-2", sub: "s-delega", tec: "T8", lam: ["f46", "f45"],
+    caso: "El jefe de la División de Recaudo y Cobranzas de la Dirección Seccional de Impuestos y Aduanas de Armenia, con más de trescientos expedientes represados, firmó un memorando interno en el que le asignó a una profesional de su división una de las funciones que el decreto le atribuye a él como jefe. El director seccional conoció el memorando por correo electrónico y respondió: «De acuerdo, adelante». Semanas después, un contribuyente alega que el acto que recibió, firmado por esa profesional, fue expedido sin competencia.",
+    enunciado: "Frente a la alegación del contribuyente, lo jurídicamente correcto es concluir que",
+    ops: [
+      { t: "la profesional actuó con competencia, porque la delegación recayó en una empleada de la misma división y el superior manifestó su conformidad.", ok: false, err: "requisito",
+        por: "Cumple el destinatario (una empleada de la división), pero no la forma: el decreto exige resolución de quien ejerza la jefatura de la Dirección Seccional. Un memorando con un «de acuerdo» por correo no es esa resolución." },
+      { t: "la delegación no se perfeccionó, porque para las funciones de un jefe de división se exige resolución de quien ejerce la jefatura de la seccional.", ok: true,
+        por: "Es correcta. Las funciones de los jefes de división se delegan en empleados de esas divisiones «mediante resolución de quien ejerza la jefatura de la Dirección Seccional» (Decreto 1742 de 2020, art. 80, inc. 3). Sin ese acto, la profesional no tenía competencia y el acto queda expuesto a nulidad." },
+      { t: "la delegación sería válida si el director general la hubiera autorizado previamente, requisito que en este caso no se acreditó.", ok: false, err: "vecina",
+        por: "La autorización previa del director general es la regla para delegar funciones del nivel directivo. Para un jefe de división, lo que falta es la resolución del director seccional." }
+    ],
+    paseo: [
+      { t: "¿Quién delega?", txt: "El experto empieza por el cargo del delegante, porque de eso depende la regla. Es un jefe de división de una seccional: art. 80, inc. 3. En empleados de su división y mediante resolución del director seccional.",
+        m: [{ s: "El jefe de la División de Recaudo y Cobranzas", c: "b", n: "Jefe de división" }] },
+      { t: "¿Con qué instrumento?", txt: "Un memorando interno firmado por el propio jefe, y un «de acuerdo» por correo del director. Ninguno de los dos es la resolución de quien ejerce la jefatura de la seccional.",
+        m: [{ s: "firmó un memorando interno", c: "o", n: "No es resolución" }, { s: "«De acuerdo, adelante»", c: "o" }] },
+      { t: "La consecuencia", txt: "Una delegación mal hecha deja a la delegataria sin competencia, y sus actos quedan expuestos a nulidad. El contribuyente tiene un argumento serio.",
+        m: [{ s: "firmado por esa profesional", c: "g" }] },
+      { t: "Descartar", txt: "La primera opción cuenta el destinatario y olvida la forma. La tercera trae la regla del nivel directivo.", o: [0, 2] }
+    ],
+    llevar: "Delegación: primero el cargo de quien delega. Jefe de división: en empleados de su división y con resolución del director seccional." },
+
+  /* ===================== F16 · El concepto que el gestor no comparte ===================== */
+  { id: "F16", tema: "m05-4", sub: "s-doctrina", tec: "T5", lam: ["f62", "f63", "f64"],
+    caso: "Un gestor de la División de Fiscalización y Liquidación Tributaria de la Dirección Seccional de Impuestos y Aduanas de Pereira proyecta una liquidación oficial de revisión. Al estudiar el punto central de la discusión, encuentra un concepto de la Subdirección de Normativa y Doctrina, publicado en la página web de la entidad, que favorece la tesis del contribuyente. A su juicio, el concepto contradice el Estatuto Tributario. Su jefe le sugiere separarse de él, motivando el acto, porque «la doctrina no es ley y los funcionarios también se rigen por la ley».",
+    enunciado: "La actuación que se ajusta a las normas que rigen la doctrina de la DIAN es que el gestor",
+    ops: [
+      { t: "proyecte el acto conforme al concepto publicado y, si lo considera contrario a la ley, promueva su reconsideración ante la Dirección de Gestión Jurídica.", ok: true,
+        por: "Es correcta. Los conceptos publicados de la Subdirección de Normativa y Doctrina son interpretación oficial obligatoria para los empleados de la DIAN (Decreto 1742 de 2020, art. 56, par.), y su reconsideración la absuelve la Dirección de Gestión Jurídica (art. 55, num. 20)." },
+      { t: "se aparte del concepto con una motivación suficiente, porque las actuaciones ante la administración pueden sustentarse en la ley y no en la doctrina.", ok: false, err: "vecina",
+        por: "Mezcla una regla verdadera con el sujeto equivocado: sustentar las actuaciones «con base en la ley» es una garantía de los contribuyentes (Ley 2010 de 2019, art. 131). A los empleados, el concepto publicado los obliga." },
+      { t: "solicite a la Subdirección de Normativa y Doctrina que reconsidere su concepto y suspenda el proyecto hasta que ella se pronuncie.", ok: false, err: "inventada",
+        por: "La reconsideración no la decide la misma Subdirección, sino la Dirección de Gestión Jurídica. Y ninguna norma suspende el proyecto mientras tanto: el concepto sigue obligando." }
+    ],
+    paseo: [
+      { t: "¿Qué clase de pronunciamiento es?", txt: "Un concepto de la Subdirección de Normativa y Doctrina, publicado en la página web. Están las dos condiciones: lo expidió la autoridad doctrinaria y está publicado.",
+        m: [{ s: "publicado en la página web de la entidad", c: "g", n: "Condición de obligatoriedad" }] },
+      { t: "¿A quién obliga?", txt: "A los empleados públicos de la DIAN. El gestor no puede apartarse solo porque no lo comparte.",
+        m: [{ s: "Un gestor de la División de Fiscalización y Liquidación Tributaria", c: "b", n: "Empleado: obligado" }] },
+      { t: "La frase que distrae", txt: "«La doctrina no es ley» trae palabras verdaderas de otra norma: la que permite a los contribuyentes sustentarse en la ley. No libera al funcionario.",
+        m: [{ s: "«la doctrina no es ley y los funcionarios también se rigen por la ley»", c: "o", n: "Regla de los contribuyentes" }] },
+      { t: "¿Cómo se discute?", txt: "Pidiendo la reconsideración a la Dirección de Gestión Jurídica, no a la misma Subdirección. Mientras tanto, se aplica.", o: [1, 2] }
+    ],
+    llevar: "Concepto publicado: el funcionario lo aplica aunque no lo comparta, y lo discute ante la Dirección de Gestión Jurídica." },
+
+  /* ===================== F17 · «No es de nuestro resorte» ===================== */
+  { id: "F17", tema: "m05-2", sub: "s-conflicto", tec: "T1", lam: ["f49", "f50"],
+    caso: "La División Jurídica de la Dirección Seccional de Impuestos y Aduanas de Neiva recibió un escrito en el que un contribuyente pide que se le aclare el alcance de un emplazamiento que le notificaron. Lo remitió a la División de Fiscalización y Liquidación Tributaria de la misma seccional, que lo devolvió con un oficio: «No es de nuestro resorte». La División Jurídica insistió con otro oficio, y el escrito lleva cinco semanas sin respuesta. Un funcionario propone enviar el asunto a la Sala de Consulta y Servicio Civil del Consejo de Estado, «que es la que resuelve los conflictos entre autoridades nacionales».",
+    enunciado: "Para destrabar el trámite, la autoridad a la que corresponde definir cuál dependencia debe atender el escrito es",
+    ops: [
+      { t: "la Sala de Consulta y Servicio Civil del Consejo de Estado, porque las dos dependencias hacen parte de una autoridad del orden nacional.", ok: false, err: "vecina",
+        por: "El art. 39 del CPACA resuelve conflictos entre autoridades distintas. Aquí las dos dependencias son de la misma entidad y de la misma seccional: la Sala no es su superior." },
+      { t: "el director general de la entidad, porque le corresponde dirimir los conflictos de competencia entre dependencias de la DIAN.", ok: false, err: "verdad",
+        por: "El director general dirime los conflictos entre las direcciones del nivel central y las del nivel local. Entre dos dependencias de una misma seccional decide el director seccional." },
+      { t: "el director de la seccional de Neiva, porque el desacuerdo se presenta entre dos dependencias de esa misma seccional.", ok: true,
+        por: "Es correcta. El director seccional dirime los conflictos de competencia entre las dependencias de su seccional (Decreto 1742 de 2020, art. 70, num. 11)." }
+    ],
+    paseo: [
+      { t: "Traducir el rodeo", txt: "«No es de nuestro resorte» y el ir y venir de oficios describen un conflicto negativo de competencia: dos dependencias se declaran incompetentes.",
+        m: [{ s: "«No es de nuestro resorte»", c: "o", n: "= se declara incompetente" }, { s: "La División Jurídica insistió con otro oficio", c: "b" }] },
+      { t: "¿Una entidad o dos?", txt: "Las dos dependencias son de la DIAN: el art. 39 del CPACA no es la puerta. La frase del funcionario trae palabras verdaderas de esa norma, pero para otro supuesto.",
+        m: [{ s: "«que es la que resuelve los conflictos entre autoridades nacionales»", c: "o", n: "Regla vecina" }] },
+      { t: "¿De qué nivel es cada parte?", txt: "Las dos divisiones son de la seccional de Neiva. Decide su director (art. 70, num. 11). Si una fuera del nivel central, decidiría el director general.",
+        m: [{ s: "de la misma seccional", c: "g", n: "Misma seccional" }] },
+      { t: "Descartar", txt: "La primera opción aplica el CPACA a un conflicto interno. La segunda sube el conflicto un piso de más.", o: [0, 1] }
+    ],
+    llevar: "Conflicto de competencia: ¿una entidad o dos?, ¿de qué nivel es cada parte? Misma seccional: decide su director." }
 ];

@@ -1,4 +1,4 @@
-/* Mérito · versión 2026-10-22.3 · entrenamiento DIAN 2676 de Laura y Juan David. Hecha con Claude. */
+/* Mérito · versión 2026-10-30.1 · entrenamiento DIAN 2676 de Laura y Juan David. Hecha con Claude. */
 var APP = window.APP || (window.APP = {});
 
 /* ===== src/data/proyecto.js ===== */
@@ -32,6 +32,12 @@ APP.data.proyectos = [
         subtemas: ["s-subir", "s-bajar", "s-sinsancion", "s-peaje"] },
       { id: "m06-3", tipo: "funcional", nombre: "El reloj de la firmeza", corto: "Firmeza", denso: true,
         subtemas: ["s-reloj", "s-largos", "s-pausas", "s-beneficio"] },
+      { id: "m05-2", tipo: "funcional", nombre: "Tres niveles y quién manda en cada uno", corto: "Niveles", denso: true,
+        subtemas: ["s-niveles", "s-delega", "s-conflicto"] },
+      { id: "m05-3", tipo: "funcional", nombre: "Quién decide el recurso: cuantía, lugar y excepciones", corto: "Quién decide", denso: true,
+        subtemas: ["s-escalon", "s-capital", "s-excrec"] },
+      { id: "m05-4", tipo: "funcional", nombre: "La voz oficial: doctrina y representación", corto: "Doctrina", denso: false,
+        subtemas: ["s-doctrina", "s-repres"] },
       { id: "comp", tipo: "comportamental", nombre: "Competencias comportamentales", corto: "Comportamental", denso: false, subtemas: [] },
       { id: "integ", tipo: "integridad", nombre: "Integridad", corto: "Integridad", denso: false, subtemas: [] }
     ]
@@ -40,6 +46,8 @@ APP.data.proyectos = [
 
 /* Probabilidad de que el subtema aparezca en la prueba: criterio de Claude.
    alta = casi seguro que aparece en al menos un caso; media = puede aparecer; baja = poco probable o solo como distractor. */
+APP.data.modulos = { M05: "M05 · La DIAN por dentro", M06: "M06 · Ruta tributaria 1", M07: "M07 · Ruta tributaria 2" };
+
 APP.data.subtemas = {
   "s-nopres":     { tema: "m06-1", nombre: "Declaraciones que se tienen por no presentadas y cómo se sanean", prob: "media",
                     porque: "Es una lista cerrada (literales a, b y d) con una excepción que deja por fuera el literal c: material fácil de convertir en trampa." },
@@ -64,7 +72,24 @@ APP.data.subtemas = {
   "s-pausas":     { tema: "m06-3", nombre: "Suspensión del término (art. 706)", prob: "media",
                     porque: "Un emplazamiento o una inspección escondidos en el caso cambian la fecha final." },
   "s-beneficio":  { tema: "m06-3", nombre: "Beneficio de auditoría", prob: "media",
-                    porque: "Requisitos que se acumulan: basta que falte uno para volver a la regla general." }
+                    porque: "Requisitos que se acumulan: basta que falte uno para volver a la regla general." },
+  /* M05 · La DIAN por dentro (capítulos 2 a 4), desde el 30-oct-2026 */
+  "s-niveles":   { tema: "m05-2", nombre: "Los tres niveles y las piezas que se prestan para trampa", prob: "media",
+                   porque: "Tres datos de estructura suelen volverse distractores: Tributación Internacional en el despacho del director, Grandes Contribuyentes sin geografía y el Comité que solo propone." },
+  "s-delega":    { tema: "m05-2", nombre: "Quién firma, cómo se delega, quién responde y quién practica pruebas", prob: "alta",
+                   porque: "Decide la validez de los actos, y tiene tres reglas que se confunden entre sí y una excepción clásica (el contador en la inspección contable)." },
+  "s-conflicto": { tema: "m05-2", nombre: "Conflictos de competencia dentro y fuera de la DIAN", prob: "media",
+                   porque: "Mezcla el Decreto 1742 con el CPACA, que ya estudiaron: material natural para la trampa de la regla vecina." },
+  "s-escalon":   { tema: "m05-3", nombre: "Los tres escalones por cuantía (2.000 y 20.000 UVT)", prob: "alta",
+                   porque: "Es aritmética con umbrales: el operador puede dar la cuantía en pesos o separar impuesto y sanción." },
+  "s-capital":   { tema: "m05-3", nombre: "La seccional de la capital, con nombres propios", prob: "media",
+                   porque: "Lista larga con casos raros (Puerto Asís a Cali, Girardot a Bogotá, impuestos y aduanas partidos) que se prestan para distractores." },
+  "s-excrec":    { tema: "m05-3", nombre: "Excepciones: mercancía aprehendida, garantía, avocación, revocatoria y acumulación", prob: "alta",
+                   porque: "Son la puerta de la técnica favorita del operador: la excepción que desplaza a la regla general de cuantía." },
+  "s-doctrina":  { tema: "m05-4", nombre: "Doctrina: general, obligatoria si está publicada, y su reconsideración", prob: "alta",
+                   porque: "Toca el día a día del gestor: qué hacer con un concepto que no comparte y cómo responder una consulta concreta." },
+  "s-repres":    { tema: "m05-4", nombre: "Quién defiende a la DIAN: Representación Externa y Asuntos Penales", prob: "media",
+                   porque: "Dos subdirecciones con funciones vecinas (comité, conciliaciones, preacuerdos) que el operador puede intercambiar." }
 };
 
 APP.data.probTexto = {
@@ -199,7 +224,10 @@ APP.data.paginas = [
   { id: "p5", nombre: "Pausas y atajos del reloj", tema: "m06-3", tipo: "funcional", color: "g" },
   { id: "p6", nombre: "Tus competencias", tema: "comp", tipo: "comportamental", color: "b" },
   { id: "p7", nombre: "El método de los tres pasos", tema: "comp", tipo: "comportamental", color: "y" },
-  { id: "p8", nombre: "Los valores del Código", tema: "integ", tipo: "integridad", color: "g" }
+  { id: "p8", nombre: "Los valores del Código", tema: "integ", tipo: "integridad", color: "g" },
+  { id: "p9", nombre: "Tres niveles y quién manda", tema: "m05-2", tipo: "funcional", color: "b" },
+  { id: "p10", nombre: "Quién decide el recurso", tema: "m05-3", tipo: "funcional", color: "p" },
+  { id: "p11", nombre: "La voz oficial de la entidad", tema: "m05-4", tipo: "funcional", color: "g" }
 ];
 
 APP.data.laminas = [
@@ -542,7 +570,185 @@ APP.data.laminas = [
   { id: "v-disfraz", pag: "p8", sub: "v:metodo", t: "Las justificaciones que disfrazan una falta",
     q: "¿Cuáles son las justificaciones más comunes que disfrazan una falta en las afirmaciones de integridad?",
     a: "«De bajo valor», «en agradecimiento», «de confianza», «cuando ya terminé mis pendientes», «si considero que puedo manejarla», «para hacerme respetar», «para preparar mejor la atención», «cuando la situación lo amerita», «siempre que no perjudique a los demás».",
-    por: "Ninguna convierte la falta en pauta: la conducta sigue siendo la del «lo que no hago».", trampa: "La afirmación con «aunque» más un costo es otra cosa: describe una pauta que cuesta cumplir, y va a D.", src: "Código de Integridad DIAN, v3; lecciones del Plan DIAN Exprés.", tri: "domina" }
+    por: "Ninguna convierte la falta en pauta: la conducta sigue siendo la del «lo que no hago».", trampa: "La afirmación con «aunque» más un costo es otra cosa: describe una pauta que cuesta cumplir, y va a D.", src: "Código de Integridad DIAN, v3; lecciones del Plan DIAN Exprés.", tri: "domina" },
+  /* ================= Actualización M05 (capítulos 2 a 4) · 30-oct-2026 =================
+     Fuente: lección DIAN EXPRÉS M05, que leyó el Decreto 1742 de 2020, el ET (art. 560, con sus notas de vigencia),
+     la Ley 2010 de 2019 (art. 131, con la C-514 de 2019) y la Resolución DIAN 000238 de 2025 (UVT 2026). */
+
+  /* ---------------- Página 9 · Tres niveles y quién manda ---------------- */
+  { id: "f40", pag: "p9", sub: "s-niveles", t: "Tres niveles",
+    q: "¿En qué niveles funciona la DIAN y qué hay en el central?",
+    a: "Central, local y delegado. En el central: la Dirección General con cuatro oficinas (Control Interno, Seguridad de la Información, Comunicaciones Institucionales y Tributación Internacional), ocho direcciones de gestión, la Dirección Operativa de Grandes Contribuyentes, el Defensor del Contribuyente y del Usuario Aduanero y el Comité Institucional Estratégico.",
+    por: "Uno fija el rumbo, otro lo ejecuta en el territorio y el delegado llega donde la actividad lo pide.",
+    trampa: "El nivel delegado no está fijo en el decreto: lo autoriza el director general por resolución.",
+    src: "Decreto 1742 de 2020, arts. 4 y 5.", tri: "reconoce", num: ["4 oficinas", "8 direcciones de gestión"] },
+  { id: "f41", pag: "p9", sub: "s-niveles", t: "Tributación Internacional",
+    q: "¿Quién es la «autoridad competente» para el intercambio internacional de información y el procedimiento de mutuo acuerdo?",
+    a: "La Oficina de Tributación Internacional, del despacho del director general. También lleva los acuerdos anticipados de precios de transferencia. Una solicitud de una administración extranjera no la responde una seccional: se canaliza hacia ella.",
+    por: "Lo que compromete al país frente a otro Estado se maneja arriba, en un solo punto.",
+    trampa: "No está en la Dirección de Gestión de Fiscalización, aunque el tema suene a fiscalización.",
+    src: "Decreto 1742 de 2020, arts. 5 y 12.", tri: "domina", num: [] },
+  { id: "f42", pag: "p9", sub: "s-niveles", t: "Grandes contribuyentes, sin geografía",
+    q: "¿Quién administra los impuestos de un gran contribuyente con domicilio en Pereira?",
+    a: "La Dirección Operativa de Grandes Contribuyentes, del nivel central, «sin consideración de su ubicación geográfica». No la seccional de Pereira. Esa dirección también proyecta, para la firma del director general, la resolución que califica o excluye a los grandes contribuyentes.",
+    por: "Al gran contribuyente se le mira como uno solo en todo el país.",
+    trampa: "El domicilio no manda. Y si lo excluyen de la calificación, vuelve a la seccional de su jurisdicción.",
+    src: "Decreto 1742 de 2020, art. 63.", tri: "domina", num: [] },
+  { id: "f43", pag: "p9", sub: "s-niveles", t: "El Comité solo asesora",
+    q: "¿Quién aprueba el Plan Estratégico de la DIAN? ¿Qué aprueba el Comité Institucional Estratégico?",
+    a: "El plan lo aprueba el director general. El comité lo propone «para su aprobación» y le hace seguimiento. Sí aprueba ciertas políticas de gestión: la de seguridad de la información, la archivística y la de talento humano. Lo preside el director general; lo integran los directores de gestión y el jefe de la Oficina de Seguridad de la Información; su secretaría técnica es la Dirección de Gestión Corporativa.",
+    por: "El comité reúne a los que saben; el que decide el rumbo es el director.",
+    trampa: "«Estratégico» suena a quien aprueba el plan estratégico: solo lo propone.",
+    src: "Decreto 1742 de 2020, art. 77.", tri: "domina", num: [] },
+  { id: "f44", pag: "p9", sub: "s-niveles", t: "45 seccionales y las delegadas",
+    q: "¿Cuántas seccionales hay, de qué clase, y quién crea las delegadas?",
+    a: "45: 6 de impuestos (Barranquilla, Bogotá, Cali, Cartagena, Cúcuta y Medellín), 7 de aduanas (esas seis más Bogotá-Aeropuerto El Dorado) y 32 de impuestos y aduanas. Son de tipo I, II o III, y el director general puede reclasificarlas con acto motivado. Las delegadas, permanentes o transitorias, las autoriza el director general por resolución, previa disponibilidad presupuestal.",
+    por: "Donde hay mucho movimiento se separan impuestos y aduanas; en el resto, una sola seccional hace las dos cosas.",
+    trampa: "El director seccional es superior de la delegada, pero no la crea.",
+    src: "Decreto 1742 de 2020, arts. 6 y 7.", tri: "reconoce", num: ["45", "6 + 7 + 32"] },
+  { id: "f51", pag: "p9", sub: "s-niveles", t: "El director seccional y sus divisiones",
+    q: "¿Qué hace el director seccional y cómo se reparten el trabajo las divisiones?",
+    a: "El director seccional es el superior funcional y jerárquico de su seccional y del nivel delegado; dirime los conflictos entre sus dependencias, tramita quejas y reclamos y notifica por medio electrónico sus actos. Fiscalización y Liquidación Tributaria profiere los actos preparatorios y los de determinación y sanción; la Aduanera o Cambiaria investiga, aprehende y decide de fondo; la jurídica resuelve los recursos contra decomiso y abandono.",
+    por: "Una sola cabeza en el territorio; las divisiones se reparten el fondo.",
+    trampa: "Donde existe una división de determinación, sanción y decomiso, es ella la que estudia las respuestas y profiere los actos definitivos.",
+    src: "Decreto 1742 de 2020, arts. 70 a 74.", tri: "reconoce", num: [] },
+  { id: "f45", pag: "p9", sub: "s-delega", t: "Quién firma y cómo delega el director general",
+    q: "¿Quién es competente para proferir los actos, y en quién delega el director general?",
+    a: "Salvo normas especiales, firman los empleados nombrados o designados como jefes de las dependencias. El director general puede delegar sus funciones en cualquiera de los directores de gestión o en el empleado que él designe por resolución.",
+    por: "El jefe de cada dependencia responde por lo que sale de ella.",
+    trampa: "No delega en el Comité ni necesita su aprobación.",
+    src: "Decreto 1742 de 2020, arts. 78 y 80, inc. 1.", tri: "domina", num: [] },
+  { id: "f46", pag: "p9", sub: "s-delega", t: "Delegar: nivel directivo y jefes de división",
+    q: "¿Cómo delegan un director seccional y un jefe de división?",
+    a: "El nivel directivo (central o local) solo delega en empleados de la respectiva dependencia y con autorización previa del director general. El jefe de división delega en empleados de su división mediante resolución de quien ejerza la jefatura de la Dirección Seccional. El ET añade: el funcionario del nivel ejecutivo delega en funcionarios ejecutivos o profesionales a su cargo, con resolución aprobada por su superior.",
+    por: "Entre más alto el cargo, más alto el permiso.",
+    trampa: "Antes de juzgar una delegación, identifica el cargo de quien delega: de eso depende la regla. Mal hecha, deja al delegatario sin competencia.",
+    src: "Decreto 1742 de 2020, art. 80, incs. 2 y 3; ET, art. 560.", tri: "domina", num: [] },
+  { id: "f47", pag: "p9", sub: "s-delega", t: "Grupos internos: quién responde",
+    q: "¿Quién responde por las funciones delegadas a un grupo interno de trabajo?",
+    a: "El jefe del grupo, «sin perjuicio» de la responsabilidad del jefe de la dependencia por la orientación y el control. Los grupos los crea, suprime, fusiona o escinde el director general por acto administrativo; en el nivel central se llaman «coordinaciones», salvo en la Policía Fiscal y Aduanera, donde se llaman «divisiones».",
+    por: "Uno responde por lo que hizo; el otro, por cómo orientó y controló.",
+    trampa: "No es responsabilidad de uno solo: es compartida, con contenidos distintos.",
+    src: "Decreto 1742 de 2020, art. 81.", tri: "reconoce", num: [] },
+  { id: "f48", pag: "p9", sub: "s-delega", t: "Pruebas y jueces: contador y abogado",
+    q: "¿Quién puede practicar pruebas y quién puede actuar ante los jueces?",
+    a: "Cualquier empleado puede cumplir comisiones para investigar y practicar pruebas, salvo las inspecciones contables y la prueba pericial contable: ahí el funcionario debe ser contador público matriculado. Para actuar ante los jueces, abogado matriculado con poder especial o general.",
+    por: "Para leer una contabilidad se necesita un contador; para hablar ante un juez, un abogado.",
+    trampa: "El patrón de siempre: aplicar la regla general («cualquier empleado») donde rige la especial.",
+    src: "Decreto 1742 de 2020, art. 79.", tri: "domina", num: [] },
+  { id: "f49", pag: "p9", sub: "s-conflicto", t: "Conflictos: dentro y fuera de la DIAN",
+    q: "¿Quién dirime un conflicto de competencia en cada caso?",
+    a: "Entre dependencias de una misma seccional: el director seccional. Entre una dirección del nivel central y una del nivel local: el director general. Entre la DIAN y otra autoridad del orden nacional: la Sala de Consulta y Servicio Civil del Consejo de Estado.",
+    por: "Decide el primer jefe común de las dos partes; si no hay jefe común, el juez de los conflictos.",
+    trampa: "La Sala de Consulta no es superior de las dependencias de la DIAN: no se llega a ella por un conflicto interno.",
+    src: "Decreto 1742 de 2020, arts. 8, num. 27, y 70, num. 11; CPACA, art. 39.", tri: "domina", num: [] },
+  { id: "f50", pag: "p9", sub: "s-conflicto", t: "Cómo se ataca un conflicto",
+    q: "¿En qué orden se analiza un conflicto de competencia?",
+    a: "Primero: ¿está dentro de una sola entidad o entre entidades distintas? Si es entre entidades, CPACA. Si es dentro de la DIAN: ¿de qué nivel es cada parte? Las dos de la misma seccional, director seccional; una del central y otra del local, director general.",
+    por: "Dos preguntas bastan: ¿una o dos entidades?, ¿qué nivel tiene cada parte?",
+    trampa: "Que una parte sea de una seccional no le da al director de esa seccional el poder de decidir contra el nivel central.",
+    src: "Decreto 1742 de 2020, arts. 8 y 70; CPACA, art. 39.", tri: "reconoce", num: [] },
+
+  /* ---------------- Página 10 · Quién decide el recurso ---------------- */
+  { id: "f52", pag: "p10", sub: "s-escalon", t: "Tres escalones por cuantía",
+    q: "¿Quién decide el recurso de reconsideración según la cuantía del acto?",
+    a: "Sin cuantía o menos de 2.000 UVT: la división jurídica de la dependencia que profirió el acto. De 2.000 UVT a menos de 20.000: la seccional que el decreto señala para la capital del departamento. 20.000 UVT o más: la Subdirección de Recursos Jurídicos, del nivel central.",
+    por: "Entre más plata en discusión, más arriba se decide.",
+    trampa: "Los umbrales viejos (750 y 5.000; 750 y 10.000 UVT) ya no rigen.",
+    src: "ET, art. 560 (mod. Ley 1819 de 2016, art. 281); Decreto 1742 de 2020, arts. 57 y 69.", tri: "domina", num: ["2.000 UVT", "20.000 UVT"] },
+  { id: "f53", pag: "p10", sub: "s-escalon", t: "Los umbrales en pesos de 2026",
+    q: "Con la UVT de 2026, ¿cuánto son 2.000 y 20.000 UVT?",
+    a: "La UVT de 2026 es de 52.374 pesos. 2.000 UVT = 104.748.000 pesos. 20.000 UVT = 1.047.480.000 pesos. Si el caso da la cuantía en pesos, se divide por la UVT.",
+    por: "Unos 105 millones y unos mil cuarenta y siete millones: el primer umbral es la décima parte del segundo.",
+    trampa: "La cuantía suma impuestos y sanciones: no basta mirar el mayor impuesto.",
+    src: "Resolución DIAN 000238 de 2025; Decreto 1742 de 2020, art. 69.", tri: "domina", num: ["52.374", "104.748.000", "1.047.480.000"] },
+  { id: "f54", pag: "p10", sub: "s-escalon", t: "Qué actos y qué cuenta",
+    q: "¿Contra qué actos procede la reconsideración, qué suma la cuantía y qué más sigue estas reglas?",
+    a: "Procede contra los actos de determinación (con las sanciones que contienen), los que imponen sanciones, los que deciden devoluciones o compensaciones y los cambiarios. La cuantía comprende los mayores valores por impuestos y sanciones. Las mismas reglas se aplican a la revocatoria directa de esos actos: de oficio, a petición de parte o por orden judicial.",
+    por: "El recurso y la revocatoria discuten lo mismo: los decide el mismo escalón.",
+    trampa: "La revocatoria no va al superior del que firmó, como en el CPACA: sigue el escalón de cuantía.",
+    src: "ET, art. 560; Decreto 1742 de 2020, art. 69, par. 2.", tri: "domina", num: [] },
+  { id: "f55", pag: "p10", sub: "s-capital", t: "Capitales partidas: Bogotá, Cali y Medellín",
+    q: "En el segundo escalón, ¿quién decide lo de Girardot, Buenaventura, Palmira, Tuluá, Puerto Asís y Urabá?",
+    a: "Donde hay dos seccionales, la de impuestos decide lo tributario y la de aduanas lo aduanero y cambiario. Bogotá: lo suyo y lo de Girardot (y la de aduanas, lo de El Dorado). Cali: lo suyo y lo de Buenaventura, Palmira, Tuluá y Puerto Asís. Medellín: lo suyo y lo de Urabá.",
+    por: "Primero el lugar, después la materia: impuestos con impuestos, aduanas con aduanas.",
+    trampa: "Puerto Asís queda en el Putumayo, pero va a Cali: en Mocoa no hay seccional. Y El Dorado es zona gris: el num. 2.2 lo manda a Aduanas de Bogotá y el 2.17 lo pone a decidir lo suyo.",
+    src: "Decreto 1742 de 2020, art. 69, num. 2.", tri: "domina", num: [] },
+  { id: "f56", pag: "p10", sub: "s-capital", t: "Una sola seccional para todo",
+    q: "¿Qué capitales deciden con una sola seccional, y quiénes deciden lo suyo?",
+    a: "Bucaramanga (y Barrancabermeja), Pasto (y Ipiales y Tumaco), Riohacha (y Maicao) y Tunja (y Sogamoso) deciden todas las materias. Barranquilla, Cartagena y Cúcuta deciden lo suyo, separando impuestos y aduanas. Las demás seccionales de impuestos y aduanas deciden sus propios recursos, y también la Dirección Operativa de Grandes Contribuyentes.",
+    por: "La capital del departamento recoge lo de las seccionales pequeñas de su departamento.",
+    trampa: "La Dirección Operativa de Grandes Contribuyentes decide su segundo escalón: no lo manda a la seccional de Bogotá.",
+    src: "Decreto 1742 de 2020, art. 69, num. 2.", tri: "reconoce", num: [] },
+  { id: "f57", pag: "p10", sub: "s-excrec", t: "Mercancía aprehendida",
+    q: "¿Quién decide el recurso contra el acto que define la situación jurídica de mercancía aprehendida?",
+    a: "La división jurídica de la seccional de aduanas o de impuestos y aduanas, cualquiera que sea el valor de la mercancía. Un decomiso de 30.000 UVT no sube al nivel central.",
+    por: "La mercancía está en el territorio, y allí se resuelve su suerte.",
+    trampa: "Si el acto es una multa sin aprehensión, vuelve la regla de cuantía.",
+    src: "Decreto 1742 de 2020, art. 69, par. 3, y art. 74.", tri: "domina", num: [] },
+  { id: "f58", pag: "p10", sub: "s-excrec", t: "Garantía de objeto único",
+    q: "¿Quién decide el recurso contra el acto que declara un incumplimiento y ordena hacer efectiva la garantía?",
+    a: "Si ese es su objeto único, la división jurídica de la Dirección Operativa de Grandes Contribuyentes o de la seccional que lo expidió, sin importar la cuantía.",
+    por: "Hacer efectiva una póliza es un trámite de la dependencia que la recibió.",
+    trampa: "La palabra decisiva es «único»: si el mismo acto impone además una sanción, vuelve la regla de cuantía.",
+    src: "Decreto 1742 de 2020, art. 69, par. 4.", tri: "domina", num: [] },
+  { id: "f59", pag: "p10", sub: "s-excrec", t: "Avocar y revocar en la Subdirección",
+    q: "¿Cuándo decide la Subdirección de Recursos Jurídicos aunque el acto sea de menos de 20.000 UVT?",
+    a: "Cuando avoca el conocimiento, cosa que puede hacer si lo estima conveniente, aunque la seccional ya tenga listo un proyecto. Y las revocatorias directas contra sus propios actos las resuelve ella, independientemente de su cuantía.",
+    por: "El nivel central puede llamar a sí lo que considere importante, y responde por lo que él mismo firmó.",
+    trampa: "Poder avocar no es haber avocado: sin avocación, decide el escalón que corresponda.",
+    src: "Decreto 1742 de 2020, art. 57, nums. 5 y 7.", tri: "domina", num: [] },
+  { id: "f60", pag: "p10", sub: "s-excrec", t: "Sin acumular, y el Comité Técnico",
+    q: "¿Se suman varios actos para fijar la cuantía? ¿Cuándo actúa el Comité Técnico?",
+    a: "No: para fijar la cuantía no hay lugar a la acumulación de expedientes; tres actos de 8.000 UVT siguen siendo tres actos del segundo escalón. En el tercer escalón, si el contribuyente lo pide, el expediente pasa antes del fallo por un Comité Técnico (ministro de Hacienda o su delegado, director general o su delegado, director de gestión jurídica o su delegado, y los abogados ponente y revisor).",
+    por: "Cada acto se discute por lo que vale. Y en los grandes, el contribuyente puede pedir una segunda mirada técnica.",
+    trampa: "Si el contribuyente lo pidió, la revisión del comité no es facultativa para la DIAN.",
+    src: "Decreto 1742 de 2020, art. 57, par.; ET, art. 560, par. 1.", tri: "domina", num: [] },
+
+  /* ---------------- Página 11 · La voz oficial ---------------- */
+  { id: "f61", pag: "p11", sub: "s-doctrina", t: "Doctrina general, no particular",
+    q: "¿Qué consultas absuelve la Subdirección de Normativa y Doctrina, y cuáles no?",
+    a: "Es la autoridad doctrinaria nacional en materia tributaria, aduanera y de fiscalización cambiaria. Absuelve las consultas escritas presentadas de manera general. La doctrina «será de carácter general y no se referirá a asuntos particulares»: ante un caso concreto, explica en abstracto cómo se interpretan las normas, sin calificarlo.",
+    por: "Si la doctrina calificara casos, cada consulta sería una sentencia anticipada.",
+    trampa: "Aportar facturas y fechas no obliga a la Subdirección a calificar la operación.",
+    src: "Decreto 1742 de 2020, art. 56.", tri: "domina", num: [] },
+  { id: "f62", pag: "p11", sub: "s-doctrina", t: "Obliga si está publicada",
+    q: "¿A quién obligan los conceptos de la Dirección de Gestión Jurídica y de la Subdirección de Normativa y Doctrina?",
+    a: "Son interpretación oficial obligatoria para los empleados públicos de la DIAN, siempre que estén publicados en la página web de la entidad. El gestor que proyecta un acto no puede apartarse de un concepto publicado solo porque no lo comparte.",
+    por: "Una entidad no puede hablar con dos voces: la publicada es la de todos.",
+    trampa: "Obligan a los empleados, no a los contribuyentes. Y sin publicación no hay obligatoriedad.",
+    src: "Decreto 1742 de 2020, arts. 55 y 56, pars.; Ley 2010 de 2019, art. 131.", tri: "domina", num: [] },
+  { id: "f63", pag: "p11", sub: "s-doctrina", t: "Reconsiderar un concepto",
+    q: "¿Ante quién se pide la reconsideración de un concepto de la Subdirección de Normativa y Doctrina?",
+    a: "Ante la Dirección de Gestión Jurídica, que está encima de esa subdirección, profiere los conceptos unificados y absuelve las peticiones de reconsideración. Mientras se decide, el funcionario sigue aplicando el concepto publicado.",
+    por: "No se «apela» ante quien expidió el concepto: se pide al superior que lo revise.",
+    trampa: "Inaplicarlo por cuenta propia expone el acto a discusión y al funcionario a un riesgo disciplinario.",
+    src: "Decreto 1742 de 2020, art. 55, num. 20.", tri: "domina", num: [] },
+  { id: "f64", pag: "p11", sub: "s-doctrina", t: "El contribuyente y la «ley»",
+    q: "¿En qué puede sustentar el contribuyente sus actuaciones frente a la DIAN y ante los jueces?",
+    a: "«Con base en la ley». La Corte condicionó la palabra: comprende todas las fuentes del derecho que admite el ordenamiento, no solo la ley en sentido formal ni solo la doctrina oficial.",
+    por: "La doctrina ata a los funcionarios; al contribuyente lo ata el derecho.",
+    trampa: "La DIAN no puede rechazar un argumento solo porque se apoya en una fuente distinta de la ley formal o de su doctrina.",
+    src: "Ley 2010 de 2019, art. 131; Corte Constitucional, C-514 de 2019.", tri: "reconoce", num: [] },
+  { id: "f65", pag: "p11", sub: "s-doctrina", t: "La asesoría no obliga",
+    q: "¿Obliga la asesoría jurídica que la Dirección de Gestión Jurídica o la Subdirección de Normativa y Doctrina le dan a un director?",
+    a: "No: esa asesoría «no será vinculante para el solicitante». Se parece al concepto, pero es otra cosa: el concepto publicado obliga a los funcionarios; la asesoría no obliga a quien la pidió.",
+    por: "Quien pide consejo conserva la decisión.",
+    trampa: "No confundas asesoría con concepto: el segundo sí obliga, aun al director que no lo comparte.",
+    src: "Decreto 1742 de 2020, arts. 55, num. 5, y 56, num. 2.", tri: "domina", num: [] },
+  { id: "f66", pag: "p11", sub: "s-repres", t: "Representación Externa",
+    q: "¿Qué hace la Subdirección de Representación Externa?",
+    a: "Representa a la DIAN, según las delegaciones del director general, en los procesos judiciales y administrativos que no estén asignados a otra dependencia, y en conciliaciones y otros mecanismos alternativos. Administra el buzón exclusivo de notificaciones judiciales y gestiona los asuntos del Comité de Conciliación y Defensa Judicial.",
+    por: "Es la puerta judicial de la entidad para todo lo que no sea penal ni esté asignado a otro.",
+    trampa: "Las ofertas conciliatorias de los procesos penales no son suyas: las lleva Asuntos Penales.",
+    src: "Decreto 1742 de 2020, art. 58.", tri: "domina", num: [] },
+  { id: "f67", pag: "p11", sub: "s-repres", t: "Asuntos Penales",
+    q: "¿Qué hace la Subdirección de Asuntos Penales?",
+    a: "Representa a la DIAN en los procesos penales por conductas detectadas y denunciadas por sus empleados y en aquellos en que la entidad puede ser víctima. Formula denuncias, promueve el incidente de reparación integral y lleva al Comité de Conciliación y Defensa Judicial los preacuerdos, los principios de oportunidad y las ofertas conciliatorias de esos procesos.",
+    por: "Lo penal tiene su propio abogado dentro de la entidad.",
+    trampa: "Que el comité lo gestione Representación Externa no le quita a Asuntos Penales sus preacuerdos.",
+    src: "Decreto 1742 de 2020, art. 59.", tri: "domina", num: [] }
+
 ];
 
 
@@ -609,7 +815,44 @@ APP.data.mapas = {
       { k: "so", t: "+ lo que dure", d: "Inspección pedida por el contribuyente.", lam: ["f33"] },
       { k: "em", t: "+ 1 mes", d: "Emplazamiento para corregir, aunque no se responda.", lam: ["f34"] }
     ],
-    nota: "El beneficio de auditoría (años 2022 a 2026) exige presentar y pagar a tiempo, que no llegue ningún acto en ese término y un impuesto base de al menos 71 UVT." }
+    nota: "El beneficio de auditoría (años 2022 a 2026) exige presentar y pagar a tiempo, que no llegue ningún acto en ese término y un impuesto base de al menos 71 UVT." },
+  /* ---------- M05 · La DIAN por dentro (capítulos 2 a 4), desde el 30-oct-2026 ---------- */
+  "m05-2": { nombre: "¿Quién manda aquí?", preguntas: ["¿En qué nivel está?", "¿Quién firma o delega?", "¿Quién destraba?"],
+    filas: [
+      { k: "central", t: "Nivel central", col: "b", lam: ["f40", "f41", "f42", "f43"], norma: "Decreto 1742 de 2020, arts. 4, 5, 12, 63 y 77",
+        d: "Dirección General con cuatro oficinas (Tributación Internacional entre ellas), ocho direcciones de gestión, Grandes Contribuyentes (sin geografía), el Defensor y el Comité Institucional Estratégico, que solo propone el plan." },
+      { k: "local", t: "Nivel local y delegado", col: "y", lam: ["f44", "f51"], norma: "Arts. 6, 7 y 70 a 74",
+        d: "45 seccionales (6 de impuestos, 7 de aduanas y 32 de impuestos y aduanas), de tipo I, II o III. Las delegadas las autoriza el director general. El director seccional es el superior de su seccional." },
+      { k: "firma", t: "Quién firma y cómo se delega", col: "g", lam: ["f45", "f46"], norma: "Arts. 78 y 80; ET, art. 560",
+        d: "Firman los jefes de dependencia. Director general: en directores de gestión o en quien designe. Nivel directivo: en su dependencia, con autorización previa del director general. Jefe de división: con resolución del director seccional." },
+      { k: "grupos", t: "Grupos internos, pruebas y jueces", col: "o", lam: ["f47", "f48"], norma: "Arts. 79 y 81",
+        d: "En el grupo responde su jefe, sin perjuicio del jefe de la dependencia. Pruebas: cualquier empleado comisionado, salvo las contables (contador público). Ante jueces: abogado con poder." },
+      { k: "conflicto", t: "Conflictos de competencia", col: "p", lam: ["f49", "f50"], norma: "Arts. 8, num. 27, y 70, num. 11; CPACA, art. 39",
+        d: "Dentro de una seccional: el director seccional. Entre el central y el local: el director general. Con otra autoridad nacional: la Sala de Consulta y Servicio Civil." }
+    ] },
+  "m05-3": { nombre: "¿Quién decide el recurso?", preguntas: ["¿Tiene regla especial?", "¿Cuánto vale?", "¿De dónde salió?"],
+    filas: [
+      { k: "esp", t: "Primero, las excepciones", col: "o", lam: ["f57", "f58", "f59"], norma: "Decreto 1742, arts. 57 y 69, pars. 3 y 4",
+        d: "Mercancía aprehendida: la jurídica de la seccional, sin importar el valor. Garantía de objeto único: la jurídica de quien la expidió. Avocación: la Subdirección de Recursos Jurídicos. Revocatoria de sus propios actos: ella misma." },
+      { k: "cuantia", t: "Después, la cuantía", col: "p", lam: ["f52", "f53", "f54"], norma: "ET, art. 560; Decreto 1742, art. 69",
+        d: "Menos de 2.000 UVT o sin cuantía: la jurídica de quien profirió. De 2.000 a menos de 20.000: la seccional de la capital. 20.000 o más: la Subdirección de Recursos Jurídicos. Impuestos y sanciones se suman." },
+      { k: "lugar", t: "Por último, el lugar", col: "y", lam: ["f55", "f56"], norma: "Decreto 1742, art. 69, num. 2",
+        d: "Tunja (Sogamoso), Bucaramanga (Barrancabermeja), Pasto (Ipiales y Tumaco), Riohacha (Maicao), Cali (Buenaventura, Palmira, Tuluá y Puerto Asís), Medellín (Urabá), Bogotá (Girardot). Las demás deciden lo suyo." },
+      { k: "comite", t: "Sin acumular, y el Comité Técnico", col: "g", lam: ["f60"], norma: "Decreto 1742, art. 57, par.; ET, art. 560, par. 1",
+        d: "Para la cuantía no se acumulan expedientes. En el tercer escalón, si el contribuyente lo pide, el expediente pasa por el Comité Técnico antes del fallo." }
+    ],
+    nota: "Con la UVT de 2026 (52.374 pesos), 2.000 UVT son 104.748.000 pesos y 20.000 UVT son 1.047.480.000 pesos." },
+  "m05-4": { nombre: "La voz oficial", preguntas: ["¿Quién habla?", "¿A quién obliga?", "¿Cómo se discute?"],
+    filas: [
+      { k: "doct", t: "Doctrina general", col: "b", lam: ["f61"], norma: "Decreto 1742, art. 56",
+        d: "La Subdirección de Normativa y Doctrina absuelve consultas generales. No califica asuntos particulares: explica en abstracto." },
+      { k: "obliga", t: "Obliga a los funcionarios", col: "g", lam: ["f62", "f64"], norma: "Decreto 1742, arts. 55 y 56, pars.; Ley 2010, art. 131; C-514 de 2019",
+        d: "Los conceptos publicados en la página web obligan a los empleados de la DIAN. El contribuyente puede sustentarse en la ley, entendida como todas las fuentes del derecho." },
+      { k: "reconsid", t: "Reconsideración y asesoría", col: "o", lam: ["f63", "f65"], norma: "Decreto 1742, arts. 55, nums. 5 y 20, y 56, num. 2",
+        d: "La reconsideración de un concepto de la Subdirección la absuelve la Dirección de Gestión Jurídica. La asesoría a los directores no obliga a quien la pidió." },
+      { k: "repres", t: "Quién defiende a la DIAN", col: "y", lam: ["f66", "f67"], norma: "Decreto 1742, arts. 58 y 59",
+        d: "Representación Externa: procesos no asignados a otra dependencia, conciliaciones, buzón judicial y Comité de Conciliación. Asuntos Penales: procesos penales, denuncias, reparación integral y preacuerdos." }
+    ] }
 };
 
 APP.data.escenas = [
@@ -771,7 +1014,107 @@ APP.data.escenas = [
     check: { q: "Subió el impuesto 40 %, presentó a tiempo, pero pagó la última cuota tarde. ¿En cuánto queda en firme?",
       ops: [{ t: "Tres años: faltó el pago total en los plazos.", ok: true, por: "Los requisitos se acumulan." },
             { t: "Seis meses: el aumento superó el 35 %.", ok: false, por: "Falta un requisito." },
-            { t: "Doce meses, por el pago tardío.", ok: false, por: "El pago tardío no rebaja el beneficio: lo quita." }] } }
+            { t: "Doce meses, por el pago tardío.", ok: false, por: "El pago tardío no rebaja el beneficio: lo quita." }] } },
+  /* ---------- M05 · La DIAN por dentro (capítulos 2 a 4), desde el 30-oct-2026 ---------- */
+  { id: "e16", tema: "m05-2", mapa: "m05-2", foco: ["central"], lam: ["f40", "f41", "f42", "f43"],
+    titulo: "Tres niveles y tres trampas del nivel central",
+    cuerpo: ["La DIAN funciona en tres niveles: central, local y delegado. El delegado no está fijo en el decreto: lo autoriza el director general.",
+             "Primera trampa: la Oficina de Tributación Internacional está en el despacho del director general, no en Fiscalización. Es la autoridad competente para el intercambio internacional de información.",
+             "Segunda: la Dirección Operativa de Grandes Contribuyentes administra sus impuestos sin importar dónde estén. Un grande de Pereira no es de la seccional de Pereira.",
+             "Tercera: el Comité Institucional Estratégico solo propone el Plan Estratégico. Lo aprueba el director general."],
+    porque: "Lo que compromete al país, lo de los contribuyentes más grandes y el rumbo de la entidad se manejan desde arriba, en un solo punto.",
+    check: { q: "Una sociedad con domicilio en Manizales fue calificada como gran contribuyente, y una administración tributaria extranjera acaba de pedir información sobre ella. ¿Qué dependencia administra sus impuestos?",
+      ops: [{ t: "La Dirección Operativa de Grandes Contribuyentes, sin consideración de su ubicación.", ok: true, por: "Decreto 1742, art. 63." },
+            { t: "La Dirección Seccional de Impuestos y Aduanas de Manizales, por su domicilio.", ok: false, por: "Para el gran contribuyente, el domicilio no manda." },
+            { t: "La Oficina de Tributación Internacional, porque hay una administración extranjera de por medio.", ok: false, por: "Esa oficina canaliza el intercambio de información; no administra los impuestos del contribuyente." }] } },
+  { id: "e17", tema: "m05-2", mapa: "m05-2", foco: ["firma", "grupos"], lam: ["f45", "f46", "f47", "f48"],
+    titulo: "Mandar no es lo mismo que firmar",
+    cuerpo: ["Firman los jefes de las dependencias. Para delegar, primero identifica el cargo de quien delega.",
+             "Director general: delega en cualquier director de gestión o en el empleado que designe. Nivel directivo: en su dependencia y con autorización previa del director general. Jefe de división: con resolución del director seccional.",
+             "En un grupo interno responde su jefe, sin perjuicio del jefe de la dependencia por la orientación y el control.",
+             "Cualquier empleado puede practicar pruebas, salvo la inspección contable y la pericial contable: contador público. Ante jueces: abogado con poder."],
+    porque: "Entre más alto el cargo, más alto el permiso para delegar. Y lo técnico lo hace quien tiene el título.",
+    check: { q: "Un jefe de división de una seccional delega una de sus funciones en un profesional de su división mediante una resolución firmada por el director seccional. ¿Qué debe concluirse?",
+      ops: [{ t: "Es válida: es la forma que el decreto exige para los jefes de división.", ok: true, por: "Decreto 1742, art. 80, inc. 3." },
+            { t: "No es válida: faltó la autorización previa del director general.", ok: false, por: "Esa autorización se exige para delegar funciones del nivel directivo, no las de un jefe de división." },
+            { t: "No es válida: los jefes de división no pueden delegar sus funciones.", ok: false, por: "Sí pueden, en empleados de su división y con resolución del director seccional." }] } },
+  { id: "e18", tema: "m05-2", mapa: "m05-2", foco: ["conflicto", "local"], lam: ["f44", "f49", "f50", "f51"],
+    titulo: "Cuando dos dependencias se pasan el expediente",
+    cuerpo: ["El nivel local son 45 seccionales: 6 de impuestos, 7 de aduanas y 32 de impuestos y aduanas. Su director es el superior de todo lo que hay en ella.",
+             "Para un conflicto de competencia, dos preguntas: ¿es dentro de la DIAN o con otra entidad?, ¿de qué nivel es cada parte?",
+             "Dos dependencias de la misma seccional: el director seccional. Una del central y otra del local: el director general.",
+             "La DIAN y otra autoridad del orden nacional: la Sala de Consulta y Servicio Civil del Consejo de Estado (CPACA, art. 39)."],
+    porque: "Decide el primer jefe común de las dos partes. Si no lo hay, decide el juez de los conflictos.",
+    check: { q: "La División de Recaudo y Cobranzas de una seccional y una subdirección del nivel central se devuelven un expediente de cobro. ¿Quién decide?",
+      ops: [{ t: "El director general de la DIAN.", ok: true, por: "Conflicto entre el nivel central y el local: Decreto 1742, art. 8, num. 27." },
+            { t: "El director de la seccional, porque el cobro es de su jurisdicción.", ok: false, por: "El director seccional solo dirime conflictos entre dependencias de su seccional." },
+            { t: "La Sala de Consulta y Servicio Civil del Consejo de Estado.", ok: false, por: "El conflicto es dentro de la DIAN: no es la puerta del CPACA." }] } },
+  { id: "e19", tema: "m05-3", mapa: "m05-3", foco: ["cuantia"], lam: ["f52", "f53", "f54"],
+    titulo: "Tres escalones por cuantía",
+    cuerpo: ["El recurso de reconsideración lo decide un escalón distinto según la cuantía del acto: impuestos y sanciones sumados.",
+             "Sin cuantía o menos de 2.000 UVT: la división jurídica de quien profirió el acto.",
+             "De 2.000 a menos de 20.000 UVT: la seccional que el decreto señala para la capital del departamento. 20.000 UVT o más: la Subdirección de Recursos Jurídicos.",
+             "Con la UVT de 2026 (52.374 pesos): 104.748.000 y 1.047.480.000 pesos. Las mismas reglas valen para la revocatoria directa."],
+    porque: "Entre más plata en discusión, más arriba se decide.",
+    check: { q: "Una liquidación oficial de revisión trae un mayor impuesto de 60 millones de pesos y una sanción de 60 millones. Es de 2026 y la expidió una seccional que decide lo suyo. ¿En qué escalón está el recurso?",
+      ops: [{ t: "En el segundo: suma 120 millones, más de 2.000 UVT y menos de 20.000.", ok: true, por: "La cuantía suma impuestos y sanciones: 120 millones pasan de 104.748.000 pesos." },
+            { t: "En el primero: el mayor impuesto no llega a 2.000 UVT.", ok: false, por: "La cuantía comprende también la sanción." },
+            { t: "En el tercero: toda liquidación con sanción sube al nivel central.", ok: false, por: "Lo que define el escalón es la cuantía, no que haya sanción." }] } },
+  { id: "e20", tema: "m05-3", mapa: "m05-3", foco: ["lugar"], lam: ["f55", "f56"],
+    titulo: "La capital, con nombres propios",
+    cuerpo: ["El segundo escalón no se adivina: el decreto nombra a cada seccional.",
+             "Tunja decide lo de Sogamoso; Bucaramanga, lo de Barrancabermeja; Pasto, lo de Ipiales y Tumaco; Riohacha, lo de Maicao. Una sola seccional, todas las materias.",
+             "Donde hay dos seccionales, la de impuestos decide lo tributario y la de aduanas lo aduanero y cambiario: Bogotá (Girardot), Cali (Buenaventura, Palmira, Tuluá y Puerto Asís) y Medellín (Urabá).",
+             "Las demás seccionales de impuestos y aduanas, y la Dirección Operativa de Grandes Contribuyentes, deciden sus propios recursos."],
+    porque: "La capital del departamento recoge lo de las seccionales pequeñas, y la materia separa impuestos de aduanas.",
+    check: { q: "La seccional de Puerto Asís impone una multa cambiaria de 4.000 UVT. ¿Quién decide el recurso?",
+      ops: [{ t: "La división jurídica de la Dirección Seccional de Aduanas de Cali.", ok: true, por: "Puerto Asís va a Cali, y lo cambiario lo decide la de aduanas." },
+            { t: "La división jurídica de la Dirección Seccional de Impuestos de Cali.", ok: false, por: "Esa decide lo tributario; lo cambiario va a la de aduanas." },
+            { t: "La división jurídica de la seccional de Mocoa, capital del Putumayo.", ok: false, por: "En Mocoa no hay seccional: el decreto manda a Puerto Asís a Cali." }] } },
+  { id: "e21", tema: "m05-3", mapa: "m05-3", foco: ["esp", "comite"], lam: ["f57", "f58", "f59", "f60"],
+    titulo: "Las excepciones mandan primero",
+    cuerpo: ["Antes de la cuantía, busca la regla especial.",
+             "Mercancía aprehendida: decide la jurídica de la seccional, sin importar el valor. Garantía cuyo único objeto es hacerla efectiva: la jurídica de quien la expidió. Si además sanciona, vuelve la cuantía.",
+             "La Subdirección de Recursos Jurídicos decide si avoca un recurso de menos de 20.000 UVT, y resuelve la revocatoria de sus propios actos sin importar la cuantía.",
+             "Para la cuantía no se acumulan expedientes. Y en el tercer escalón, si el contribuyente lo pide, el expediente pasa por el Comité Técnico antes del fallo."],
+    porque: "Lo que pasa con la mercancía se resuelve donde está; lo que el nivel central llama a sí o firmó, lo resuelve él.",
+    check: { q: "Una seccional decomisa un lote de mercancía aprehendida avaluado en 32.000 UVT. ¿Quién decide el recurso?",
+      ops: [{ t: "La división jurídica de esa seccional, cualquiera que sea el valor.", ok: true, por: "Decreto 1742, art. 69, par. 3, y art. 74." },
+            { t: "La Subdirección de Recursos Jurídicos, porque pasa de 20.000 UVT.", ok: false, por: "En la mercancía aprehendida la cuantía no cuenta." },
+            { t: "La seccional de la capital del departamento, por ser un acto aduanero.", ok: false, por: "La regla especial desplaza la cuantía y el lugar." }] } },
+  { id: "e22", tema: "m05-4", mapa: "m05-4", foco: ["doct", "obliga"], lam: ["f61", "f62", "f64"],
+    titulo: "Doctrina general y obligatoria",
+    cuerpo: ["La Subdirección de Normativa y Doctrina es la autoridad doctrinaria nacional. Absuelve consultas generales.",
+             "La doctrina «será de carácter general y no se referirá a asuntos particulares»: ante un caso concreto, explica en abstracto y no lo califica.",
+             "Los conceptos publicados en la página web obligan a los empleados de la DIAN. Sin publicación, no hay obligatoriedad.",
+             "El contribuyente puede sustentarse en la ley, y la Corte aclaró que «ley» comprende todas las fuentes del derecho (C-514 de 2019)."],
+    porque: "Una entidad no puede hablar con dos voces; pero su voz ata a sus funcionarios, no a los ciudadanos.",
+    check: { q: "Una gestora encuentra un concepto publicado de la Subdirección de Normativa y Doctrina que considera equivocado. Proyecta un acto sobre ese punto. ¿Qué hace?",
+      ops: [{ t: "Lo aplica y, si lo cree equivocado, promueve su reconsideración.", ok: true, por: "El concepto publicado la obliga; la vía es la reconsideración ante la Dirección de Gestión Jurídica." },
+            { t: "Se aparta de él y explica en el acto por qué no lo comparte.", ok: false, por: "No compartirlo no la libera de aplicarlo." },
+            { t: "Lo aplica solo si el contribuyente lo invoca a su favor.", ok: false, por: "Obliga a los empleados en todos los casos, lo invoque o no el contribuyente." }] } },
+  { id: "e23", tema: "m05-4", mapa: "m05-4", foco: ["reconsid"], lam: ["f63", "f65"],
+    titulo: "Cómo se discute un concepto",
+    cuerpo: ["Un concepto de la Subdirección de Normativa y Doctrina no se «apela» ante ella misma.",
+             "Su reconsideración la absuelve la Dirección de Gestión Jurídica, que también profiere los conceptos unificados.",
+             "Mientras se decide, el funcionario sigue aplicando el concepto publicado.",
+             "Otra cosa es la asesoría jurídica que esas dependencias dan a los directores: no obliga a quien la pidió."],
+    porque: "Se discute ante el superior, sin dejar de cumplir mientras tanto. Y quien pide consejo conserva la decisión.",
+    check: { q: "Un director del nivel central pidió una asesoría jurídica a la Subdirección de Normativa y Doctrina y no comparte la respuesta. ¿Está obligado a seguirla?",
+      ops: [{ t: "No: la asesoría no es vinculante para quien la pidió.", ok: true, por: "Decreto 1742, arts. 55, num. 5, y 56, num. 2." },
+            { t: "Sí: todo pronunciamiento de esa Subdirección obliga a los empleados.", ok: false, por: "Lo que obliga es el concepto publicado, no la asesoría." },
+            { t: "Sí, hasta que la Dirección de Gestión Jurídica la reconsidere.", ok: false, por: "La asesoría no obliga desde el principio." }] } },
+  { id: "e24", tema: "m05-4", mapa: "m05-4", foco: ["repres"], lam: ["f66", "f67"],
+    titulo: "Quién defiende a la DIAN",
+    cuerpo: ["Dos subdirecciones del nivel central defienden a la entidad, cada una en su terreno.",
+             "Representación Externa: procesos judiciales y administrativos no asignados a otra dependencia, conciliaciones, el buzón de notificaciones judiciales y el Comité de Conciliación y Defensa Judicial.",
+             "Asuntos Penales: procesos penales por conductas que denuncian los empleados o en que la DIAN es víctima; denuncias, reparación integral y, ante el comité, preacuerdos y principios de oportunidad.",
+             "Y quien actúe ante un juez debe ser abogado matriculado con poder."],
+    porque: "Lo penal tiene su propio abogado; todo lo demás llega por la puerta de Representación Externa.",
+    check: { q: "En un proceso por contrabando en que la DIAN es víctima, la defensa propone un preacuerdo. ¿Qué dependencia lo lleva al Comité de Conciliación y Defensa Judicial?",
+      ops: [{ t: "La Subdirección de Asuntos Penales.", ok: true, por: "Decreto 1742, art. 59." },
+            { t: "La Subdirección de Representación Externa, que gestiona el comité.", ok: false, por: "Gestiona el comité, pero los preacuerdos penales los lleva Asuntos Penales." },
+            { t: "La división jurídica de la seccional que detectó el contrabando.", ok: false, por: "Detectar la conducta no da la representación en el proceso penal." }] } }
 ];
 
 
@@ -1095,7 +1438,124 @@ APP.data.casos = [
         m: [{ s: "adjuntó una copia del aviso de la DIAN que informaba la falla", c: "o", n: "Prueba la falla, no salva el plazo" }, { s: "por el canal electrónico", c: "b" }] },
       { t: "Descartar", txt: "La primera opción olvida la condición de tiempo. La segunda aplica la consecuencia de quien usa otro medio.", o: [0, 1] }
     ],
-    llevar: "Si falla el sistema de la DIAN: un solo día de gracia, el siguiente al restablecimiento. Después, extemporaneidad." }
+    llevar: "Si falla el sistema de la DIAN: un solo día de gracia, el siguiente al restablecimiento. Después, extemporaneidad." },
+  /* ============ Actualización M05 (capítulos 2 a 4) · 30-oct-2026 · casos inéditos ============
+     No repiten los casos de la lección M05, de la Arena M05 ni del ejercicio «¿Quién decide el recurso?» del Centro DIAN Exprés. */
+
+  /* ===================== F13 · El decomiso que parecía de tercer escalón ===================== */
+  { id: "F13", tema: "m05-3", sub: "s-excrec", tec: "T6", lam: ["f57", "f52", "f55"],
+    caso: "En un control posterior, funcionarios de la Dirección Seccional de Impuestos y Aduanas de Barrancabermeja aprehendieron cuatro tractocamiones que, según la investigación, ingresaron al país sin declaración de importación. Agotado el procedimiento, la División de Fiscalización y Liquidación Aduanera de esa seccional expidió el acto que definió la situación jurídica de los vehículos y ordenó su decomiso. El avalúo de los cuatro tractocamiones asciende a 26.000 UVT. El importador interpuso el recurso dentro del término.",
+    enunciado: "La competencia para decidir el recurso radica en",
+    ops: [
+      { t: "la Subdirección de Recursos Jurídicos, porque el valor de los bienes involucrados alcanza el tercer escalón de cuantía.", ok: false, err: "general",
+        por: "Es la regla general de cuantía (20.000 UVT o más), pero aquí no se aplica: cuando el acto define la situación jurídica de mercancía aprehendida, decide la jurídica de la seccional, cualquiera que sea el valor (Decreto 1742 de 2020, art. 69, par. 3)." },
+      { t: "la división jurídica de la Dirección Seccional de Impuestos y Aduanas de Bucaramanga, por ser la de la capital del departamento.", ok: false, err: "vecina",
+        por: "Bucaramanga decide el segundo escalón de Barrancabermeja, pero esa regla tampoco entra: la regla especial de la mercancía aprehendida desplaza tanto la cuantía como el lugar." },
+      { t: "la dependencia jurídica de la misma seccional de Barrancabermeja, sin consideración al avalúo de los vehículos.", ok: true,
+        por: "Es correcta. El acto define la situación jurídica de mercancía aprehendida: decide la división jurídica de la seccional de aduanas o de impuestos y aduanas, cualquiera que sea el valor (Decreto 1742 de 2020, art. 69, par. 3, y art. 74). Los 26.000 UVT no lo suben al nivel central." }
+    ],
+    paseo: [
+      { t: "Primero: ¿qué clase de acto es?", txt: "Antes de mirar cifras, el experto identifica el acto. No es una liquidación ni una multa: es el que define la situación jurídica de mercancía aprehendida. Eso activa una regla especial.",
+        m: [{ s: "aprehendieron cuatro tractocamiones", c: "b" }, { s: "definió la situación jurídica de los vehículos y ordenó su decomiso", c: "g", n: "Regla especial: art. 69, par. 3" }] },
+      { t: "El número que distrae", txt: "26.000 UVT empuja hacia el tercer escalón. Pero en la mercancía aprehendida la cuantía no cuenta: decide la jurídica de la seccional, cualquiera que sea el valor.",
+        m: [{ s: "26.000 UVT", c: "p", n: "Aquí no cuenta" }] },
+      { t: "El lugar que distrae", txt: "Barrancabermeja queda en Santander, y su segundo escalón lo decide Bucaramanga. Esa regla tampoco entra: la especial desplaza la cuantía y el lugar.",
+        m: [{ s: "Dirección Seccional de Impuestos y Aduanas de Barrancabermeja", c: "o" }] },
+      { t: "Descartar", txt: "La primera opción aplica la regla general de cuantía; la segunda, la del lugar. La tercera aplica la excepción.", o: [0, 1] }
+    ],
+    llevar: "Mercancía aprehendida: decide la jurídica de la seccional, cualquiera que sea el valor. Primero las excepciones, después la cuantía y el lugar." },
+
+  /* ===================== F14 · La sanción que cruza el umbral ===================== */
+  { id: "F14", tema: "m05-3", sub: "s-escalon", tec: "T7", lam: ["f52", "f53", "f55"],
+    caso: "La Dirección Seccional de Impuestos y Aduanas de Girardot profirió en julio de 2026 una liquidación oficial de revisión contra una clínica de la ciudad. El acto determinó un mayor impuesto de renta de 61.300.000 pesos y una sanción por inexactitud de 44.100.000 pesos. La clínica interpuso el recurso de reconsideración dentro del término. Ninguna dependencia del nivel central ha avocado el conocimiento del asunto.",
+    enunciado: "Teniendo en cuenta que la UVT de 2026 es de 52.374 pesos, el recurso debe decidirlo",
+    ops: [
+      { t: "la división jurídica de la Dirección Seccional de Impuestos y Aduanas de Girardot, porque el mayor impuesto determinado no alcanza las 2.000 UVT.", ok: false, err: "verdad",
+        por: "Es cierto que el mayor impuesto (61.300.000 pesos, unas 1.170 UVT) no llega a 2.000 UVT. Pero la cuantía comprende los mayores valores por impuestos y sanciones: 105.400.000 pesos, unas 2.012 UVT." },
+      { t: "la división jurídica de la Dirección Seccional de Impuestos de Bogotá, porque la suma de los valores en discusión supera las 2.000 UVT.", ok: true,
+        por: "Es correcta. Impuesto más sanción: 105.400.000 pesos, unas 2.012 UVT. Está en el segundo escalón (de 2.000 a menos de 20.000 UVT), y lo tributario de Girardot lo decide la seccional de Impuestos de Bogotá (Decreto 1742 de 2020, art. 69, num. 2)." },
+      { t: "la división jurídica de la Dirección Seccional de Aduanas de Bogotá, porque a ella le corresponde el segundo escalón de los actos de Girardot.", ok: false, err: "vecina",
+        por: "La seccional de Aduanas de Bogotá decide el segundo escalón de Girardot solo en lo aduanero y cambiario. Una liquidación de renta es tributaria." }
+    ],
+    paseo: [
+      { t: "Ubicar el acto", txt: "Es una liquidación oficial de revisión: determinación con sanción, sin mercancía ni garantía, y nadie avocó. Rige la regla de cuantía.",
+        m: [{ s: "liquidación oficial de revisión", c: "b" }, { s: "Ninguna dependencia del nivel central ha avocado", c: "b", n: "Sin excepción" }] },
+      { t: "Sumar antes de dividir", txt: "La cuantía suma impuestos y sanciones: 61.300.000 + 44.100.000 = 105.400.000 pesos. Dividido por 52.374, unas 2.012 UVT. Pasa el umbral de 2.000 por muy poco: 2.000 UVT son 104.748.000 pesos.",
+        m: [{ s: "61.300.000 pesos", c: "p" }, { s: "44.100.000 pesos", c: "p" }, { s: "52.374 pesos", c: "y", n: "2.000 UVT = 104.748.000" }] },
+      { t: "El lugar y la materia", txt: "Girardot queda en Cundinamarca: su segundo escalón lo decide Bogotá. Como es renta, decide la de Impuestos; la de Aduanas solo lo aduanero y cambiario.",
+        m: [{ s: "mayor impuesto de renta", c: "g", n: "Tributario" }] },
+      { t: "Descartar", txt: "La primera opción mira solo el impuesto y olvida la sanción. La tercera acierta el lugar, pero no la materia.", o: [0, 2] }
+    ],
+    llevar: "La cuantía suma impuesto y sanción. En Bogotá, Cali y Medellín: impuestos con impuestos, aduanas con aduanas." },
+
+  /* ===================== F15 · La delegación por memorando ===================== */
+  { id: "F15", tema: "m05-2", sub: "s-delega", tec: "T8", lam: ["f46", "f45"],
+    caso: "El jefe de la División de Recaudo y Cobranzas de la Dirección Seccional de Impuestos y Aduanas de Armenia, con más de trescientos expedientes represados, firmó un memorando interno en el que le asignó a una profesional de su división una de las funciones que el decreto le atribuye a él como jefe. El director seccional conoció el memorando por correo electrónico y respondió: «De acuerdo, adelante». Semanas después, un contribuyente alega que el acto que recibió, firmado por esa profesional, fue expedido sin competencia.",
+    enunciado: "Frente a la alegación del contribuyente, lo jurídicamente correcto es concluir que",
+    ops: [
+      { t: "la profesional actuó con competencia, porque la delegación recayó en una empleada de la misma división y el superior manifestó su conformidad.", ok: false, err: "requisito",
+        por: "Cumple el destinatario (una empleada de la división), pero no la forma: el decreto exige resolución de quien ejerza la jefatura de la Dirección Seccional. Un memorando con un «de acuerdo» por correo no es esa resolución." },
+      { t: "la delegación no se perfeccionó, porque para las funciones de un jefe de división se exige resolución de quien ejerce la jefatura de la seccional.", ok: true,
+        por: "Es correcta. Las funciones de los jefes de división se delegan en empleados de esas divisiones «mediante resolución de quien ejerza la jefatura de la Dirección Seccional» (Decreto 1742 de 2020, art. 80, inc. 3). Sin ese acto, la profesional no tenía competencia y el acto queda expuesto a nulidad." },
+      { t: "la delegación sería válida si el director general la hubiera autorizado previamente, requisito que en este caso no se acreditó.", ok: false, err: "vecina",
+        por: "La autorización previa del director general es la regla para delegar funciones del nivel directivo. Para un jefe de división, lo que falta es la resolución del director seccional." }
+    ],
+    paseo: [
+      { t: "¿Quién delega?", txt: "El experto empieza por el cargo del delegante, porque de eso depende la regla. Es un jefe de división de una seccional: art. 80, inc. 3. En empleados de su división y mediante resolución del director seccional.",
+        m: [{ s: "El jefe de la División de Recaudo y Cobranzas", c: "b", n: "Jefe de división" }] },
+      { t: "¿Con qué instrumento?", txt: "Un memorando interno firmado por el propio jefe, y un «de acuerdo» por correo del director. Ninguno de los dos es la resolución de quien ejerce la jefatura de la seccional.",
+        m: [{ s: "firmó un memorando interno", c: "o", n: "No es resolución" }, { s: "«De acuerdo, adelante»", c: "o" }] },
+      { t: "La consecuencia", txt: "Una delegación mal hecha deja a la delegataria sin competencia, y sus actos quedan expuestos a nulidad. El contribuyente tiene un argumento serio.",
+        m: [{ s: "firmado por esa profesional", c: "g" }] },
+      { t: "Descartar", txt: "La primera opción cuenta el destinatario y olvida la forma. La tercera trae la regla del nivel directivo.", o: [0, 2] }
+    ],
+    llevar: "Delegación: primero el cargo de quien delega. Jefe de división: en empleados de su división y con resolución del director seccional." },
+
+  /* ===================== F16 · El concepto que el gestor no comparte ===================== */
+  { id: "F16", tema: "m05-4", sub: "s-doctrina", tec: "T5", lam: ["f62", "f63", "f64"],
+    caso: "Un gestor de la División de Fiscalización y Liquidación Tributaria de la Dirección Seccional de Impuestos y Aduanas de Pereira proyecta una liquidación oficial de revisión. Al estudiar el punto central de la discusión, encuentra un concepto de la Subdirección de Normativa y Doctrina, publicado en la página web de la entidad, que favorece la tesis del contribuyente. A su juicio, el concepto contradice el Estatuto Tributario. Su jefe le sugiere separarse de él, motivando el acto, porque «la doctrina no es ley y los funcionarios también se rigen por la ley».",
+    enunciado: "La actuación que se ajusta a las normas que rigen la doctrina de la DIAN es que el gestor",
+    ops: [
+      { t: "proyecte el acto conforme al concepto publicado y, si lo considera contrario a la ley, promueva su reconsideración ante la Dirección de Gestión Jurídica.", ok: true,
+        por: "Es correcta. Los conceptos publicados de la Subdirección de Normativa y Doctrina son interpretación oficial obligatoria para los empleados de la DIAN (Decreto 1742 de 2020, art. 56, par.), y su reconsideración la absuelve la Dirección de Gestión Jurídica (art. 55, num. 20)." },
+      { t: "se aparte del concepto con una motivación suficiente, porque las actuaciones ante la administración pueden sustentarse en la ley y no en la doctrina.", ok: false, err: "vecina",
+        por: "Mezcla una regla verdadera con el sujeto equivocado: sustentar las actuaciones «con base en la ley» es una garantía de los contribuyentes (Ley 2010 de 2019, art. 131). A los empleados, el concepto publicado los obliga." },
+      { t: "solicite a la Subdirección de Normativa y Doctrina que reconsidere su concepto y suspenda el proyecto hasta que ella se pronuncie.", ok: false, err: "inventada",
+        por: "La reconsideración no la decide la misma Subdirección, sino la Dirección de Gestión Jurídica. Y ninguna norma suspende el proyecto mientras tanto: el concepto sigue obligando." }
+    ],
+    paseo: [
+      { t: "¿Qué clase de pronunciamiento es?", txt: "Un concepto de la Subdirección de Normativa y Doctrina, publicado en la página web. Están las dos condiciones: lo expidió la autoridad doctrinaria y está publicado.",
+        m: [{ s: "publicado en la página web de la entidad", c: "g", n: "Condición de obligatoriedad" }] },
+      { t: "¿A quién obliga?", txt: "A los empleados públicos de la DIAN. El gestor no puede apartarse solo porque no lo comparte.",
+        m: [{ s: "Un gestor de la División de Fiscalización y Liquidación Tributaria", c: "b", n: "Empleado: obligado" }] },
+      { t: "La frase que distrae", txt: "«La doctrina no es ley» trae palabras verdaderas de otra norma: la que permite a los contribuyentes sustentarse en la ley. No libera al funcionario.",
+        m: [{ s: "«la doctrina no es ley y los funcionarios también se rigen por la ley»", c: "o", n: "Regla de los contribuyentes" }] },
+      { t: "¿Cómo se discute?", txt: "Pidiendo la reconsideración a la Dirección de Gestión Jurídica, no a la misma Subdirección. Mientras tanto, se aplica.", o: [1, 2] }
+    ],
+    llevar: "Concepto publicado: el funcionario lo aplica aunque no lo comparta, y lo discute ante la Dirección de Gestión Jurídica." },
+
+  /* ===================== F17 · «No es de nuestro resorte» ===================== */
+  { id: "F17", tema: "m05-2", sub: "s-conflicto", tec: "T1", lam: ["f49", "f50"],
+    caso: "La División Jurídica de la Dirección Seccional de Impuestos y Aduanas de Neiva recibió un escrito en el que un contribuyente pide que se le aclare el alcance de un emplazamiento que le notificaron. Lo remitió a la División de Fiscalización y Liquidación Tributaria de la misma seccional, que lo devolvió con un oficio: «No es de nuestro resorte». La División Jurídica insistió con otro oficio, y el escrito lleva cinco semanas sin respuesta. Un funcionario propone enviar el asunto a la Sala de Consulta y Servicio Civil del Consejo de Estado, «que es la que resuelve los conflictos entre autoridades nacionales».",
+    enunciado: "Para destrabar el trámite, la autoridad a la que corresponde definir cuál dependencia debe atender el escrito es",
+    ops: [
+      { t: "la Sala de Consulta y Servicio Civil del Consejo de Estado, porque las dos dependencias hacen parte de una autoridad del orden nacional.", ok: false, err: "vecina",
+        por: "El art. 39 del CPACA resuelve conflictos entre autoridades distintas. Aquí las dos dependencias son de la misma entidad y de la misma seccional: la Sala no es su superior." },
+      { t: "el director general de la entidad, porque le corresponde dirimir los conflictos de competencia entre dependencias de la DIAN.", ok: false, err: "verdad",
+        por: "El director general dirime los conflictos entre las direcciones del nivel central y las del nivel local. Entre dos dependencias de una misma seccional decide el director seccional." },
+      { t: "el director de la seccional de Neiva, porque el desacuerdo se presenta entre dos dependencias de esa misma seccional.", ok: true,
+        por: "Es correcta. El director seccional dirime los conflictos de competencia entre las dependencias de su seccional (Decreto 1742 de 2020, art. 70, num. 11)." }
+    ],
+    paseo: [
+      { t: "Traducir el rodeo", txt: "«No es de nuestro resorte» y el ir y venir de oficios describen un conflicto negativo de competencia: dos dependencias se declaran incompetentes.",
+        m: [{ s: "«No es de nuestro resorte»", c: "o", n: "= se declara incompetente" }, { s: "La División Jurídica insistió con otro oficio", c: "b" }] },
+      { t: "¿Una entidad o dos?", txt: "Las dos dependencias son de la DIAN: el art. 39 del CPACA no es la puerta. La frase del funcionario trae palabras verdaderas de esa norma, pero para otro supuesto.",
+        m: [{ s: "«que es la que resuelve los conflictos entre autoridades nacionales»", c: "o", n: "Regla vecina" }] },
+      { t: "¿De qué nivel es cada parte?", txt: "Las dos divisiones son de la seccional de Neiva. Decide su director (art. 70, num. 11). Si una fuera del nivel central, decidiría el director general.",
+        m: [{ s: "de la misma seccional", c: "g", n: "Misma seccional" }] },
+      { t: "Descartar", txt: "La primera opción aplica el CPACA a un conflicto interno. La segunda sube el conflicto un piso de más.", o: [0, 1] }
+    ],
+    llevar: "Conflicto de competencia: ¿una entidad o dos?, ¿de qué nivel es cada parte? Misma seccional: decide su director." }
 ];
 
 
@@ -2222,6 +2682,426 @@ APP.gen = (function () {
   };
 
   /* ---------- Rondas ---------- */
+
+  /* =====================================================================
+     Actualización M05 (capítulos 2 a 4) · 30-oct-2026
+     Fuente: lección DIAN EXPRÉS M05 «La DIAN por dentro», que leyó en secretariasenado.gov.co y en el
+     normograma DIAN el ET (art. 560), el Decreto 1742 de 2020 (arts. 4-8, 12, 55-59, 63, 69-81), la Ley 2010
+     de 2019 (art. 131) y la Resolución 000238 de 2025 (UVT 2026 = 52.374 pesos).
+     ===================================================================== */
+  var UVT26 = 52374;
+  function miles(n) { return n.toLocaleString("es-CO"); }
+  function fill(t, x) { return typeof t === "function" ? t(x) : String(t).replace(/\{(\w+)\}/g, function (m, k) { return x[k] != null ? x[k] : m; }); }
+
+  /* Familias de tabla: cada situación trae su contexto, su pregunta, la respuesta y sus distractores con el porqué.
+     Los gemelos son parejas de situaciones que cambian un solo dato y cambian la respuesta. */
+  function tabla(def) {
+    var ids = Object.keys(def.st), par = {};
+    (def.pares || []).forEach(function (pp) { if (!par[pp[0]]) par[pp[0]] = pp[1]; if (!par[pp[1]]) par[pp[1]] = pp[0]; });
+    ids.forEach(function (k, i) { if (!par[k]) par[k] = ids[(i + 1) % ids.length]; });
+    return {
+      nombre: def.nombre, sub: def.sub, lam: def.lam, twin: true,
+      vars: function (r) { return { st: r.pick(ids) }; },
+      flip: function (v) { return { st: par[v.st] }; },
+      cambio: function (v) { return def.st[v.st].cambio || def.cambio; },
+      build: function (v, lvl, r) {
+        var s = def.st[v.st], x = def.x ? def.x(r, v.st) : {};
+        var dis = r.shuffle(s.no).slice(0, 2);
+        var ops = [op(fill(s.ok, x), true, fill(s.por, x))].concat(dis.map(function (d) { return op(fill(d[0], x), false, fill(d[1], x)); }));
+        return finish({ ctx: cap(fill((lvl >= 3 && s.ctx3) ? s.ctx3 : s.ctx, x)), q: fill(s.q || def.q, x), ops: ops, exp: fill(s.exp || def.exp || "", x), linea: null }, r);
+      }
+    };
+  }
+
+  var ENT2 = [
+    { n: "una comercializadora de insumos agrícolas", s: "la comercializadora" },
+    { n: "una sociedad importadora de maquinaria", s: "la importadora" },
+    { n: "una empresa de transporte de carga", s: "la empresa" },
+    { n: "una distribuidora de medicamentos", s: "la distribuidora" },
+    { n: "una sociedad constructora", s: "la constructora" },
+    { n: "una cooperativa de caficultores", s: "la cooperativa" },
+    { n: "una comercializadora de electrodomésticos", s: "la comercializadora" }
+  ];
+  /* Seccionales que deciden su propio segundo escalón (Decreto 1742, art. 69, num. 2.17). */
+  var PROPIAS = ["Neiva", "Pereira", "Armenia", "Manizales", "Ibagué", "Montería", "Santa Marta", "Villavicencio", "Valledupar", "Popayán", "Sincelejo", "Yopal", "Florencia"];
+  /* Seccionales cuyo segundo escalón decide otra (art. 69, num. 2). capT: lo tributario; capA: lo aduanero y cambiario. */
+  var SAT = [
+    { c: "Sogamoso", dep: "Boyacá", capT: "la Dirección Seccional de Impuestos y Aduanas de Tunja" },
+    { c: "Barrancabermeja", dep: "Santander", capT: "la Dirección Seccional de Impuestos y Aduanas de Bucaramanga" },
+    { c: "Ipiales", dep: "Nariño", capT: "la Dirección Seccional de Impuestos y Aduanas de Pasto" },
+    { c: "Tumaco", dep: "Nariño", capT: "la Dirección Seccional de Impuestos y Aduanas de Pasto" },
+    { c: "Maicao", dep: "La Guajira", capT: "la Dirección Seccional de Impuestos y Aduanas de Riohacha" },
+    { c: "Girardot", dep: "Cundinamarca", capT: "la Dirección Seccional de Impuestos de Bogotá", capA: "la Dirección Seccional de Aduanas de Bogotá" },
+    { c: "Buenaventura", dep: "el Valle del Cauca", capT: "la Dirección Seccional de Impuestos de Cali", capA: "la Dirección Seccional de Aduanas de Cali" },
+    { c: "Palmira", dep: "el Valle del Cauca", capT: "la Dirección Seccional de Impuestos de Cali", capA: "la Dirección Seccional de Aduanas de Cali" },
+    { c: "Tuluá", dep: "el Valle del Cauca", capT: "la Dirección Seccional de Impuestos de Cali", capA: "la Dirección Seccional de Aduanas de Cali" },
+    { c: "Puerto Asís", dep: "el Putumayo", capT: "la Dirección Seccional de Impuestos de Cali", capA: "la Dirección Seccional de Aduanas de Cali", nota: " El Putumayo no tiene seccional en Mocoa: el decreto manda a Puerto Asís a Cali." },
+    { c: "Urabá", dep: "Antioquia", capT: "la Dirección Seccional de Impuestos de Medellín", capA: "la Dirección Seccional de Aduanas de Medellín" }
+  ];
+  function secN(c) { return "la Dirección Seccional de Impuestos y Aduanas de " + c; }
+  function capDe(s, m) { return (m === "t" || !s.capA) ? s.capT : s.capA; }
+  var ACTO = {
+    t: ["una liquidación oficial de revisión de su declaración de renta del año gravable 2024", "una resolución que le impone una sanción por no enviar información"],
+    a: ["una resolución que le impone una multa por una infracción aduanera"],
+    c: ["una resolución que le impone una multa por no canalizar por el mercado cambiario el pago de dos importaciones"]
+  };
+  var MATTXT = { t: "tributario", a: "aduanero", c: "cambiario" };
+  function opJur(lugar) { return "La división jurídica de " + lugar + "."; }
+  var OP_SUB = "La Subdirección de Recursos Jurídicos, del nivel central.";
+
+  /* M05-3 · Los tres escalones por cuantía (ET, art. 560; Decreto 1742, arts. 57 y 69) */
+  function montoEscalon(b, lvl, r, liq) {
+    var tot;
+    if (lvl <= 1) {
+      var u = b === 1 ? r.int(3, 19) * 100 : b === 2 ? r.int(25, 190) * 100 : r.int(21, 60) * 1000;
+      return { uvt: u, txt: liq ? "con un mayor impuesto y una sanción que suman " + miles(u) + " UVT" : "por " + miles(u) + " UVT", calc: miles(u) + " UVT" };
+    }
+    if (lvl === 2) tot = (b === 1 ? r.int(40, 100) : b === 2 ? r.int(120, 1000) : r.int(1100, 3000)) * 1000000;
+    else if (b === 1) tot = r.int(1000, 1046) * 100000;
+    else if (b === 3) tot = r.int(1049, 1150) * 1000000;
+    else tot = r.chance(0.5) ? r.int(1049, 1120) * 100000 : r.int(990, 1046) * 1000000;
+    var imp = Math.round(tot * 0.55 / 100000) * 100000, san = tot - imp, u2 = Math.floor(tot / UVT26), nota = lvl === 2 ? " (la UVT de 2026 es de 52.374 pesos)" : "";
+    if (!liq) return { uvt: u2, txt: "por " + pesos(tot) + nota, calc: pesos(tot) + ", unas " + miles(u2) + " UVT" };
+    return { uvt: u2, txt: "con un mayor impuesto de " + pesos(imp) + " y una sanción de " + pesos(san) + nota,
+      calc: pesos(imp) + " + " + pesos(san) + " = " + pesos(tot) + ", unas " + miles(u2) + " UVT" };
+  }
+  function bandaDe(u) { return u < 2000 ? 1 : u < 20000 ? 2 : 3; }
+  function opsEscalon(s, m, b, mt) {
+    var capS = capDe(s, m), own = secN(s.c);
+    var tr = " (" + mt.calc + ")";
+    return [
+      op(opJur(own), b === 1, b === 1 ? "Correcto: es menos de 2.000 UVT" + tr + ". En el primer escalón decide la división jurídica de la dependencia que profirió el acto (ET, art. 560; Decreto 1742, art. 69)." :
+        "La seccional que profirió el acto solo decide en el primer escalón, por debajo de 2.000 UVT" + tr + ". La cuantía suma impuestos y sanciones."),
+      op(opJur(capS), b === 2, b === 2 ? "Correcto: está entre 2.000 y menos de 20.000 UVT" + tr + ". Ese segundo escalón lo decide la seccional que el decreto señala para " + s.dep + " (Decreto 1742, art. 69, num. 2)." + (s.nota || "") :
+        b === 1 ? "La seccional de la capital decide desde 2.000 UVT, y este acto no llega" + tr + "." : "La seccional de la capital decide solo por debajo de 20.000 UVT" + tr + "."),
+      op(OP_SUB, b === 3, b === 3 ? "Correcto: 20.000 UVT o más" + tr + ". El tercer escalón lo decide la Subdirección de Recursos Jurídicos (Decreto 1742, art. 57, nums. 1 y 3)." :
+        "La Subdirección decide desde 20.000 UVT, o cuando avoca el conocimiento, y aquí no avocó" + tr + ".")
+    ];
+  }
+  FAM.escalon = {
+    nombre: "Quién decide: la cuantía", sub: "s-escalon", lam: ["f52", "f53", "f54"], twin: true,
+    vars: function (r) { return { o: r.int(0, SAT.length - 1), b: r.pick([1, 2, 2, 3]), m: r.pick(["t", "t", "a", "c"]) }; },
+    flip: function (v) { return { o: v.o, b: v.b === 2 ? (v.o % 2 ? 1 : 3) : 2, m: v.m }; },
+    cambio: "la cuantía del acto",
+    build: function (v, lvl, r) {
+      var s = SAT[v.o], e = r.pick(ENT2), m = v.m, acto = r.pick(ACTO[m]), mt = montoEscalon(v.b, lvl, r, acto.indexOf("una liquidación") === 0);
+      var ctx = cap(e.n) + " recibió de " + secN(s.c) + " " + acto + ", " + mt.txt + ". Interpuso el recurso de reconsideración dentro del término. No hay mercancía aprehendida ni garantías de por medio, y nadie ha avocado el conocimiento.";
+      return finish({ ctx: ctx, q: "¿Quién debe decidir el recurso?", ops: opsEscalon(s, m, bandaDe(mt.uvt), mt),
+        exp: "Primero las excepciones; después la cuantía, que suma impuestos y sanciones: menos de 2.000 UVT, la jurídica de quien profirió; de 2.000 a menos de 20.000, la seccional que el decreto señala; 20.000 o más, la Subdirección de Recursos Jurídicos.", linea: null }, r);
+    }
+  };
+
+  /* M05-3 · La capital del departamento, con nombres propios (Decreto 1742, art. 69, num. 2) */
+  FAM.capital = {
+    nombre: "Quién decide: el lugar", sub: "s-capital", lam: ["f55", "f56", "f52"], twin: true,
+    vars: function (r) { var o = r.int(0, SAT.length - 1); return { o: o, m: SAT[o].capA ? r.pick(["t", "a", "c"]) : "t", b: 2 }; },
+    flip: function (v) { return SAT[v.o].capA ? { o: v.o, m: v.m === "t" ? (v.o % 2 ? "a" : "c") : "t", b: 2 } : { o: v.o, m: v.m, b: v.b === 2 ? 1 : 2 }; },
+    cambio: function (v) { return SAT[v.o].capA ? "la materia del acto (tributaria, aduanera o cambiaria)" : "la cuantía del acto"; },
+    build: function (v, lvl, r) {
+      var s = SAT[v.o], e = r.pick(ENT2), m = v.m;
+      var u = v.b === 1 ? r.int(4, 19) * 100 : r.int(25, 190) * 100, mt = { uvt: u, calc: miles(u) + " UVT" };
+      var ctx = cap(e.n) + " recibió de " + secN(s.c) + " " + r.pick(ACTO[m]) + ", por " + miles(u) + " UVT. Interpuso el recurso de reconsideración a tiempo.";
+      var ops = opsEscalon(s, m, v.b, mt), out;
+      if (s.capA && v.b === 2) {
+        var otra = m === "t" ? s.capA : s.capT;
+        out = [ops[1], op(opJur(otra), false, "Esa seccional decide lo " + (m === "t" ? "aduanero y cambiario" : "tributario") + " de " + s.c + ", y este acto es " + MATTXT[m] + "."), r.chance(0.5) ? ops[0] : ops[2]];
+      } else out = ops;
+      return finish({ ctx: ctx, q: "¿Quién debe decidir el recurso?", ops: out,
+        exp: "Las capitales tienen nombres propios: Tunja (Sogamoso), Bucaramanga (Barrancabermeja), Pasto (Ipiales y Tumaco), Riohacha (Maicao), Cali (Buenaventura, Palmira, Tuluá y Puerto Asís), Medellín (Urabá) y Bogotá (Girardot). Donde hay dos seccionales, la de impuestos decide lo tributario y la de aduanas lo aduanero y cambiario.", linea: null }, r);
+    }
+  };
+
+  /* M05-3 · Las excepciones que se imponen sobre la cuantía */
+  FAM.excrec = tabla({
+    nombre: "Quién decide: las excepciones", sub: "s-excrec", lam: ["f57", "f58", "f59", "f60"],
+    cambio: "un solo dato del acto o del trámite",
+    q: "¿Quién debe decidir el recurso?",
+    exp: "Antes de mirar la cuantía, busca la regla especial: mercancía aprehendida, garantía de objeto único, avocación, revocatoria de actos de la propia Subdirección. Y para la cuantía no se acumulan expedientes.",
+    x: function (r) {
+      var s = SAT[r.int(0, 4)], u3 = r.int(21, 45) * 1000, u2 = r.int(70, 90) * 100;
+      return { e: r.pick(ENT2).n, adu: r.pick(["la Dirección Seccional de Aduanas de Cartagena", "la Dirección Seccional de Aduanas de Barranquilla", "la Dirección Seccional de Impuestos y Aduanas de Ipiales", "la Dirección Seccional de Impuestos y Aduanas de Maicao"]),
+        merc: r.pick(["un lote de llantas", "un cargamento de textiles", "dos tractocamiones", "un lote de teléfonos celulares"]),
+        u3: miles(u3), u2: miles(u2), u2x3: miles(u2 * 3), uc: miles(r.int(6, 18) * 100), sat: secN(s.c), cap: s.capT, prop: secN(r.pick(PROPIAS)) };
+    },
+    pares: [["decomiso", "multaadu"], ["garantia", "garsan"], ["avoca", "noavoca"], ["revsub", "revsec"], ["acumula", "unico"], ["dogc", "dogc3"]],
+    st: {
+      decomiso: { cambio: "la clase de acto: decomiso de mercancía aprehendida o multa",
+        ctx: "La División de Fiscalización y Liquidación Aduanera de {adu} expidió el acto que decomisó {merc}, aprehendido en un control posterior y avaluado en {u3} UVT. El importador interpuso el recurso dentro del término.",
+        ok: "La división jurídica de la seccional que expidió el acto, cualquiera que sea el valor de la mercancía.", por: "Correcto: el acto que define la situación jurídica de mercancía aprehendida lo decide la jurídica de la seccional, sin importar el valor (Decreto 1742, art. 69, par. 3, y art. 74).",
+        no: [[OP_SUB.replace(".", ", porque el avalúo supera 20.000 UVT."), "Trampa de la regla general: en la mercancía aprehendida la cuantía no cuenta."],
+             ["La seccional de la capital del departamento, por tratarse de un acto aduanero.", "No hay un segundo escalón por materia: la regla especial deja el decomiso en la jurídica de la seccional."],
+             ["La Dirección de Gestión de Aduanas, porque el acto versa sobre mercancía y no sobre impuestos.", "Esa competencia no existe: decide la jurídica de la seccional."]] },
+      multaadu: { cambio: "la clase de acto: multa o decomiso",
+        ctx: "La División de Fiscalización y Liquidación Aduanera de {adu} le impuso a {e} una multa de {u3} UVT por una infracción aduanera. No hubo aprehensión de mercancía. La sociedad interpuso el recurso dentro del término.",
+        ok: OP_SUB.replace(".", ", porque la multa es de 20.000 UVT o más."), por: "Correcto: sin mercancía aprehendida vuelve la regla de cuantía, y 20.000 UVT o más es el tercer escalón (Decreto 1742, art. 57).",
+        no: [["La división jurídica de la seccional que expidió el acto, cualquiera que sea su valor.", "Eso vale para el decomiso de mercancía aprehendida, y aquí no hubo aprehensión."],
+             ["La seccional de la capital del departamento, porque el acto es aduanero.", "La capital decide solo de 2.000 a menos de 20.000 UVT."]] },
+      garantia: { cambio: "si el acto, además de hacer efectiva la garantía, impone una sanción",
+        ctx: "La DIAN expidió contra {e} una resolución cuyo único objeto es declarar el incumplimiento de una obligación aduanera y ordenar que se haga efectiva la póliza que la respaldaba, por {u3} UVT. La sociedad interpuso el recurso dentro del término.",
+        ok: "La división jurídica de la dependencia que expidió el acto, sin importar la cuantía.", por: "Correcto: el acto de objeto único que declara el incumplimiento y ordena hacer efectiva la garantía lo decide la jurídica de quien lo expidió (Decreto 1742, art. 69, par. 4).",
+        no: [[OP_SUB.replace(".", ", porque la garantía supera 20.000 UVT."), "La palabra decisiva es «único»: con objeto único, la cuantía no cuenta."],
+             ["La seccional de la capital del departamento, porque es un asunto aduanero.", "La regla especial desplaza tanto la cuantía como el lugar."]] },
+      garsan: { cambio: "si el acto, además de hacer efectiva la garantía, impone una sanción",
+        ctx: "La DIAN expidió contra {e} una resolución que declara el incumplimiento de una obligación aduanera, ordena hacer efectiva la póliza que la respaldaba y, además, le impone una multa. En total, {u3} UVT. La sociedad interpuso el recurso dentro del término.",
+        ok: OP_SUB.replace(".", ", porque el acto ya no es de objeto único."), por: "Correcto: al imponer también una sanción, el acto deja de ser de objeto único y vuelve la regla de cuantía: 20.000 UVT o más, tercer escalón.",
+        no: [["La división jurídica de la dependencia que expidió el acto, porque versa sobre una garantía.", "Esa excepción exige que el único objeto del acto sea la garantía; este también sanciona."],
+             ["La seccional de la capital del departamento, porque es un asunto aduanero.", "La capital decide solo de 2.000 a menos de 20.000 UVT."]] },
+      avoca: { cambio: "si la Subdirección de Recursos Jurídicos avocó o no el conocimiento",
+        ctx: "{sat} profirió contra {e} una liquidación oficial de revisión por {u2} UVT. Mientras la seccional de la capital proyectaba la decisión del recurso, la Subdirección de Recursos Jurídicos comunicó que avocaba su conocimiento.",
+        ctx3: "{sat} profirió contra {e} una liquidación oficial de revisión por {u2} UVT. Cuando el proyecto de fallo de la seccional de la capital estaba listo para la firma, una dependencia del nivel central informó que asumía el conocimiento del recurso.",
+        ok: OP_SUB.replace(".", ", porque avocó el conocimiento."), por: "Correcto: la Subdirección puede avocar los recursos de cuantía inferior a 20.000 UVT, y si avocó decide ella, aunque la seccional tuviera listo un proyecto (Decreto 1742, art. 57, num. 7).",
+        no: [["La división jurídica de {cap}, porque ya tenía listo el proyecto de fallo.", "El proyecto listo no le quita la competencia a la Subdirección que avocó."],
+             ["La división jurídica de {sat}, que profirió el acto.", "Por cuantía tampoco le tocaría: está en el segundo escalón. Y la Subdirección avocó."]] },
+      noavoca: { cambio: "si la Subdirección de Recursos Jurídicos avocó o no el conocimiento",
+        ctx: "{sat} profirió contra {e} una liquidación oficial de revisión por {u2} UVT. El recurso se interpuso a tiempo y nadie en el nivel central se ha pronunciado sobre él.",
+        ok: "La división jurídica de {cap}.", por: "Correcto: segundo escalón, y la Subdirección no avocó. Decide la seccional que el decreto señala para esa capital (Decreto 1742, art. 69, num. 2).",
+        no: [[OP_SUB.replace(".", ", porque puede avocar los recursos del segundo escalón."), "Puede avocar, pero no lo hizo: sin avocación decide la seccional de la capital."],
+             ["La división jurídica de {sat}, que profirió el acto.", "La seccional que profirió solo decide por debajo de 2.000 UVT."]] },
+      revsub: { cambio: "qué dependencia expidió el acto cuya revocatoria se pide",
+        ctx: "La Subdirección de Recursos Jurídicos resolvió un recurso de reconsideración y confirmó una sanción de {uc} UVT. Meses después, el contribuyente pide la revocatoria directa de esa resolución.",
+        ok: "La propia Subdirección de Recursos Jurídicos, independientemente de la cuantía.", por: "Correcto: las revocatorias contra actos proferidos por la Subdirección de Recursos Jurídicos las resuelve ella, «independientemente de su cuantía» (Decreto 1742, art. 57, num. 5).",
+        no: [["La división jurídica de la seccional que impuso la sanción, porque es menos de 2.000 UVT.", "La regla de cuantía cede: el acto es de la Subdirección, y ella resuelve su revocatoria."],
+             ["La Dirección de Gestión Jurídica, como superior de la Subdirección.", "La norma no la manda al superior: la resuelve la misma Subdirección."]] },
+      revsec: { cambio: "qué dependencia expidió el acto cuya revocatoria se pide",
+        ctx: "{prop} le impuso a {e} una sanción de {uc} UVT, que quedó en firme sin que se interpusiera recurso. Meses después, la sociedad pide su revocatoria directa.",
+        ok: "La división jurídica de esa misma seccional.", por: "Correcto: a la revocatoria directa se le aplican las mismas reglas de cuantía que a los recursos (Decreto 1742, art. 69, par. 2). Menos de 2.000 UVT: decide la jurídica de quien profirió el acto.",
+        no: [["El director de la seccional, como superior inmediato de quien firmó la sanción.", "Esa es la regla general del CPACA; aquí manda la regla especial de cuantía del decreto."],
+             [OP_SUB, "La Subdirección resuelve sin importar la cuantía solo las revocatorias de sus propios actos."]] },
+      acumula: { cambio: "si son tres actos o uno solo",
+        ctx: "{sat} le notificó a {e} tres resoluciones sanción, cada una por {u2} UVT. La sociedad las impugnó todas en un solo escrito, presentado a tiempo.",
+        ok: "La división jurídica de {cap}, porque cada acto conserva su propia cuantía.", por: "Correcto: para fijar la cuantía «no hay lugar a la acumulación de expedientes» (Decreto 1742, art. 57, par.). Tres actos en el segundo escalón siguen en el segundo escalón.",
+        no: [[OP_SUB.replace(".", ", porque las tres sanciones suman más de 20.000 UVT."), "Trampa de la suma: los expedientes no se acumulan para fijar la cuantía."],
+             ["La división jurídica de {sat}, ante la cual se presentó el escrito.", "El lugar de radicación no fija la competencia, y cada acto está en el segundo escalón."]] },
+      unico: { cambio: "si son tres actos o uno solo",
+        ctx: "{sat} le notificó a {e} una sola resolución sanción, por {u2x3} UVT. La sociedad la impugnó a tiempo.",
+        ok: OP_SUB.replace(".", ", porque el acto es de 20.000 UVT o más."), por: "Correcto: un solo acto de 20.000 UVT o más está en el tercer escalón.",
+        no: [["La división jurídica de {cap}, seccional de la capital del departamento.", "La capital decide solo por debajo de 20.000 UVT."],
+             ["La división jurídica de {sat}, que profirió el acto.", "La seccional que profirió decide solo por debajo de 2.000 UVT."]] },
+      dogc: { cambio: "la cuantía del acto",
+        ctx: "La Dirección Operativa de Grandes Contribuyentes profirió una liquidación oficial de revisión contra {e}, gran contribuyente con domicilio en Bogotá, por {u2} UVT. La sociedad interpuso el recurso a tiempo.",
+        ok: "La división jurídica de la misma Dirección Operativa de Grandes Contribuyentes.", por: "Correcto: en el segundo escalón, la Dirección Operativa de Grandes Contribuyentes decide sus propios recursos, como las seccionales que el decreto enumera (art. 69, num. 2).",
+        no: [["La división jurídica de la Dirección Seccional de Impuestos de Bogotá, por el domicilio.", "El gran contribuyente no depende de la seccional de su domicilio, ni en la gestión ni en los recursos."],
+             [OP_SUB.replace(".", ", porque el acto es del nivel central."), "La Subdirección decide desde 20.000 UVT; la cuantía, no el nivel del acto, define el escalón."]] },
+      dogc3: { cambio: "la cuantía del acto",
+        ctx: "La Dirección Operativa de Grandes Contribuyentes profirió una liquidación oficial de revisión contra {e}, gran contribuyente con domicilio en Bogotá, por {u3} UVT. La sociedad interpuso el recurso a tiempo.",
+        ok: OP_SUB.replace(".", ", porque el acto es de 20.000 UVT o más."), por: "Correcto: tercer escalón. La Dirección Operativa decide sus propios recursos solo por debajo de 20.000 UVT.",
+        no: [["La división jurídica de la misma Dirección Operativa de Grandes Contribuyentes.", "Eso es hasta menos de 20.000 UVT; este acto llega al tercer escalón."],
+             ["La división jurídica de la Dirección Seccional de Impuestos de Bogotá, por el domicilio.", "Ni el domicilio ni la capital deciden los actos de grandes contribuyentes de esta cuantía."]] }
+    }
+  });
+  /* M05-3 · El Comité Técnico (ET, art. 560, par. 1) se entrena dentro de excrec y de los casos de simulacro. */
+
+  /* M05-2 · Los tres niveles y las piezas que se prestan para trampa (Decreto 1742, arts. 4-7, 12, 63 y 77) */
+  FAM.nivel = tabla({
+    nombre: "¿En qué nivel está?", sub: "s-niveles", lam: ["f40", "f41", "f42", "f43", "f44"],
+    cambio: "un solo dato del caso",
+    exp: "Tres trampas del nivel central: Tributación Internacional está en el despacho del director general; Grandes Contribuyentes administra sin importar la ubicación; el Comité Institucional Estratégico propone el plan, no lo aprueba.",
+    x: function (r) { return { c: r.pick(PROPIAS), e: r.pick(ENT2).n }; },
+    pares: [["gc", "nogc"], ["plan", "pol"], ["ti", "gc"], ["delegada", "reclas"]],
+    st: {
+      ti: { q: "¿Qué debe hacer la seccional?",
+        ctx: "La Dirección Seccional de Impuestos y Aduanas de {c} recibe de una administración tributaria extranjera, con base en un convenio, una solicitud de información sobre un contribuyente de su jurisdicción.",
+        ctx3: "A la seccional de {c} llega una petición de la administración de impuestos de otro país, que invoca un acuerdo entre los dos Estados y pide datos de una sociedad domiciliada en esa ciudad.",
+        ok: "Canalizarla hacia la Oficina de Tributación Internacional, autoridad competente para ese intercambio.", por: "Correcto: la Oficina de Tributación Internacional, en el despacho del director general, es la autoridad competente para el intercambio internacional de información (Decreto 1742, art. 12).",
+        no: [["Responderla directamente, porque el contribuyente está en su jurisdicción.", "La seccional no responde por su cuenta a otra administración: se canaliza a la autoridad competente."],
+             ["Remitirla a la Dirección de Gestión de Fiscalización, de la que depende esa oficina.", "Trampa de ubicación: la oficina está en el despacho del director general, no en Fiscalización."]] },
+      gc: { q: "¿Qué dependencia administra sus impuestos?", cambio: "si la sociedad está calificada o no como gran contribuyente",
+        ctx: "{e}, calificada como gran contribuyente, tiene su domicilio principal en {c}.",
+        ok: "La Dirección Operativa de Grandes Contribuyentes, sin consideración de su ubicación.", por: "Correcto: esa dirección del nivel central administra los impuestos de los grandes contribuyentes «sin consideración de su ubicación geográfica» (Decreto 1742, art. 63).",
+        no: [["La Dirección Seccional de Impuestos y Aduanas de {c}, por el domicilio.", "El domicilio no manda para el gran contribuyente."],
+             ["La Dirección Seccional de Impuestos de Bogotá, que atiende a los grandes del país.", "Esa competencia no existe: es una dirección del nivel central."]] },
+      nogc: { q: "¿Qué dependencia administra sus impuestos?", cambio: "si la sociedad está calificada o no como gran contribuyente",
+        ctx: "{e}, con domicilio principal en {c}, fue excluida por resolución de la calificación de gran contribuyente que tenía.",
+        ok: "La Dirección Seccional de Impuestos y Aduanas de {c}, por su domicilio.", por: "Correcto: excluida de la calificación, sale de la Dirección Operativa de Grandes Contribuyentes y queda en la seccional de su jurisdicción.",
+        no: [["La Dirección Operativa de Grandes Contribuyentes, que conserva a quien calificó.", "La calificación se puede excluir, y con ella sale de esa dirección."],
+             ["La Dirección de Gestión de Impuestos, del nivel central.", "Las direcciones de gestión no administran contribuyentes uno por uno."]] },
+      plan: { q: "¿Qué falta para que quede aprobado?", cambio: "si se trata del plan estratégico o de una política de gestión",
+        ctx: "El Comité Institucional Estratégico estudió el borrador del Plan Estratégico de la DIAN y lo votó por unanimidad.",
+        ok: "La aprobación del director general: el comité solo lo propone.", por: "Correcto: el comité propone el plan al director general «para su aprobación» y le hace seguimiento (Decreto 1742, art. 77).",
+        no: [["Nada: el comité, como órgano estratégico, aprueba el plan.", "El comité es solo asesor frente al plan estratégico."],
+             ["La firma del ministro de Hacienda, superior de la entidad.", "La norma no exige al ministro: aprueba el director general."]] },
+      pol: { q: "¿Qué falta para que quede aprobada?", cambio: "si se trata del plan estratégico o de una política de gestión",
+        ctx: "El Comité Institucional Estratégico estudió la política de seguridad de la información de la DIAN y la aprobó por unanimidad.",
+        ok: "Nada: el comité aprueba esa política de gestión.", por: "Correcto: el comité aprueba ciertas políticas de gestión, como la de seguridad de la información, la archivística y la de talento humano (Decreto 1742, art. 77).",
+        no: [["La aprobación del director general, como ocurre con el plan.", "Eso es para el Plan Estratégico; esta política la aprueba el comité."],
+             ["El visto bueno de la Oficina de Seguridad de la Información.", "Su jefe integra el comité, pero no aprueba aparte."]] },
+      delegada: { q: "¿Cómo se crea?", cambio: "si se crea una delegada o se reclasifica una seccional",
+        ctx: "Un municipio fronterizo sin seccional tiene un movimiento creciente de comercio exterior, y la DIAN quiere tener allí una dependencia permanente.",
+        ok: "Por resolución del director general, previa disponibilidad presupuestal, como seccional delegada.", por: "Correcto: el nivel delegado no está fijo en el decreto; el director general lo autoriza por resolución, con su jurisdicción y grupos (Decreto 1742, art. 7).",
+        no: [["Solo por decreto, porque el nivel delegado está fijado en el Decreto 1742.", "Al revés: el decreto deja el nivel delegado a resolución del director general."],
+             ["Por resolución del director seccional más cercano, superior del nivel delegado.", "El director seccional es superior de la delegada, pero no la crea."]] },
+      reclas: { q: "¿Quién puede cambiarle el tipo?", cambio: "si se crea una delegada o se reclasifica una seccional",
+        ctx: "La Dirección Seccional de Impuestos y Aduanas de {c}, de tipo III, creció en recaudo y comercio exterior, y se estudia pasarla a tipo II.",
+        ok: "El director general, con acto motivado, previa disponibilidad presupuestal y con un análisis técnico.", por: "Correcto: el director general puede reclasificar las seccionales con acto motivado, previa disponibilidad presupuestal y con base en variables organizacionales, económicas, de recaudo y de comercio exterior (Decreto 1742, art. 6).",
+        no: [["Solo el Gobierno, modificando el decreto de estructura.", "El decreto le da esa facultad al director general."],
+             ["El propio director seccional, al demostrar el aumento del recaudo.", "El director seccional no se reclasifica a sí mismo."]] }
+    }
+  });
+
+  /* M05-2 · Quién firma, cómo se delega, quién responde y quién practica pruebas (Decreto 1742, arts. 78-81; ET, art. 560) */
+  FAM.delega = tabla({
+    nombre: "Firmar y delegar", sub: "s-delega", lam: ["f45", "f46", "f47", "f48"],
+    cambio: "un solo requisito",
+    q: "¿Qué debe concluirse?",
+    exp: "Antes de juzgar una delegación, identifica el cargo de quien delega: director general (en directores de gestión o en quien designe), nivel directivo (en su dependencia y con autorización previa del director general) o jefe de división (con resolución del director seccional).",
+    x: function (r) { return { c: r.pick(PROPIAS), e: r.pick(ENT2).n }; },
+    pares: [["dsecsin", "dseccon"], ["jdivsin", "jdivres"], ["perito", "visita"], ["juez", "juezab"], ["dg", "dsecsin"]],
+    st: {
+      dsecsin: { cambio: "si hubo autorización previa del director general",
+        ctx: "El director de la Dirección Seccional de Impuestos y Aduanas de {c} firma una resolución que traslada a la jefe de la División de Recaudo y Cobranzas una función que el decreto le asigna a él. No pide autorización al nivel central.",
+        ok: "La delegación no es válida: faltó la autorización previa del director general.", por: "Correcto: las funciones del nivel directivo solo se delegan en empleados de la respectiva dependencia y con autorización previa del director general (Decreto 1742, art. 80, inc. 2). Sin ella, la delegataria no tiene competencia.",
+        no: [["La delegación es válida: la jefe de división pertenece a la misma seccional.", "Cumple uno de los dos requisitos; le falta la autorización previa del director general."],
+             ["La delegación es válida con la sola aprobación del superior del delegante.", "Esa aprobación es la regla del ET para el nivel ejecutivo; el director seccional es nivel directivo."]] },
+      dseccon: { cambio: "si hubo autorización previa del director general",
+        ctx: "El director de la Dirección Seccional de Impuestos y Aduanas de {c}, con autorización previa del director general, firma una resolución que delega en la jefe de la División de Recaudo y Cobranzas una función que el decreto le asigna a él.",
+        ok: "La delegación es válida: se hizo en una empleada de la dependencia y con la autorización previa.", por: "Correcto: cumple los dos requisitos del art. 80, inc. 2, del Decreto 1742 de 2020.",
+        no: [["La delegación no es válida: las funciones del director seccional son indelegables.", "No lo son: se delegan con los requisitos del art. 80."],
+             ["La delegación no es válida: solo podía delegar en un director de gestión.", "Esa es la regla para las funciones del director general."]] },
+      jdivsin: { cambio: "el instrumento con el que se delega",
+        ctx: "El jefe de la División de Fiscalización y Liquidación Tributaria de la seccional de {c} delega, mediante un memorando firmado por él mismo, una de sus funciones en un profesional de su división.",
+        ok: "La delegación no es válida: debía hacerse mediante resolución del director seccional.", por: "Correcto: las funciones de los jefes de división se delegan en empleados de esas divisiones «mediante resolución de quien ejerza la jefatura de la Dirección Seccional» (Decreto 1742, art. 80, inc. 3).",
+        no: [["La delegación es válida, porque el delegatario es de la misma división.", "Le falta el instrumento: la resolución del director seccional."],
+             ["Solo sería válida con autorización previa del director general.", "Esa autorización es la regla del nivel directivo, no la de los jefes de división."]] },
+      jdivres: { cambio: "el instrumento con el que se delega",
+        ctx: "Mediante resolución del director de la seccional de {c}, el jefe de la División de Fiscalización y Liquidación Tributaria delega una de sus funciones en un profesional de su división.",
+        ok: "La delegación es válida: se hizo en un empleado de la división y con resolución del director seccional.", por: "Correcto: es exactamente lo que exige el art. 80, inc. 3, del Decreto 1742 de 2020.",
+        no: [["No es válida: faltó la autorización previa del director general.", "Esa autorización se exige para delegar funciones del nivel directivo."],
+             ["No es válida: los jefes de división no pueden delegar sus funciones.", "Sí pueden, en empleados de su división y con resolución del director seccional."]] },
+      dg: { cambio: "quién delega",
+        ctx: "El director general de la DIAN expide una resolución con la que delega una de sus funciones en el director de gestión de impuestos.",
+        ok: "La delegación es válida: el director general puede delegar en cualquiera de los directores de gestión.", por: "Correcto: las funciones del director general pueden delegarse en los directores de gestión o en el empleado que él designe por resolución (Decreto 1742, art. 80, inc. 1).",
+        no: [["Solo sería válida con la aprobación del Comité Institucional Estratégico.", "El comité es asesor; no aprueba delegaciones."],
+             ["No es válida: el director general solo puede delegar en los directores seccionales.", "La norma dice lo contrario: delega en directores de gestión o en quien designe."]] },
+      perito: { cambio: "la clase de prueba que se practica",
+        ctx: "Para verificar la contabilidad de {e}, la división comisiona a un abogado de planta, sin título de contador, para practicar una inspección contable.",
+        ok: "La comisión es irregular: la inspección contable exige un contador público matriculado.", por: "Correcto: cualquier empleado puede cumplir comisiones para practicar pruebas, salvo las inspecciones contables y la prueba pericial contable, que exigen contador público (Decreto 1742, art. 79).",
+        no: [["La comisión es válida: cualquier empleado puede practicar pruebas.", "Regla general donde rige la especial: en lo contable, contador público."],
+             ["La comisión es válida si el acta la firma también el contador de la empresa.", "La firma del contador de la empresa no suple la calidad del funcionario."]] },
+      visita: { cambio: "la clase de prueba que se practica",
+        ctx: "Para verificar que {e} funciona en la dirección que informó en el RUT, la división comisiona a un abogado de planta para practicar una visita.",
+        ok: "La comisión es válida: cualquier empleado puede cumplir comisiones para investigar y practicar pruebas.", por: "Correcto: es la regla general del art. 79 del Decreto 1742; la exigencia de contador público se limita a las pruebas contables.",
+        no: [["Es irregular: toda prueba de la DIAN debe practicarla un contador público.", "El contador se exige solo en la inspección contable y en la prueba pericial contable."],
+             ["Es irregular: solo el jefe de la división puede practicar pruebas.", "El art. 78 dice quién firma los actos, no quién practica pruebas."]] },
+      juez: { cambio: "si el empleado es abogado",
+        ctx: "Para representar a la DIAN en una audiencia ante un juez, la seccional de {c} designa a un contador público de planta, sin título de abogado, y le otorga poder especial.",
+        ok: "No puede actuar: ante los jueces el empleado debe ser abogado matriculado y tener poder.", por: "Correcto: para actuar ante los jueces se exigen las dos cosas: ser abogado matriculado y tener poder especial o general (Decreto 1742, art. 79).",
+        no: [["Puede actuar, porque tiene poder especial otorgado en debida forma.", "El poder es uno de los dos requisitos; le falta ser abogado."],
+             ["Puede actuar, porque cualquier empleado cumple las comisiones que le asignan.", "Esa regla es para investigar y practicar pruebas, no para actuar ante jueces."]] },
+      juezab: { cambio: "si el empleado es abogado",
+        ctx: "Para representar a la DIAN en una audiencia ante un juez, la seccional de {c} designa a una abogada matriculada de planta y le otorga poder especial.",
+        ok: "Puede actuar: es abogada matriculada y tiene poder.", por: "Correcto: cumple los dos requisitos del art. 79 del Decreto 1742 de 2020.",
+        no: [["No puede: además debe ser contadora pública, porque el asunto es tributario.", "El contador se exige para las pruebas contables, no para actuar ante jueces."],
+             ["No puede: solo representa a la DIAN el director general en persona.", "La DIAN actúa por medio de empleados abogados con poder."]] },
+      grupo: { q: "¿Quién responde por esas funciones?", cambio: "quién delega",
+        ctx: "Un grupo interno de trabajo de la seccional de {c}, al que se le delegaron funciones de devoluciones, aprobó una devolución improcedente.",
+        ok: "El jefe del grupo, sin perjuicio del jefe de la dependencia por la orientación y el control.", por: "Correcto: respecto de las funciones delegadas al grupo, responde su jefe, «sin perjuicio» de la responsabilidad del jefe de la dependencia (Decreto 1742, art. 81). Es compartida, con contenidos distintos.",
+        no: [["Solo el jefe de la dependencia, porque el grupo no tiene funciones propias.", "La norma pone la responsabilidad primero en el jefe del grupo."],
+             ["Solo el director general, porque él creó el grupo.", "Crear el grupo no lo hace responsable de lo que el grupo hace."]] }
+    }
+  });
+
+  /* M05-2 · Conflictos de competencia (Decreto 1742, arts. 8, num. 27, y 70, num. 11; CPACA, art. 39) */
+  FAM.conflicto = tabla({
+    nombre: "¿Quién destraba?", sub: "s-conflicto", lam: ["f49", "f50"],
+    q: "¿Quién debe dirimir el conflicto?",
+    cambio: "de qué nivel o de qué entidad son las dos partes",
+    exp: "Primero: ¿el conflicto es dentro de la DIAN o con otra entidad? Dentro: ¿las dos partes son de la misma seccional (director seccional) o una es del nivel central y la otra del local (director general)?",
+    x: function (r) { return { c: r.pick(PROPIAS), sup: r.pick(["una superintendencia", "un ministerio", "un departamento administrativo del orden nacional"]) }; },
+    pares: [["cenloc", "locloc"], ["locloc", "ext"], ["ext", "cenloc"]],
+    st: {
+      cenloc: { ctx: "Una subdirección del nivel central y la División de Fiscalización y Liquidación Tributaria de la seccional de {c} sostienen, cada una, que una investigación le corresponde a la otra.",
+        ctx3: "Un expediente lleva un mes quieto porque una dependencia de Bogotá, del nivel central, y una división de la seccional de {c} se lo devuelven una a otra.",
+        ok: "El director general de la DIAN.", por: "Correcto: el director general dirime los conflictos entre las direcciones del nivel central y las del nivel local (Decreto 1742, art. 8, num. 27).",
+        no: [["La Sala de Consulta y Servicio Civil del Consejo de Estado.", "Esa es la puerta del CPACA para conflictos entre autoridades distintas, y aquí el conflicto es dentro de la DIAN."],
+             ["El director de la seccional de {c}, porque una de las partes es suya.", "Solo dirime los conflictos entre dependencias de su propia seccional."]] },
+      locloc: { ctx: "La División Jurídica y la División de Fiscalización y Liquidación Tributaria de la seccional de {c} se declaran, cada una, incompetentes para tramitar un escrito.",
+        ok: "El director de la seccional de {c}.", por: "Correcto: el director seccional dirime los conflictos de competencia entre las dependencias de su seccional (Decreto 1742, art. 70, num. 11).",
+        no: [["El director general, que dirime todo conflicto entre dependencias de la DIAN.", "Él dirime los que surgen entre el nivel central y el local."],
+             ["La Sala de Consulta y Servicio Civil del Consejo de Estado.", "Las dos son de la misma entidad: no es la puerta del CPACA."]] },
+      ext: { ctx: "La Dirección Seccional de Impuestos y Aduanas de {c} y {sup} se declaran, cada una, incompetentes para resolver una misma petición.",
+        ok: "La Sala de Consulta y Servicio Civil del Consejo de Estado.", por: "Correcto: entre autoridades del orden nacional distintas, decide la Sala de Consulta y Servicio Civil (CPACA, art. 39).",
+        no: [["El director general de la DIAN, porque una de las partes es una seccional suya.", "El director general no es superior de la otra entidad."],
+             ["El director de la seccional de {c}, que recibió primero la petición.", "Recibir primero no da competencia para decidir el conflicto."]] }
+    }
+  });
+
+  /* M05-4 · Doctrina: general, obligatoria para los funcionarios y su reconsideración (Decreto 1742, arts. 55 y 56; Ley 2010, art. 131) */
+  FAM.doctrina = tabla({
+    nombre: "La voz oficial", sub: "s-doctrina", lam: ["f61", "f62", "f63", "f64", "f65"],
+    cambio: "un solo dato del caso",
+    exp: "La doctrina es general, obliga a los empleados si está publicada y se discute pidiendo su reconsideración a la Dirección de Gestión Jurídica. La asesoría no obliga a quien la pidió, y el contribuyente puede sustentarse en todas las fuentes del derecho.",
+    x: function (r) { return { e: r.pick(ENT2).n, c: r.pick(PROPIAS) }; },
+    pares: [["concreta", "general"], ["pub", "nopub"], ["asesoria", "conceptodir"], ["contrib", "pub"]],
+    st: {
+      concreta: { q: "¿Cómo debe responder la Subdirección de Normativa y Doctrina?", cambio: "si la consulta es general o describe un caso concreto",
+        ctx: "{e} envía a la Subdirección de Normativa y Doctrina una consulta en la que describe, con facturas y fechas, una operación suya, y pide que le confirme si debía practicar retención.",
+        ok: "Explicando en abstracto cómo se interpretan las normas, sin calificar el caso concreto.", por: "Correcto: la doctrina «será de carácter general y no se referirá a asuntos particulares» (Decreto 1742, art. 56).",
+        no: [["Calificando la operación descrita, porque el consultante aportó los soportes.", "Los soportes no cambian la regla: la doctrina no califica asuntos particulares."],
+             ["Remitiendo la consulta a la seccional del domicilio para que la califique.", "Ninguna dependencia está llamada a calificar el caso por esa vía."]] },
+      general: { q: "¿Cómo debe responder la Subdirección de Normativa y Doctrina?", cambio: "si la consulta es general o describe un caso concreto",
+        ctx: "{e} envía a la Subdirección de Normativa y Doctrina una consulta general sobre cómo se interpreta una norma de retención, sin referirse a una operación suya.",
+        ok: "Absolviéndola con doctrina general, que una vez publicada obliga a los empleados de la DIAN.", por: "Correcto: la Subdirección absuelve las consultas «presentadas de manera general», y sus conceptos publicados son interpretación oficial obligatoria para los empleados (Decreto 1742, art. 56 y par.).",
+        no: [["Absolviéndola con un concepto que obliga al consultante.", "El concepto obliga a los empleados de la DIAN, no al contribuyente."],
+             ["Remitiéndola a la Dirección de Gestión Jurídica, única que puede emitir conceptos.", "La Subdirección es la autoridad doctrinaria nacional y absuelve las consultas."]] },
+      pub: { q: "¿Qué debe hacer?", cambio: "si el concepto fue publicado en la página web",
+        ctx: "Un gestor de la seccional de {c} proyecta una liquidación oficial y encuentra un concepto de la Subdirección de Normativa y Doctrina, publicado en la página web de la DIAN, que considera contrario al Estatuto.",
+        ok: "Aplicarlo y, si lo cree equivocado, promover su reconsideración ante la Dirección de Gestión Jurídica.", por: "Correcto: el concepto publicado es interpretación oficial obligatoria para los empleados (Decreto 1742, art. 56, par.), y su reconsideración la absuelve la Dirección de Gestión Jurídica (art. 55, num. 20).",
+        no: [["Apartarse del concepto y explicar en el acto por qué no lo comparte.", "No compartirlo no lo libera: el concepto publicado lo obliga."],
+             ["Pedir la reconsideración a la misma Subdirección y aplicarlo solo si ella lo ratifica.", "La reconsideración va a la Dirección de Gestión Jurídica, y mientras tanto el concepto obliga."]] },
+      nopub: { q: "¿Lo obliga como interpretación oficial?", cambio: "si el concepto fue publicado en la página web",
+        ctx: "Un gestor de la seccional de {c} encuentra en un archivo un oficio de la Subdirección de Normativa y Doctrina que nunca fue publicado en la página web de la DIAN.",
+        ok: "No: la obligatoriedad de los conceptos exige que estén publicados en la página web.", por: "Correcto: el decreto condiciona la obligatoriedad a que los conceptos estén publicados en la página web de la entidad (arts. 55 y 56, pars.).",
+        no: [["Sí: todo pronunciamiento de esa Subdirección obliga a los empleados.", "Le falta un requisito: la publicación en la página web."],
+             ["Sí, hasta que la Dirección de Gestión Jurídica lo revoque.", "Sin publicación no nace la obligatoriedad que habría que revocar."]] },
+      asesoria: { q: "¿Está obligado a seguirla?", cambio: "si es una asesoría pedida por él o un concepto publicado",
+        ctx: "El director de gestión de fiscalización pidió a la Subdirección de Normativa y Doctrina una asesoría jurídica sobre un proyecto de instrucción. La respuesta recomienda un camino que él no comparte.",
+        ok: "No: la asesoría jurídica a los directores no es vinculante para quien la pidió.", por: "Correcto: la asesoría a los directores del nivel central «no será vinculante para el solicitante» (Decreto 1742, arts. 55 y 56, nums. 5 y 2).",
+        no: [["Sí: todo pronunciamiento de la autoridad doctrinaria obliga a los empleados.", "Lo que obliga es el concepto publicado, no la asesoría."],
+             ["Sí, salvo que la Dirección de Gestión Jurídica la reconsidere.", "La asesoría no obliga desde el principio: no hay nada que reconsiderar."]] },
+      conceptodir: { q: "¿Está obligado a seguirlo?", cambio: "si es una asesoría pedida por él o un concepto publicado",
+        ctx: "El director de gestión de fiscalización encuentra un concepto general de la Subdirección de Normativa y Doctrina, publicado en la página web, sobre un punto que él interpreta distinto.",
+        ok: "Sí: el concepto publicado es interpretación oficial obligatoria para los empleados.", por: "Correcto: los conceptos publicados obligan a los empleados públicos de la DIAN, también a los directores (Decreto 1742, art. 56, par.).",
+        no: [["No: los conceptos solo obligan a los funcionarios de las seccionales.", "La norma habla de los empleados de la DIAN, sin distinguir niveles."],
+             ["No: un director del nivel central puede apartarse de él si lo motiva.", "Puede promover su reconsideración, no apartarse de él."]] },
+      contrib: { q: "¿Puede la DIAN rechazar el argumento por esa sola razón?", cambio: "si quien invoca la fuente es el contribuyente o el funcionario",
+        ctx: "Al responder un requerimiento especial, {e} sustenta su posición en una sentencia de unificación del Consejo de Estado, contraria a un concepto publicado. El funcionario propone rechazar el argumento porque «solo vale la ley o la doctrina oficial».",
+        ok: "No: el contribuyente puede sustentarse en la ley, entendida como todas las fuentes del derecho.", por: "Correcto: los contribuyentes pueden sustentar sus actuaciones «con base en la ley» (Ley 2010 de 2019, art. 131), y la Corte condicionó la palabra: comprende todas las fuentes del derecho (C-514 de 2019).",
+        no: [["Sí: frente a la DIAN solo valen la ley formal y los conceptos publicados.", "La Corte condicionó «ley»: comprende todas las fuentes que admite el ordenamiento."],
+             ["Sí, porque los conceptos publicados también obligan a los contribuyentes.", "Obligan a los empleados de la DIAN, no a los contribuyentes."]] }
+    }
+  });
+
+  /* M05-4 · Quién defiende a la DIAN (Decreto 1742, arts. 58 y 59) */
+  FAM.repres = tabla({
+    nombre: "Quién defiende a la DIAN", sub: "s-repres", lam: ["f66", "f67", "f48"],
+    cambio: "la clase de proceso",
+    exp: "Lo penal es de la Subdirección de Asuntos Penales (denuncias, reparación integral, preacuerdos). Lo demás no asignado a otra dependencia, las conciliaciones y el buzón de notificaciones judiciales son de la Subdirección de Representación Externa.",
+    x: function (r) { return { c: r.pick(PROPIAS) }; },
+    pares: [["penal", "concil"], ["buzon", "denuncia"]],
+    st: {
+      penal: { q: "¿Qué dependencia lleva ese preacuerdo al Comité de Conciliación y Defensa Judicial?",
+        ctx: "Un funcionario de la seccional de {c} detectó y denunció un contrabando en el que la DIAN puede ser víctima. En el proceso penal, la defensa ofrece un preacuerdo.",
+        ok: "La Subdirección de Asuntos Penales, que representa a la DIAN en ese proceso.", por: "Correcto: la Subdirección de Asuntos Penales representa a la DIAN en los procesos penales y lleva al comité los preacuerdos, los principios de oportunidad y las ofertas conciliatorias de esos procesos (Decreto 1742, art. 59).",
+        no: [["La Subdirección de Representación Externa, que gestiona los asuntos del comité.", "Regla vecina: Representación Externa no lleva los procesos penales."],
+             ["La División de Fiscalización de la seccional que detectó la conducta.", "Detectar la conducta no da la representación en el proceso penal."]] },
+      concil: { q: "¿Qué dependencia representa a la DIAN en esa conciliación?",
+        ctx: "En un proceso judicial que no está asignado a otra dependencia, el demandante propone conciliar.",
+        ok: "La Subdirección de Representación Externa, que gestiona ese asunto ante el comité.", por: "Correcto: representa a la DIAN en los procesos no asignados a otra dependencia y en conciliaciones, y gestiona los asuntos del Comité de Conciliación y Defensa Judicial (Decreto 1742, art. 58).",
+        no: [["La Subdirección de Asuntos Penales, que lleva al comité las ofertas conciliatorias.", "Lo hace solo en los procesos penales."],
+             ["La Subdirección de Normativa y Doctrina, que fija la posición oficial.", "Fija doctrina; no representa a la entidad en procesos."]] },
+      buzon: { q: "¿A cargo de quién está el buzón al que debe llegar?",
+        ctx: "Un juzgado va a notificar a la DIAN la admisión de una demanda.",
+        ok: "La Subdirección de Representación Externa, que administra el buzón de notificaciones judiciales.", por: "Correcto: administra el buzón de correo creado exclusivamente para las notificaciones judiciales (Decreto 1742, art. 58).",
+        no: [["El director de la seccional de {c}, que notifica por medio electrónico.", "El director seccional notifica sus propios actos; no recibe notificaciones judiciales."],
+             ["La Subdirección de Asuntos Penales, que recibe lo que llega de los jueces.", "Solo actúa en procesos penales."]] },
+      denuncia: { q: "¿Qué dependencia formula la denuncia y promueve la reparación integral?",
+        ctx: "La DIAN quiere denunciar penalmente una defraudación de la que es víctima y pedir, en su momento, la reparación del daño.",
+        ok: "La Subdirección de Asuntos Penales.", por: "Correcto: formula denuncias y promueve el incidente de reparación integral (Decreto 1742, art. 59).",
+        no: [["La Subdirección de Representación Externa, que administra el buzón judicial.", "Regla vecina: su campo son los procesos no penales y las conciliaciones."],
+             ["La Oficina de Control Interno, porque la conducta afecta a la entidad.", "Control Interno no representa a la DIAN ante los jueces."]] }
+    }
+  });
+
   var FAM_IDS = Object.keys(FAM);
 
   function makeCase(famId, vars, lvl, seed) {
@@ -2276,7 +3156,7 @@ APP.gen = (function () {
 
 
 /* ===== __cfg__ ===== */
-APP.cfg = {"nombre":"Mérito","nombreProvisional":false,"version":"2026-10-22.3","vapid":"BMHjDsDzqZzJwUuLUqKU-vnQ_pdJJ0uMfnUX0-ISuTzsraFRPXn5IZRL_aV2cvsOK0wXnxZbNuaxdYg4EFOsLqk","url":"https://jdylaura.github.io/"};
+APP.cfg = {"nombre":"Mérito","nombreProvisional":false,"version":"2026-10-30.1","vapid":"BMHjDsDzqZzJwUuLUqKU-vnQ_pdJJ0uMfnUX0-ISuTzsraFRPXn5IZRL_aV2cvsOK0wXnxZbNuaxdYg4EFOsLqk","url":"https://jdylaura.github.io/"};
 APP.qr = "<svg role=\"img\" aria-label=\"Código QR de la dirección de la app\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 31 31\" shape-rendering=\"crispEdges\"><path fill=\"#FFFFFF\" d=\"M0 0h31v31H0z\"/><path stroke=\"#13182B\" d=\"M1 1.5h7m4 0h1m2 0h1m3 0h2m2 0h7M1 2.5h1m5 0h1m2 0h1m1 0h2m3 0h1m3 0h1m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m3 0h3m1 0h2m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h1m2 0h1m2 0h2m1 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m2 0h4m4 0h2m3 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h2m5 0h6m1 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M10 8.5h2m2 0h1m1 0h3M1 9.5h1m2 0h1m1 0h2m1 0h1m3 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1M3 10.5h1m8 0h3m1 0h2m3 0h3m2 0h1m2 0h1M2 11.5h1m2 0h1m1 0h4m1 0h5m2 0h3m3 0h4M1 12.5h2m2 0h2m1 0h1m1 0h2m2 0h1m2 0h1m1 0h2m3 0h2m1 0h2M1 13.5h1m2 0h1m2 0h2m2 0h1m3 0h2m1 0h1m3 0h2m2 0h1m1 0h2M1 14.5h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h6m2 0h2M1 15.5h1m4 0h3m2 0h1m2 0h2m5 0h3m1 0h5M2 16.5h1m3 0h1m1 0h1m1 0h4m2 0h1m1 0h3m3 0h3m1 0h1M1 17.5h1m3 0h1m1 0h1m1 0h1m1 0h1m2 0h1m3 0h2m1 0h2m1 0h1m3 0h1M4 18.5h1m3 0h1m1 0h9m4 0h2m1 0h1m2 0h1M1 19.5h1m1 0h1m2 0h3m1 0h1m4 0h4m4 0h1m1 0h1m2 0h2M3 20.5h3m2 0h2m3 0h1m1 0h1m2 0h5m5 0h2M1 21.5h1m3 0h1m1 0h1m1 0h2m5 0h1m1 0h2m1 0h5m1 0h1M9 22.5h3m3 0h2m3 0h2m3 0h1m1 0h3M1 23.5h7m9 0h2m2 0h1m1 0h1m1 0h1m2 0h1M1 24.5h1m5 0h1m1 0h4m2 0h2m1 0h1m2 0h1m3 0h3m1 0h1M1 25.5h1m1 0h3m1 0h1m2 0h1m1 0h2m3 0h1m3 0h5M1 26.5h1m1 0h3m1 0h1m1 0h4m1 0h1m1 0h1m1 0h1m2 0h1m1 0h5m1 0h1M1 27.5h1m1 0h3m1 0h1m2 0h3m3 0h6m3 0h3m1 0h1M1 28.5h1m5 0h1m2 0h3m1 0h1m2 0h6m1 0h2m2 0h1M1 29.5h7m1 0h1m4 0h4m1 0h4m3 0h1m1 0h1\"/></svg>\n";
 
 
@@ -2338,16 +3218,27 @@ var APP = window.APP || (window.APP = {});
 
   function nuevoPerfil(who) {
     return {
-      v: 1, who: who, proyecto: "dian2676", temas: { "m06-1": true, "m06-2": true, "m06-3": true, comp: true, integ: true },
+      v: 1, who: who, proyecto: "dian2676", temas: APP.temasTodos(),
       meta: 15, sonido: true, creado: new Date().toISOString(),
       xp: 0, racha: { n: 0, ult: null, comodines: 0, max: 0 }, dias: {},
       lam: {}, esc: {}, fam: {}, sub: {}, sim: { intentos: [], vistos: {}, fallados: {} }, af: {},
       logros: {}, mision: null, records: { contrarreloj: 0 }, duelos: [], modoRetro: "final", onboard: false
     };
   }
+  /* Temas sacados de los datos: un tema nuevo llega encendido a los perfiles que ya existían. */
+  APP.temasTodos = function () { var o = {}; APP.proyecto().temas.forEach(function (t) { o[t.id] = true; }); return o; };
+  APP.temasFuncionales = function () { return APP.proyecto().temas.filter(function (t) { return t.tipo === "funcional"; }).map(function (t) { return t.id; }); };
+  APP.mapasIds = function () { return APP.temasFuncionales().filter(function (id) { return D.mapas[id]; }).sort(); };
+  function migrarTemas(p) {
+    if (!p || !p.temas) return;
+    var cambio = false;
+    APP.proyecto().temas.forEach(function (t) { if (!(t.id in p.temas)) { p.temas[t.id] = true; cambio = true; } });
+    if (cambio) APP.store.save();
+  }
   APP.perfil = function () {
     var s = APP.store.load();
     if (!s.activo || !s.perfiles[s.activo]) return null;
+    migrarTemas(s.perfiles[s.activo]);
     return s.perfiles[s.activo];
   };
   APP.setPerfil = function (who) {
@@ -2505,7 +3396,7 @@ var APP = window.APP || (window.APP = {});
     },
     crear: function () {
       var p = APP.perfil(), pasos = [], T = p.temas;
-      var func = T["m06-1"] || T["m06-2"] || T["m06-3"];
+      var func = APP.temasFuncionales().some(function (id) { return T[id]; });
       var escena = APP.escenaSiguiente();
       var hayLam = Object.keys(p.lam).some(function (k) { return k.charAt(0) === "f" && p.lam[k].lv >= 1; });
       if (func) {
@@ -2569,7 +3460,7 @@ var APP = window.APP || (window.APP = {});
     { id: "reloj-12", t: "Contra el reloj", d: "Doce o más casos en sesenta segundos." },
     { id: "pagina", t: "Página completa", d: "Todas las láminas de una página del álbum." },
     { id: "dorada", t: "Primera dorada", d: "Una lámina dominada en tres días distintos." },
-    { id: "mapa", t: "Los tres mapas", d: "Todas las escenas vistas." },
+    { id: "mapa", t: "Todos los mapas", d: "Todas las escenas vistas." },
     { id: "sim-func", t: "Juicio fino", d: "80 % o más en un simulacro funcional completo." },
     { id: "sim-comp", t: "Extremos de acero", d: "90 % o más de los puntos en un simulacro comportamental." },
     { id: "sim-integ", t: "Íntegro", d: "90 % o más de los puntos en un simulacro de integridad." },
@@ -2888,7 +3779,17 @@ var APP = window.APP || (window.APP = {});
     opts = opts || {}; foco = foco || [];
     var M = D.mapas[mapaId], h = "";
     h += '<div class="map-q">' + M.preguntas.map(function (q) { return '<div class="qq">' + U.esc(q) + "</div>"; }).join("") + "</div>";
-    if (mapaId === "m06-1") {
+    if (M.filas) {
+      /* Mapa genérico: una fila por pieza (temas desde la actualización M05-M07). */
+      h += '<div class="stack">' + M.filas.map(function (r) {
+        var open = opts.all || unlockedAny(r.lam) || foco.indexOf(r.k) >= 0;
+        var cls = "branch" + (foco.indexOf(r.k) >= 0 ? " focus" : "") + (open ? "" : " locked");
+        if (!open) return '<div class="' + cls + '"><div class="row">' + APP.ic("lock", ' width="18" height="18"') + "<b>" + U.esc(r.t) + '</b></div><span class="small muted">Se desbloquea en una escena</span></div>';
+        return '<button class="' + cls + '" data-act="lamina" data-id="' + r.lam[0] + '"><div class="flow"><span class="mk ' + (r.col || "b") + '"><b>' + U.esc(r.t) + "</b></span></div>" +
+          '<div class="small">' + U.esc(r.d) + '</div><div class="tiny">' + U.esc(r.norma) + "</div></button>";
+      }).join("") + "</div>";
+      if (M.nota) h += '<p class="small muted">' + U.esc(M.nota) + "</p>";
+    } else if (mapaId === "m06-1") {
       h += '<div class="stack">' + M.ramas.map(function (r) {
         var open = opts.all || unlockedAny(r.lam) || foco.indexOf(r.k) >= 0;
         var cls = "branch" + (foco.indexOf(r.k) >= 0 ? " focus" : "") + (open ? "" : " locked");
@@ -2929,7 +3830,7 @@ var APP = window.APP || (window.APP = {});
     var l = D.laminas.filter(function (x) { return x.id === id; })[0]; if (!l) return;
     var st = APP.lam.get(id), lv = st.lv || 0;
     var names = ["Por obtener", "Obtenida", "Brillante", "Dorada"];
-    var how = lv === 0 ? (l.pag <= "p5" && l.id.charAt(0) === "f" ? "Se obtiene en una escena de la sección Memoria." : "Se obtiene al responder afirmaciones de esa competencia o de ese valor.")
+    var how = lv === 0 ? ((D.paginas.filter(function (pg) { return pg.id === l.pag; })[0] || {}).tipo === "funcional" ? "Se obtiene en una escena de la sección Memoria." : "Se obtiene al responder afirmaciones de esa competencia o de ese valor.")
       : lv < 3 ? "Para que suba de nivel, acierta un caso que la use en " + (st.due && st.due > U.today() ? "otro día (desde el " + st.due.split("-").reverse().slice(0, 2).join("/") + ")" : "tu próxima práctica") + "." : "Dominada. Vuelve de vez en cuando para que no se oxide.";
     var body = lv === 0 ? '<p class="muted">' + U.esc(how) + "</p>" :
       '<p class="q">' + U.esc(l.q) + '</p><div class="read"><p>' + U.esc(l.a) + "</p></div>" +
@@ -3020,7 +3921,7 @@ var APP = window.APP || (window.APP = {});
      BIENVENIDA Y CONFIGURACIÓN INICIAL
      ========================================================================= */
   V.onb = function (pr) {
-    var step = pr.step || 0, draft = pr.draft || { temas: { "m06-1": true, "m06-2": true, "m06-3": true, comp: true, integ: true }, meta: 15 };
+    var step = pr.step || 0, draft = pr.draft || { temas: APP.temasTodos(), meta: 15 };
     var html = '<div class="scr full"><div class="onb">';
     if (step === 0) {
       var pl = APP.plataforma(), movil = pl.ios || pl.android;
@@ -3236,8 +4137,11 @@ var APP = window.APP || (window.APP = {});
   V.memoria = function () {
     var p = APP.perfil();
     var h = '<div class="scr">' + APP.top("Memoria", { noBack: true }) +
-      '<p class="lede">Los capítulos 1 a 3 del M06 caben en tres mapas. Cada mapa responde tres preguntas. El día de la prueba, recuerdas el mapa y respondes las tres.</p>';
-    ["m06-1", "m06-2", "m06-3"].forEach(function (mid) {
+      '<p class="lede">Cada capítulo cabe en un mapa, y cada mapa responde tres preguntas. El día de la prueba, recuerdas el mapa y respondes las tres.</p>';
+    var modAnt = "";
+    APP.mapasIds().forEach(function (mid) {
+      var mod = mid.split("-")[0].toUpperCase();
+      if (mod !== modAnt) { modAnt = mod; h += '<h3 style="margin-top:6px">' + esc((D.modulos && D.modulos[mod]) || mod) + "</h3>"; }
       var M = D.mapas[mid], es = D.escenas.filter(function (e) { return e.mapa === mid; }), done = es.filter(function (e) { return p.esc[e.id] && p.esc[e.id].done; }).length;
       var on = p.temas[mid];
       h += '<div class="card stack"' + (on ? "" : ' style="opacity:.55"') + '><div class="row spread"><h3>' + esc(M.nombre) + '</h3><span class="chip">' + done + "/" + es.length + ' escenas</span></div><div class="row wrap">' +
@@ -3267,9 +4171,9 @@ var APP = window.APP || (window.APP = {});
   };
 
   V.mapas = function (pr) {
-    var m = pr.m || "m06-1";
-    var h = '<div class="scr">' + APP.top("Los tres mapas") + '<div class="row wrap">' +
-      ["m06-1", "m06-2", "m06-3"].map(function (id) { return '<button class="chip pick' + (id === m ? " on" : "") + '" data-act="tab" data-m="' + id + '">' + esc(D.mapas[id].nombre) + "</button>"; }).join("") + "</div>" +
+    var m = pr.m || APP.mapasIds()[0];
+    var h = '<div class="scr">' + APP.top("Los mapas") + '<div class="row wrap">' +
+      APP.mapasIds().map(function (id) { return '<button class="chip pick' + (id === m ? " on" : "") + '" data-act="tab" data-m="' + id + '">' + esc(D.mapas[id].nombre) + "</button>"; }).join("") + "</div>" +
       APP.mapHTML(m, []) + '<p class="tiny">Toca cualquier pieza para ver su lámina. Las piezas con candado se abren en las escenas.</p></div>';
     return { tab: "memoria", html: h, on: { tab: function (el) { APP.go("mapas", { m: el.getAttribute("data-m") }, { replace: true }); } } };
   };
@@ -3525,7 +4429,7 @@ var APP = window.APP || (window.APP = {});
   V.sim = function () {
     var p = APP.perfil(), P = APP.proyecto();
     var bloques = [
-      { k: "func", t: "Prueba funcional", d: "Juicio situacional: un caso, un enunciado y tres opciones. Capítulos 1 a 3 del M06.", tema: ["m06-1", "m06-2", "m06-3"], ids: D.casos.filter(function (c) { return p.temas[c.tema]; }).map(function (c) { return c.id; }), corto: 4, meta: "Unos 3 minutos y medio por caso" },
+      { k: "func", t: "Prueba funcional", d: "Juicio situacional: un caso, un enunciado y tres opciones. Casos de los módulos M05, M06 y M07 que tengas encendidos.", tema: APP.temasFuncionales(), ids: D.casos.filter(function (c) { return p.temas[c.tema]; }).map(function (c) { return c.id; }), corto: 4, meta: "Unos 3 minutos y medio por caso" },
       { k: "comp", t: "Prueba comportamental", d: "Afirmaciones con escala de cuatro niveles, hechas con tus competencias y niveles.", tema: ["comp"], ids: APP.afirmacionesDe("comp", "sim").map(function (a) { return a.id; }), corto: 10, meta: "Unos 20 segundos por afirmación" },
       { k: "integ", t: "Prueba de integridad", d: "Los cinco valores del Código de Integridad de la DIAN. Va en un bloque aparte, como en la prueba real.", tema: ["integ"], ids: APP.afirmacionesDe("integ", "sim").map(function (a) { return a.id; }), corto: 6, meta: "Unos 20 segundos por afirmación" }
     ];
@@ -4225,10 +5129,11 @@ var APP = window.APP || (window.APP = {});
     return { tab: "home", html: h, on: {
       t: function (el) { var k = el.getAttribute("data-t"); p.temas[k] = !p.temas[k]; if (!Object.keys(p.temas).some(function (z) { return p.temas[z]; })) { p.temas[k] = true; APP.toast("Debe quedar al menos un tema"); } APP.store.save(); APP.rerender(); },
       meta: function (el) { p.meta = +el.getAttribute("data-m"); APP.store.save(); APP.rerender(); },
-      who: function (el) { var w = el.getAttribute("data-w"); if (w === p.who) return; var np = APP.setPerfil(w); if (!np.onboard) { APP.go("onb", { step: 2, draft: { who: w, temas: { "m06-1": true, "m06-2": true, "m06-3": true, comp: true, integ: true }, meta: 15 } }, { reset: true }); return; } APP.toast("Ahora entrena " + D.usuarios[w].nombre); APP.go("home", {}, { reset: true }); }
+      who: function (el) { var w = el.getAttribute("data-w"); if (w === p.who) return; var np = APP.setPerfil(w); if (!np.onboard) { APP.go("onb", { step: 2, draft: { who: w, temas: APP.temasTodos(), meta: 15 } }, { reset: true }); return; } APP.toast("Ahora entrena " + D.usuarios[w].nombre); APP.go("home", {}, { reset: true }); }
     } };
   };
   APP.novedades = [
+    { v: "2026-10-30.1", t: "Llega el M05: la DIAN por dentro", d: ["Tres temas nuevos del M05 (capítulos 2, 3 y 4): quién manda en cada nivel, quién decide el recurso y la voz oficial de la entidad. Llegan encendidos; puedes apagarlos en el menú, en «Temas, tiempo y persona».", "En Memoria, tres mapas nuevos con nueve escenas, y 28 láminas nuevas en el álbum (páginas 9 a 11).", "Ocho familias nuevas de casos gemelos. La de «¿quién decide el recurso?» calcula la cuantía en UVT y en pesos de 2026, y te pone casos justo en la frontera de los 2.000 y los 20.000 UVT.", "Cinco casos nuevos en el simulacro funcional (F13 a F17), con su paseo del experto.", "Tu misión de mañana ya incluye el M05. Tu avance no se tocó."] },
     { v: "2026-10-22.3", t: "Más fácil de instalar y correcciones de la revisión legal", d: ["El botón del menú, arriba a la derecha de «Hoy», ahora dice «Menú».", "En el Samsung, la app explica cómo instalarla desde Chrome, porque desde Samsung Internet Google Play Protect la bloquea. Los pasos de instalación ahora tienen una sola acción cada uno.", "Una revisión independiente confrontó el contenido funcional con el Estatuto Tributario y la doctrina DIAN: las 12 respuestas del simulacro funcional y las cifras quedaron confirmadas.", "Escena «Tres maneras de que una declaración no sirva»: la pregunta ahora dice cuánto se debe (30 millones), porque una deuda de hasta 10 UVT pagada dentro del año sí salva la declaración.", "Lámina «Salida 2»: la declaración sin pago sirve de título para el cobro mientras no se presente de nuevo con el pago (art. 580-1).", "Escena «Las pausas del reloj»: los 3 meses de la inspección de oficio se cuentan desde la notificación del auto.", "Mapa del reloj: la imputación del saldo a favor sigue la regla general (si declaró tarde, desde la presentación).", "Los 71 UVT del beneficio de auditoría medidos en el año anterior quedan señalados como doctrina DIAN (Concepto 404 de 2026).", "Las preguntas sobre la sanción por corrección piden el valor antes de cualquier reducción (la del art. 640 va aparte)."] },
     { v: "2026-10-22.2", t: "Ya se llama Mérito", d: ["Laura y Juan David eligieron el nombre: Mérito. Aparece en la app, en el ícono de los celulares Android y en los avisos.", "En el iPhone, el nombre debajo del ícono es el que se escribió al instalar.", "Ajustes menores en la pantalla de avisos y en las explicaciones de Mis estadísticas."] },
     { v: "2026-10-22.1", t: "Primera versión", d: ["Capítulos 1 a 3 del M06: tres mapas, quince escenas, 39 láminas funcionales y un generador de casos gemelos con 11 familias de reglas.", "Simulacro funcional con 12 casos inéditos en el formato DIAN 2676 (caso, enunciado y tres opciones), marcado extra y paseo del experto.", "Simulacros comportamental y de integridad en bloques separados: 70 afirmaciones inéditas (46 de simulacro y 24 de práctica diaria), con marcado de competencias o valores y colisiones.", "Misión diaria, racha, comodines, cofre, álbum de 62 láminas por persona, logros, duelo de pareja, avisos diarios y estadísticas con prioridades."] }
