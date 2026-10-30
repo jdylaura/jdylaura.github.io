@@ -55,16 +55,27 @@ var APP = window.APP || (window.APP = {});
 
   function nuevoPerfil(who) {
     return {
-      v: 1, who: who, proyecto: "dian2676", temas: { "m06-1": true, "m06-2": true, "m06-3": true, comp: true, integ: true },
+      v: 1, who: who, proyecto: "dian2676", temas: APP.temasTodos(),
       meta: 15, sonido: true, creado: new Date().toISOString(),
       xp: 0, racha: { n: 0, ult: null, comodines: 0, max: 0 }, dias: {},
       lam: {}, esc: {}, fam: {}, sub: {}, sim: { intentos: [], vistos: {}, fallados: {} }, af: {},
       logros: {}, mision: null, records: { contrarreloj: 0 }, duelos: [], modoRetro: "final", onboard: false
     };
   }
+  /* Temas sacados de los datos: un tema nuevo llega encendido a los perfiles que ya existían. */
+  APP.temasTodos = function () { var o = {}; APP.proyecto().temas.forEach(function (t) { o[t.id] = true; }); return o; };
+  APP.temasFuncionales = function () { return APP.proyecto().temas.filter(function (t) { return t.tipo === "funcional"; }).map(function (t) { return t.id; }); };
+  APP.mapasIds = function () { return APP.temasFuncionales().filter(function (id) { return D.mapas[id]; }).sort(); };
+  function migrarTemas(p) {
+    if (!p || !p.temas) return;
+    var cambio = false;
+    APP.proyecto().temas.forEach(function (t) { if (!(t.id in p.temas)) { p.temas[t.id] = true; cambio = true; } });
+    if (cambio) APP.store.save();
+  }
   APP.perfil = function () {
     var s = APP.store.load();
     if (!s.activo || !s.perfiles[s.activo]) return null;
+    migrarTemas(s.perfiles[s.activo]);
     return s.perfiles[s.activo];
   };
   APP.setPerfil = function (who) {
@@ -222,7 +233,7 @@ var APP = window.APP || (window.APP = {});
     },
     crear: function () {
       var p = APP.perfil(), pasos = [], T = p.temas;
-      var func = T["m06-1"] || T["m06-2"] || T["m06-3"];
+      var func = APP.temasFuncionales().some(function (id) { return T[id]; });
       var escena = APP.escenaSiguiente();
       var hayLam = Object.keys(p.lam).some(function (k) { return k.charAt(0) === "f" && p.lam[k].lv >= 1; });
       if (func) {
@@ -286,7 +297,7 @@ var APP = window.APP || (window.APP = {});
     { id: "reloj-12", t: "Contra el reloj", d: "Doce o más casos en sesenta segundos." },
     { id: "pagina", t: "Página completa", d: "Todas las láminas de una página del álbum." },
     { id: "dorada", t: "Primera dorada", d: "Una lámina dominada en tres días distintos." },
-    { id: "mapa", t: "Los tres mapas", d: "Todas las escenas vistas." },
+    { id: "mapa", t: "Todos los mapas", d: "Todas las escenas vistas." },
     { id: "sim-func", t: "Juicio fino", d: "80 % o más en un simulacro funcional completo." },
     { id: "sim-comp", t: "Extremos de acero", d: "90 % o más de los puntos en un simulacro comportamental." },
     { id: "sim-integ", t: "Íntegro", d: "90 % o más de los puntos en un simulacro de integridad." },

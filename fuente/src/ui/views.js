@@ -13,7 +13,7 @@ var APP = window.APP || (window.APP = {});
      BIENVENIDA Y CONFIGURACIÓN INICIAL
      ========================================================================= */
   V.onb = function (pr) {
-    var step = pr.step || 0, draft = pr.draft || { temas: { "m06-1": true, "m06-2": true, "m06-3": true, comp: true, integ: true }, meta: 15 };
+    var step = pr.step || 0, draft = pr.draft || { temas: APP.temasTodos(), meta: 15 };
     var html = '<div class="scr full"><div class="onb">';
     if (step === 0) {
       var pl = APP.plataforma(), movil = pl.ios || pl.android;
@@ -229,8 +229,11 @@ var APP = window.APP || (window.APP = {});
   V.memoria = function () {
     var p = APP.perfil();
     var h = '<div class="scr">' + APP.top("Memoria", { noBack: true }) +
-      '<p class="lede">Los capítulos 1 a 3 del M06 caben en tres mapas. Cada mapa responde tres preguntas. El día de la prueba, recuerdas el mapa y respondes las tres.</p>';
-    ["m06-1", "m06-2", "m06-3"].forEach(function (mid) {
+      '<p class="lede">Cada capítulo cabe en un mapa, y cada mapa responde tres preguntas. El día de la prueba, recuerdas el mapa y respondes las tres.</p>';
+    var modAnt = "";
+    APP.mapasIds().forEach(function (mid) {
+      var mod = mid.split("-")[0].toUpperCase();
+      if (mod !== modAnt) { modAnt = mod; h += '<h3 style="margin-top:6px">' + esc((D.modulos && D.modulos[mod]) || mod) + "</h3>"; }
       var M = D.mapas[mid], es = D.escenas.filter(function (e) { return e.mapa === mid; }), done = es.filter(function (e) { return p.esc[e.id] && p.esc[e.id].done; }).length;
       var on = p.temas[mid];
       h += '<div class="card stack"' + (on ? "" : ' style="opacity:.55"') + '><div class="row spread"><h3>' + esc(M.nombre) + '</h3><span class="chip">' + done + "/" + es.length + ' escenas</span></div><div class="row wrap">' +
@@ -260,9 +263,9 @@ var APP = window.APP || (window.APP = {});
   };
 
   V.mapas = function (pr) {
-    var m = pr.m || "m06-1";
-    var h = '<div class="scr">' + APP.top("Los tres mapas") + '<div class="row wrap">' +
-      ["m06-1", "m06-2", "m06-3"].map(function (id) { return '<button class="chip pick' + (id === m ? " on" : "") + '" data-act="tab" data-m="' + id + '">' + esc(D.mapas[id].nombre) + "</button>"; }).join("") + "</div>" +
+    var m = pr.m || APP.mapasIds()[0];
+    var h = '<div class="scr">' + APP.top("Los mapas") + '<div class="row wrap">' +
+      APP.mapasIds().map(function (id) { return '<button class="chip pick' + (id === m ? " on" : "") + '" data-act="tab" data-m="' + id + '">' + esc(D.mapas[id].nombre) + "</button>"; }).join("") + "</div>" +
       APP.mapHTML(m, []) + '<p class="tiny">Toca cualquier pieza para ver su lámina. Las piezas con candado se abren en las escenas.</p></div>';
     return { tab: "memoria", html: h, on: { tab: function (el) { APP.go("mapas", { m: el.getAttribute("data-m") }, { replace: true }); } } };
   };

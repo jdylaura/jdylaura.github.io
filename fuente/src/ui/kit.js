@@ -228,7 +228,17 @@ var APP = window.APP || (window.APP = {});
     opts = opts || {}; foco = foco || [];
     var M = D.mapas[mapaId], h = "";
     h += '<div class="map-q">' + M.preguntas.map(function (q) { return '<div class="qq">' + U.esc(q) + "</div>"; }).join("") + "</div>";
-    if (mapaId === "m06-1") {
+    if (M.filas) {
+      /* Mapa genérico: una fila por pieza (temas desde la actualización M05-M07). */
+      h += '<div class="stack">' + M.filas.map(function (r) {
+        var open = opts.all || unlockedAny(r.lam) || foco.indexOf(r.k) >= 0;
+        var cls = "branch" + (foco.indexOf(r.k) >= 0 ? " focus" : "") + (open ? "" : " locked");
+        if (!open) return '<div class="' + cls + '"><div class="row">' + APP.ic("lock", ' width="18" height="18"') + "<b>" + U.esc(r.t) + '</b></div><span class="small muted">Se desbloquea en una escena</span></div>';
+        return '<button class="' + cls + '" data-act="lamina" data-id="' + r.lam[0] + '"><div class="flow"><span class="mk ' + (r.col || "b") + '"><b>' + U.esc(r.t) + "</b></span></div>" +
+          '<div class="small">' + U.esc(r.d) + '</div><div class="tiny">' + U.esc(r.norma) + "</div></button>";
+      }).join("") + "</div>";
+      if (M.nota) h += '<p class="small muted">' + U.esc(M.nota) + "</p>";
+    } else if (mapaId === "m06-1") {
       h += '<div class="stack">' + M.ramas.map(function (r) {
         var open = opts.all || unlockedAny(r.lam) || foco.indexOf(r.k) >= 0;
         var cls = "branch" + (foco.indexOf(r.k) >= 0 ? " focus" : "") + (open ? "" : " locked");
@@ -269,7 +279,7 @@ var APP = window.APP || (window.APP = {});
     var l = D.laminas.filter(function (x) { return x.id === id; })[0]; if (!l) return;
     var st = APP.lam.get(id), lv = st.lv || 0;
     var names = ["Por obtener", "Obtenida", "Brillante", "Dorada"];
-    var how = lv === 0 ? (l.pag <= "p5" && l.id.charAt(0) === "f" ? "Se obtiene en una escena de la sección Memoria." : "Se obtiene al responder afirmaciones de esa competencia o de ese valor.")
+    var how = lv === 0 ? ((D.paginas.filter(function (pg) { return pg.id === l.pag; })[0] || {}).tipo === "funcional" ? "Se obtiene en una escena de la sección Memoria." : "Se obtiene al responder afirmaciones de esa competencia o de ese valor.")
       : lv < 3 ? "Para que suba de nivel, acierta un caso que la use en " + (st.due && st.due > U.today() ? "otro día (desde el " + st.due.split("-").reverse().slice(0, 2).join("/") + ")" : "tu próxima práctica") + "." : "Dominada. Vuelve de vez en cuando para que no se oxide.";
     var body = lv === 0 ? '<p class="muted">' + U.esc(how) + "</p>" :
       '<p class="q">' + U.esc(l.q) + '</p><div class="read"><p>' + U.esc(l.a) + "</p></div>" +

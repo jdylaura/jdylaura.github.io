@@ -49,7 +49,7 @@ var APP = window.APP || (window.APP = {});
   V.sim = function () {
     var p = APP.perfil(), P = APP.proyecto();
     var bloques = [
-      { k: "func", t: "Prueba funcional", d: "Juicio situacional: un caso, un enunciado y tres opciones. Capítulos 1 a 3 del M06.", tema: ["m06-1", "m06-2", "m06-3"], ids: D.casos.filter(function (c) { return p.temas[c.tema]; }).map(function (c) { return c.id; }), corto: 4, meta: "Unos 3 minutos y medio por caso" },
+      { k: "func", t: "Prueba funcional", d: "Juicio situacional: un caso, un enunciado y tres opciones. Casos de los módulos M05, M06 y M07 que tengas encendidos.", tema: APP.temasFuncionales(), ids: D.casos.filter(function (c) { return p.temas[c.tema]; }).map(function (c) { return c.id; }), corto: 4, meta: "Unos 3 minutos y medio por caso" },
       { k: "comp", t: "Prueba comportamental", d: "Afirmaciones con escala de cuatro niveles, hechas con tus competencias y niveles.", tema: ["comp"], ids: APP.afirmacionesDe("comp", "sim").map(function (a) { return a.id; }), corto: 10, meta: "Unos 20 segundos por afirmación" },
       { k: "integ", t: "Prueba de integridad", d: "Los cinco valores del Código de Integridad de la DIAN. Va en un bloque aparte, como en la prueba real.", tema: ["integ"], ids: APP.afirmacionesDe("integ", "sim").map(function (a) { return a.id; }), corto: 6, meta: "Unos 20 segundos por afirmación" }
     ];
@@ -749,7 +749,7 @@ var APP = window.APP || (window.APP = {});
     return { tab: "home", html: h, on: {
       t: function (el) { var k = el.getAttribute("data-t"); p.temas[k] = !p.temas[k]; if (!Object.keys(p.temas).some(function (z) { return p.temas[z]; })) { p.temas[k] = true; APP.toast("Debe quedar al menos un tema"); } APP.store.save(); APP.rerender(); },
       meta: function (el) { p.meta = +el.getAttribute("data-m"); APP.store.save(); APP.rerender(); },
-      who: function (el) { var w = el.getAttribute("data-w"); if (w === p.who) return; var np = APP.setPerfil(w); if (!np.onboard) { APP.go("onb", { step: 2, draft: { who: w, temas: { "m06-1": true, "m06-2": true, "m06-3": true, comp: true, integ: true }, meta: 15 } }, { reset: true }); return; } APP.toast("Ahora entrena " + D.usuarios[w].nombre); APP.go("home", {}, { reset: true }); }
+      who: function (el) { var w = el.getAttribute("data-w"); if (w === p.who) return; var np = APP.setPerfil(w); if (!np.onboard) { APP.go("onb", { step: 2, draft: { who: w, temas: APP.temasTodos(), meta: 15 } }, { reset: true }); return; } APP.toast("Ahora entrena " + D.usuarios[w].nombre); APP.go("home", {}, { reset: true }); }
     } };
   };
   APP.novedades = [
