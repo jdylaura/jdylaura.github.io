@@ -28,6 +28,12 @@ APP.data.proyectos = [
         subtemas: ["s-subir", "s-bajar", "s-sinsancion", "s-peaje"] },
       { id: "m06-3", tipo: "funcional", nombre: "El reloj de la firmeza", corto: "Firmeza", denso: true,
         subtemas: ["s-reloj", "s-largos", "s-pausas", "s-beneficio"] },
+      { id: "m05-2", tipo: "funcional", nombre: "Tres niveles y quién manda en cada uno", corto: "Niveles", denso: true,
+        subtemas: ["s-niveles", "s-delega", "s-conflicto"] },
+      { id: "m05-3", tipo: "funcional", nombre: "Quién decide el recurso: cuantía, lugar y excepciones", corto: "Quién decide", denso: true,
+        subtemas: ["s-escalon", "s-capital", "s-excrec"] },
+      { id: "m05-4", tipo: "funcional", nombre: "La voz oficial: doctrina y representación", corto: "Doctrina", denso: false,
+        subtemas: ["s-doctrina", "s-repres"] },
       { id: "comp", tipo: "comportamental", nombre: "Competencias comportamentales", corto: "Comportamental", denso: false, subtemas: [] },
       { id: "integ", tipo: "integridad", nombre: "Integridad", corto: "Integridad", denso: false, subtemas: [] }
     ]
@@ -36,6 +42,8 @@ APP.data.proyectos = [
 
 /* Probabilidad de que el subtema aparezca en la prueba: criterio de Claude.
    alta = casi seguro que aparece en al menos un caso; media = puede aparecer; baja = poco probable o solo como distractor. */
+APP.data.modulos = { M05: "M05 · La DIAN por dentro", M06: "M06 · Ruta tributaria 1", M07: "M07 · Ruta tributaria 2" };
+
 APP.data.subtemas = {
   "s-nopres":     { tema: "m06-1", nombre: "Declaraciones que se tienen por no presentadas y cómo se sanean", prob: "media",
                     porque: "Es una lista cerrada (literales a, b y d) con una excepción que deja por fuera el literal c: material fácil de convertir en trampa." },
@@ -60,7 +68,24 @@ APP.data.subtemas = {
   "s-pausas":     { tema: "m06-3", nombre: "Suspensión del término (art. 706)", prob: "media",
                     porque: "Un emplazamiento o una inspección escondidos en el caso cambian la fecha final." },
   "s-beneficio":  { tema: "m06-3", nombre: "Beneficio de auditoría", prob: "media",
-                    porque: "Requisitos que se acumulan: basta que falte uno para volver a la regla general." }
+                    porque: "Requisitos que se acumulan: basta que falte uno para volver a la regla general." },
+  /* M05 · La DIAN por dentro (capítulos 2 a 4), desde el 30-oct-2026 */
+  "s-niveles":   { tema: "m05-2", nombre: "Los tres niveles y las piezas que se prestan para trampa", prob: "media",
+                   porque: "Tres datos de estructura suelen volverse distractores: Tributación Internacional en el despacho del director, Grandes Contribuyentes sin geografía y el Comité que solo propone." },
+  "s-delega":    { tema: "m05-2", nombre: "Quién firma, cómo se delega, quién responde y quién practica pruebas", prob: "alta",
+                   porque: "Decide la validez de los actos, y tiene tres reglas que se confunden entre sí y una excepción clásica (el contador en la inspección contable)." },
+  "s-conflicto": { tema: "m05-2", nombre: "Conflictos de competencia dentro y fuera de la DIAN", prob: "media",
+                   porque: "Mezcla el Decreto 1742 con el CPACA, que ya estudiaron: material natural para la trampa de la regla vecina." },
+  "s-escalon":   { tema: "m05-3", nombre: "Los tres escalones por cuantía (2.000 y 20.000 UVT)", prob: "alta",
+                   porque: "Es aritmética con umbrales: el operador puede dar la cuantía en pesos o separar impuesto y sanción." },
+  "s-capital":   { tema: "m05-3", nombre: "La seccional de la capital, con nombres propios", prob: "media",
+                   porque: "Lista larga con casos raros (Puerto Asís a Cali, Girardot a Bogotá, impuestos y aduanas partidos) que se prestan para distractores." },
+  "s-excrec":    { tema: "m05-3", nombre: "Excepciones: mercancía aprehendida, garantía, avocación, revocatoria y acumulación", prob: "alta",
+                   porque: "Son la puerta de la técnica favorita del operador: la excepción que desplaza a la regla general de cuantía." },
+  "s-doctrina":  { tema: "m05-4", nombre: "Doctrina: general, obligatoria si está publicada, y su reconsideración", prob: "alta",
+                   porque: "Toca el día a día del gestor: qué hacer con un concepto que no comparte y cómo responder una consulta concreta." },
+  "s-repres":    { tema: "m05-4", nombre: "Quién defiende a la DIAN: Representación Externa y Asuntos Penales", prob: "media",
+                   porque: "Dos subdirecciones con funciones vecinas (comité, conciliaciones, preacuerdos) que el operador puede intercambiar." }
 };
 
 APP.data.probTexto = {
