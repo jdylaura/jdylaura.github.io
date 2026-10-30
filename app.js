@@ -1,4 +1,4 @@
-/* Mérito · versión 2026-10-30.1 · entrenamiento DIAN 2676 de Laura y Juan David. Hecha con Claude. */
+/* Mérito · versión 2026-10-30.2 · entrenamiento DIAN 2676 de Laura y Juan David. Hecha con Claude. */
 var APP = window.APP || (window.APP = {});
 
 /* ===== src/data/proyecto.js ===== */
@@ -38,6 +38,18 @@ APP.data.proyectos = [
         subtemas: ["s-escalon", "s-capital", "s-excrec"] },
       { id: "m05-4", tipo: "funcional", nombre: "La voz oficial: doctrina y representación", corto: "Doctrina", denso: false,
         subtemas: ["s-doctrina", "s-repres"] },
+      { id: "m07-1", tipo: "funcional", nombre: "Tres maneras de liquidar: aritmética, revisión y aforo", corto: "Liquidar", denso: false,
+        subtemas: ["s-aritm", "s-rutas"] },
+      { id: "m07-2", tipo: "funcional", nombre: "El requerimiento especial: responder, ampliar y la cuarta parte", corto: "Requerimiento", denso: true,
+        subtemas: ["s-respuesta", "s-cuarta"] },
+      { id: "m07-3", tipo: "funcional", nombre: "La liquidación oficial de revisión: seis meses, límites y la mitad", corto: "Revisión", denso: true,
+        subtemas: ["s-seismeses", "s-mitad"] },
+      { id: "m07-4", tipo: "funcional", nombre: "El que no declara: emplazamiento, sanción y aforo", corto: "No declara", denso: true,
+        subtemas: ["s-extemp", "s-sancnodecl", "s-aforo"] },
+      { id: "m07-5", tipo: "funcional", nombre: "El recurso de reconsideración", corto: "Reconsideración", denso: true,
+        subtemas: ["s-recurso", "s-requisitos", "s-silencio"] },
+      { id: "m07-6", tipo: "funcional", nombre: "La revocatoria directa", corto: "Revocatoria", denso: false,
+        subtemas: ["s-revoc"] },
       { id: "comp", tipo: "comportamental", nombre: "Competencias comportamentales", corto: "Comportamental", denso: false, subtemas: [] },
       { id: "integ", tipo: "integridad", nombre: "Integridad", corto: "Integridad", denso: false, subtemas: [] }
     ]
@@ -89,7 +101,34 @@ APP.data.subtemas = {
   "s-doctrina":  { tema: "m05-4", nombre: "Doctrina: general, obligatoria si está publicada, y su reconsideración", prob: "alta",
                    porque: "Toca el día a día del gestor: qué hacer con un concepto que no comparte y cómo responder una consulta concreta." },
   "s-repres":    { tema: "m05-4", nombre: "Quién defiende a la DIAN: Representación Externa y Asuntos Penales", prob: "media",
-                   porque: "Dos subdirecciones con funciones vecinas (comité, conciliaciones, preacuerdos) que el operador puede intercambiar." }
+                   porque: "Dos subdirecciones con funciones vecinas (comité, conciliaciones, preacuerdos) que el operador puede intercambiar." },
+  /* M07 · Ruta tributaria 2, desde el 30-oct-2026. Probabilidades según el triaje de la lección («se domina» = alta). */
+  "s-aritm":      { tema: "m07-1", nombre: "Corrección aritmética: qué es, dos años y el 30 %", prob: "media",
+                    porque: "Sus dos años desde la presentación se cruzan con los tres años desde el vencimiento del requerimiento especial: trampa natural." },
+  "s-rutas":      { tema: "m07-1", nombre: "Qué camino tiene la DIAN y quién firma", prob: "media",
+                    porque: "Elegir la ruta correcta es el primer paso de cualquier caso; y el parágrafo del art. 691 se presta para distractor." },
+  "s-respuesta":  { tema: "m07-2", nombre: "Responder y ampliar el requerimiento especial", prob: "alta",
+                    porque: "Tres plazos de tres meses que corren desde puntos distintos: el operador cambia el punto de partida." },
+  "s-cuarta":     { tema: "m07-2", nombre: "La corrección provocada: la cuarta parte y sus cuatro requisitos", prob: "alta",
+                    porque: "Es la cifra más rentable del módulo y el operador suele quitar un requisito." },
+  "s-seismeses":  { tema: "m07-3", nombre: "Seis meses para la liquidación de revisión y sus pausas", prob: "alta",
+                    porque: "Cálculo de fechas con un acto anterior que mueve el reloj: el tipo de caso que más falló en M06." },
+  "s-mitad":      { tema: "m07-3", nombre: "Solo lo propuesto, el segundo reloj y la mitad", prob: "alta",
+                    porque: "Tres reglas cortas que deciden casos: art. 711, art. 714 y art. 713." },
+  "s-extemp":     { tema: "m07-4", nombre: "El emplazamiento previo duplica el precio del retardo", prob: "alta",
+                    porque: "Dos tarifas y dos topes vecinos (arts. 641 y 642): material perfecto para el distractor." },
+  "s-sancnodecl": { tema: "m07-4", nombre: "La sanción por no declarar, su mitad y su piso", prob: "alta",
+                    porque: "Bases alternativas, tarifa por impuesto y una rebaja con piso: varios puntos donde equivocarse." },
+  "s-aforo":      { tema: "m07-4", nombre: "Aforo y caducidad: cinco años", prob: "media",
+                    porque: "Cinco años frente a los tres del requerimiento especial y los dos de la corrección aritmética." },
+  "s-recurso":    { tema: "m07-5", nombre: "Un recurso, dos meses, y la puerta directa al juez", prob: "alta",
+                    porque: "Es el choque con el CPACA que ustedes ya estudiaron: el operador pone palabras del CPACA en un caso tributario." },
+  "s-requisitos": { tema: "m07-5", nombre: "Requisitos del recurso, agente oficioso e inadmisión", prob: "media",
+                    porque: "El agente oficioso abogado, la ratificación y el requisito inexequible son trampas clásicas." },
+  "s-silencio":   { tema: "m07-5", nombre: "Un año para resolver y el silencio positivo", prob: "alta",
+                    porque: "Silencio positivo frente al negativo del CPACA, con la pausa de la inspección." },
+  "s-revoc":      { tema: "m07-6", nombre: "La revocatoria directa en el Estatuto", prob: "alta",
+                    porque: "Tres diferencias con el CPACA (procedencia, oportunidad y silencio) en un solo tema." }
 };
 
 APP.data.probTexto = {
@@ -227,7 +266,13 @@ APP.data.paginas = [
   { id: "p8", nombre: "Los valores del Código", tema: "integ", tipo: "integridad", color: "g" },
   { id: "p9", nombre: "Tres niveles y quién manda", tema: "m05-2", tipo: "funcional", color: "b" },
   { id: "p10", nombre: "Quién decide el recurso", tema: "m05-3", tipo: "funcional", color: "p" },
-  { id: "p11", nombre: "La voz oficial de la entidad", tema: "m05-4", tipo: "funcional", color: "g" }
+  { id: "p11", nombre: "La voz oficial de la entidad", tema: "m05-4", tipo: "funcional", color: "g" },
+  { id: "p12", nombre: "Tres maneras de liquidar", tema: "m07-1", tipo: "funcional", color: "y" },
+  { id: "p13", nombre: "El requerimiento especial", tema: "m07-2", tipo: "funcional", color: "b" },
+  { id: "p14", nombre: "La liquidación de revisión", tema: "m07-3", tipo: "funcional", color: "o" },
+  { id: "p15", nombre: "El que no declara", tema: "m07-4", tipo: "funcional", color: "p" },
+  { id: "p16", nombre: "El recurso de reconsideración", tema: "m07-5", tipo: "funcional", color: "g" },
+  { id: "p17", nombre: "La revocatoria directa", tema: "m07-6", tipo: "funcional", color: "b" }
 ];
 
 APP.data.laminas = [
@@ -666,7 +711,7 @@ APP.data.laminas = [
     q: "¿Contra qué actos procede la reconsideración, qué suma la cuantía y qué más sigue estas reglas?",
     a: "Procede contra los actos de determinación (con las sanciones que contienen), los que imponen sanciones, los que deciden devoluciones o compensaciones y los cambiarios. La cuantía comprende los mayores valores por impuestos y sanciones. Las mismas reglas se aplican a la revocatoria directa de esos actos: de oficio, a petición de parte o por orden judicial.",
     por: "El recurso y la revocatoria discuten lo mismo: los decide el mismo escalón.",
-    trampa: "La revocatoria no va al superior del que firmó, como en el CPACA: sigue el escalón de cuantía.",
+    trampa: "No olvides la revocatoria directa: el decreto la reparte con las mismas reglas de cuantía que el recurso.",
     src: "ET, art. 560; Decreto 1742 de 2020, art. 69, par. 2.", tri: "domina", num: [] },
   { id: "f55", pag: "p10", sub: "s-capital", t: "Capitales partidas: Bogotá, Cali y Medellín",
     q: "En el segundo escalón, ¿quién decide lo de Girardot, Buenaventura, Palmira, Tuluá, Puerto Asís y Urabá?",
@@ -747,7 +792,189 @@ APP.data.laminas = [
     a: "Representa a la DIAN en los procesos penales por conductas detectadas y denunciadas por sus empleados y en aquellos en que la entidad puede ser víctima. Formula denuncias, promueve el incidente de reparación integral y lleva al Comité de Conciliación y Defensa Judicial los preacuerdos, los principios de oportunidad y las ofertas conciliatorias de esos procesos.",
     por: "Lo penal tiene su propio abogado dentro de la entidad.",
     trampa: "Que el comité lo gestione Representación Externa no le quita a Asuntos Penales sus preacuerdos.",
-    src: "Decreto 1742 de 2020, art. 59.", tri: "domina", num: [] }
+    src: "Decreto 1742 de 2020, art. 59.", tri: "domina", num: [] },
+  /* ================= Actualización M07 «Ruta tributaria 2» · 30-oct-2026 =================
+     Fuente: lección DIAN EXPRÉS M07, que leyó el ET en secretariasenado.gov.co con sus cuadros, la C-1441 de 2000 y el CPACA. */
+
+  /* ---------------- Página 12 · Tres maneras de liquidar ---------------- */
+  { id: "f68", pag: "p12", sub: "s-rutas", t: "Tres maneras de liquidar",
+    q: "¿Qué caminos tiene la DIAN frente a la liquidación privada?",
+    a: "Error de cuentas: liquidación oficial de corrección aritmética. Problema de fondo (ingresos omitidos, costos inexistentes, deducciones improcedentes): requerimiento especial y liquidación oficial de revisión. No declaró: emplazamiento previo por no declarar, sanción por no declarar y liquidación oficial de aforo.",
+    por: "Cada camino tiene su acto, su plazo y su punto de partida.",
+    trampa: "No mezclar plazos: la corrección aritmética cuenta desde la presentación; el requerimiento especial, desde el vencimiento.",
+    src: "ET, arts. 697-703 y 715-717.", tri: "domina", num: [] },
+  { id: "f69", pag: "p12", sub: "s-aritm", t: "Qué es error aritmético",
+    q: "¿Cuándo hay error aritmético?",
+    a: "Cuando, con los valores bien declarados, se anota un resultado equivocado; cuando al aplicar la tarifa se anota un valor distinto del que resultaba, o cuando una operación da un valor equivocado. En los tres casos, el error debe producir un menor valor a pagar o un mayor saldo a favor.",
+    por: "La DIAN corrige de oficio solo lo que la perjudica a ella.",
+    trampa: "Un error de cuentas que perjudica al contribuyente no entra en el art. 697.",
+    src: "ET, art. 697.", tri: "domina", num: [] },
+  { id: "f70", pag: "p12", sub: "s-aritm", t: "Dos años desde la presentación",
+    q: "¿En qué plazo profiere la DIAN la liquidación oficial de corrección aritmética, y qué le pasa a la revisión?",
+    a: "Dentro de los dos años siguientes a la fecha de presentación de la declaración. Y se entiende sin perjuicio de la facultad de revisión: corregir una suma no le gasta a la DIAN su única oportunidad de modificar la declaración en el fondo.",
+    por: "Una cuenta es rápida de ver; el fondo necesita su propio procedimiento.",
+    trampa: "El punto de partida es la presentación, no el vencimiento del plazo para declarar.",
+    src: "ET, arts. 698 y 699.", tri: "domina", num: ["2 años"] },
+  { id: "f71", pag: "p12", sub: "s-aritm", t: "Sanciones mal liquidadas: 30 %",
+    q: "¿Qué pasa si el contribuyente no liquidó las sanciones o las liquidó mal?",
+    a: "La DIAN las liquida incrementadas en un 30 %. El incremento se reduce a la mitad si, dentro del plazo para recurrir, el contribuyente acepta los hechos, renuncia al recurso y paga la sanción con el incremento reducido.",
+    por: "Liquidar bien las propias sanciones sale más barato que esperar a la DIAN.",
+    trampa: "No confundir con el 10 % mensual del art. 642: el art. 701 es un incremento del 30 %.",
+    src: "ET, art. 701.", tri: "reconoce", num: ["30 %", "15 %"] },
+  { id: "f72", pag: "p12", sub: "s-rutas", t: "Quién firma hoy",
+    q: "¿Quién profiere hoy el requerimiento especial, su ampliación y la liquidación oficial de revisión?",
+    a: "El jefe de la unidad de fiscalización. El texto del art. 691 hablaba del jefe de liquidación, pero el parágrafo que agregó el Decreto Ley 2106 de 2019 asignó esos actos a fiscalización. La misma dependencia propone y decide: en las seccionales, la División de Fiscalización y Liquidación Tributaria.",
+    por: "Hoy hay una sola división que investiga, propone y liquida.",
+    trampa: "Si una opción dice «el jefe de la unidad de liquidación», está leyendo el artículo sin su parágrafo.",
+    src: "ET, arts. 688 y 691 (par. agregado por el Decreto Ley 2106 de 2019).", tri: "reconoce", num: [] },
+
+  /* ---------------- Página 13 · El requerimiento especial ---------------- */
+  { id: "f73", pag: "p13", sub: "s-respuesta", t: "Tres meses para responder",
+    q: "¿Cuánto tiempo hay para responder el requerimiento especial y qué se puede hacer en la respuesta?",
+    a: "Tres meses desde su notificación, por escrito. Se pueden formular objeciones, pedir pruebas, subsanar omisiones, pedir que la DIAN traiga documentos de sus archivos y pedir inspecciones tributarias; si son conducentes, la DIAN debe atenderlas.",
+    por: "El contribuyente se defiende antes de que la DIAN decida.",
+    trampa: "No responder no tiene sanción propia, pero cierra dos puertas: la cuarta parte de la sanción y la demanda directa ante el juez.",
+    src: "ET, art. 707.", tri: "domina", num: ["3 meses"] },
+  { id: "f74", pag: "p13", sub: "s-respuesta", t: "La ampliación",
+    q: "¿Cuándo, cuántas veces y con qué contenido puede ampliarse el requerimiento especial?",
+    a: "Una sola vez, dentro de los tres meses siguientes al vencimiento del plazo para responderlo. Puede incluir hechos y conceptos nuevos y proponer una nueva determinación del impuesto y de las sanciones. El contribuyente tiene para responderla el plazo que fije la DIAN: no menos de tres meses ni más de seis.",
+    por: "Si la DIAN quiere decidir sobre algo nuevo, debe avisarlo antes.",
+    trampa: "Los tres meses se cuentan desde el vencimiento del plazo para responder, no desde la notificación ni desde la fecha en que el contribuyente respondió.",
+    src: "ET, art. 708.", tri: "domina", num: ["3 meses", "3 a 6 meses"] },
+  { id: "f75", pag: "p13", sub: "s-cuarta", t: "La cuarta parte",
+    q: "¿Qué requisitos tiene la reducción de la sanción por inexactitud a la cuarta parte?",
+    a: "Cuatro a la vez: 1) aceptar los hechos al responder el requerimiento especial o su ampliación; 2) corregir la declaración con los mayores valores aceptados y la sanción reducida; 3) adjuntar copia de la corrección; 4) adjuntar la prueba del pago o del acuerdo de pago de impuestos, retenciones y sanciones. La reducción opera sobre los hechos aceptados.",
+    por: "Cuanto antes acepta, menos paga.",
+    trampa: "El operador suele quitar un requisito: quien acepta pero no corrige o no paga ni firma acuerdo, no tiene la rebaja.",
+    src: "ET, art. 709.", tri: "domina", num: ["1/4"] },
+  { id: "f76", pag: "p13", sub: "s-respuesta", t: "La liquidación sin aviso es nula",
+    q: "¿Qué pasa si la DIAN profiere la liquidación oficial de revisión sin requerimiento especial o antes de que venza el plazo para responderlo?",
+    a: "La liquidación es nula: es causal omitir el requerimiento especial o pretermitir el término para responderlo. Antes de modificar la declaración, la DIAN debe enviar, una sola vez, el requerimiento especial con todos los puntos y su cuantificación.",
+    por: "El orden es una garantía: primero el aviso y la defensa, después la decisión.",
+    trampa: "La nulidad no depende de que el contribuyente haya pedido pruebas.",
+    src: "ET, arts. 703, 704 y 730, num. 2.", tri: "domina", num: [] },
+
+  /* ---------------- Página 14 · La liquidación oficial de revisión ---------------- */
+  { id: "f77", pag: "p14", sub: "s-seismeses", t: "Seis meses para la liquidación",
+    q: "¿Dentro de qué término debe notificarse la liquidación oficial de revisión?",
+    a: "Dentro de los seis meses siguientes al vencimiento del término para responder el requerimiento especial o su ampliación, según el caso.",
+    por: "La DIAN ya escuchó al contribuyente: tiene medio año para decidir.",
+    trampa: "Se cuenta desde el vencimiento del plazo, no desde la fecha en que el contribuyente respondió. Si hubo ampliación, desde el vencimiento del plazo para responderla.",
+    src: "ET, art. 710.", tri: "domina", num: ["6 meses"] },
+  { id: "f78", pag: "p14", sub: "s-seismeses", t: "Lo que suspende los seis meses",
+    q: "¿Qué suspende el término para notificar la liquidación oficial de revisión?",
+    a: "La inspección tributaria de oficio, tres meses desde la notificación del auto que la ordena; la inspección contable pedida por el contribuyente, mientras dure; y la prueba pedida por el contribuyente en documentos que no reposan en el expediente, dos meses.",
+    por: "Si el contribuyente pidió algo, el reloj de la DIAN se detiene mientras se practica.",
+    trampa: "Antes de contar, pregunta: ¿qué pasó antes que mueva este reloj?",
+    src: "ET, art. 710.", tri: "domina", num: ["3 meses", "2 meses"] },
+  { id: "f79", pag: "p14", sub: "s-mitad", t: "El segundo reloj de la firmeza",
+    q: "¿Qué pasa si la DIAN notificó a tiempo el requerimiento especial, pero deja vencer los seis meses de la liquidación?",
+    a: "La declaración queda en firme: si, vencido el término para practicar la liquidación de revisión, esta no se notificó, la DIAN pierde la oportunidad y la declaración queda como el contribuyente la dejó.",
+    por: "Cada paso de la DIAN tiene su propio reloj.",
+    trampa: "Haber notificado a tiempo el requerimiento especial no basta.",
+    src: "ET, art. 714.", tri: "domina", num: [] },
+  { id: "f80", pag: "p14", sub: "s-mitad", t: "Solo lo que se propuso",
+    q: "¿Puede la liquidación oficial de revisión incluir un hecho que no estaba en el requerimiento especial?",
+    a: "No: debe limitarse a la declaración y a los hechos contemplados en el requerimiento especial o en su ampliación. Si la DIAN quiere agregar algo, debe ampliar el requerimiento a tiempo. El contribuyente debe alegar la violación al discutir la liquidación.",
+    por: "Nadie se defiende de lo que no le han dicho.",
+    trampa: "Un hecho que llegó por la ampliación sí puede estar en la liquidación.",
+    src: "ET, art. 711.", tri: "domina", num: [] },
+  { id: "f81", pag: "p14", sub: "s-mitad", t: "La mitad",
+    q: "¿Cuándo se reduce la sanción por inexactitud a la mitad?",
+    a: "Si, dentro del término para interponer el recurso de reconsideración contra la liquidación oficial de revisión, el contribuyente acepta los hechos, corrige su declaración con los mayores valores y la sanción reducida, y presenta ante la oficina de recursos un memorial con la corrección y la prueba del pago o del acuerdo de pago. Es la mitad de la sanción inicialmente propuesta, sobre los hechos aceptados.",
+    por: "Segunda oportunidad, más cara que la primera.",
+    trampa: "Con el requerimiento especial, la cuarta parte; con la liquidación, la mitad; fuera del término para recurrir, nada.",
+    src: "ET, arts. 713 y 648, par. 1.", tri: "domina", num: ["1/2"] },
+
+  /* ---------------- Página 15 · El que no declara ---------------- */
+  { id: "f82", pag: "p15", sub: "s-extemp", t: "El emplazamiento duplica el precio",
+    q: "¿Cuánto da el emplazamiento previo por no declarar y cuánto cuesta declarar después?",
+    a: "Un mes, previa comprobación de la obligación. Quien declara después del emplazamiento (o del auto de inspección tributaria) paga el 10 % del impuesto o retención por mes o fracción, sin pasar del 200 % (art. 642). Antes del emplazamiento, el 5 % por mes o fracción, sin pasar del 100 % (art. 641).",
+    por: "Esperar a que la DIAN te llame cuesta el doble.",
+    trampa: "La fracción de mes cuenta como mes completo, y cada artículo tiene su tope.",
+    src: "ET, arts. 641, 642 y 715.", tri: "domina", num: ["1 mes", "10 %", "200 %"] },
+  { id: "f83", pag: "p15", sub: "s-sancnodecl", t: "La sanción por no declarar",
+    q: "¿Cuánto es la sanción por no declarar en renta, en IVA y en retención?",
+    a: "Renta: 20 % de las consignaciones bancarias o de los ingresos brutos que determine la DIAN, o de los ingresos brutos de la última declaración de renta, el que sea mayor. IVA e impuesto nacional al consumo: 10 %, con la misma lógica. Retención: 10 % de los cheques u otros medios de pago, o de los costos y gastos, o 100 % de las retenciones de la última declaración, el que sea mayor. Si la DIAN solo tiene una base, puede usarla.",
+    por: "Quien no declara no puede beneficiarse de su silencio: se toma la base mayor.",
+    trampa: "El 10 % es del IVA; en renta es el 20 %.",
+    src: "ET, arts. 643 y 716.", tri: "domina", num: ["20 %", "10 %"] },
+  { id: "f84", pag: "p15", sub: "s-sancnodecl", t: "La mitad, con piso",
+    q: "¿Cómo se reduce la sanción por no declarar?",
+    a: "Si, dentro del plazo para recurrir la resolución sanción, el contribuyente presenta la declaración, la sanción se reduce al 50 % de la impuesta. Debe liquidarla y pagarla con la declaración, y nunca puede quedar por debajo de la sanción por extemporaneidad del art. 642.",
+    por: "Declarar tarde siempre sale más barato que no declarar.",
+    trampa: "La extemporaneidad del art. 642 es el piso, no un valor que se suma.",
+    src: "ET, art. 643, par. 2.", tri: "domina", num: ["50 %"] },
+  { id: "f85", pag: "p15", sub: "s-aforo", t: "Aforo: cinco años",
+    q: "¿Cuándo y hasta cuándo puede la DIAN proferir la liquidación oficial de aforo?",
+    a: "Agotado el procedimiento (emplazamiento previo y sanción por no declarar), dentro de los cinco años siguientes al vencimiento del plazo para declarar. La facultad de imponer la sanción por no declarar también se extingue en cinco años (art. 638), aunque la regla general de las sanciones independientes es de dos años.",
+    por: "Quien no declaró no tiene firmeza que lo proteja: la DIAN tiene más tiempo.",
+    trampa: "Tres años es el requerimiento especial, para quien sí declaró.",
+    src: "ET, arts. 638, 717 y 719.", tri: "domina", num: ["5 años"] },
+
+  /* ---------------- Página 16 · El recurso de reconsideración ---------------- */
+  { id: "f86", pag: "p16", sub: "s-recurso", t: "Un recurso, dos meses",
+    q: "¿Contra qué procede el recurso de reconsideración, ante quién y en qué plazo?",
+    a: "Contra las liquidaciones oficiales, las resoluciones que imponen sanciones, las que ordenan reintegrar sumas devueltas y los demás actos sobre los impuestos que administra la DIAN, salvo norma especial. Se interpone ante la oficina de recursos de la administración que profirió el acto, dentro de los dos meses siguientes a su notificación. Norma especial: contra la clausura del establecimiento, reposición en diez días.",
+    por: "El Estatuto tiene su propio recurso y su propio plazo.",
+    trampa: "No es reposición y apelación en diez días: eso es el CPACA.",
+    src: "ET, arts. 720 y 735.", tri: "domina", num: ["2 meses", "10 días"] },
+  { id: "f87", pag: "p16", sub: "s-recurso", t: "Directo ante el juez",
+    q: "¿Cuándo puede el contribuyente demandar sin interponer el recurso de reconsideración?",
+    a: "Si atendió en debida forma el requerimiento especial y aun así la DIAN profirió la liquidación oficial, puede prescindir del recurso y acudir directamente ante la jurisdicción de lo contencioso administrativo, dentro de los cuatro meses siguientes a la notificación de la liquidación.",
+    por: "Ya se defendió una vez ante la DIAN: puede ir al juez.",
+    trampa: "Quien no respondió el requerimiento especial no tiene esa puerta.",
+    src: "ET, art. 720, par.", tri: "domina", num: ["4 meses"] },
+  { id: "f88", pag: "p16", sub: "s-requisitos", t: "Requisitos del recurso",
+    q: "¿Qué requisitos tiene el recurso de reconsideración y quién puede interponerlo?",
+    a: "Por escrito, con expresión concreta de los motivos de inconformidad, dentro de la oportunidad legal y por el contribuyente o su apoderado o representante, que para interponer recursos debe ser abogado. El agente oficioso solo puede ser abogado, y la persona debe ratificar dentro de los dos meses siguientes a la notificación del auto admisorio; si no ratifica, se revoca el auto admisorio.",
+    por: "El recurso abre una discusión seria: exige motivos y alguien habilitado.",
+    trampa: "La ratificación se cuenta desde la notificación del auto admisorio, no desde la interposición.",
+    src: "ET, art. 722; Decreto 19 de 2012, art. 68 (en la nota del editor).", tri: "domina", num: ["2 meses"] },
+  { id: "f89", pag: "p16", sub: "s-requisitos", t: "Lo que ya no se exige, y la inadmisión",
+    q: "¿Hay que acreditar el pago de la liquidación privada para recurrir? ¿Qué procede contra el auto inadmisorio?",
+    a: "No: ese requisito (literal d del art. 722) fue declarado inexequible en la C-1441 de 2000. Contra el auto que inadmite el recurso solo procede la reposición ante el mismo funcionario, dentro de los diez días siguientes, y debe resolverse en cinco días.",
+    por: "No se puede condicionar la defensa a pagar primero.",
+    trampa: "Si una opción exige el pago de la liquidación privada, está mal.",
+    src: "ET, arts. 722 y 726; C-1441 de 2000.", tri: "reconoce", num: ["10 días", "5 días"] },
+  { id: "f90", pag: "p16", sub: "s-recurso", t: "Lo aceptado y las nulidades",
+    q: "¿Qué no puede discutirse en el recurso, y cuándo se alegan las nulidades?",
+    a: "No pueden objetarse los hechos aceptados expresamente al responder el requerimiento especial o su ampliación. Las nulidades se alegan dentro del término para interponer el recurso, en el escrito o en una adición. Causales: funcionario incompetente; omisión del requerimiento especial o del término para responderlo; omisión de bases, montos o explicaciones; procedimientos concluidos; y otras que la ley declare.",
+    por: "Lo aceptado, aceptado queda; y lo que se reclama, se reclama a tiempo.",
+    trampa: "La causal «no notificarse dentro del término legal» fue derogada: hoy un acto tardío se combate por firmeza o por pérdida de competencia.",
+    src: "ET, arts. 723, 730 y 731.", tri: "reconoce", num: [] },
+  { id: "f91", pag: "p16", sub: "s-silencio", t: "Un año y silencio positivo",
+    q: "¿Cuánto tiene la DIAN para resolver el recurso y qué pasa si no lo hace?",
+    a: "Un año desde la interposición en debida forma. Se suspende si se practica inspección tributaria: mientras dure, si la pidió el contribuyente, y hasta por tres meses, si es de oficio. Si el año pasa sin decisión, el recurso se entiende fallado a favor del recurrente, y la DIAN debe declararlo de oficio o a petición de parte.",
+    por: "La DIAN no puede tener al contribuyente esperando indefinidamente.",
+    trampa: "Cuenta el año hasta la notificación de la decisión, no hasta su firma.",
+    src: "ET, arts. 732, 733 y 734.", tri: "domina", num: ["1 año", "3 meses"] },
+  { id: "f92", pag: "p16", sub: "s-silencio", t: "El choque con el CPACA",
+    q: "¿En qué tres puntos el Estatuto desplaza al CPACA en los recursos?",
+    a: "Recurso: CPACA, reposición y apelación en diez días; Estatuto, solo reconsideración en dos meses. Silencio: CPACA, negativo a los dos meses; Estatuto, un año y positivo. Juez sin recurso: CPACA, la apelación obligatoria cuando procede; Estatuto, demanda directa en cuatro meses si se atendió en debida forma el requerimiento especial.",
+    por: "Donde el Estatuto tiene norma propia, desplaza al CPACA.",
+    trampa: "El operador pone palabras verdaderas del CPACA en un caso tributario.",
+    src: "ET, arts. 720, 732 y 734; CPACA, arts. 74, 76 y 86.", tri: "domina", num: [] },
+
+  /* ---------------- Página 17 · La revocatoria directa ---------------- */
+  { id: "f93", pag: "p17", sub: "s-revoc", t: "Solo sin recursos",
+    q: "¿Cuándo procede la revocatoria directa en materia tributaria?",
+    a: "Solo cuando el contribuyente no interpuso los recursos de la vía gubernativa. Quien interpuso el recurso de reconsideración no puede pedir después la revocatoria del mismo acto, por ninguna causal.",
+    por: "Quien ya discutió el acto tuvo su oportunidad.",
+    trampa: "En el CPACA, quien recurrió puede pedirla por interés público o agravio injustificado; en el Estatuto, no.",
+    src: "ET, art. 736.", tri: "domina", num: [] },
+  { id: "f94", pag: "p17", sub: "s-revoc", t: "Dos años, un año y silencio positivo",
+    q: "¿En qué plazo se pide la revocatoria directa, en cuánto se decide y qué pasa si no se decide?",
+    a: "Se pide dentro de los dos años siguientes a la ejecutoria del acto. La DIAN tiene un año desde la petición en debida forma para decidir; si no decide, la solicitud se entiende resuelta a favor del solicitante, y el silencio positivo debe declararse de oficio o a petición de parte.",
+    por: "Segunda oportunidad para quien no recurrió, pero con plazo.",
+    trampa: "El plazo corre desde la ejecutoria, no desde la notificación.",
+    src: "ET, arts. 737 y 738-1.", tri: "domina", num: ["2 años", "1 año"] },
+  { id: "f95", pag: "p17", sub: "s-revoc", t: "Revocatoria: el choque con el CPACA",
+    q: "¿En qué se diferencia la revocatoria directa del Estatuto de la del CPACA?",
+    a: "Procedencia: el CPACA la permite a quien recurrió por interés público o agravio injustificado; el Estatuto, a nadie que haya recurrido. Oportunidad: el CPACA, aun después de demandar, mientras no se notifique el auto admisorio; el Estatuto, dos años desde la ejecutoria. Término: el CPACA, dos meses y sin silencio; el Estatuto, un año con silencio positivo.",
+    por: "Otra vez, el Estatuto trae norma propia.",
+    trampa: "Las palabras del CPACA son verdaderas, pero para otro régimen.",
+    src: "ET, arts. 736 a 738-1; CPACA, arts. 93 a 96.", tri: "reconoce", num: [] }
 
 ];
 
@@ -852,6 +1079,66 @@ APP.data.mapas = {
         d: "La reconsideración de un concepto de la Subdirección la absuelve la Dirección de Gestión Jurídica. La asesoría a los directores no obliga a quien la pidió." },
       { k: "repres", t: "Quién defiende a la DIAN", col: "y", lam: ["f66", "f67"], norma: "Decreto 1742, arts. 58 y 59",
         d: "Representación Externa: procesos no asignados a otra dependencia, conciliaciones, buzón judicial y Comité de Conciliación. Asuntos Penales: procesos penales, denuncias, reparación integral y preacuerdos." }
+    ] },
+  /* ---------- M07 · Ruta tributaria 2, desde el 30-oct-2026 ---------- */
+  "m07-1": { nombre: "Tres maneras de liquidar", preguntas: ["¿Cuentas o fondo?", "¿Declaró o no?", "¿Desde cuándo corre?"],
+    filas: [
+      { k: "arit", t: "Corrección aritmética", col: "y", lam: ["f69", "f70", "f71"], norma: "ET, arts. 697-699 y 701",
+        d: "Resultado mal anotado, tarifa mal aplicada u operación mal hecha, con menor valor a pagar. Dos años desde la presentación, sin requerimiento especial y sin gastar la revisión." },
+      { k: "revision", t: "Revisión", col: "b", lam: ["f68", "f72"], norma: "ET, arts. 691 par., 702 y 703",
+        d: "Problemas de fondo: una sola liquidación oficial de revisión, con un requerimiento especial previo. La firma hoy el jefe de fiscalización." },
+      { k: "aforo", t: "Aforo", col: "o", lam: ["f68"], norma: "ET, arts. 715-717",
+        d: "Para quien no declaró: emplazamiento previo, sanción por no declarar y liquidación oficial de aforo." }
+    ] },
+  "m07-2": { nombre: "El requerimiento especial", preguntas: ["¿Cuándo venció el plazo para responder?", "¿Hubo ampliación?", "¿Aceptó, corrigió y pagó?"],
+    filas: [
+      { k: "resp", t: "Tres meses para responder", col: "y", lam: ["f73", "f76"], norma: "ET, arts. 707 y 730, num. 2",
+        d: "Desde la notificación, por escrito. La DIAN no puede liquidar antes de que venzan: sería nulo." },
+      { k: "amp", t: "La ampliación", col: "b", lam: ["f74"], norma: "ET, art. 708",
+        d: "Una sola vez, dentro de los tres meses siguientes al vencimiento del plazo para responder. Puede traer hechos nuevos y da entre tres y seis meses." },
+      { k: "cuarta", t: "La cuarta parte", col: "p", lam: ["f75"], norma: "ET, art. 709",
+        d: "Aceptar, corregir, adjuntar la corrección y probar el pago o el acuerdo: la sanción por inexactitud baja a la cuarta parte sobre lo aceptado." }
+    ],
+    nota: "La familia del tres: tres años para notificarlo, tres meses para responderlo, tres meses para ampliarlo." },
+  "m07-3": { nombre: "La liquidación de revisión", preguntas: ["¿Desde qué vencimiento?", "¿Hubo pausas?", "¿Se limitó a lo propuesto?"],
+    filas: [
+      { k: "seis", t: "Seis meses", col: "y", lam: ["f77"], norma: "ET, art. 710",
+        d: "Desde el vencimiento del plazo para responder el requerimiento especial o su ampliación; no desde la respuesta." },
+      { k: "pausas", t: "Las pausas", col: "o", lam: ["f78"], norma: "ET, art. 710",
+        d: "Inspección de oficio: tres meses. Inspección contable pedida: mientras dure. Prueba en documentos fuera del expediente: dos meses." },
+      { k: "limite", t: "Solo lo propuesto y el segundo reloj", col: "b", lam: ["f79", "f80"], norma: "ET, arts. 711 y 714",
+        d: "Solo los hechos del requerimiento o de su ampliación. Si la liquidación no llega en sus seis meses, la declaración queda en firme." },
+      { k: "mitad", t: "La mitad", col: "p", lam: ["f81"], norma: "ET, art. 713",
+        d: "Aceptar dentro del término para recurrir, corregir, presentar el memorial y pagar: la mitad de la sanción propuesta." }
+    ] },
+  "m07-4": { nombre: "El que no declara", preguntas: ["¿Declaró tras el emplazamiento?", "¿Cuál base es mayor?", "¿Cuánto falta para los cinco años?"],
+    filas: [
+      { k: "emp", t: "Emplazamiento previo", col: "y", lam: ["f82"], norma: "ET, arts. 641, 642 y 715",
+        d: "Un mes. Si declara después: 10 % por mes o fracción, tope 200 %. Antes: 5 % y tope 100 %." },
+      { k: "sanc", t: "Sanción por no declarar", col: "p", lam: ["f83", "f84"], norma: "ET, art. 643",
+        d: "Renta: 20 % de la base mayor. Si declara dentro del plazo para recurrir, la mitad, con el piso del art. 642." },
+      { k: "aforo", t: "Aforo", col: "o", lam: ["f85"], norma: "ET, arts. 638 y 717",
+        d: "Cinco años desde el vencimiento del plazo para declarar. La sanción por no declarar también caduca en cinco años." }
+    ] },
+  "m07-5": { nombre: "El recurso de reconsideración", preguntas: ["¿Qué puerta?", "¿Cumple los requisitos?", "¿Pasó el año?"],
+    filas: [
+      { k: "puerta", t: "Un recurso o el juez", col: "b", lam: ["f86", "f87"], norma: "ET, arts. 720 y 735",
+        d: "Reconsideración en dos meses; directo al juez en cuatro si atendió en debida forma el requerimiento especial. Clausura: reposición en diez días." },
+      { k: "req", t: "Requisitos", col: "g", lam: ["f88", "f89"], norma: "ET, arts. 722 y 726",
+        d: "Escrito, motivos concretos, a tiempo, por quien está habilitado. Agente oficioso solo abogado, con ratificación. Ya no se exige pagar la liquidación privada." },
+      { k: "acept", t: "Lo aceptado y las nulidades", col: "o", lam: ["f90"], norma: "ET, arts. 723, 730 y 731",
+        d: "No se discute lo aceptado al responder. Las nulidades, dentro del término del recurso." },
+      { k: "anio", t: "Un año y silencio positivo", col: "y", lam: ["f91", "f92"], norma: "ET, arts. 732-734",
+        d: "Un año desde la interposición en debida forma, con la pausa de la inspección. Sin decisión, el recurso se entiende fallado a favor." }
+    ] },
+  "m07-6": { nombre: "La revocatoria directa", preguntas: ["¿Recurrió?", "¿Está en los dos años?", "¿Pasó el año?"],
+    filas: [
+      { k: "proc", t: "Solo sin recursos", col: "o", lam: ["f93"], norma: "ET, art. 736",
+        d: "Quien interpuso recursos no puede pedirla por ninguna causal." },
+      { k: "plazos", t: "Dos años y un año", col: "y", lam: ["f94"], norma: "ET, arts. 737 y 738-1",
+        d: "Dos años desde la ejecutoria para pedirla; un año para decidirla; si no, silencio positivo." },
+      { k: "cpaca", t: "Frente al CPACA", col: "b", lam: ["f95"], norma: "CPACA, arts. 93-96",
+        d: "En el CPACA puede pedirla quien recurrió (por dos causales), aun después de demandar, y se decide en dos meses sin silencio." }
     ] }
 };
 
@@ -1114,7 +1401,184 @@ APP.data.escenas = [
     check: { q: "En un proceso por contrabando en que la DIAN es víctima, la defensa propone un preacuerdo. ¿Qué dependencia lo lleva al Comité de Conciliación y Defensa Judicial?",
       ops: [{ t: "La Subdirección de Asuntos Penales.", ok: true, por: "Decreto 1742, art. 59." },
             { t: "La Subdirección de Representación Externa, que gestiona el comité.", ok: false, por: "Gestiona el comité, pero los preacuerdos penales los lleva Asuntos Penales." },
-            { t: "La división jurídica de la seccional que detectó el contrabando.", ok: false, por: "Detectar la conducta no da la representación en el proceso penal." }] } }
+            { t: "La división jurídica de la seccional que detectó el contrabando.", ok: false, por: "Detectar la conducta no da la representación en el proceso penal." }] } },
+  /* ---------- M07 · Ruta tributaria 2, desde el 30-oct-2026 ---------- */
+  { id: "e25", tema: "m07-1", mapa: "m07-1", foco: ["revision", "aforo"], lam: ["f68", "f72"],
+    titulo: "Tres maneras de liquidar",
+    cuerpo: ["La declaración es la liquidación privada. Frente a ella, la DIAN tiene tres caminos, cada uno con su acto, su plazo y su punto de partida.",
+             "Error de cuentas: liquidación oficial de corrección aritmética. Problema de fondo: requerimiento especial y liquidación oficial de revisión, una sola vez.",
+             "No declaró: emplazamiento previo por no declarar, sanción por no declarar y liquidación oficial de aforo.",
+             "Hoy, el requerimiento especial y la liquidación de revisión los firma el jefe de fiscalización (art. 691, parágrafo)."],
+    porque: "Antes de contar plazos, hay que saber en qué camino está el caso.",
+    check: { q: "La DIAN encuentra que una sociedad dedujo pagos a proveedores que, según la investigación, nunca prestaron el servicio. ¿Qué camino tiene?",
+      ops: [{ t: "Requerimiento especial y, después, liquidación oficial de revisión.", ok: true, por: "Es un problema de fondo: arts. 702 y 703." },
+            { t: "Liquidación oficial de corrección aritmética.", ok: false, por: "No es una cuenta mal hecha." },
+            { t: "Emplazamiento previo por no declarar.", ok: false, por: "La sociedad sí declaró." }] } },
+  { id: "e26", tema: "m07-1", mapa: "m07-1", foco: ["arit"], lam: ["f69", "f70", "f71"],
+    titulo: "Solo cuentas",
+    cuerpo: ["Error aritmético: resultado mal anotado, tarifa mal aplicada u operación mal hecha. Siempre con un menor valor a pagar o un mayor saldo a favor.",
+             "La DIAN lo corrige con liquidación oficial de corrección aritmética, sin requerimiento especial, dentro de los dos años siguientes a la presentación.",
+             "Corregir la cuenta no le gasta la revisión: la corrección aritmética es «sin perjuicio de la facultad de revisión».",
+             "Si el contribuyente no liquidó sus sanciones o las liquidó mal, la DIAN las liquida con un 30 % más; la mitad, si acepta, renuncia y paga a tiempo."],
+    porque: "Una cuenta mal hecha se ve rápido; por eso tiene un plazo corto que corre desde que se presentó.",
+    check: { q: "Una sociedad presentó su declaración tarde, el 13 de agosto de 2024. La DIAN detecta una suma mal hecha que bajó el impuesto el 3 de septiembre de 2026. ¿Puede proferir la liquidación oficial de corrección aritmética?",
+      ops: [{ t: "No: los dos años desde la presentación vencieron el 13 de agosto de 2026.", ok: true, por: "Art. 699: dos años desde la presentación." },
+            { t: "Sí: tiene tres años desde la presentación tardía.", ok: false, por: "Tres años es el término del requerimiento especial." },
+            { t: "Sí: los errores de cuentas se corrigen en cualquier tiempo.", ok: false, por: "La DIAN tiene dos años para este acto." }] } },
+  { id: "e27", tema: "m07-2", mapa: "m07-2", foco: ["resp"], lam: ["f73", "f76"],
+    titulo: "Tres meses para responder",
+    cuerpo: ["El requerimiento especial se responde por escrito dentro de los tres meses siguientes a su notificación.",
+             "En la respuesta se puede objetar, pedir pruebas, subsanar omisiones y pedir inspecciones tributarias. Si son conducentes, la DIAN debe atenderlas.",
+             "No responder no tiene sanción propia, pero cierra dos puertas: la cuarta parte y la demanda directa ante el juez.",
+             "Y la DIAN no puede adelantarse: si liquida antes de que venzan los tres meses, la liquidación es nula."],
+    porque: "El contribuyente se defiende antes de que la DIAN decida.",
+    check: { q: "La DIAN notificó un requerimiento especial el 13 de mayo de 2026. ¿Hasta cuándo puede responderlo la sociedad?",
+      ops: [{ t: "Hasta el 13 de agosto de 2026.", ok: true, por: "Tres meses desde la notificación (art. 707)." },
+            { t: "Hasta el 13 de junio de 2026.", ok: false, por: "Un mes es el emplazamiento; el requerimiento especial da tres." },
+            { t: "Hasta el 13 de noviembre de 2026.", ok: false, por: "Seis meses es el término de la DIAN para liquidar." }] } },
+  { id: "e28", tema: "m07-2", mapa: "m07-2", foco: ["amp"], lam: ["f74"],
+    titulo: "La ampliación",
+    cuerpo: ["La DIAN puede ampliar el requerimiento especial una sola vez.",
+             "Tiene tres meses contados desde el vencimiento del plazo para responder, no desde la notificación ni desde la fecha en que el contribuyente respondió.",
+             "La ampliación puede traer hechos y conceptos nuevos y proponer una nueva determinación.",
+             "El contribuyente la responde en el plazo que fije la DIAN: entre tres y seis meses."],
+    porque: "Si la DIAN quiere decidir sobre algo nuevo, tiene que avisarlo antes, y darle tiempo al contribuyente.",
+    check: { q: "Un requerimiento especial se notificó el 10 de marzo de 2026 y la sociedad lo respondió el 20 de mayo. ¿Hasta cuándo puede la DIAN ampliarlo?",
+      ops: [{ t: "Hasta el 10 de septiembre de 2026.", ok: true, por: "El plazo para responder vencía el 10 de junio; la ampliación cabe en los tres meses siguientes." },
+            { t: "Hasta el 20 de agosto de 2026.", ok: false, por: "No se cuenta desde la respuesta." },
+            { t: "Hasta el 10 de junio de 2026.", ok: false, por: "Ese es el vencimiento del plazo para responder, el punto de partida." }] } },
+  { id: "e29", tema: "m07-2", mapa: "m07-2", foco: ["cuarta"], lam: ["f75"],
+    titulo: "La cuarta parte",
+    cuerpo: ["Si al responder el requerimiento especial o su ampliación el contribuyente acepta los hechos, la sanción por inexactitud baja a la cuarta parte de la propuesta, sobre lo aceptado.",
+             "Pero exige cuatro cosas a la vez: aceptar, corregir la declaración con los mayores valores y la sanción reducida, adjuntar la corrección y probar el pago o el acuerdo de pago.",
+             "Si falta una, no hay rebaja.",
+             "Quien acepta después, frente a la liquidación de revisión, paga la mitad."],
+    porque: "Cuanto antes acepta, menos paga.",
+    check: { q: "Al responder, una sociedad acepta un mayor impuesto cuya sanción propuesta es de 100 millones. Corrige, adjunta la corrección y firma un acuerdo de pago. ¿Qué sanción paga por ese hecho?",
+      ops: [{ t: "25 millones: la cuarta parte.", ok: true, por: "Cumplió los cuatro requisitos; el acuerdo de pago vale (art. 709)." },
+            { t: "50 millones: la mitad.", ok: false, por: "La mitad es para la aceptación posterior a la liquidación." },
+            { t: "100 millones: sin pago no hay rebaja.", ok: false, por: "El acuerdo de pago sustituye el pago para este efecto." }] } },
+  { id: "e30", tema: "m07-3", mapa: "m07-3", foco: ["seis", "pausas"], lam: ["f77", "f78"],
+    titulo: "Seis meses y sus pausas",
+    cuerpo: ["La liquidación oficial de revisión debe notificarse dentro de los seis meses siguientes al vencimiento del plazo para responder el requerimiento especial o su ampliación.",
+             "Otra vez, el punto de partida es el vencimiento, no la respuesta.",
+             "Pausas: inspección tributaria de oficio, tres meses; inspección contable pedida por el contribuyente, mientras dure; prueba pedida en documentos que no están en el expediente, dos meses.",
+             "Antes de contar, pregunta: ¿qué pasó antes que mueva este reloj?"],
+    porque: "La DIAN ya escuchó al contribuyente; si él pidió pruebas, el reloj de la DIAN espera.",
+    check: { q: "El plazo para responder un requerimiento especial venció el 6 de febrero de 2026. El contribuyente pidió documentos que están en un banco, no en el expediente. No hubo ampliación. ¿Hasta cuándo puede la DIAN notificar la liquidación?",
+      ops: [{ t: "Hasta el 6 de octubre de 2026.", ok: true, por: "Seis meses (6 de agosto) más dos de suspensión (art. 710)." },
+            { t: "Hasta el 6 de agosto de 2026.", ok: false, por: "Olvida la suspensión de dos meses." },
+            { t: "Hasta el 6 de noviembre de 2026.", ok: false, por: "La prueba en documentos suspende dos meses, no tres." }] } },
+  { id: "e31", tema: "m07-3", mapa: "m07-3", foco: ["limite"], lam: ["f79", "f80"],
+    titulo: "Solo lo propuesto y el segundo reloj",
+    cuerpo: ["La liquidación de revisión se limita a los hechos del requerimiento especial o de su ampliación. La DIAN no puede sorprender en la decisión.",
+             "Para agregar algo, debe ampliar el requerimiento a tiempo.",
+             "Y hay un segundo reloj: si los seis meses vencen sin notificar la liquidación, la declaración queda en firme.",
+             "Haber notificado a tiempo el requerimiento especial no basta."],
+    porque: "Nadie se defiende de lo que no le han dicho, y cada paso de la DIAN tiene su reloj.",
+    check: { q: "La liquidación de revisión agregó unos ingresos que no estaban en el requerimiento especial ni en su ampliación. ¿Qué debe hacer la sociedad?",
+      ops: [{ t: "Alegar al discutir la liquidación que desconoce el art. 711.", ok: true, por: "La liquidación debe limitarse a lo propuesto." },
+            { t: "Aceptarlos: la DIAN puede adicionar hechos hasta que decide.", ok: false, por: "Para eso estaba la ampliación." },
+            { t: "Pedir la cuarta parte de la sanción por esos ingresos.", ok: false, por: "La rebaja no subsana que el hecho no se propuso." }] } },
+  { id: "e32", tema: "m07-3", mapa: "m07-3", foco: ["mitad"], lam: ["f81"],
+    titulo: "La mitad",
+    cuerpo: ["Segunda oportunidad para pagar menos: aceptar los hechos de la liquidación de revisión dentro del término para interponer el recurso de reconsideración.",
+             "La sanción por inexactitud baja a la mitad de la inicialmente propuesta, sobre lo aceptado.",
+             "Requisitos paralelos: corregir, presentar un memorial ante la oficina de recursos con la corrección y probar el pago o el acuerdo.",
+             "Con el requerimiento especial, la cuarta parte; con la liquidación, la mitad; fuera de término, nada."],
+    porque: "Esperar tiene un precio: cada etapa que pasa cuesta más.",
+    check: { q: "Tres meses después de recibir la liquidación de revisión, sin recurrirla, una sociedad acepta los hechos, corrige y paga. ¿Tiene la rebaja a la mitad?",
+      ops: [{ t: "No: debía aceptar dentro de los dos meses del recurso.", ok: true, por: "Art. 713." },
+            { t: "Sí: mientras la liquidación no esté en firme.", ok: false, por: "El plazo es el del recurso." },
+            { t: "Sí, pero solo a la cuarta parte.", ok: false, por: "La cuarta parte era al responder el requerimiento especial." }] } },
+  { id: "e33", tema: "m07-4", mapa: "m07-4", foco: ["emp"], lam: ["f82"],
+    titulo: "El emplazamiento duplica el precio",
+    cuerpo: ["A quien no declaró, la DIAN lo emplaza, previa comprobación de su obligación, para que declare en un mes.",
+             "Si declara después del emplazamiento, paga el 10 % del impuesto por cada mes o fracción, sin pasar del 200 % (art. 642).",
+             "Antes del emplazamiento habría pagado el 5 % por mes o fracción, con tope del 100 % (art. 641).",
+             "La misma tarifa doble aplica a quien declara después del auto que ordena una inspección tributaria."],
+    porque: "Esperar a que la DIAN te llame cuesta el doble.",
+    check: { q: "Después del emplazamiento previo, una sociedad declara con 8 meses y 5 días de retraso. Su impuesto es de 60 millones. ¿Qué extemporaneidad liquida, antes de reducciones?",
+      ops: [{ t: "54 millones: 10 % por 9 meses.", ok: true, por: "La fracción cuenta como mes: 9 meses al 10 % (art. 642)." },
+            { t: "27 millones: 5 % por 9 meses.", ok: false, por: "El 5 % es para quien declara sin emplazamiento." },
+            { t: "48 millones: 10 % por 8 meses.", ok: false, por: "Olvida la fracción de mes." }] } },
+  { id: "e34", tema: "m07-4", mapa: "m07-4", foco: ["sanc"], lam: ["f83", "f84"],
+    titulo: "La sanción por no declarar",
+    cuerpo: ["Si vence el mes y no declara, la DIAN impone la sanción por no declarar en una resolución sanción.",
+             "En renta: el 20 % de las consignaciones o ingresos que determine la DIAN, o de los ingresos de la última declaración, el que sea mayor. En IVA e impuesto al consumo, el 10 %.",
+             "Si declara dentro del plazo para recurrir esa resolución, la sanción baja a la mitad, y la liquida y paga con la declaración.",
+             "Pero nunca por debajo de la extemporaneidad del art. 642: ese es el piso."],
+    porque: "Declarar tarde siempre sale más barato que no declarar.",
+    check: { q: "La DIAN determinó consignaciones por 900 millones; la última declaración traía ingresos por 1.200 millones. ¿Cuál es la sanción por no declarar en renta?",
+      ops: [{ t: "240 millones: 20 % de la base mayor.", ok: true, por: "Art. 643: se toma la mayor." },
+            { t: "180 millones: 20 % de las consignaciones.", ok: false, por: "Esa es la base menor." },
+            { t: "120 millones: 10 % de la base mayor.", ok: false, por: "El 10 % es la tarifa del IVA." }] } },
+  { id: "e35", tema: "m07-4", mapa: "m07-4", foco: ["aforo"], lam: ["f85"],
+    titulo: "La liquidación de aforo",
+    cuerpo: ["Agotados el emplazamiento previo y la sanción por no declarar, la DIAN puede fijar el impuesto con una liquidación oficial de aforo.",
+             "Tiene cinco años desde el vencimiento del plazo para declarar.",
+             "La facultad de imponer la sanción por no declarar también se extingue en cinco años, aunque la regla general de las sanciones independientes es de dos.",
+             "Tres años es la ruta de quien sí declaró; cinco, la de quien no declaró."],
+    porque: "Quien no declaró no tiene una firmeza que lo proteja: la DIAN tiene más tiempo.",
+    check: { q: "El plazo para declarar la renta de una sociedad vencía el 15 de mayo de 2024, y nunca declaró. ¿Hasta cuándo puede la DIAN proferir la liquidación de aforo?",
+      ops: [{ t: "Hasta el 15 de mayo de 2029.", ok: true, por: "Cinco años desde el vencimiento (art. 717)." },
+            { t: "Hasta el 15 de mayo de 2027.", ok: false, por: "Tres años es el requerimiento especial." },
+            { t: "Hasta el 15 de mayo de 2026.", ok: false, por: "Dos años es la corrección aritmética." }] } },
+  { id: "e36", tema: "m07-5", mapa: "m07-5", foco: ["puerta"], lam: ["f86", "f87"],
+    titulo: "Un recurso, dos meses",
+    cuerpo: ["Contra liquidaciones oficiales, sanciones y demás actos sobre impuestos procede un solo recurso: el de reconsideración, dentro de los dos meses siguientes a la notificación.",
+             "Norma especial: contra la clausura del establecimiento, reposición en diez días.",
+             "Si el contribuyente atendió en debida forma el requerimiento especial, puede saltarse el recurso y demandar directamente en cuatro meses.",
+             "El CPACA no rige aquí: ni reposición y apelación en diez días, ni apelación obligatoria."],
+    porque: "El Estatuto tiene su propio recurso, su propio plazo y su propia puerta al juez.",
+    check: { q: "Una sociedad que respondió a tiempo el requerimiento especial recibe la liquidación de revisión el 8 de junio de 2026. ¿Hasta cuándo puede demandarla directamente?",
+      ops: [{ t: "Hasta el 8 de octubre de 2026.", ok: true, por: "Cuatro meses (art. 720, par.)." },
+            { t: "Hasta el 8 de agosto de 2026.", ok: false, por: "Dos meses es el recurso de reconsideración." },
+            { t: "No puede: el recurso es obligatorio.", ok: false, por: "Esa es la lógica del CPACA." }] } },
+  { id: "e37", tema: "m07-5", mapa: "m07-5", foco: ["req"], lam: ["f88", "f89"],
+    titulo: "Los requisitos del recurso",
+    cuerpo: ["Por escrito, con motivos concretos, a tiempo y por el contribuyente o su apoderado, que para recurrir debe ser abogado.",
+             "El agente oficioso solo puede ser abogado, y la persona debe ratificar dentro de los dos meses siguientes a la notificación del auto admisorio.",
+             "Ya no se exige pagar la liquidación privada: la Corte lo declaró inexequible en el año 2000.",
+             "Contra el auto que inadmite, solo reposición, en diez días."],
+    porque: "El recurso abre una discusión seria: exige motivos y alguien habilitado, pero no pagar primero.",
+    check: { q: "Un contador, sin poder y sin ser abogado, interpone el recurso como agente oficioso, y la empresa ratifica a tiempo. ¿Es válido?",
+      ops: [{ t: "No: solo los abogados pueden ser agentes oficiosos.", ok: true, por: "Art. 722." },
+            { t: "Sí: la ratificación oportuna lo convalida.", ok: false, por: "La ratificación no suple la calidad de abogado." },
+            { t: "Sí, si además acredita el pago de la liquidación privada.", ok: false, por: "Ese requisito es inexequible y no suple la calidad." }] } },
+  { id: "e38", tema: "m07-5", mapa: "m07-5", foco: ["acept"], lam: ["f90"],
+    titulo: "Lo que ya no se discute",
+    cuerpo: ["En el recurso no pueden objetarse los hechos que se aceptaron expresamente al responder el requerimiento especial o su ampliación.",
+             "Las nulidades se alegan dentro del término del recurso, en el escrito o en una adición.",
+             "Causales: funcionario incompetente, omisión del requerimiento especial o de su término, omisión de bases o explicaciones, procedimientos concluidos y otras que la ley declare.",
+             "La causal de «no notificarse dentro del término legal» ya no existe."],
+    porque: "Lo aceptado, aceptado queda; y lo que se reclama, se reclama a tiempo.",
+    check: { q: "En el recurso, una sociedad quiere discutir unos costos cuyo rechazo aceptó expresamente al responder el requerimiento especial. ¿Puede?",
+      ops: [{ t: "No: lo aceptado al responder no se discute en el recurso.", ok: true, por: "Art. 723." },
+            { t: "Sí: el recurso abre de nuevo toda la discusión.", ok: false, por: "El art. 723 lo excluye." },
+            { t: "Sí, si alega una nulidad sobre ese punto.", ok: false, por: "La nulidad no revive los hechos aceptados." }] } },
+  { id: "e39", tema: "m07-5", mapa: "m07-5", foco: ["anio"], lam: ["f91", "f92"],
+    titulo: "Un año y el silencio positivo",
+    cuerpo: ["La DIAN tiene un año para resolver el recurso, desde su interposición en debida forma.",
+             "La inspección tributaria suspende ese año: mientras dure, si la pidió el contribuyente; hasta tres meses, si es de oficio.",
+             "Si el año pasa sin decisión notificada, el recurso se entiende fallado a favor del recurrente, y la DIAN debe declararlo.",
+             "En el CPACA, el silencio en los recursos es negativo a los dos meses. Aquí, un año y positivo."],
+    porque: "La DIAN no puede dejar al contribuyente esperando sin consecuencias.",
+    check: { q: "Un recurso se interpuso en debida forma, sin inspecciones. A los trece meses la DIAN no ha firmado ni notificado nada. ¿Qué pasó?",
+      ops: [{ t: "Operó el silencio positivo: se entiende fallado a favor.", ok: true, por: "Arts. 732 y 734." },
+            { t: "Se entiende negado, y queda abierta la vía judicial.", ok: false, por: "Ese es el silencio negativo del CPACA." },
+            { t: "Nada: la DIAN puede decidir mientras no se declare el silencio.", ok: false, por: "El efecto se produce al vencer el año." }] } },
+  { id: "e40", tema: "m07-6", mapa: "m07-6", foco: ["proc", "plazos", "cpaca"], lam: ["f93", "f94", "f95"],
+    titulo: "La revocatoria directa",
+    cuerpo: ["En el Estatuto, la revocatoria directa procede solo si el contribuyente no interpuso los recursos.",
+             "Se pide dentro de los dos años siguientes a la ejecutoria del acto.",
+             "La DIAN tiene un año para decidir; si no lo hace, opera el silencio positivo, que debe declararse.",
+             "En el CPACA, quien recurrió puede pedirla por interés público o agravio injustificado, aun después de demandar, y se decide en dos meses sin silencio. Aquí no."],
+    porque: "Es la segunda oportunidad de quien no discutió el acto, con plazo y con silencio positivo.",
+    check: { q: "Una sociedad perdió el recurso de reconsideración contra una sanción. Un año después pide la revocatoria directa por agravio injustificado. ¿Procede?",
+      ops: [{ t: "No: quien interpuso recursos no puede pedirla por ninguna causal.", ok: true, por: "Art. 736." },
+            { t: "Sí: el agravio injustificado la permite aunque haya recurrido.", ok: false, por: "Esa es la regla del CPACA." },
+            { t: "Sí, porque está dentro de los dos años desde la ejecutoria.", ok: false, por: "El plazo no salva la improcedencia." }] } }
 ];
 
 
@@ -1555,7 +2019,167 @@ APP.data.casos = [
         m: [{ s: "de la misma seccional", c: "g", n: "Misma seccional" }] },
       { t: "Descartar", txt: "La primera opción aplica el CPACA a un conflicto interno. La segunda sube el conflicto un piso de más.", o: [0, 1] }
     ],
-    llevar: "Conflicto de competencia: ¿una entidad o dos?, ¿de qué nivel es cada parte? Misma seccional: decide su director." }
+    llevar: "Conflicto de competencia: ¿una entidad o dos?, ¿de qué nivel es cada parte? Misma seccional: decide su director." },
+  /* ============ Actualización M07 «Ruta tributaria 2» · 30-oct-2026 · casos inéditos ============
+     No repiten los casos de la lección M07 (Agroinsumos del Meta, Seguridad Opita, Lácteos del Sur, Hotel Rodadero Azul,
+     Transportes Frontera, Distribuidora Tolima Grande, Ferretería El Puente) ni los del Centro DIAN Exprés.
+     Fechas de vencimiento en días hábiles. */
+
+  /* ===================== F18 · Las respuestas anticipadas ===================== */
+  { id: "F18", tema: "m07-3", sub: "s-seismeses", tec: "T3", lam: ["f77", "f74", "f78"],
+    caso: "El 11 de marzo de 2025, la DIAN le notificó a una comercializadora de repuestos de Bucaramanga un requerimiento especial sobre su declaración de renta del año gravable 2022. La sociedad respondió por escrito el 27 de mayo de 2025. El 2 de julio de 2025, la DIAN le notificó un nuevo acto que agregó a la propuesta inicial unos pagos al exterior que no se habían cuestionado, y le concedió cinco meses para pronunciarse sobre él. La sociedad se pronunció el 18 de noviembre de 2025. En el expediente no hay inspecciones tributarias ni solicitudes de pruebas pendientes.",
+    enunciado: "La DIAN puede notificar válidamente la liquidación oficial de revisión",
+    ops: [
+      { t: "hasta el 11 de diciembre de 2025, seis meses después del vencimiento del término para responder el requerimiento inicial.", ok: false, err: "momento",
+        por: "Sería correcta si no hubiera habido ampliación. Con ampliación, los seis meses corren desde el vencimiento del plazo para responderla (art. 710)." },
+      { t: "hasta el 18 de mayo de 2026, seis meses después de la fecha en que la sociedad se pronunció sobre el acto del 2 de julio.", ok: false, err: "inventada",
+        por: "Los seis meses no se cuentan desde la respuesta, sino desde el vencimiento del plazo para darla." },
+      { t: "hasta el 2 de junio de 2026, seis meses después del vencimiento del término fijado para pronunciarse sobre el acto del 2 de julio.", ok: true,
+        por: "Es correcta. El acto del 2 de julio es la ampliación del requerimiento especial, notificada a tiempo. Su plazo de respuesta, cinco meses, venció el 2 de diciembre de 2025, y desde allí corren los seis meses (arts. 708 y 710)." }
+    ],
+    paseo: [
+      { t: "Traducir el rodeo", txt: "«Un nuevo acto que agregó a la propuesta inicial» unos pagos no cuestionados es la ampliación del requerimiento especial. Llegó dentro de los tres meses siguientes al vencimiento del plazo para responder, que era el 11 de junio de 2025.",
+        m: [{ s: "un nuevo acto que agregó a la propuesta inicial unos pagos al exterior que no se habían cuestionado", c: "b", n: "= ampliación" }] },
+      { t: "El punto de partida", txt: "Con ampliación, los seis meses corren desde el vencimiento del plazo para responderla: cinco meses desde el 2 de julio de 2025, es decir, el 2 de diciembre de 2025.",
+        m: [{ s: "le concedió cinco meses para pronunciarse sobre él", c: "y", n: "Vence el 2 de diciembre de 2025" }] },
+      { t: "Las fechas que distraen", txt: "Las dos respuestas fueron anticipadas. No mueven nada: se cuenta desde el vencimiento del plazo, no desde la respuesta.",
+        m: [{ s: "respondió por escrito el 27 de mayo de 2025", c: "o" }, { s: "se pronunció el 18 de noviembre de 2025", c: "o", n: "No es el punto de partida" }] },
+      { t: "Sin pausas, y descartar", txt: "Nada suspende el término: 2 de diciembre de 2025 más seis meses, 2 de junio de 2026. La primera opción olvida la ampliación; la segunda cuenta desde la respuesta.",
+        m: [{ s: "no hay inspecciones tributarias ni solicitudes de pruebas pendientes", c: "g" }], o: [0, 1] }
+    ],
+    llevar: "Seis meses desde el vencimiento del plazo para responder la ampliación, si la hubo. Las respuestas anticipadas no mueven el reloj." },
+
+  /* ===================== F19 · El pago que no cubrió la sanción ===================== */
+  { id: "F19", tema: "m07-2", sub: "s-cuarta", tec: "T8", lam: ["f75"],
+    caso: "Al responder dentro del término el requerimiento especial, una sociedad hotelera de Cartagena aceptó que omitió ingresos por arrendamiento de salones. Sobre ese hecho, la DIAN había propuesto un mayor impuesto de 70 millones de pesos y una sanción por inexactitud de 70 millones. La sociedad corrigió su declaración incluyendo el mayor impuesto y una sanción reducida de 17,5 millones, adjuntó a la respuesta copia de la corrección y el recibo de pago del mayor impuesto con sus intereses, y anunció que pagaría la sanción cuando la DIAN le confirmara su valor.",
+    enunciado: "Frente a la sanción por inexactitud de los ingresos aceptados, la DIAN debe",
+    ops: [
+      { t: "reconocer la reducción a la cuarta parte, porque la sociedad aceptó los hechos al responder y corrigió con la sanción reducida.", ok: false, err: "requisito",
+        por: "Cuenta tres requisitos y calla el cuarto: la prueba del pago o del acuerdo de pago de los impuestos y de las sanciones, incluida la de inexactitud reducida (art. 709)." },
+      { t: "negar la reducción, porque con la respuesta no se probó el pago ni el acuerdo de pago de la sanción reducida.", ok: true,
+        por: "Es correcta. El art. 709 exige adjuntar la prueba del pago o del acuerdo de pago de impuestos, retenciones y sanciones, incluida la de inexactitud reducida. Pagar solo el impuesto y anunciar el pago de la sanción no lo cumple." },
+      { t: "reducir la sanción a la mitad, porque el pago del mayor impuesto demuestra la aceptación de los hechos.", ok: false, err: "vecina",
+        por: "La mitad es la reducción del art. 713, para quien acepta después de la liquidación de revisión, y también exige el pago." }
+    ],
+    paseo: [
+      { t: "La regla y sus cuatro piezas", txt: "Aceptar al responder, corregir con la sanción reducida, adjuntar la corrección y probar el pago o el acuerdo de pago de impuestos y sanciones (art. 709). El experto revisa una por una.",
+        m: [{ s: "Al responder dentro del término el requerimiento especial", c: "y" }, { s: "corrigió su declaración incluyendo el mayor impuesto y una sanción reducida de 17,5 millones", c: "b", n: "Corrección: sí" }, { s: "adjuntó a la respuesta copia de la corrección", c: "b", n: "Copia: sí" }] },
+      { t: "La pieza que falta", txt: "Pagó el mayor impuesto y los intereses, pero no la sanción. La norma exige el pago o el acuerdo de pago también de la sanción por inexactitud reducida.",
+        m: [{ s: "el recibo de pago del mayor impuesto con sus intereses", c: "p", n: "Falta la sanción" }, { s: "anunció que pagaría la sanción cuando la DIAN le confirmara su valor", c: "o", n: "Anunciar no es pagar" }] },
+      { t: "Descartar", txt: "La primera opción cuenta tres requisitos y calla el cuarto. La tercera trae la mitad del art. 713, que es para otro momento.", o: [0, 2] }
+    ],
+    llevar: "La cuarta parte exige las cuatro piezas, y el pago debe cubrir también la sanción reducida." },
+
+  /* ===================== F20 · La mitad que quedó bajo el piso ===================== */
+  { id: "F20", tema: "m07-4", sub: "s-sancnodecl", tec: "T5", lam: ["f83", "f84", "f82"],
+    caso: "Una empresa de transporte de Montería no presentó su declaración de renta del año gravable 2023, aunque estaba obligada. Previa comprobación de su obligación, la DIAN la emplazó para declarar, y venció el mes sin respuesta. Luego le notificó la resolución que le impuso la sanción por no declarar, calculada sobre los ingresos brutos de su última declaración de renta, 900 millones de pesos, porque las consignaciones bancarias que pudo establecer sumaban 640 millones. Dentro del plazo para recurrir esa resolución, la empresa presentó la declaración, con un impuesto a cargo de 80 millones de pesos y con 22 meses y 12 días de retardo.",
+    enunciado: "Sin considerar otras reducciones, la sanción por no declarar que la empresa debe liquidar y pagar con su declaración es de",
+    ops: [
+      { t: "160 millones de pesos, porque la sanción reducida no puede ser inferior a la de extemporaneidad.", ok: true,
+        por: "Es correcta. La sanción impuesta es el 20 % de 900 millones: 180 millones. Al declarar dentro del plazo para recurrir, baja a la mitad, 90 millones, pero no puede quedar por debajo de la extemporaneidad del art. 642: 23 meses al 10 % superan el tope, que es el 200 % de 80 millones, 160 millones (art. 643, par. 2)." },
+      { t: "90 millones de pesos, que corresponden a la mitad de la sanción impuesta por la DIAN.", ok: false, err: "verdad",
+        por: "Es la mitad, pero olvida el piso: la sanción reducida nunca puede ser inferior a la extemporaneidad del art. 642, que aquí es de 160 millones." },
+      { t: "64 millones de pesos, que corresponden a la mitad de la sanción calculada sobre las consignaciones.", ok: false, err: "lectura",
+        por: "Usa la base menor. El art. 643 manda tomar la mayor, y la DIAN la tomó: 900 millones." }
+    ],
+    paseo: [
+      { t: "La sanción impuesta", txt: "En renta, el 20 % de la base mayor: los ingresos de la última declaración (900 millones) superan las consignaciones (640). El 20 % de 900 son 180 millones (art. 643).",
+        m: [{ s: "900 millones de pesos", c: "p", n: "Base mayor" }, { s: "640 millones", c: "o", n: "Base menor" }] },
+      { t: "La rebaja", txt: "Declaró dentro del plazo para recurrir la resolución: la sanción baja a la mitad, 90 millones (art. 643, par. 2).",
+        m: [{ s: "Dentro del plazo para recurrir esa resolución, la empresa presentó la declaración", c: "y" }] },
+      { t: "El piso que decide", txt: "La mitad no puede quedar por debajo de la extemporaneidad del art. 642: 22 meses y 12 días son 23 meses o fracción; al 10 %, el 230 %, con tope del 200 %: 160 millones. Gana el piso.",
+        m: [{ s: "80 millones de pesos", c: "p" }, { s: "22 meses y 12 días de retardo", c: "y", n: "23 meses: tope del 200 %" }] },
+      { t: "Descartar", txt: "La segunda opción olvida el piso. La tercera usa la base menor.", o: [1, 2] }
+    ],
+    llevar: "Sanción por no declarar: 20 % de la base mayor; la mitad si declara a tiempo, pero nunca por debajo de la extemporaneidad del art. 642." },
+
+  /* ===================== F21 · La puerta cerrada ===================== */
+  { id: "F21", tema: "m07-5", sub: "s-recurso", tec: "T1", lam: ["f86", "f87", "f92"],
+    caso: "El 9 de septiembre de 2025, la DIAN le notificó a una distribuidora de insumos médicos de Valledupar el acto con el que le proponía desconocer unas deducciones de su declaración de renta del año gravable 2022, con la explicación de sus razones y la cuantificación del mayor impuesto y de la sanción. La distribuidora no presentó escrito alguno frente a esa propuesta. El 4 de junio de 2026, la DIAN le notificó personalmente el acto que modificó la declaración en los mismos términos. Su revisor fiscal sostiene que, como en cualquier actuación administrativa, debe interponer reposición y en subsidio apelación dentro de los diez días siguientes; su abogado externo prefiere demandar de una vez ante el juez.",
+    enunciado: "Para controvertir el acto notificado el 4 de junio de 2026, la distribuidora debe",
+    ops: [
+      { t: "interponer reposición y, en subsidio, apelación, dentro de los diez días siguientes a la notificación del acto.", ok: false, err: "vecina",
+        por: "Es el esquema del CPACA. El Estatuto tiene norma propia: un solo recurso, el de reconsideración, en dos meses (art. 720)." },
+      { t: "demandar ante la jurisdicción de lo contencioso administrativo dentro de los cuatro meses siguientes, sin agotar recurso alguno.", ok: false, err: "requisito",
+        por: "La demanda directa exige haber atendido en debida forma el requerimiento especial (art. 720, par.), y la distribuidora no lo respondió." },
+      { t: "interponer el recurso de reconsideración a más tardar el 4 de agosto de 2026, porque no tiene abierta la demanda directa.", ok: true,
+        por: "Es correcta. Contra la liquidación oficial de revisión procede el recurso de reconsideración, dentro de los dos meses siguientes a su notificación (art. 720). Como no respondió el requerimiento especial, no puede saltárselo." }
+    ],
+    paseo: [
+      { t: "Traducir el rodeo", txt: "El acto que «proponía desconocer unas deducciones», con razones y cuantificación, es el requerimiento especial. El que «modificó la declaración» es la liquidación oficial de revisión.",
+        m: [{ s: "el acto con el que le proponía desconocer unas deducciones", c: "b", n: "= requerimiento especial" }, { s: "el acto que modificó la declaración en los mismos términos", c: "b", n: "= liquidación de revisión" }] },
+      { t: "El dato que cierra una puerta", txt: "La distribuidora no respondió el requerimiento especial. La demanda directa exige haberlo atendido en debida forma.",
+        m: [{ s: "no presentó escrito alguno frente a esa propuesta", c: "g", n: "Sin demanda directa" }] },
+      { t: "El recurso y su plazo", txt: "Queda el recurso de reconsideración: dos meses desde el 4 de junio, hasta el 4 de agosto de 2026. El esquema del revisor fiscal es el del CPACA.",
+        m: [{ s: "como en cualquier actuación administrativa", c: "o", n: "CPACA: no rige aquí" }] },
+      { t: "Descartar", txt: "La primera opción aplica el CPACA. La segunda abre una puerta que exige haber respondido el requerimiento especial.", o: [0, 1] }
+    ],
+    llevar: "Sin respuesta al requerimiento especial no hay demanda directa: recurso de reconsideración en dos meses." },
+
+  /* ===================== F22 · El año que se alargó ===================== */
+  { id: "F22", tema: "m07-5", sub: "s-silencio", tec: "T2", lam: ["f91"],
+    caso: "Una constructora de Ibagué interpuso en debida forma, el 15 de julio de 2025, el recurso de reconsideración contra una liquidación oficial de revisión. En el escrito pidió que se practicara una inspección tributaria en sus oficinas, y la DIAN la practicó entre el 2 de febrero y el 13 de marzo de 2026. La DIAN notificó la decisión que confirmó la liquidación el 5 de agosto de 2026. No hubo otras suspensiones. La constructora sostiene que, como pasó más de un año desde la interposición del recurso, este debe entenderse fallado a su favor.",
+    enunciado: "Sobre la oportunidad de la decisión, lo correcto es concluir que",
+    ops: [
+      { t: "operó el silencio administrativo positivo, porque la decisión se notificó más de un año después de la interposición del recurso.", ok: false, err: "verdad",
+        por: "Es cierto que pasó más de un año, pero el término se suspendió mientras duró la inspección que pidió la constructora (art. 733)." },
+      { t: "la decisión es oportuna, porque el término para fallar se suspendió mientras duró la inspección que pidió la constructora.", ok: true,
+        por: "Es correcta. El año corría hasta el 15 de julio de 2026, pero la inspección pedida por la contribuyente lo suspendió mientras duró: unos cuarenta días. El término se corrió hasta la segunda quincena de agosto, y la decisión se notificó el 5 de agosto." },
+      { t: "operó el silencio administrativo negativo, y la constructora puede demandar el acto inicial ante el juez.", ok: false, err: "vecina",
+        por: "El silencio negativo en los recursos es del CPACA. En el Estatuto, vencido el año, el silencio es positivo; y aquí el año no había vencido." }
+    ],
+    paseo: [
+      { t: "El año", txt: "La DIAN tiene un año desde la interposición en debida forma: hasta el 15 de julio de 2026, si nada lo suspende (art. 732).",
+        m: [{ s: "el 15 de julio de 2025", c: "y" }] },
+      { t: "Lo que mueve el reloj", txt: "La inspección la pidió la constructora: el término se suspende mientras dure (art. 733). Del 2 de febrero al 13 de marzo de 2026 van unos cuarenta días, y el año se corre hasta la segunda quincena de agosto.",
+        m: [{ s: "En el escrito pidió que se practicara una inspección tributaria", c: "g", n: "La pidió ella: mientras dure" }, { s: "entre el 2 de febrero y el 13 de marzo de 2026", c: "y", n: "Unos 40 días" }] },
+      { t: "La conclusión", txt: "La decisión se notificó el 5 de agosto de 2026, antes de que venciera el término ampliado. La constructora olvida la suspensión.",
+        m: [{ s: "el 5 de agosto de 2026", c: "y" }, { s: "como pasó más de un año desde la interposición del recurso", c: "o", n: "Olvida la suspensión" }] },
+      { t: "Descartar", txt: "La primera opción calla la suspensión. La tercera trae el silencio negativo del CPACA.", o: [0, 2] }
+    ],
+    llevar: "Antes de declarar el silencio positivo, busca la inspección: si la pidió el contribuyente, suspende el año mientras dure." },
+
+  /* ===================== F23 · La revocatoria sin respuesta ===================== */
+  { id: "F23", tema: "m07-6", sub: "s-revoc", tec: "T6", lam: ["f93", "f94", "f95"],
+    caso: "El 4 de marzo de 2024, la DIAN le notificó a una papelería de Manizales una resolución que le impuso una sanción por no enviar información. La papelería no interpuso recurso alguno, y la resolución quedó ejecutoriada en mayo de 2024. El 13 de enero de 2026, la papelería pidió en debida forma la revocatoria directa de la sanción. El 17 de marzo de 2027, la DIAN profirió y notificó una resolución que negó la solicitud.",
+    enunciado: "Sobre la solicitud de revocatoria directa, lo correcto es concluir que",
+    ops: [
+      { t: "se entiende resuelta a favor de la papelería, porque la DIAN no la decidió dentro del año siguiente a la petición.", ok: true,
+        por: "Es correcta. La revocatoria procedía (no hubo recursos) y se pidió a tiempo (dentro de los dos años desde la ejecutoria). La DIAN tenía un año desde la petición, hasta el 13 de enero de 2027; vencido sin decisión, opera el silencio positivo, que debe declararse (arts. 736, 737 y 738-1)." },
+      { t: "era improcedente, porque cuando se pidió el acto ya estaba ejecutoriado.", ok: false, err: "inventada",
+        por: "La ejecutoria no impide la revocatoria: es el punto desde el que corren los dos años para pedirla (art. 737)." },
+      { t: "la DIAN podía negarla en cualquier tiempo, porque en la revocatoria directa no opera el silencio administrativo.", ok: false, err: "vecina",
+        por: "Es la regla del CPACA. En el Estatuto, la DIAN tiene un año y opera el silencio positivo (art. 738-1)." }
+    ],
+    paseo: [
+      { t: "¿Procede?", txt: "La papelería no interpuso recurso: la revocatoria directa procede (art. 736). Y la pidió dentro de los dos años siguientes a la ejecutoria, que corrían hasta mayo de 2026 (art. 737).",
+        m: [{ s: "no interpuso recurso alguno", c: "g", n: "Procede" }, { s: "quedó ejecutoriada en mayo de 2024", c: "y" }, { s: "El 13 de enero de 2026", c: "y", n: "Dentro de los dos años" }] },
+      { t: "El año para decidir", txt: "La DIAN tenía un año desde la petición en debida forma: hasta el 13 de enero de 2027. Profirió y notificó el 17 de marzo de 2027.",
+        m: [{ s: "El 17 de marzo de 2027", c: "y", n: "Fuera del año" }] },
+      { t: "La consecuencia, y descartar", txt: "Vencido el año sin decisión, la solicitud se entiende resuelta a favor, y el silencio positivo debe declararse de oficio o a petición de parte. Lo de «sin silencio» es del CPACA.", o: [1, 2] }
+    ],
+    llevar: "Revocatoria directa en el Estatuto: sin recursos, dentro de dos años desde la ejecutoria, y un año para decidir con silencio positivo." },
+
+  /* ===================== F24 · La suma que se corrigió tarde ===================== */
+  { id: "F24", tema: "m07-1", sub: "s-aritm", tec: "T7", lam: ["f69", "f70"],
+    caso: "Una tostadora de café de Popayán presentó el 22 de abril de 2024 su declaración de renta del año gravable 2023, dentro del plazo. Al trasladar al total de costos los valores que ella misma detalló, anotó una cifra mayor, y el impuesto quedó más bajo. El 27 de mayo de 2026, sin haberle enviado antes ningún requerimiento, la DIAN le notificó un acto que corrigió esa suma y le liquidó el mayor impuesto. La tostadora alega que la DIAN actuó fuera de tiempo.",
+    enunciado: "Frente a la alegación de la tostadora, lo correcto es concluir que el acto",
+    ops: [
+      { t: "es extemporáneo, porque los dos años para corregir ese error se cuentan desde la presentación de la declaración.", ok: true,
+        por: "Es correcta. Es una liquidación oficial de corrección aritmética, y debía proferirse dentro de los dos años siguientes a la presentación (art. 699): hasta el 22 de abril de 2026." },
+      { t: "es oportuno, porque la DIAN tiene tres años desde el vencimiento del plazo para declarar para modificar la declaración.", ok: false, err: "vecina",
+        por: "Los tres años desde el vencimiento son el término del requerimiento especial, no el de la corrección aritmética." },
+      { t: "es oportuno, porque los errores de cálculo pueden corregirse en cualquier tiempo, a solicitud o de oficio.", ok: false, err: "vecina",
+        por: "«En cualquier tiempo» es la corrección de errores de forma que no afectan el valor (Ley 962, art. 43). Este error bajó el impuesto." }
+    ],
+    paseo: [
+      { t: "¿Qué acto es?", txt: "Un acto que, sin requerimiento previo, corrige una suma mal trasladada que bajó el impuesto: es la liquidación oficial de corrección aritmética (arts. 697 y 698).",
+        m: [{ s: "anotó una cifra mayor, y el impuesto quedó más bajo", c: "b", n: "Error aritmético" }, { s: "sin haberle enviado antes ningún requerimiento", c: "b", n: "= corrección aritmética" }] },
+      { t: "El reloj de ese acto", txt: "Dos años desde la presentación (art. 699): del 22 de abril de 2024 al 22 de abril de 2026. El acto llegó el 27 de mayo de 2026, un mes tarde.",
+        m: [{ s: "presentó el 22 de abril de 2024", c: "y", n: "Desde aquí" }, { s: "El 27 de mayo de 2026", c: "y", n: "Tarde" }] },
+      { t: "Los relojes vecinos", txt: "Los tres años desde el vencimiento son del requerimiento especial; «en cualquier tiempo» es la corrección de errores que no afectan el valor.", o: [1, 2] }
+    ],
+    llevar: "Corrección aritmética: dos años desde la presentación, no desde el vencimiento." }
 ];
 
 
@@ -2865,7 +3489,7 @@ APP.gen = (function () {
       revsec: { cambio: "qué dependencia expidió el acto cuya revocatoria se pide",
         ctx: "{prop} le impuso a {e} una sanción de {uc} UVT, que quedó en firme sin que se interpusiera recurso. Meses después, la sociedad pide su revocatoria directa.",
         ok: "La división jurídica de esa misma seccional.", por: "Correcto: a la revocatoria directa se le aplican las mismas reglas de cuantía que a los recursos (Decreto 1742, art. 69, par. 2). Menos de 2.000 UVT: decide la jurídica de quien profirió el acto.",
-        no: [["El director de la seccional, como superior inmediato de quien firmó la sanción.", "Esa es la regla general del CPACA; aquí manda la regla especial de cuantía del decreto."],
+        no: [["La división jurídica de la seccional de la capital del departamento, por tratarse de una revocatoria.", "Las reglas de cuantía son las mismas que en el recurso: por debajo de 2.000 UVT no sube a la capital."],
              [OP_SUB, "La Subdirección resuelve sin importar la cuantía solo las revocatorias de sus propios actos."]] },
       acumula: { cambio: "si son tres actos o uno solo",
         ctx: "{sat} le notificó a {e} tres resoluciones sanción, cada una por {u2} UVT. La sociedad las impugnó todas en un solo escrito, presentado a tiempo.",
@@ -3102,6 +3726,527 @@ APP.gen = (function () {
     }
   });
 
+
+  /* =====================================================================
+     Actualización M07 «Ruta tributaria 2» · 30-oct-2026
+     Fuente: lección DIAN EXPRÉS M07, que leyó en secretariasenado.gov.co el ET (arts. 638, 641-643, 691, 697-699,
+     701-703, 705-711, 713-717, 720, 722, 723, 726, 730-738-1) con sus notas, la C-1441 de 2000 y el CPACA.
+     Las claves no dependen de los puntos que la lección marcó como inferencia (quién decide hoy la revocatoria,
+     la notificación del fallo dentro del año, la causal derogada, el art. 728).
+     ===================================================================== */
+  var MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+  function fD(d) { return d.getUTCDate() + " de " + MESES[d.getUTCMonth()] + " de " + d.getUTCFullYear(); }
+  function addM(d, m) { return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + m, d.getUTCDate())); }
+  function addDd(d, n) { return new Date(d.getTime() + n * 86400000); }
+  function dia28(d) { var x = d; while (x.getUTCDate() > 28) x = addDd(x, -1); return x; }
+  /* Fechas de vencimiento en martes, miércoles o jueves, lejos de festivos fijos y de Semana Santa:
+     así la clave no depende de si el último día fue hábil. */
+  function habil(d) {
+    var w = d.getUTCDay(), m = d.getUTCMonth(), dd = d.getUTCDate();
+    if (w < 2 || w > 4) return false;
+    if (["0-1", "0-2", "4-1", "6-20", "7-7", "11-8", "11-25", "11-24", "11-31"].indexOf(m + "-" + dd) >= 0) return false;
+    if ((m === 2 && dd >= 18) || (m === 3 && dd <= 25)) return false;
+    return true;
+  }
+  function fechaR(r, y0, y1) { return new Date(Date.UTC(r.int(y0, y1), r.int(0, 11), r.int(2, 28))); }
+  function fechaOk(r, y0, y1, prueba) { for (var i = 0; i < 80; i++) { var d = fechaR(r, y0, y1); if (prueba(d)) return d; } return fechaR(r, y0, y1); }
+  function mill(n) { return miles(n) + " millones de pesos"; }
+
+  /* M07-1 · Corrección aritmética (arts. 697-699 y 701) */
+  FAM.aritm = tabla({
+    nombre: "Solo cuentas", sub: "s-aritm", lam: ["f69", "f70", "f71"],
+    exp: "Error aritmético: resultado mal anotado, tarifa mal aplicada u operación mal hecha, siempre con un menor valor a pagar o un mayor saldo a favor. La DIAN lo corrige en dos años desde la presentación, sin requerimiento especial y sin gastar la revisión.",
+    x: function (r) { var e = r.pick(ENT2); return { e: e.n, s: e.s, n: r.int(2, 9) }; },
+    pares: [["dentro", "fuera"], ["perjudica", "tarifa"], ["sancion", "acepta"]],
+    st: {
+      dentro: { cambio: "cuánto tiempo pasó desde la presentación", q: "¿Puede la DIAN corregirlo con una liquidación oficial de corrección aritmética?",
+        ctx: "{e} presentó su declaración de renta. Al sumar los costos que ella misma detalló, anotó un total mayor, y el impuesto quedó más bajo. La DIAN lo detecta un año y {n} meses después de la presentación.",
+        ok: "Sí: está dentro de los dos años siguientes a la presentación.", por: "Correcto: es una operación aritmética con resultado equivocado que produce un menor valor a pagar (art. 697), y la DIAN tiene dos años desde la presentación (art. 699).",
+        no: [["No: primero debe notificarle un requerimiento especial.", "La corrección aritmética no exige requerimiento especial: es una cuenta mal hecha."],
+             ["No: los dos años de la corrección aritmética ya pasaron.", "Pasó un año y unos meses: todavía está dentro de los dos años."]] },
+      fuera: { cambio: "cuánto tiempo pasó desde la presentación", q: "¿Puede la DIAN corregirlo con una liquidación oficial de corrección aritmética?",
+        ctx: "{e} presentó a tiempo su declaración de renta. Al sumar los costos que ella misma detalló, anotó un total mayor, y el impuesto quedó más bajo. La DIAN lo detecta dos años y {n} meses después de la presentación.",
+        ok: "No: los dos años para esa liquidación se cuentan desde la presentación, y ya pasaron.", por: "Correcto: la liquidación oficial de corrección aritmética se profiere dentro de los dos años siguientes a la presentación de la declaración (art. 699).",
+        no: [["Sí: tiene tres años desde el vencimiento del plazo para declarar.", "Mezcla el plazo del requerimiento especial con el de la corrección aritmética."],
+             ["Sí: un error de cuentas puede corregirse en cualquier tiempo.", "«En cualquier tiempo» es la corrección de errores de forma que no afectan el valor; la DIAN tiene dos años para este."]] },
+      perjudica: { cambio: "si el error baja o sube el impuesto", q: "¿Procede una liquidación oficial de corrección aritmética?",
+        ctx: "Al aplicar la tarifa, {e} se equivocó y anotó un impuesto mayor del que le resultaba.",
+        ok: "No: el error aritmético debe producir un menor valor a pagar o un mayor saldo a favor.", por: "Correcto: los tres casos del art. 697 exigen ese efecto. Un error de cuentas que perjudica al contribuyente no entra aquí.",
+        no: [["Sí: toda tarifa mal aplicada es un error aritmético.", "Le falta el efecto: debe producir un menor valor a pagar o un mayor saldo a favor."],
+             ["Sí, y la DIAN debe devolverle de oficio la diferencia.", "Esa consecuencia no está en las normas de la corrección aritmética."]] },
+      tarifa: { cambio: "si el error baja o sube el impuesto", q: "¿Procede una liquidación oficial de corrección aritmética?",
+        ctx: "Al aplicar la tarifa, {e} se equivocó y anotó un impuesto menor del que le resultaba.",
+        ok: "Sí: aplicar mal la tarifa con un menor valor a pagar es un error aritmético.", por: "Correcto: es el segundo caso del art. 697, y produce un menor valor a pagar.",
+        no: [["No: solo es error aritmético una suma mal hecha.", "El art. 697 tiene tres casos: resultado mal anotado, tarifa mal aplicada y operación mal hecha."],
+             ["No: exige requerimiento especial y liquidación oficial de revisión.", "Eso es para los problemas de fondo, no para una cuenta mal hecha."]] },
+      sancion: { cambio: "si aceptó, renunció al recurso y pagó dentro del plazo",
+        q: "¿Cómo liquida la DIAN esa sanción?",
+        ctx: "{e} declaró tarde y no liquidó en su declaración la sanción por extemporaneidad que le correspondía.",
+        ok: "Incrementada en un 30 %.", por: "Correcto: si el contribuyente no liquidó las sanciones o las liquidó mal, la DIAN las liquida incrementadas en un 30 % (art. 701).",
+        no: [["Por el mismo valor, sin incremento alguno.", "El art. 701 incrementa en un 30 % la sanción no liquidada o mal liquidada."],
+             ["Al doble, como la extemporaneidad después del emplazamiento.", "Mezcla con el art. 642; el incremento del art. 701 es del 30 %."]] },
+      acepta: { cambio: "si aceptó, renunció al recurso y pagó dentro del plazo",
+        q: "¿Qué incremento paga sobre la sanción?",
+        ctx: "{e} no liquidó la sanción por extemporaneidad, y la DIAN se la liquidó con el incremento. Dentro del plazo para recurrir, {s} acepta los hechos, renuncia al recurso y paga.",
+        ok: "La mitad del incremento: un 15 % sobre la sanción.", por: "Correcto: el incremento del 30 % se reduce a la mitad si, dentro del plazo para recurrir, acepta los hechos, renuncia al recurso y paga (art. 701).",
+        no: [["El 30 % completo: aceptar no reduce el incremento.", "El art. 701 lo reduce a la mitad con esas tres condiciones."],
+             ["Ninguno: al aceptar, el incremento desaparece.", "Se reduce a la mitad; no desaparece."]] }
+    }
+  });
+
+  /* M07-1 · Las tres rutas y quién firma (arts. 691 par., 697-703, 715-717) */
+  FAM.rutas = tabla({
+    nombre: "Tres maneras de liquidar", sub: "s-rutas", lam: ["f68", "f72", "f70"],
+    q: "¿Qué camino tiene la DIAN?",
+    exp: "Cuenta mal hecha: corrección aritmética. Problema de fondo: requerimiento especial y liquidación oficial de revisión. No declaró: emplazamiento previo, sanción por no declarar y liquidación oficial de aforo.",
+    x: function (r) { return { e: r.pick(ENT2).n, c: r.pick(PROPIAS) }; },
+    pares: [["arit", "fondo"], ["fondo", "nodecl"], ["despues", "arit"], ["firma", "fondo"]],
+    st: {
+      arit: { cambio: "si el problema es de cuentas o de fondo",
+        ctx: "En la declaración de renta de {e}, el total de costos no coincide con la suma de los costos que ella misma detalló, y el impuesto quedó más bajo.",
+        ok: "Una liquidación oficial de corrección aritmética, sin requerimiento especial.", por: "Correcto: es un error aritmético (art. 697) que se corrige con liquidación oficial de corrección aritmética (art. 698).",
+        no: [["Un requerimiento especial y luego una liquidación oficial de revisión.", "Esa es la ruta de los problemas de fondo, no de una suma mal hecha."],
+             ["Una liquidación oficial de aforo, porque la declaración no vale.", "El aforo es para quien no declaró."]] },
+      fondo: { cambio: "si el problema es de cuentas o de fondo",
+        ctx: "La DIAN encuentra que {e} incluyó en su declaración de renta compras respaldadas por facturas de operaciones que, a su juicio, nunca existieron.",
+        ok: "Un requerimiento especial y, después, una liquidación oficial de revisión.", por: "Correcto: es un problema de fondo. La declaración se modifica una sola vez, con liquidación oficial de revisión, y antes debe ir el requerimiento especial (arts. 702 y 703).",
+        no: [["Una liquidación oficial de corrección aritmética, porque cambia el valor a pagar.", "Las operaciones inexistentes no son un error de cuentas."],
+             ["Un emplazamiento previo por no declarar.", "Ese emplazamiento es para quien no declaró."]] },
+      nodecl: { cambio: "si la sociedad declaró o no",
+        ctx: "{e} estaba obligada a declarar renta y no presentó la declaración.",
+        ok: "Emplazamiento previo por no declarar, sanción por no declarar y, después, liquidación oficial de aforo.", por: "Correcto: es la ruta de quien no declara (arts. 715, 716 y 717).",
+        no: [["Requerimiento especial y liquidación oficial de revisión.", "Esa ruta modifica una declaración que existe."],
+             ["Liquidación oficial de corrección aritmética de la última declaración.", "No hay declaración que corregir para ese periodo."]] },
+      despues: { cambio: "qué acto había expedido antes la DIAN", q: "¿Puede todavía modificar la declaración en el fondo?",
+        ctx: "La DIAN ya le profirió a {e} una liquidación oficial de corrección aritmética. Meses después encuentra ingresos que no se declararon.",
+        ok: "Sí: la corrección aritmética no le gasta la facultad de revisión.", por: "Correcto: la liquidación oficial de corrección aritmética «se entiende sin perjuicio de la facultad de revisión» (art. 699).",
+        no: [["No: la declaración solo se modifica una vez, y ya se modificó.", "La única oportunidad es la de la liquidación oficial de revisión; la corrección aritmética no la gasta."],
+             ["Solo si la sociedad acepta los nuevos hechos.", "La facultad de revisión no depende de que el contribuyente acepte."]] },
+      firma: { q: "¿Quién la profiere hoy?",
+        ctx: "En la seccional de {c}, un funcionario de fiscalización y uno de liquidación discuten quién debe firmar la liquidación oficial de revisión que cierra una investigación.",
+        ok: "El jefe de la unidad de fiscalización, por el parágrafo del art. 691.", por: "Correcto: el parágrafo que el Decreto Ley 2106 de 2019 agregó al art. 691 asignó esos actos al jefe de la unidad de fiscalización. La misma dependencia propone y decide.",
+        no: [["El jefe de la unidad de liquidación, como dice el texto del art. 691.", "Es leer el artículo sin su parágrafo."],
+             ["El jefe de la división jurídica, que decide los recursos.", "La jurídica decide los recursos; no profiere la liquidación."]] }
+    }
+  });
+
+  /* M07-2 · Responder y ampliar el requerimiento especial (arts. 707, 708 y 730, num. 2) */
+  FAM.respuesta = tabla({
+    nombre: "Responder y ampliar", sub: "s-respuesta", lam: ["f73", "f74", "f76"],
+    exp: "Tres meses para responder el requerimiento especial, desde su notificación. La ampliación, una sola vez, dentro de los tres meses siguientes al vencimiento de ese plazo, puede traer hechos nuevos y da entre tres y seis meses para responder.",
+    x: function (r) {
+      var D = fechaOk(r, 2025, 2026, function (d) { return habil(addM(d, 3)) && habil(addM(d, 6)) && habil(addM(d, 1)); });
+      var R = addM(D, 3), resp = dia28(addDd(R, -r.int(5, 25)));
+      return { e: r.pick(ENT2).n, D: fD(D), D1: fD(addM(D, 1)), D3: fD(R), D6: fD(addM(D, 6)), resp: fD(resp), resp3: fD(addM(resp, 3)) };
+    },
+    pares: [["resp", "ampdesde"], ["ampnuevo", "ampdos"], ["antes", "despues"], ["ampplazo", "resp"]],
+    st: {
+      resp: { q: "¿Hasta cuándo puede responderlo?", cambio: "qué plazo se pregunta",
+        ctx: "El {D}, la DIAN le notificó a {e} un requerimiento especial sobre su declaración de renta.",
+        ok: "Hasta el {D3}: tres meses desde la notificación.", por: "Correcto: el requerimiento especial se responde por escrito dentro de los tres meses siguientes a su notificación (art. 707).",
+        no: [["Hasta el {D1}: un mes desde la notificación.", "Un mes es el del emplazamiento; el requerimiento especial da tres meses."],
+             ["Hasta el {D6}: seis meses desde la notificación.", "Seis meses es el término de la DIAN para la liquidación de revisión."]] },
+      ampdesde: { q: "¿Hasta cuándo puede la DIAN ampliar el requerimiento especial?", cambio: "qué plazo se pregunta",
+        ctx: "El {D}, la DIAN le notificó a {e} un requerimiento especial. La sociedad lo respondió el {resp}, antes de que venciera el plazo.",
+        ctx3: "El {D}, la DIAN le notificó a {e} el acto que le propone modificar su declaración. La sociedad presentó sus objeciones el {resp}, sin agotar el término que tenía.",
+        ok: "Hasta el {D6}: tres meses desde el vencimiento del plazo para responder.", por: "Correcto: el plazo para responder vencía el {D3}, y la ampliación cabe dentro de los tres meses siguientes a ese vencimiento (art. 708). Responder antes no lo cambia.",
+        no: [["Hasta el {resp3}: tres meses desde la fecha en que respondió.", "Se cuenta desde que venció el plazo para responder, no desde la respuesta."],
+             ["Hasta el {D3}: tres meses desde la notificación del requerimiento.", "Ese es el plazo para responder; la ampliación corre desde su vencimiento."]] },
+      ampplazo: { q: "¿Cuánto tiempo tiene para responder la ampliación?",
+        ctx: "La DIAN amplió a tiempo el requerimiento especial de {e} y agregó un hecho nuevo.",
+        ok: "El que fije la DIAN en la ampliación: no menos de tres meses ni más de seis.", por: "Correcto: es el art. 708.",
+        no: [["Tres meses exactos, como el requerimiento especial.", "La ley da un rango: entre tres y seis meses, según lo fije la DIAN."],
+             ["Un mes, como el emplazamiento para corregir.", "Un mes es el del emplazamiento; la ampliación da entre tres y seis."]] },
+      ampnuevo: { q: "¿Puede la ampliación traer un hecho que el requerimiento especial no mencionaba?", cambio: "si es la primera ampliación o una segunda",
+        ctx: "Mientras estudia la respuesta de {e}, la DIAN encuentra unos gastos que el requerimiento especial no cuestionó. Todavía no ha ampliado el requerimiento y está dentro del plazo para hacerlo.",
+        ok: "Sí: la ampliación puede incluir hechos y conceptos nuevos y proponer una nueva determinación.", por: "Correcto: el art. 708 lo permite expresamente, una sola vez.",
+        no: [["No: la ampliación solo puede precisar los hechos ya propuestos.", "El art. 708 permite hechos y conceptos que el requerimiento no contemplaba."],
+             ["Sí, pero solo si la sociedad lo pidió en su respuesta.", "La ampliación es una facultad de la DIAN; no depende de una solicitud."]] },
+      ampdos: { q: "¿Puede ampliarlo otra vez?", cambio: "si es la primera ampliación o una segunda",
+        ctx: "La DIAN ya amplió una vez el requerimiento especial de {e}. Ahora encuentra otro hecho y quiere ampliarlo de nuevo, todavía dentro de los tres meses.",
+        ok: "No: la ampliación procede una sola vez.", por: "Correcto: el art. 708 permite ampliar el requerimiento especial «por una sola vez».",
+        no: [["Sí, mientras esté dentro de los tres meses.", "El tiempo no es el problema: ya usó su única ampliación."],
+             ["Sí, si le da a la sociedad seis meses para responder.", "El plazo de respuesta no habilita una segunda ampliación."]] },
+      antes: { q: "¿Qué vicio tiene la liquidación?", cambio: "si la DIAN esperó o no el plazo para responder",
+        ctx: "La DIAN le notificó a {e} la liquidación oficial de revisión cuando todavía no habían vencido los tres meses para responder el requerimiento especial.",
+        ok: "Es nula: se pretermitió el término para responder el requerimiento especial.", por: "Correcto: es causal de nulidad omitir el requerimiento especial o pretermitir el término para responderlo (art. 730, num. 2).",
+        no: [["Ninguno: la DIAN puede decidir apenas tenga las pruebas.", "Debe esperar el término: pretermitirlo es causal de nulidad."],
+             ["Es nula solo si la sociedad había pedido pruebas.", "La causal no depende de que haya pedido pruebas."]] },
+      despues: { q: "¿Tiene la liquidación ese vicio?", cambio: "si la DIAN esperó o no el plazo para responder",
+        ctx: "La DIAN le notificó a {e} la liquidación oficial de revisión un mes después de que vencieron los tres meses para responder el requerimiento especial. No hubo ampliación.",
+        ok: "No: respetó el término para responder, y está dentro de los seis meses.", por: "Correcto: esperó el vencimiento del plazo para responder (art. 707) y notificó dentro de los seis meses siguientes (art. 710).",
+        no: [["Sí: debía notificarla dentro del mes siguiente a la respuesta.", "Esa regla no existe: tiene seis meses desde el vencimiento del plazo para responder."],
+             ["Sí: la liquidación debía notificarse junto con el requerimiento.", "Al revés: primero el requerimiento, después la liquidación."]] }
+    }
+  });
+
+  /* M07-2 · La corrección provocada: la cuarta parte (art. 709) y la mitad (art. 713) */
+  FAM.cuarta = tabla({
+    nombre: "La cuarta parte", sub: "s-cuarta", lam: ["f75", "f81"],
+    q: "Sobre los hechos aceptados, la DIAN había propuesto una sanción por inexactitud de {sp}. ¿Cuánta sanción corresponde?",
+    exp: "Al responder el requerimiento especial o su ampliación: la cuarta parte. Dentro del término para recurrir la liquidación de revisión: la mitad. Y en los dos casos, solo si corrige, adjunta la corrección y paga o firma acuerdo de pago.",
+    x: function (r) { var sp = r.int(1, 8) * 40; return { e: r.pick(ENT2).n, sp: mill(sp), c4: mill(sp / 4), c2: mill(sp / 2) }; },
+    pares: [["completo", "sinpago"], ["completo", "lor"], ["acuerdo", "sincorr"], ["ampl", "lor"]],
+    st: {
+      completo: { cambio: "un solo requisito o el momento de la aceptación",
+        ctx: "Al responder el requerimiento especial, {e} aceptó parte de los hechos, corrigió su declaración con los mayores valores aceptados y la sanción reducida, adjuntó copia de la corrección y la prueba del pago.",
+        ok: "La cuarta parte: {c4}.", por: "Correcto: es la corrección provocada del art. 709, con sus cuatro requisitos cumplidos.",
+        no: [["La mitad: {c2}.", "La mitad es para quien acepta después de la liquidación de revisión (art. 713)."],
+             ["La propuesta completa: {sp}.", "Cumplió los cuatro requisitos: tiene la reducción."]] },
+      sinpago: { cambio: "un solo requisito",
+        ctx: "Al responder el requerimiento especial, {e} aceptó parte de los hechos, corrigió su declaración y adjuntó la corrección, pero no pagó ni firmó acuerdo de pago.",
+        ok: "La propuesta completa: {sp}.", por: "Correcto: la reducción exige probar el pago o el acuerdo de pago de impuestos y sanciones (art. 709). Sin eso, no hay rebaja.",
+        no: [["La cuarta parte: {c4}.", "Le faltó un requisito: el pago o el acuerdo de pago."],
+             ["La mitad: {c2}.", "Ni la cuarta parte ni la mitad: sin pago o acuerdo no hay reducción."]] },
+      acuerdo: { cambio: "un solo requisito",
+        ctx: "Al responder el requerimiento especial, {e} aceptó parte de los hechos, corrigió su declaración con la sanción reducida, adjuntó la corrección y, en lugar de pagar, adjuntó un acuerdo de pago firmado con la DIAN.",
+        ok: "La cuarta parte: {c4}.", por: "Correcto: el art. 709 acepta la prueba del pago o del acuerdo de pago.",
+        no: [["La propuesta completa: {sp}.", "El acuerdo de pago sustituye el pago para este efecto."],
+             ["La mitad: {c2}.", "La mitad corresponde a la aceptación posterior a la liquidación de revisión."]] },
+      sincorr: { cambio: "un solo requisito",
+        ctx: "Al responder el requerimiento especial, {e} aceptó parte de los hechos y pagó el mayor impuesto y la sanción reducida, pero no corrigió su declaración.",
+        ok: "La propuesta completa: {sp}.", por: "Correcto: la corrección de la declaración privada es uno de los cuatro requisitos del art. 709.",
+        no: [["La cuarta parte: {c4}.", "Pagar no basta: faltó corregir la declaración y adjuntar la corrección."],
+             ["La mitad: {c2}.", "Sin corrección no hay reducción alguna."]] },
+      ampl: { cambio: "el momento de la aceptación",
+        ctx: "Al responder la ampliación del requerimiento especial, {e} aceptó el hecho nuevo, corrigió su declaración con la sanción reducida, adjuntó la corrección y pagó.",
+        ok: "La cuarta parte: {c4}.", por: "Correcto: el art. 709 incluye la respuesta a la ampliación del requerimiento especial.",
+        no: [["La mitad: {c2}.", "La mitad es para la aceptación después de la liquidación de revisión."],
+             ["La propuesta completa: {sp}.", "La reducción también opera al responder la ampliación."]] },
+      lor: { cambio: "el momento de la aceptación",
+        ctx: "{e} no aceptó nada al responder el requerimiento especial. Dentro del término para recurrir la liquidación oficial de revisión, aceptó parte de los hechos, corrigió, presentó el memorial con la corrección y pagó.",
+        ok: "La mitad: {c2}.", por: "Correcto: aceptar dentro del término para recurrir la liquidación de revisión reduce la sanción a la mitad de la inicialmente propuesta (art. 713).",
+        no: [["La cuarta parte: {c4}.", "La cuarta parte era al responder el requerimiento especial o su ampliación."],
+             ["La propuesta completa: {sp}.", "Cumplió los requisitos del art. 713 a tiempo: tiene la mitad."]] }
+    }
+  });
+
+  /* M07-3 · Seis meses para la liquidación oficial de revisión, y lo que los mueve (arts. 707, 708 y 710) */
+  FAM.lor = {
+    nombre: "¿Hasta cuándo la liquidación?", sub: "s-seismeses", lam: ["f77", "f78", "f74"], twin: true,
+    vars: function (r) { return { amp: r.chance(0.45), sus: r.pick(["no", "no", "prueba", "insp"]) }; },
+    flip: function (v) { return v.sus !== "no" ? { amp: v.amp, sus: "no" } : { amp: !v.amp, sus: v.sus }; },
+    cambio: function (v) { return v.sus !== "no" ? "si hubo o no un hecho que suspende el término" : "si hubo o no ampliación del requerimiento especial"; },
+    build: function (v, lvl, r) {
+      var e = r.pick(ENT2), D, R, A, mA, S, L, resp, i;
+      for (i = 0; i < 80; i++) {
+        D = fechaR(r, 2025, 2025); R = addM(D, 3);
+        if (v.amp) { A = dia28(addDd(R, r.int(15, 70))); mA = r.int(3, 6); S = addM(A, mA); } else S = R;
+        L = addM(S, 6 + (v.sus === "prueba" ? 2 : v.sus === "insp" ? 3 : 0));
+        if (habil(L)) break;
+      }
+      resp = dia28(addDd(R, -r.int(6, 25)));
+      var ctx = cap(e.n) + " recibió el " + fD(D) + " la notificación de un requerimiento especial sobre su declaración de renta del año gravable 2022. Lo respondió por escrito el " + fD(resp) + ".";
+      if (v.amp) ctx += " El " + fD(A) + ", la DIAN le notificó una ampliación del requerimiento especial y le dio " + n2w(mA) + " meses para responderla; la respondió dentro de ese plazo.";
+      if (v.sus === "prueba") ctx += " En su respuesta pidió que la DIAN obtuviera unos documentos que reposan en " + r.pick(["la Cámara de Comercio", "un banco", "una notaría"]) + ", no en el expediente.";
+      if (v.sus === "insp") ctx += " Dentro del término para proferir la liquidación, la DIAN le notificó un auto que ordenó de oficio una inspección tributaria.";
+      ctx += " No hubo otros hechos que suspendieran términos.";
+      var susTxt = v.sus === "prueba" ? " más dos meses por la prueba en documentos que no reposan en el expediente" : v.sus === "insp" ? " más tres meses por la inspección tributaria de oficio" : "";
+      var base = v.amp ? "el vencimiento del plazo para responder la ampliación (" + fD(S) + ")" : "el vencimiento del plazo para responder el requerimiento especial (" + fD(R) + ")";
+      var ok = op("Hasta el " + fD(L) + ".", true, "Correcto: seis meses desde " + base + susTxt + " (art. 710).");
+      var cands = [];
+      var extra = v.sus === "prueba" ? 2 : v.sus === "insp" ? 3 : 0;
+      if (v.amp) cands.push([addM(R, 6 + extra), "Cuenta desde el vencimiento del plazo para responder el requerimiento especial y olvida que hubo ampliación."]);
+      cands.push([addM(dia28(resp), 6 + extra), "Cuenta desde la fecha de la respuesta. Los seis meses corren desde el vencimiento del plazo, no desde que respondió."]);
+      if (v.sus !== "no") cands.push([addM(S, 6), "Olvida la suspensión: " + (v.sus === "prueba" ? "dos meses si la prueba pedida está en documentos que no reposan en el expediente." : "tres meses por la inspección tributaria de oficio.")]);
+      else cands.push([addM(S, 3), "Tres meses es la familia del requerimiento especial; para la liquidación de revisión son seis."]);
+      cands.push([addM(D, 6 + extra), "Cuenta desde la notificación del requerimiento especial. Se cuenta desde el vencimiento del plazo para responder."]);
+      var used = [fD(L)], dis = [];
+      r.shuffle(cands).forEach(function (c) { var t = fD(c[0]); if (dis.length < 2 && used.indexOf(t) < 0) { used.push(t); dis.push(op("Hasta el " + t + ".", false, c[1])); } });
+      return finish({ ctx: ctx, q: "¿Hasta qué fecha puede la DIAN notificar la liquidación oficial de revisión?", ops: [ok].concat(dis),
+        exp: "Seis meses desde el vencimiento del plazo para responder el requerimiento especial o su ampliación, no desde la respuesta. Se suspenden tres meses por inspección tributaria de oficio, mientras dure la inspección contable pedida por el contribuyente y dos meses si la prueba pedida está en documentos que no reposan en el expediente.", linea: null }, r);
+    }
+  };
+
+  /* M07-3 · Lo que la liquidación puede decir y el segundo reloj (arts. 711, 713 y 714) */
+  FAM.mitad = tabla({
+    nombre: "Solo lo propuesto", sub: "s-mitad", lam: ["f79", "f80", "f81"],
+    exp: "La liquidación de revisión se limita a los hechos del requerimiento especial o de su ampliación; si no llega en sus seis meses, la declaración queda en firme; y quien acepta dentro del término para recurrir paga la mitad de la sanción propuesta.",
+    x: function (r) { return { e: r.pick(ENT2).n, n: r.int(7, 11), k: r.int(2, 5) }; },
+    pares: [["nuevo", "ampliado"], ["firme", "atiempo"], ["mitad1", "mitad2"]],
+    st: {
+      nuevo: { q: "¿Qué debe concluirse sobre ese punto?", cambio: "de dónde salió el hecho nuevo",
+        ctx: "La liquidación oficial de revisión de {e} confirmó lo propuesto y, además, adicionó unos ingresos por arrendamientos que el requerimiento especial nunca mencionó. No hubo ampliación.",
+        ok: "Desconoce el art. 711, y la sociedad debe alegarlo al discutir la liquidación.", por: "Correcto: la liquidación debe limitarse a los hechos del requerimiento especial o de su ampliación (art. 711). La DIAN no puede sorprender en la decisión.",
+        no: [["Es válido: la DIAN puede adicionar lo que encuentre hasta que decida.", "Para agregar hechos debía ampliar el requerimiento especial a tiempo."],
+             ["Es válido si la sanción por ese hecho se reduce a la cuarta parte.", "La reducción de la sanción no subsana que el hecho no se propuso."]] },
+      ampliado: { q: "¿Qué debe concluirse sobre ese punto?", cambio: "de dónde salió el hecho nuevo",
+        ctx: "La liquidación oficial de revisión de {e} adicionó unos ingresos por arrendamientos que no estaban en el requerimiento especial, pero sí en su ampliación, notificada a tiempo.",
+        ok: "Es válido: la liquidación puede incluir los hechos de la ampliación.", por: "Correcto: el art. 711 permite los hechos del requerimiento especial o de su ampliación.",
+        no: [["Desconoce el art. 711: solo valen los hechos del requerimiento original.", "El art. 711 menciona expresamente la ampliación."],
+             ["Es nulo: la ampliación no puede traer hechos nuevos.", "Sí puede: el art. 708 lo permite, una sola vez."]] },
+      firme: { q: "¿Qué pasa con la declaración?", cambio: "cuándo se notificó la liquidación",
+        ctx: "La DIAN notificó a tiempo el requerimiento especial de {e}, pero notificó la liquidación oficial de revisión {n} meses después del vencimiento del plazo para responderlo. No hubo ampliación ni suspensiones.",
+        ok: "Quedó en firme: venció el término para notificar la liquidación de revisión.", por: "Correcto: la declaración queda en firme si, vencido el término para practicar la liquidación de revisión, esta no se notificó (art. 714). Era de seis meses (art. 710).",
+        no: [["Sigue abierta, porque el requerimiento especial llegó a tiempo.", "Haber notificado a tiempo el requerimiento no basta: el art. 714 tiene un segundo reloj."],
+             ["Sigue abierta hasta tres años después del requerimiento especial.", "No existe ese plazo: la liquidación tenía seis meses."]] },
+      atiempo: { q: "¿Llegó a tiempo la liquidación?", cambio: "cuándo se notificó la liquidación",
+        ctx: "La DIAN notificó a tiempo el requerimiento especial de {e} y notificó la liquidación oficial de revisión {k} meses después del vencimiento del plazo para responderlo. No hubo ampliación ni suspensiones.",
+        ok: "Sí: tenía seis meses desde el vencimiento del plazo para responder.", por: "Correcto: art. 710.",
+        no: [["No: tenía tres meses desde la respuesta.", "Tres meses es la familia del requerimiento especial."],
+             ["No: debía notificarse junto con el requerimiento especial.", "Primero el requerimiento; la liquidación llega después."]] },
+      mitad1: { q: "¿Tiene alguna reducción de la sanción por inexactitud?", cambio: "si aceptó dentro o fuera del término para recurrir",
+        ctx: "Un mes después de recibir la liquidación oficial de revisión, {e} acepta parte de los hechos, corrige, presenta el memorial con la corrección y paga.",
+        ok: "Sí: la mitad de la sanción inicialmente propuesta, sobre los hechos aceptados.", por: "Correcto: aceptó dentro del término para interponer el recurso de reconsideración (art. 713).",
+        no: [["No: la reducción solo procedía al responder el requerimiento especial.", "Esa era la cuarta parte; después de la liquidación queda la mitad."],
+             ["Sí: la cuarta parte de la sanción propuesta.", "La cuarta parte era al responder el requerimiento especial."]] },
+      mitad2: { q: "¿Tiene alguna reducción de la sanción por inexactitud?", cambio: "si aceptó dentro o fuera del término para recurrir",
+        ctx: "Tres meses después de recibir la liquidación oficial de revisión, sin haberla recurrido, {e} acepta parte de los hechos, corrige y paga.",
+        ok: "No: debía aceptar dentro del término para interponer el recurso de reconsideración.", por: "Correcto: el término del recurso es de dos meses (art. 720), y la reducción del art. 713 exige aceptar dentro de él.",
+        no: [["Sí: la mitad, mientras la liquidación no esté en firme.", "El art. 713 exige aceptar dentro del término para recurrir."],
+             ["Sí: la cuarta parte, porque aceptó voluntariamente.", "La cuarta parte era al responder el requerimiento especial."]] }
+    }
+  });
+
+  /* M07-4 · El emplazamiento previo duplica el precio del retardo (arts. 641, 642 y 715) */
+  FAM.extemp = {
+    nombre: "El precio del retardo", sub: "s-extemp", lam: ["f82"], twin: true,
+    vars: function (r) { return { emp: r.chance(0.5), m: r.int(2, 30), d: r.pick([0, 0, r.int(3, 25)]) }; },
+    flip: function (v) { return { emp: !v.emp, m: v.m, d: v.d }; },
+    cambio: "si declaró antes o después del emplazamiento previo por no declarar",
+    build: function (v, lvl, r) {
+      var e = r.pick(ENT2), I = r.int(2, 40) * 5, mm = v.m + (v.d ? 1 : 0);
+      var p641 = Math.min(5 * mm, 100), p642 = Math.min(10 * mm, 200);
+      var ret = n2w(v.m) + " meses" + (v.d ? " y " + n2w(v.d) + " días" : "");
+      var ctx = cap(e.n) + " presentó su declaración de renta del año gravable 2024 con " + ret + " de retraso, con un impuesto a cargo de " + mill(I) + ". " +
+        (v.emp ? "Lo hizo dentro del mes que le dio el emplazamiento previo por no declarar que la DIAN le había notificado." : "La DIAN no le había notificado ningún emplazamiento ni auto de inspección tributaria.");
+      var okP = v.emp ? p642 : p641, otherP = v.emp ? p641 : p642;
+      var w = function (p) { return mill(I * p / 100) + " (" + p + " % del impuesto)."; };
+      var ops = [op(w(okP), true, v.emp ? "Correcto: después del emplazamiento previo, el 10 % por cada mes o fracción, sin pasar del 200 % (art. 642). Son " + n2w(mm) + " meses o fracción." :
+        "Correcto: sin emplazamiento ni auto de inspección, el 5 % por cada mes o fracción, sin pasar del 100 % (art. 641). Son " + n2w(mm) + " meses o fracción.")];
+      var cands = [[otherP, v.emp ? "Ese es el art. 641, para quien declara sin emplazamiento; el emplazamiento duplica el precio." : "El 10 % por mes del art. 642 es para quien declara después del emplazamiento o del auto de inspección."],
+        [v.emp ? 10 * mm : 5 * mm, "Olvida el tope: " + (v.emp ? "200 %" : "100 %") + " del impuesto."],
+        [v.emp ? Math.min(10 * v.m, 200) : Math.min(5 * v.m, 100), "Olvida que la fracción de mes cuenta como un mes completo."],
+        [v.emp ? Math.min(5 * mm, 200) : Math.min(10 * mm, 100), "Mezcla la tarifa de un artículo con el tope del otro."],
+        [Math.min((v.emp ? 10 : 5) * (mm + 1), v.emp ? 200 : 100), "Cuenta un mes de más: son " + n2w(mm) + " meses o fracción."],
+        [Math.min((v.emp ? 10 : 5) * (mm - 1), v.emp ? 200 : 100), "Cuenta un mes de menos: son " + n2w(mm) + " meses o fracción."],
+        [okP / 2, "Aplica una reducción, y la pregunta pide el valor antes de cualquier reducción."]];
+      var used = [okP];
+      r.shuffle(cands).forEach(function (c) { if (ops.length < 3 && used.indexOf(c[0]) < 0) { used.push(c[0]); ops.push(op(w(c[0]), false, c[1])); } });
+      return finish({ ctx: ctx, q: "¿Qué sanción por extemporaneidad debe liquidar, antes de cualquier reducción?", ops: ops,
+        exp: "Sin emplazamiento: 5 % por mes o fracción, tope 100 % (art. 641). Después del emplazamiento previo por no declarar o del auto de inspección: 10 % por mes o fracción, tope 200 % (art. 642).", linea: null }, r);
+    }
+  };
+
+  /* M07-4 · La sanción por no declarar, su rebaja y su piso (art. 643) */
+  FAM.sancnodecl = {
+    nombre: "La sanción por no declarar", sub: "s-sancnodecl", lam: ["f83", "f84"], twin: true,
+    vars: function (r) { return { red: r.chance(0.5), piso: r.chance(0.3) }; },
+    flip: function (v) { return { red: !v.red, piso: v.piso }; },
+    cambio: "si presentó o no la declaración dentro del plazo para recurrir la resolución sanción",
+    build: function (v, lvl, r) {
+      var e = r.pick(ENT2), C = r.int(10, 80) * 50, G = r.int(10, 80) * 50;
+      while (G === C) G = r.int(10, 80) * 50;
+      var base = Math.max(C, G), menor = Math.min(C, G), S = base / 5, half = S / 2;
+      var X = v.piso ? half + r.int(2, 20) * 5 : Math.max(5, half - r.int(2, 20) * 5);
+      var ctx = cap(e.n) + " no declaró renta del año gravable 2023, aunque estaba obligada. Venció el mes del emplazamiento previo por no declarar y la DIAN le impuso, en resolución sanción, la sanción por no declarar. La DIAN determinó consignaciones bancarias por " + mill(C) + "; en su última declaración de renta, la sociedad había reportado ingresos brutos por " + mill(G) + ".";
+      var ops, q;
+      if (v.red) {
+        ctx += " Dentro del plazo para recurrir esa resolución, presentó la declaración. La sanción por extemporaneidad del artículo 642 que le correspondería es de " + mill(X) + ".";
+        q = "¿Qué sanción por no declarar debe liquidar y pagar con la declaración, sin considerar otras reducciones?";
+        var okV = Math.max(half, X);
+        ops = [op(mill(okV) + ".", true, okV === half ? "Correcto: el 20 % de la base mayor es " + mill(S) + "; al declarar dentro del plazo para recurrir se reduce a la mitad, y la mitad supera el piso del art. 642 (art. 643, par. 2)." :
+          "Correcto: la mitad (" + mill(half) + ") queda por debajo de la extemporaneidad del art. 642, que es el piso: no puede ser inferior a ella (art. 643, par. 2).")];
+        var c2 = [[S, "No aplica la rebaja: declaró dentro del plazo para recurrir, y la sanción se reduce a la mitad."],
+          [okV === half ? X : half, okV === half ? "El art. 642 es el piso, no el valor: la mitad es mayor." : "La mitad no puede quedar por debajo de la extemporaneidad del art. 642."],
+          [menor / 10, "Usa la base menor; la ley manda tomar la mayor."],
+          [base / 20, "Aplica la tarifa del IVA (10 %) y además la rebaja; en renta la tarifa es el 20 %."],
+          [S + X, "Suma la extemporaneidad a la sanción por no declarar; el art. 642 solo funciona como piso."]];
+        var used = [okV];
+        r.shuffle(c2).forEach(function (c) { if (ops.length < 3 && used.indexOf(c[0]) < 0) { used.push(c[0]); ops.push(op(mill(c[0]) + ".", false, c[1])); } });
+      } else {
+        ctx += " No recurrió la resolución ni presentó la declaración.";
+        q = "¿Cuánto es la sanción por no declarar, antes de cualquier reducción?";
+        ops = [op(mill(S) + ".", true, "Correcto: en renta, el 20 % de las consignaciones o ingresos determinados, o de los ingresos de la última declaración, el que sea mayor (art. 643).")];
+        var c3 = [[menor / 5, "Usa la base menor; el art. 643 manda tomar la mayor."], [base / 10, "El 10 % es la tarifa del IVA y del impuesto al consumo; en renta es el 20 %."], [half, "La rebaja a la mitad exige presentar la declaración dentro del plazo para recurrir."],
+          [menor / 10, "Usa la base menor y la tarifa del IVA; en renta es el 20 % de la base mayor."], [(C + G) / 5, "Suma las dos bases; el art. 643 manda tomar la mayor de ellas."]];
+        var used2 = [S];
+        r.shuffle(c3).forEach(function (c) { if (ops.length < 3 && used2.indexOf(c[0]) < 0) { used2.push(c[0]); ops.push(op(mill(c[0]) + ".", false, c[1])); } });
+      }
+      return finish({ ctx: ctx, q: q, ops: ops, exp: "Renta: 20 % de la base mayor (consignaciones o ingresos determinados, o ingresos de la última declaración). Si declara dentro del plazo para recurrir la resolución sanción, la mitad, pero nunca menos que la extemporaneidad del art. 642.", linea: null }, r);
+    }
+  };
+
+  /* M07-4 · Aforo, emplazamiento y caducidad de la sanción (arts. 638, 715 y 717) */
+  FAM.aforo = tabla({
+    nombre: "El que no declara", sub: "s-aforo", lam: ["f85", "f82"],
+    exp: "Quien no declara recorre tres pasos: emplazamiento previo (un mes), sanción por no declarar y liquidación oficial de aforo, dentro de los cinco años siguientes al vencimiento del plazo para declarar. La facultad de imponer la sanción por no declarar también dura cinco años.",
+    x: function (r) {
+      var V = fechaOk(r, 2023, 2025, function (d) { return habil(addM(d, 60)); });
+      return { e: r.pick(ENT2).n, V: fD(V), V5: fD(addM(V, 60)), V3: fD(addM(V, 36)), V2: fD(addM(V, 24)) };
+    },
+    pares: [["aforo", "emplaza"], ["orden", "aforo"], ["sancion5", "emplaza"]],
+    st: {
+      aforo: { q: "¿Hasta cuándo puede la DIAN fijarle el impuesto con una liquidación oficial de aforo?",
+        ctx: "{e} nunca presentó su declaración de renta; el plazo para declarar vencía el {V}. La DIAN ya agotó el emplazamiento previo y le impuso la sanción por no declarar.",
+        ok: "Hasta el {V5}: cinco años desde el vencimiento del plazo para declarar.", por: "Correcto: art. 717.",
+        no: [["Hasta el {V3}: tres años desde el vencimiento del plazo para declarar.", "Tres años es el término del requerimiento especial, para quien sí declaró."],
+             ["Hasta el {V2}: dos años desde el vencimiento del plazo para declarar.", "Dos años es la corrección aritmética, y se cuenta desde la presentación."]] },
+      emplaza: { q: "¿Cuánto tiempo le da el emplazamiento previo por no declarar?",
+        ctx: "Previa comprobación de su obligación, la DIAN emplazó a {e} para que presente la declaración de renta que omitió.",
+        ok: "Un mes, con la advertencia de las consecuencias de no declarar.", por: "Correcto: es el término perentorio de un mes del art. 715.",
+        no: [["Tres meses, como el requerimiento especial.", "El requerimiento especial es otra ruta; el emplazamiento previo da un mes."],
+             ["Dos meses, como el recurso de reconsideración.", "Dos meses es el recurso; el emplazamiento da un mes."]] },
+      orden: { q: "¿Qué debe hacer primero?",
+        ctx: "La DIAN quiere fijarle el impuesto a {e}, que no declaró renta, sin haberle notificado antes ningún acto.",
+        ok: "Notificarle el emplazamiento previo por no declarar, con un mes para cumplir.", por: "Correcto: la liquidación de aforo procede «agotado el procedimiento» de los arts. 643, 715 y 716: emplazamiento y sanción por no declarar (art. 717).",
+        no: [["Notificarle un requerimiento especial y esperar tres meses.", "El requerimiento especial es la ruta de quien sí declaró."],
+             ["Proferir de una vez la liquidación oficial de aforo.", "El aforo llega después del emplazamiento y de la sanción por no declarar."]] },
+      sancion5: { q: "¿Cuánto dura la facultad de imponerle la sanción por no declarar?",
+        ctx: "La DIAN tiene identificada a {e}, que no declaró renta, pero todavía no le ha impuesto la sanción por no declarar.",
+        ok: "Cinco años.", por: "Correcto: la facultad de imponer la sanción por no declarar se extingue en cinco años (art. 638). El Estatuto lo llama prescripción; el Consejo de Estado precisó que es caducidad.",
+        no: [["Dos años, como el pliego de cargos de las sanciones independientes.", "Esa es la regla general del art. 638; la sanción por no declarar tiene cinco años."],
+             ["Tres años, como el requerimiento especial.", "Tres años es otra ruta: la de quien sí declaró."]] }
+    }
+  });
+
+  /* M07-5 · Un recurso, dos meses, y la puerta directa al juez (arts. 720, 723, 731 y 735) */
+  FAM.recon = tabla({
+    nombre: "Un recurso, dos meses", sub: "s-recurso", lam: ["f86", "f87", "f90"],
+    exp: "El Estatuto tiene un solo recurso, el de reconsideración, en dos meses. Quien atendió en debida forma el requerimiento especial puede ir directamente ante el juez en cuatro meses. La clausura tiene norma especial: reposición en diez días.",
+    x: function (r) {
+      var D = fechaOk(r, 2025, 2026, function (d) { return habil(addM(d, 2)) && habil(addM(d, 4)); });
+      return { e: r.pick(ENT2).n, D: fD(D), D2: fD(addM(D, 2)), D4: fD(addM(D, 4)) };
+    },
+    pares: [["nojuez", "juez"], ["clausura", "multa"], ["aceptado", "nulidad"], ["nulidad", "nulidad2"]],
+    st: {
+      nojuez: { q: "¿Puede demandar ante el juez sin interponer antes el recurso de reconsideración?", cambio: "si respondió o no el requerimiento especial",
+        ctx: "El {D}, la DIAN le notificó a {e} una liquidación oficial de revisión. La sociedad nunca respondió el requerimiento especial que la precedió.",
+        ok: "No: debe agotar el recurso de reconsideración, que vence el {D2}.", por: "Correcto: la demanda directa exige haber atendido en debida forma el requerimiento especial (art. 720, par.). Sin eso, recurso en dos meses.",
+        no: [["Sí, dentro de los cuatro meses siguientes: hasta el {D4}.", "Esa puerta es solo para quien atendió en debida forma el requerimiento especial."],
+             ["Sí, pero dentro de los diez días siguientes a la notificación.", "Diez días es el esquema del CPACA; aquí rige el Estatuto."]] },
+      juez: { q: "¿Puede demandar ante el juez sin interponer antes el recurso de reconsideración?", cambio: "si respondió o no el requerimiento especial",
+        ctx: "El {D}, la DIAN le notificó a {e} una liquidación oficial de revisión. La sociedad había respondido por escrito y a tiempo el requerimiento especial que la precedió.",
+        ok: "Sí, dentro de los cuatro meses siguientes: hasta el {D4}.", por: "Correcto: atendió en debida forma el requerimiento especial, y puede prescindir del recurso y demandar en cuatro meses (art. 720, par.).",
+        no: [["No: el recurso es obligatorio para ir ante el juez, como la apelación.", "Esa es la lógica del CPACA; el parágrafo del art. 720 abre la puerta directa."],
+             ["Sí, pero dentro de los dos meses siguientes: hasta el {D2}.", "Dos meses es el plazo del recurso; para la demanda directa son cuatro."]] },
+      clausura: { q: "¿Qué recurso procede y en qué plazo?", cambio: "la clase de sanción",
+        ctx: "La DIAN le impuso a {e} la sanción de clausura de su establecimiento.",
+        ok: "Reposición, dentro de los diez días siguientes.", por: "Correcto: es la norma especial del art. 735.",
+        no: [["Reconsideración, dentro de los dos meses siguientes.", "Es la regla general, pero la clausura tiene norma especial."],
+             ["Reposición y en subsidio apelación, dentro de los diez días.", "La apelación es del CPACA; aquí procede solo la reposición."]] },
+      multa: { q: "¿Qué recurso procede y en qué plazo?", cambio: "la clase de sanción",
+        ctx: "El {D}, la DIAN le notificó a {e} una resolución que le impone una sanción por no enviar información.",
+        ok: "Reconsideración, hasta el {D2}.", por: "Correcto: contra las resoluciones que imponen sanciones procede el recurso de reconsideración, dentro de los dos meses siguientes a su notificación (art. 720).",
+        no: [["Reposición, dentro de los diez días siguientes.", "Esa es la norma especial de la clausura."],
+             ["Reposición y en subsidio apelación, dentro de los diez días.", "Ese es el esquema del CPACA."]] },
+      aceptado: { q: "¿Puede volver a discutirlos en el recurso?",
+        ctx: "Al responder el requerimiento especial, {e} aceptó expresamente el rechazo de unos costos y discutió lo demás. En el recurso contra la liquidación quiere volver a discutir esos costos.",
+        ok: "No: no puede objetar los hechos que aceptó expresamente al responder.", por: "Correcto: art. 723. Lo aceptado, aceptado queda.",
+        no: [["Sí: el recurso permite discutir toda la liquidación.", "El art. 723 excluye los hechos aceptados expresamente."],
+             ["Sí, si devuelve la reducción de sanción que obtuvo.", "Esa posibilidad no existe."]] },
+      nulidad: { q: "¿Debe estudiarse esa nulidad?", cambio: "cuándo alegó la nulidad",
+        ctx: "Vencidos los dos meses del recurso, {e} presenta un escrito en el que alega por primera vez una nulidad de la liquidación.",
+        ok: "No: las nulidades deben alegarse dentro del término para interponer el recurso.", por: "Correcto: se alegan en el escrito del recurso o en una adición, dentro de ese término (art. 731).",
+        no: [["Sí: las nulidades pueden alegarse en cualquier momento antes del fallo.", "El art. 731 fija la oportunidad: el término del recurso."],
+             ["Sí, si el escrito lo firma un abogado.", "La firma no cambia la oportunidad."]] },
+      nulidad2: { q: "¿Debe estudiarse esa nulidad?", cambio: "cuándo alegó la nulidad",
+        ctx: "Un mes después de interponer el recurso, y todavía dentro de los dos meses, {e} presenta una adición en la que alega una nulidad de la liquidación.",
+        ok: "Sí: puede alegarse en una adición, dentro del término para recurrir.", por: "Correcto: art. 731.",
+        no: [["No: las nulidades solo pueden alegarse en el escrito inicial del recurso.", "El art. 731 admite la adición dentro del término."],
+             ["No: las nulidades se alegan ante el juez, no en el recurso.", "Se alegan en el recurso o en su adición."]] }
+    }
+  });
+
+  /* M07-5 · Requisitos del recurso (arts. 722 y 726; C-1441 de 2000) */
+  FAM.requisitos = tabla({
+    nombre: "Requisitos del recurso", sub: "s-requisitos", lam: ["f88", "f89"],
+    exp: "Por escrito, con motivos concretos, a tiempo y por el contribuyente o su apoderado abogado. El agente oficioso solo puede ser abogado, y la persona debe ratificar dentro de los dos meses siguientes a la notificación del auto admisorio. El pago de la liquidación privada ya no se exige.",
+    x: function (r) {
+      var A = fechaOk(r, 2025, 2026, function (d) { return habil(addM(d, 2)); });
+      var I = dia28(addDd(A, -r.int(20, 40)));
+      return { e: r.pick(ENT2).n, A: fD(A), A2: fD(addM(A, 2)), I: fD(I), I2: fD(addM(I, 2)) };
+    },
+    pares: [["oficab", "oficcont"], ["pago", "motivos"], ["repos", "pago"], ["apod", "oficab"]],
+    st: {
+      oficab: { q: "¿Hasta cuándo debe la sociedad ratificar la actuación?", cambio: "quién actuó como agente oficioso",
+        ctx: "El {I}, una abogada sin poder interpuso a tiempo, como agente oficiosa de {e}, el recurso de reconsideración, con motivos concretos. El auto que admitió el recurso se notificó el {A}.",
+        ok: "Hasta el {A2}: dos meses desde la notificación del auto admisorio.", por: "Correcto: art. 722. Si no ratifica, el recurso se entiende no presentado en debida forma y se revoca el auto admisorio.",
+        no: [["Hasta el {I2}: dos meses desde la interposición del recurso.", "Se cuentan desde la notificación del auto que admite el recurso."],
+             ["No necesita ratificarla, porque la agente es abogada.", "Ser abogada la habilita como agente oficiosa, pero la ratificación sigue siendo necesaria."]] },
+      oficcont: { q: "¿Es válida esa actuación?", cambio: "quién actuó como agente oficioso",
+        ctx: "El {I}, el contador de {e}, que no es abogado, interpuso sin poder, como agente oficioso, el recurso de reconsideración.",
+        ok: "No: únicamente los abogados pueden actuar como agentes oficiosos.", por: "Correcto: art. 722.",
+        no: [["Sí, si la sociedad la ratifica dentro de los dos meses.", "La ratificación no suple la falta de calidad: solo los abogados pueden ser agentes oficiosos."],
+             ["Sí, porque conoce la contabilidad de la sociedad.", "Conocer la contabilidad no lo habilita."]] },
+      pago: { q: "¿Es correcta la inadmisión?", cambio: "el motivo de la inadmisión",
+        ctx: "La DIAN inadmite el recurso de {e} contra una liquidación oficial de revisión porque no acreditó el pago de la liquidación privada.",
+        ok: "No: ese requisito fue declarado inexequible.", por: "Correcto: la Corte Constitucional declaró inexequible el literal d) del art. 722 en la sentencia C-1441 de 2000.",
+        no: [["Sí: el art. 722 exige acreditar el pago de la liquidación privada.", "Ese literal d) ya no rige."],
+             ["Sí, salvo que el recurso lo interponga un abogado.", "El requisito no existe para nadie."]] },
+      motivos: { q: "¿Es correcta la inadmisión?", cambio: "el motivo de la inadmisión",
+        ctx: "La DIAN inadmite el recurso de {e} contra una liquidación oficial de revisión porque el escrito solo dice que la sociedad no está de acuerdo, sin explicar por qué.",
+        ok: "Sí: falta la expresión concreta de los motivos de inconformidad.", por: "Correcto: es un requisito vigente del art. 722.",
+        no: [["No: basta con manifestar el desacuerdo dentro del plazo.", "El art. 722 exige motivos concretos."],
+             ["No: ese requisito fue declarado inexequible.", "Lo inexequible fue el pago de la liquidación privada."]] },
+      repos: { q: "¿Qué puede hacer contra el auto inadmisorio?",
+        ctx: "La DIAN le notificó a {e} un auto que inadmite su recurso de reconsideración.",
+        ok: "Interponer reposición ante el mismo funcionario, dentro de los diez días siguientes.", por: "Correcto: contra el auto inadmisorio solo procede la reposición, en diez días, y se resuelve en cinco (art. 726).",
+        no: [["Apelarlo ante el director seccional, dentro de los diez días.", "No procede apelación: solo reposición."],
+             ["Interponer un nuevo recurso de reconsideración, en dos meses.", "Contra el auto procede únicamente la reposición."]] },
+      apod: { q: "¿Puede el contador interponer el recurso?",
+        ctx: "{e} le otorga poder a su contador, que no es abogado, para que interponga el recurso de reconsideración.",
+        ok: "No: para interponer recursos, el apoderado debe ser abogado.", por: "Correcto: para interponer recursos ante la administración tributaria el apoderado debe ser abogado; para otras actuaciones no se exige (art. 722, con el art. 68 del Decreto 19 de 2012 que transcribe su nota).",
+        no: [["Sí: con poder, cualquier persona puede representar al contribuyente.", "Para los recursos, el apoderado debe ser abogado."],
+             ["Sí, si la sociedad ratifica luego su actuación.", "La ratificación es para el agente oficioso abogado, no para suplir la calidad."]] }
+    }
+  });
+
+  /* M07-5 · Un año para resolver y el silencio positivo (arts. 732-734; CPACA, art. 86) */
+  FAM.silencio = tabla({
+    nombre: "Un año y el silencio positivo", sub: "s-silencio", lam: ["f91", "f92"],
+    exp: "La DIAN tiene un año desde la interposición en debida forma. La inspección tributaria lo suspende (mientras dure si la pidió el contribuyente; hasta tres meses si es de oficio). Si el año pasa sin decisión, opera el silencio positivo.",
+    x: function (r) { return { e: r.pick(ENT2).n, k: r.int(3, 9) }; },
+    pares: [["anio", "inspof"], ["cpaca", "anio"]],
+    st: {
+      anio: { q: "¿Qué pasó con el recurso?", cambio: "si hubo o no una inspección tributaria",
+        ctx: "{e} interpuso en debida forma el recurso de reconsideración. No hubo inspección tributaria ni otra suspensión. Un año y {k} semanas después, la DIAN no había firmado ni notificado ninguna decisión.",
+        ok: "Se entiende fallado a favor de la sociedad: operó el silencio positivo.", por: "Correcto: arts. 732 y 734. La DIAN debe declararlo de oficio o a petición de parte.",
+        no: [["Se entiende negado, y la sociedad puede demandar.", "Ese es el silencio negativo del CPACA; en el Estatuto es positivo."],
+             ["Sigue en trámite: la DIAN puede decidir mientras no lo declare.", "Vencido el año sin decisión, el recurso se entiende fallado a favor."]] },
+      inspof: { q: "¿Qué pasó con el recurso?", cambio: "si hubo o no una inspección tributaria",
+        ctx: "{e} interpuso en debida forma el recurso de reconsideración. Durante el trámite, la DIAN practicó de oficio una inspección tributaria que duró tres meses. Notificó la decisión un año y dos meses después de la interposición.",
+        ok: "La decisión llegó a tiempo: la inspección suspendió el año tres meses.", por: "Correcto: la inspección de oficio suspende el término para fallar hasta por tres meses (art. 733). El año se corrió a quince meses.",
+        no: [["Operó el silencio positivo: el año ya había vencido.", "Olvida la suspensión del art. 733."],
+             ["La decisión es nula: la inspección no suspende el término del recurso.", "Sí lo suspende: art. 733."]] },
+      cpaca: { q: "¿Tiene razón?",
+        ctx: "Un abogado acostumbrado al CPACA le dice a {e} que, como la DIAN no ha resuelto en {k} meses su recurso de reconsideración, debe entenderlo negado y demandar.",
+        ok: "No: la DIAN tiene un año para resolver, y si no lo hace, el silencio es positivo.", por: "Correcto: el Estatuto desplaza al CPACA (arts. 732 y 734 frente al art. 86 del CPACA).",
+        no: [["Sí: a los dos meses opera el silencio negativo del CPACA.", "En el Estatuto rige norma propia: un año y silencio positivo."],
+             ["Sí, pero solo si el recurso es contra una sanción.", "No hay esa distinción: el año y el silencio positivo valen para el recurso de reconsideración."]] }
+    }
+  });
+
+  /* M07-6 · La revocatoria directa (arts. 736, 737 y 738-1; CPACA, arts. 93-96) */
+  FAM.revoc = tabla({
+    nombre: "La revocatoria directa", sub: "s-revoc", lam: ["f93", "f94", "f95"],
+    exp: "En el Estatuto, la revocatoria directa procede solo si no se interpusieron recursos, se pide dentro de los dos años desde la ejecutoria y la DIAN tiene un año para decidir; si no decide, silencio positivo.",
+    x: function (r) { return { e: r.pick(ENT2).n, k: r.int(2, 10) }; },
+    pares: [["sinrec", "conrec"], ["tarde", "sinrec"], ["silencio", "conrec"]],
+    st: {
+      sinrec: { q: "¿Procede la solicitud?", cambio: "si recurrió o no el acto, o cuándo pidió la revocatoria",
+        ctx: "{e} no recurrió una resolución sanción. Un año después de que quedó ejecutoriada, pide su revocatoria directa.",
+        ok: "Sí: no interpuso recursos y está dentro de los dos años desde la ejecutoria.", por: "Correcto: arts. 736 y 737.",
+        no: [["No: el acto ya está ejecutoriado y no admite discusión.", "La revocatoria directa existe justamente para actos ejecutoriados, dentro de dos años."],
+             ["No: debía pedirla dentro de los dos meses del recurso.", "Dos meses es el recurso; la revocatoria tiene dos años desde la ejecutoria."]] },
+      conrec: { q: "¿Procede la solicitud?", cambio: "si recurrió o no el acto",
+        ctx: "{e} recurrió en reconsideración una resolución sanción y perdió. Un año después pide su revocatoria directa por agravio injustificado.",
+        ok: "No: quien interpuso recursos no puede pedirla por ninguna causal.", por: "Correcto: en el Estatuto, la revocatoria directa solo procede si no se interpusieron los recursos (art. 736).",
+        no: [["Sí: el agravio injustificado permite pedirla aunque haya recurrido.", "Esa es la regla del CPACA; el art. 736 la cierra por completo."],
+             ["Sí, porque está dentro de los dos años desde la ejecutoria.", "El plazo no salva la improcedencia."]] },
+      tarde: { q: "¿Procede la solicitud?", cambio: "cuándo pidió la revocatoria",
+        ctx: "{e} no recurrió una resolución sanción. Pide su revocatoria directa dos años y {k} meses después de que quedó ejecutoriada. No ha demandado.",
+        ok: "No: debía pedirla dentro de los dos años desde la ejecutoria.", por: "Correcto: art. 737.",
+        no: [["Sí: mientras no haya demandado, puede pedirla en cualquier tiempo.", "Esa es la lógica del CPACA (art. 95); el Estatuto da dos años."],
+             ["Sí: la revocatoria directa no tiene plazo.", "El art. 737 fija dos años desde la ejecutoria."]] },
+      silencio: { q: "¿Qué pasó con la solicitud?",
+        ctx: "{e} pidió en debida forma la revocatoria directa de una sanción que no recurrió. Pasaron un año y {k} semanas sin decisión.",
+        ok: "Se entiende resuelta a su favor: opera el silencio positivo, que debe declararse.", por: "Correcto: art. 738-1.",
+        no: [["Se entiende negada, como en el CPACA.", "En el CPACA no hay silencio en la revocatoria; en el Estatuto es positivo."],
+             ["Nada: la DIAN puede decidir en cualquier tiempo.", "Tiene un año; vencido, opera el silencio positivo."]] }
+    }
+  });
+
   var FAM_IDS = Object.keys(FAM);
 
   function makeCase(famId, vars, lvl, seed) {
@@ -3156,7 +4301,7 @@ APP.gen = (function () {
 
 
 /* ===== __cfg__ ===== */
-APP.cfg = {"nombre":"Mérito","nombreProvisional":false,"version":"2026-10-30.1","vapid":"BMHjDsDzqZzJwUuLUqKU-vnQ_pdJJ0uMfnUX0-ISuTzsraFRPXn5IZRL_aV2cvsOK0wXnxZbNuaxdYg4EFOsLqk","url":"https://jdylaura.github.io/"};
+APP.cfg = {"nombre":"Mérito","nombreProvisional":false,"version":"2026-10-30.2","vapid":"BMHjDsDzqZzJwUuLUqKU-vnQ_pdJJ0uMfnUX0-ISuTzsraFRPXn5IZRL_aV2cvsOK0wXnxZbNuaxdYg4EFOsLqk","url":"https://jdylaura.github.io/"};
 APP.qr = "<svg role=\"img\" aria-label=\"Código QR de la dirección de la app\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 31 31\" shape-rendering=\"crispEdges\"><path fill=\"#FFFFFF\" d=\"M0 0h31v31H0z\"/><path stroke=\"#13182B\" d=\"M1 1.5h7m4 0h1m2 0h1m3 0h2m2 0h7M1 2.5h1m5 0h1m2 0h1m1 0h2m3 0h1m3 0h1m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m3 0h3m1 0h2m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h1m2 0h1m2 0h2m1 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m2 0h4m4 0h2m3 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h2m5 0h6m1 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M10 8.5h2m2 0h1m1 0h3M1 9.5h1m2 0h1m1 0h2m1 0h1m3 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1M3 10.5h1m8 0h3m1 0h2m3 0h3m2 0h1m2 0h1M2 11.5h1m2 0h1m1 0h4m1 0h5m2 0h3m3 0h4M1 12.5h2m2 0h2m1 0h1m1 0h2m2 0h1m2 0h1m1 0h2m3 0h2m1 0h2M1 13.5h1m2 0h1m2 0h2m2 0h1m3 0h2m1 0h1m3 0h2m2 0h1m1 0h2M1 14.5h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h6m2 0h2M1 15.5h1m4 0h3m2 0h1m2 0h2m5 0h3m1 0h5M2 16.5h1m3 0h1m1 0h1m1 0h4m2 0h1m1 0h3m3 0h3m1 0h1M1 17.5h1m3 0h1m1 0h1m1 0h1m1 0h1m2 0h1m3 0h2m1 0h2m1 0h1m3 0h1M4 18.5h1m3 0h1m1 0h9m4 0h2m1 0h1m2 0h1M1 19.5h1m1 0h1m2 0h3m1 0h1m4 0h4m4 0h1m1 0h1m2 0h2M3 20.5h3m2 0h2m3 0h1m1 0h1m2 0h5m5 0h2M1 21.5h1m3 0h1m1 0h1m1 0h2m5 0h1m1 0h2m1 0h5m1 0h1M9 22.5h3m3 0h2m3 0h2m3 0h1m1 0h3M1 23.5h7m9 0h2m2 0h1m1 0h1m1 0h1m2 0h1M1 24.5h1m5 0h1m1 0h4m2 0h2m1 0h1m2 0h1m3 0h3m1 0h1M1 25.5h1m1 0h3m1 0h1m2 0h1m1 0h2m3 0h1m3 0h5M1 26.5h1m1 0h3m1 0h1m1 0h4m1 0h1m1 0h1m1 0h1m2 0h1m1 0h5m1 0h1M1 27.5h1m1 0h3m1 0h1m2 0h3m3 0h6m3 0h3m1 0h1M1 28.5h1m5 0h1m2 0h3m1 0h1m2 0h6m1 0h2m2 0h1M1 29.5h7m1 0h1m4 0h4m1 0h4m3 0h1m1 0h1\"/></svg>\n";
 
 
@@ -5133,6 +6278,7 @@ var APP = window.APP || (window.APP = {});
     } };
   };
   APP.novedades = [
+    { v: "2026-10-30.2", t: "Llega el M07: ruta tributaria 2", d: ["Seis temas nuevos del M07: las tres maneras de liquidar, el requerimiento especial, la liquidación de revisión, el que no declara, el recurso de reconsideración y la revocatoria directa. Llegan encendidos.", "En Memoria, seis mapas nuevos con 16 escenas, y 28 láminas nuevas en el álbum (páginas 12 a 17).", "Trece familias nuevas de casos gemelos. Las de fechas y sanciones hacen las cuentas de verdad: hasta cuándo la liquidación de revisión, con ampliación y pausas; cuánto cuesta declarar tarde antes y después del emplazamiento; cuánto es la sanción por no declarar, con su mitad y su piso.", "Siete casos nuevos en el simulacro funcional (F18 a F24), con su paseo del experto.", "Corrección de Claude en el M05: en un gemelo sobre la revocatoria directa, la opción «el director de la seccional» podía defenderse con el artículo 738 del Estatuto. Se cambió por otra que sí es falsa, y se ajustó la trampa de la lámina «Qué actos y qué cuenta»."] },
     { v: "2026-10-30.1", t: "Llega el M05: la DIAN por dentro", d: ["Tres temas nuevos del M05 (capítulos 2, 3 y 4): quién manda en cada nivel, quién decide el recurso y la voz oficial de la entidad. Llegan encendidos; puedes apagarlos en el menú, en «Temas, tiempo y persona».", "En Memoria, tres mapas nuevos con nueve escenas, y 28 láminas nuevas en el álbum (páginas 9 a 11).", "Ocho familias nuevas de casos gemelos. La de «¿quién decide el recurso?» calcula la cuantía en UVT y en pesos de 2026, y te pone casos justo en la frontera de los 2.000 y los 20.000 UVT.", "Cinco casos nuevos en el simulacro funcional (F13 a F17), con su paseo del experto.", "Tu misión de mañana ya incluye el M05. Tu avance no se tocó."] },
     { v: "2026-10-22.3", t: "Más fácil de instalar y correcciones de la revisión legal", d: ["El botón del menú, arriba a la derecha de «Hoy», ahora dice «Menú».", "En el Samsung, la app explica cómo instalarla desde Chrome, porque desde Samsung Internet Google Play Protect la bloquea. Los pasos de instalación ahora tienen una sola acción cada uno.", "Una revisión independiente confrontó el contenido funcional con el Estatuto Tributario y la doctrina DIAN: las 12 respuestas del simulacro funcional y las cifras quedaron confirmadas.", "Escena «Tres maneras de que una declaración no sirva»: la pregunta ahora dice cuánto se debe (30 millones), porque una deuda de hasta 10 UVT pagada dentro del año sí salva la declaración.", "Lámina «Salida 2»: la declaración sin pago sirve de título para el cobro mientras no se presente de nuevo con el pago (art. 580-1).", "Escena «Las pausas del reloj»: los 3 meses de la inspección de oficio se cuentan desde la notificación del auto.", "Mapa del reloj: la imputación del saldo a favor sigue la regla general (si declaró tarde, desde la presentación).", "Los 71 UVT del beneficio de auditoría medidos en el año anterior quedan señalados como doctrina DIAN (Concepto 404 de 2026).", "Las preguntas sobre la sanción por corrección piden el valor antes de cualquier reducción (la del art. 640 va aparte)."] },
     { v: "2026-10-22.2", t: "Ya se llama Mérito", d: ["Laura y Juan David eligieron el nombre: Mérito. Aparece en la app, en el ícono de los celulares Android y en los avisos.", "En el iPhone, el nombre debajo del ícono es el que se escribió al instalar.", "Ajustes menores en la pantalla de avisos y en las explicaciones de Mis estadísticas."] },
