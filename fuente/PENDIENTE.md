@@ -1,25 +1,18 @@
-# Pendientes (30-oct-2026, tarde) · actualización M05 (caps. 2-4) y M07
+# Pendientes (30-oct-2026, 5:15 p. m.)
 
-Pedido de Laura y Juan David (30-oct-2026, 4:21 p. m.): actualizar la app con DIAN EXPRÉS M05 LA DIAN POR DENTRO
-(solo capítulos 2, 3 y 4) y M07 RUTA TRIBUTARIA 2. No tocar el Centro DIAN Exprés.
-Lecciones: CONCURSOS Y EMPLEOS/DIAN/DIAN EXPRES/04 LECCIONES EXPRES/ (.docx).
+Actualización pedida el 30-oct-2026: M05 «La DIAN por dentro» (capítulos 2, 3 y 4) y M07 «Ruta tributaria 2».
+No se tocó el Centro DIAN Exprés.
 
-Plan en dos partes, cada una publicable sola:
-1. M05 caps. 2-4 → temas m05-2, m05-3, m05-4: mapas genéricos («filas»), escenas, láminas (págs. p9-p11),
-   familias de gemelos (nivel, delega, conflicto, escalon, capital, excrec, doctrina, repres) y casos de simulacro.
-2. M07 → temas m07-1 … m07-6, mismo esquema.
+- [x] Versión 2026-10-30.1 · M05 caps. 2-4: temas m05-2/3/4, escenas e16-e24, láminas f40-f67 (págs. p9-p11),
+      familias nivel, delega, conflicto, escalon, capital, excrec, doctrina, repres; casos F13-F17.
+- [x] Versión 2026-10-30.2 · M07: temas m07-1 a m07-6, escenas e25-e40, láminas f68-f95 (págs. p12-p17),
+      familias aritm, rutas, respuesta, cuarta, lor, mitad, extemp, sancnodecl, aforo, recon, requisitos,
+      silencio, revoc; casos F18-F24. Corrección del distractor de revocatoria (excrec, revsec) y de la lámina f54.
+- [x] Bitácora de la APP (carpeta APP del computador) actualizada.
+- [ ] Revisión legal independiente del contenido M05 y M07, como la del 22-oct (pendiente 11 de la bitácora).
+- [ ] Próximas versiones: más afirmaciones de práctica diaria; M08 cuando el Plan lo estudie; balancear la longitud
+      de la clave en los gemelos.
 
-Cambios de código necesarios (hechos en la rama actualizacion-m05-m07):
-- Temas y mapas sacados de los datos, no escritos a mano (core.js, kit.js, views.js, views2.js).
-- Migración: los perfiles viejos reciben los temas nuevos encendidos.
-- kit.js: «cómo se obtiene» la lámina según el tipo de página, no por «p5».
-
-Estado (30-oct-2026, 5:00 p. m.):
-- [x] Parte 1 · M05 caps. 2-4 publicada en main como versión 2026-10-30.1 (temas m05-2/3/4, escenas e16-e24,
-      láminas f40-f67 en págs. p9-p11, familias nivel/delega/conflicto/escalon/capital/excrec/doctrina/repres,
-      casos F13-F17). Bitácora de la APP actualizada.
-- [ ] Parte 2 · M07: leer la lección (CONCURSOS Y EMPLEOS/DIAN/DIAN EXPRES/04 LECCIONES EXPRES/DIAN EXPRES - M07
-      RUTA TRIBUTARIA 2.docx, capítulos 1 a 6 y lo que siga), luego temas m07-1…, escenas desde e25, láminas desde f68
-      (págs. desde p12), familias nuevas con tabla() de gen.js, casos desde F18. Versión 2026-10-30.2 (o la fecha del día).
-- [ ] Revisión legal independiente de M05 y M07.
-Siguiente paso exacto: el primer punto sin marcar.
+Para agregar temas nuevos: basta con datos (proyecto.js, laminas.js, escenas.js, casos.js) y familias en gen.js
+(la función tabla() arma familias de situaciones). La interfaz toma los temas funcionales y los mapas «filas» de los datos,
+y los perfiles viejos reciben los temas nuevos encendidos.
