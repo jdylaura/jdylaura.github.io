@@ -1,20 +1,24 @@
-/* Service worker de la app: la guarda en el celular para que funcione sin internet,
-   detecta versiones nuevas y arma los avisos diarios con lo que la app sabe de cada uno. */
+/* MiMeta (Plan Principal) · service worker.
+   No guarda nada para usar sin internet (MiMeta exige conexión). Hace tres cosas:
+   1) reemplaza al de Mérito y borra lo que Mérito dejó guardado en el celular;
+   2) deja pasar todo a la red, sin copias viejas;
+   3) muestra los avisos diarios. */
 "use strict";
-var VERSION = "2026-10-30.2";
-var CACHE = "app-" + VERSION;
-var ASSETS = ["./","index.html","app.js","styles.css","manifest.webmanifest","fonts/bricolage.woff2","fonts/literata.woff2","icons/icon-192.png","icons/icon-512.png","icons/apple-touch-icon.png","icons/badge-96.png","icons/favicon-32.png","icons/icon.svg"];
+var VERSION = "P20261115.01";
 
-self.addEventListener("install", function (e) {
-  e.waitUntil(caches.open(CACHE).then(function (c) {
-    return c.addAll(ASSETS.map(function (u) { return new Request(u, { cache: "reload" }); }));
-  }));
-});
+self.addEventListener("install", function () { self.skipWaiting(); });
 
 self.addEventListener("activate", function (e) {
+  var habiaMerito = false;
   e.waitUntil(caches.keys().then(function (keys) {
-    return Promise.all(keys.filter(function (k) { return k.indexOf("app-") === 0 && k !== CACHE; }).map(function (k) { return caches.delete(k); }));
-  }).then(function () { return self.clients.claim(); }));
+    habiaMerito = keys.length > 0; // MiMeta no guarda nada: si hay algo guardado, es de Mérito
+    return Promise.all(keys.map(function (k) { return caches.delete(k); }));
+  }).then(function () { return self.clients.claim(); }).then(function () {
+    return habiaMerito ? self.clients.matchAll({ type: "window" }) : [];
+  }).then(function (list) {
+    // Una ventana que todavía muestra Mérito se recarga para mostrar MiMeta.
+    list.forEach(function (c) { try { c.navigate(c.url.split("#")[0].split("?")[0] + "?mm=" + VERSION); } catch (err) {} });
+  }));
 });
 
 self.addEventListener("message", function (e) {
@@ -26,13 +30,8 @@ self.addEventListener("fetch", function (e) {
   if (req.method !== "GET") return;
   var url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
-  if (url.pathname.indexOf("/avisos/") >= 0 || url.pathname.indexOf("/.github/") >= 0) return;
-  if (req.mode === "navigate") {
-    e.respondWith(caches.match("./index.html").then(function (r) { return r || fetch(req); }).catch(function () { return fetch(req); }));
-    return;
-  }
-  e.respondWith(caches.match(req, { ignoreSearch: true }).then(function (r) {
-    return r || fetch(req);
+  e.respondWith(fetch(req, { cache: "no-store" }).catch(function () {
+    return new Response("<!doctype html><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><body style='font-family:sans-serif;padding:40px 24px;text-align:center'><h2>Necesitas internet</h2><p>MiMeta necesita conexión. Conéctate y vuelve a abrirla.</p><p><a href='./'>Reintentar</a></p>", { status: 503, headers: { "Content-Type": "text/html; charset=utf-8" } });
   }));
 });
 
@@ -40,7 +39,7 @@ self.addEventListener("fetch", function (e) {
 function leerResumen() {
   return new Promise(function (resolve) {
     try {
-      var rq = indexedDB.open("entrenamiento", 1);
+      var rq = indexedDB.open("mimeta", 1);
       rq.onupgradeneeded = function () { rq.result.createObjectStore("kv"); };
       rq.onerror = function () { resolve(null); };
       rq.onsuccess = function () {
@@ -55,43 +54,17 @@ function leerResumen() {
 }
 function pad(n) { return (n < 10 ? "0" : "") + n; }
 function ymd(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
-function dias(n) { return n + (n === 1 ? " día" : " días"); }
 
 function componer(data, r) {
-  var tipo = (data && data.tipo) || "manana";
-  var hoyD = new Date(), hoy = ymd(hoyD);
-  var ayerD = new Date(hoyD.getFullYear(), hoyD.getMonth(), hoyD.getDate() - 1), ayer = ymd(ayerD);
-  var t, b, tag = "diario";
-  if (tipo === "bienvenida") {
-    t = "¡Avisos activados!";
-    b = "Así te llegarán: hacia las 6:30 a. m., tu misión del día; hacia las 8:00 p. m., cómo va tu racha.";
-    tag = "bienvenida";
-  } else if (tipo === "prueba") {
-    t = "Aviso de prueba";
-    b = "Si ves esto, los avisos de tu app funcionan.";
-    tag = "prueba";
-  } else if (!r) {
-    t = tipo === "noche" ? "¿Ya hiciste tu misión de hoy?" : "Tu misión de hoy está lista";
-    b = "Diez minutos y sumas un día a tu racha.";
-  } else {
-    var hechaHoy = r.hoy === hoy && r.misionHecha;
-    var activa = r.racha > 0 && (r.ult === ayer || r.ult === hoy);
-    var faltan = null;
-    try { var f = new Date(r.prueba); faltan = Math.round((new Date(f.getFullYear(), f.getMonth(), f.getDate()) - new Date(hoyD.getFullYear(), hoyD.getMonth(), hoyD.getDate())) / 86400000); } catch (err) {}
-    if (tipo === "manana") {
-      if (hechaHoy) { t = "Misión de hoy cumplida"; b = "Racha de " + dias(r.racha) + ". Puedes repasar en la práctica libre."; }
-      else {
-        t = activa ? "Día " + (r.racha + 1) + " de tu racha: tu misión está lista" : (r.nombre ? r.nombre + ", tu misión de hoy está lista" : "Tu misión de hoy está lista");
-        b = r.teaser ? "Pregunta del día: " + r.teaser : (faltan != null && faltan >= 0 ? "Faltan " + dias(faltan) + " para la prueba. Diez minutos y sumas un día." : "Diez minutos y sumas un día a tu racha.");
-      }
-    } else {
-      if (hechaHoy) { t = "Racha asegurada: " + dias(r.racha); b = "Buen trabajo. Mañana hacia las 6:30 llega tu nueva misión."; }
-      else if (activa) {
-        t = "Tu racha de " + dias(r.racha) + " está en peligro";
-        b = (r.hoy === hoy && r.pasosRestantes ? "Te faltan " + r.pasosRestantes + (r.pasosRestantes === 1 ? " paso" : " pasos") + "." : "Todavía no haces la misión de hoy.") + " Diez minutos y queda a salvo." + (r.comodines ? " Tienes un comodín, pero mejor no gastarlo." : "");
-      } else { t = "Hoy todavía no entrenas"; b = "Diez minutos de misión y empiezas una racha nueva."; }
-    }
-  }
+  var tipo = (data && data.tipo) || "manana", t, b, tag = "diario";
+  var hoy = ymd(new Date());
+  var nombre = r && r.nombre ? r.nombre + ", " : "";
+  var alDia = r && r.hoy === hoy && r.pendientes === 0;
+  if (tipo === "bienvenida") { t = "¡Avisos activados!"; b = "Así te llegarán: uno en la mañana y otro en la noche, para que no se te pasen las tarjetas."; tag = "bienvenida"; }
+  else if (tipo === "prueba") { t = "Aviso de prueba"; b = "Si ves esto, los avisos de MiMeta funcionan."; tag = "prueba"; }
+  else if (alDia) { t = "Hoy ya repasaste"; b = "Tus tarjetas están al día. Mañana seguimos."; }
+  else if (tipo === "noche") { t = nombre ? nombre + "¿ya repasaste hoy?" : "¿Ya repasaste hoy?"; b = "Tus tarjetas de repaso toman pocos minutos y no dejan que se te olvide lo estudiado."; }
+  else { t = nombre ? nombre + "tus tarjetas de hoy te esperan" : "Tus tarjetas de hoy te esperan"; b = "Pocos minutos de repaso. Ábrelas antes de empezar el día."; }
   return { t: t, opts: { body: b, icon: "icons/icon-192.png", badge: "icons/badge-96.png", tag: tag, renotify: true, data: { url: "./" }, lang: "es-CO" } };
 }
 
@@ -100,10 +73,6 @@ self.addEventListener("push", function (e) {
   try { data = e.data ? e.data.json() : {}; } catch (err) { data = {}; }
   e.waitUntil(leerResumen().then(function (r) {
     var n = componer(data, r);
-    try {
-      if (self.navigator && self.navigator.setAppBadge && r && r.hoy === ymd(new Date()) && r.pasosRestantes && !r.misionHecha) self.navigator.setAppBadge(r.pasosRestantes);
-      else if (self.navigator && self.navigator.setAppBadge && (data.tipo === "manana") && !(r && r.hoy === ymd(new Date()) && r.misionHecha)) self.navigator.setAppBadge(1);
-    } catch (err) {}
     return self.registration.showNotification(n.t, n.opts);
   }));
 });
