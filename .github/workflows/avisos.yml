@@ -4,8 +4,13 @@ name: Avisos diarios
 
 on:
   schedule:
+    # Laura (como siempre; GitHub suele llegar tarde, hasta una hora):
     - cron: "17 11 * * *"   # mañana: hacia las 6:17 a. m. de Colombia
     - cron: "47 0 * * *"    # noche: hacia las 7:47 p. m. de Colombia
+    # Juan David (20-nov-2026): 9:00 a. m. y 6:00 p. m. en punto. Arrancan 45 min antes
+    # y enviar.js espera hasta la hora exacta; si GitHub arranca tarde, sale apenas arranque.
+    - cron: "15 13 * * *"   # mañana: 8:15 a. m. → espera a las 9:00 a. m.
+    - cron: "15 22 * * *"   # noche: 5:15 p. m. → espera a las 6:00 p. m.
   push:
     branches: [main]
     paths: ["avisos/suscripciones.json"]   # celular recién registrado: aviso de bienvenida
@@ -28,7 +33,7 @@ concurrency:
 jobs:
   enviar:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 75
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -39,12 +44,19 @@ jobs:
       - name: Elegir el tipo de aviso
         id: tipo
         run: |
+          q=todos; h=""
           if [ "${{ github.event_name }}" = "push" ]; then t=bienvenida
           elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then t="${{ inputs.tipo }}"
-          elif [ "${{ github.event.schedule }}" = "17 11 * * *" ]; then t=manana
-          else t=noche; fi
+          else case "${{ github.event.schedule }}" in
+            "17 11 * * *") t=manana; q=laura ;;
+            "47 0 * * *")  t=noche;  q=laura ;;
+            "15 13 * * *") t=manana; q=juandavid; h=09:00 ;;
+            "15 22 * * *") t=noche;  q=juandavid; h=18:00 ;;
+          esac; fi
           echo "tipo=$t" >> "$GITHUB_OUTPUT"
+          echo "quien=$q" >> "$GITHUB_OUTPUT"
+          echo "hora=$h" >> "$GITHUB_OUTPUT"
       - name: Enviar
-        run: node avisos/enviar.js "${{ steps.tipo.outputs.tipo }}"
+        run: node avisos/enviar.js "${{ steps.tipo.outputs.tipo }}" "${{ steps.tipo.outputs.quien }}" "${{ steps.tipo.outputs.hora }}"
         env:
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}

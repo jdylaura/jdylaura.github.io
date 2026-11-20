@@ -2,18 +2,6 @@
   "v": 1,
   "suscripciones": [
     {
-      "quien": "juandavid",
-      "disp": "android",
-      "host": "fcm.googleapis.com",
-      "agregada": "2026-11-15T13:56:25.935Z",
-      "c": {
-        "epk": "BFRexOMcXFLpTuqN9Q-fCVBe3y695GK8lb8r4uCbvL874BuvY7QcLqzGcP2G4rZWjj0KriSFo4VxTSg9iyoNAT4",
-        "iv": "7GtnMijFUBXh5C57",
-        "ct": "WmGmUxuhRv357e4mexuarlXYXuwnMuqOisSkPaSCcsLsIAxLSRYtFgac0sF5PNxgSAD37BzrRDSBUi-3Nb6RHLuoo8Hysh-52ioQGVHo80igE7UpOEuFgG17xum7CmSZuffQg8U2daYnt-aQ0nzD919IT9l8vsnn7Qhp4hnBtWdyzrsJVguEFndyeQh0mAUT1XMr-g2qgLi0ytXsbK41iFgBSlm6bmzZRTbR41fKOBkjfV9o5WWrR2WGLx4jAt3-EgaL1HU3T17dGU5kBpqGgmLy_g-VYFicKVOrvbVoWpfOdqqdX2DETVLEXzXVNS61EpBsXmjZ8NahhscFBX6Wzl3PK7XtTFfvPuFVh4KkjZHVEU9crOuL9InJz2VPEBl_k7__gUzKytcBdDIKcFnAVm4XPFAFfI2yzR2KqCg3MZRO1CB6aCcJO66L7XcHGDvkzvGcJ87c4w",
-        "tag": "YO_novkUNPBpZRaGXtbhvQ"
-      }
-    },
-    {
       "quien": "laura",
       "disp": "iphone",
       "host": "web.push.apple.com",
@@ -23,6 +11,18 @@
         "iv": "DA7CIPd23_sBoYXt",
         "ct": "2vi7Jcb7KhASY0DMwkx4YkPKTT2ZH9bZELa40-zuuzdezQXdLA5Nd7eRZ0iMfbw6acHEDssYtugniz-nBXSA-Xou-5qz_huT44SWlaEH3NgtsVE7_RFp_25CScpUoP9jtFWASaoxF_nVPvn7xjh8ippgkg9eqbdyA99MjcLObSqkBB1ZdWirqRz9wyaZXoGyUvkWHJX8ICDpXkGfal2qH2Q1h4byQmodu2tcDP9jYaHdARhB2ZsH_a262blz2bpVAfokWuXOKFjGgd2cMYXTpmz_3EEqzolgWrvbhD4Roj6uDRexvLBWvkdOmzXE69daCuMwpdtQ6uo9fx_4KBudOmepstmF9G-1WWrBN8CQWNIelWr0-fA-LGhHfaDs19Nxl7_ImooPJ65TSRPZiYm68n1P4qxAYvWSK-2RF5mBM0G1C0BJlocF660OyQ4mEezkuAC7zuSX2BgTCnreHa7fgXc",
         "tag": "1pUH5mQOCSWUHRtMjvFmpA"
+      }
+    },
+    {
+      "quien": "juandavid",
+      "disp": "android",
+      "host": "fcm.googleapis.com",
+      "agregada": "2026-11-20T18:05:28.109Z",
+      "c": {
+        "epk": "BHxW6C_juoAxC14qdYiHlFa2IIoWhOe2GAHyLrdMfIh_LbYrmpBuutw0a-8-nhJLg2nIg_dF9AP_8zmZvgPbdow",
+        "iv": "poPbgcWpdhixrLGc",
+        "ct": "2ImT0WkrxzwMd53Ys6iwVczQAPG0RdQDiuvsuIkZB0VC_tWrpXRMoQAvgCi60fO069b05r8O0JrVFypAYxF4cS7fjo4aM0v5U-8L51Cl4ydxwhMxF9YcYo0gCsXJvwZpcilJ7x8JAizaQ2oOA5xuDF7As5TE-xnP4lCxfKvoKGh6ElcX-DBYzP0GCPQm21Z9oYcd-MVCWxkTybThgyIwWBmLhrKAbZNlaHCLERa4Mb4mOLDod1oUQnHRnylUPsEmq_DjoImP0q9lBCvZBPAIbDgaDDk102MLDTJ8BuR-AHliV9UxhyhTD1VZoSi4esKJLpdsP4qfsdblp1P_zCmA-dFPCDuEZgxg8YeTloLqrDI-cXyd70NgRoLFLsWOJGoA5iVV1NoSV4eCACqZSKwu4ct1WE_6NVfck_ukbPU8JDcimYXs8LoypV9N7F208sN2HG6JjlIbrA",
+        "tag": "XzfLEYkDwl_35dtlupyUiA"
       }
     }
   ]
